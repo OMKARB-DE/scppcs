@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRTMUN Academic Calendar Directory</title>
+  <link rel="stylesheet" href="../css/academic-calendar.css">
+</head>
+<body>
+ <!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentHeader"></footer>
+
+  <div class="wiki-container">
+    
+    <!-- University Header -->
+    <header class="wiki-header">
+      <div class="wiki-header-meta">Swami Ramanand Teerth Marathwada University, Nanded</div>
+      <h1 class="wiki-title">Academic Calendar Directory</h1>
+      <p class="wiki-subtitle">Official schedule for terms, vacations, admissions, examinations, and university festivals.</p>
+    </header>
+
+    <!-- Infographic Stats Bar -->
+    <div class="wiki-infographic-bar">
+      <div class="wiki-metric-box">
+        <span class="wiki-metric-num" id="statTerms">5</span>
+        <span class="wiki-metric-label">Institutional Divisions</span>
+      </div>
+      <div class="wiki-metric-box">
+        <span class="wiki-metric-num" id="statAdmissions">9</span>
+        <span class="wiki-metric-label">Admission Stages</span>
+      </div>
+      <div class="wiki-metric-box">
+        <span class="wiki-metric-num" id="statExams">8</span>
+        <span class="wiki-metric-label">Exam Schedules</span>
+      </div>
+      <div class="wiki-metric-box">
+        <span class="wiki-metric-num" id="statEvents">6</span>
+        <span class="wiki-metric-label">Key Events & Festivals</span>
+      </div>
+    </div>
+
+    <!-- Year Selection Cards -->
+    <section class="wiki-section">
+      <h2 class="wiki-section-heading">Select Academic Session</h2>
+      <div class="wiki-year-grid" id="yearGrid">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- Controls & Search -->
+    <div class="wiki-controls-card">
+      <div class="wiki-search-row">
+        <input 
+          type="text" 
+          id="calendarSearch" 
+          class="wiki-input" 
+          placeholder="Search courses (e.g. Engineering, B.Sc, Law), events, dates, or merit lists..."
+        >
+        <select id="categoryFilter" class="wiki-select">
+          <option value="all">All Categories</option>
+          <option value="terms">Terms & Vacations</option>
+          <option value="admissions">Admission Schedules</option>
+          <option value="exams">Examinations</option>
+          <option value="events">Events & Festivals</option>
+        </select>
+        <button id="resetBtn" class="wiki-btn">Reset</button>
+      </div>
+      
+      <div class="wiki-meta-row">
+        <span id="activeYearTag" class="wiki-active-tag">Active Session: 2026–2027</span>
+        <span id="resultCountStatus" class="wiki-count-status">Showing complete university schedule</span>
+      </div>
+    </div>
+
+    <!-- Main Content Blocks -->
+    <main id="calendarContent">
+      
+      <!-- Terms & Vacations -->
+      <section class="wiki-content-block" id="blockTerms">
+        <h2 class="wiki-block-title">1. Term Duration & Vacation Schedule</h2>
+        <div class="wiki-table-wrapper">
+          <table class="wiki-table">
+            <thead>
+              <tr>
+                <th>College / Institution Type</th>
+                <th>First Term</th>
+                <th>Vacation (Term I)</th>
+                <th>Second Term</th>
+                <th>Vacation (Term II)</th>
+              </tr>
+            </thead>
+            <tbody id="termsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Admission Schedule -->
+      <section class="wiki-content-block" id="blockAdmissions">
+        <h2 class="wiki-block-title">2. Admission Schedule (UG & PG)</h2>
+        <div class="wiki-table-wrapper">
+          <table class="wiki-table">
+            <thead>
+              <tr>
+                <th>Sr.</th>
+                <th>Particulars / Admission Stage</th>
+                <th>Undergraduate (UG)</th>
+                <th>Postgraduate (PG)</th>
+              </tr>
+            </thead>
+            <tbody id="admissionsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Examination Schedule -->
+      <section class="wiki-content-block" id="blockExams">
+        <h2 class="wiki-block-title">3. Examination Schedule</h2>
+        <div class="wiki-table-wrapper">
+          <table class="wiki-table">
+            <thead>
+              <tr>
+                <th>Sr.</th>
+                <th>Name of Examination / Course</th>
+                <th>1st Term Exam Date</th>
+                <th>2nd Term Exam Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="examsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Events & Festivals -->
+      <section class="wiki-content-block" id="blockEvents">
+        <h2 class="wiki-block-title">4. Research Festivals & Youth Events</h2>
+        <div class="wiki-events-grid" id="eventsGrid"></div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="wiki-modal-overlay" id="detailModal">
+    <div class="wiki-modal-card">
+      <button class="wiki-modal-close" id="modalCloseBtn">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+
+  <!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentFooter"></footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Load Footer Component
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/footer.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentFooter").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/footer.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentFooter === 'function') {
+                        loadDepartmentFooter();
+                    }
+                })
+                .catch(err => console.error("Error loading footer component:", err));
+        });
+    </script>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentHeader === 'function') {
+                        loadDepartmentHeader();
+                    }
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+
+  <script src="../js/academic-calendar.js"></script>
+</body>
+</html>

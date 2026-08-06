@@ -1,114 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty Directory - Department of Computer Science</title>
-    <link rel="stylesheet" href="faculty.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Minds-Faculty Directory</title>
+  <link rel="stylesheet" href="../css/faculty.css">
 </head>
 <body>
 
-    <!-- PAGE HEADER -->
-    <header class="csfaculty-header">
-        <div class="csfaculty-container">
-            <div class="csfaculty-breadcrumb">
-                Home > Faculty
-            </div>
-            <h1 class="csfaculty-title">Faculty Directory</h1>
-            <p class="csfaculty-subtitle">Department of Computer Science</p>
-            
-            <!-- Department Statistics -->
-            <div class="csfaculty-stats-bar">
-                <div class="csfaculty-stat-item">
-                    <span class="csfaculty-stat-num" id="csfaculty-total-count">15</span>
-                    <span class="csfaculty-stat-label">Faculty Count</span>
-                </div>
-                <div class="csfaculty-stat-item">
-                    <span class="csfaculty-stat-num">5</span>
-                    <span class="csfaculty-stat-label">Professors</span>
-                </div>
-                <div class="csfaculty-stat-item">
-                    <span class="csfaculty-stat-num">4</span>
-                    <span class="csfaculty-stat-label">Associate Professors</span>
-                </div>
-                <div class="csfaculty-stat-item">
-                    <span class="csfaculty-stat-num">4</span>
-                    <span class="csfaculty-stat-label">Assistant Professors</span>
-                </div>
-                <div class="csfaculty-stat-item">
-                    <span class="csfaculty-stat-num">2</span>
-                    <span class="csfaculty-stat-label">Visiting Faculty</span>
-                </div>
-            </div>
+  <papervault-faculty-adv class="pv-adv-root">
+    <div class="pv-adv-container">
+      
+      <!-- Page Header -->
+      <header class="pv-adv-header">
+        <h1 class="pv-adv-title">Department Faculty Directory</h1>
+        <p class="pv-adv-subtitle">Academic leadership, teaching expertise, research portfolios, and academic background.</p>
+      </header>
 
-            <!-- Search and Filters -->
-            <div class="csfaculty-controls">
-                <div class="csfaculty-search-box">
-                    <input type="text" id="csfaculty-search-input" placeholder="Search by name, qualification, research area, designation...">
-                </div>
-                <div class="csfaculty-filters">
-                    <select id="csfaculty-filter-designation">
-                        <option value="">All Designations</option>
-                        <option value="Professor">Professor</option>
-                        <option value="Associate Professor">Associate Professor</option>
-                        <option value="Assistant Professor">Assistant Professor</option>
-                        <option value="Visiting Faculty">Visiting Faculty</option>
-                    </select>
-                </div>
-            </div>
+      <!-- Advanced Search & Filter Bar -->
+      <div class="pv-adv-filter-box">
+        <div class="pv-adv-search-row">
+          <input 
+            type="text" 
+            id="pvAdvSearch" 
+            class="pv-adv-input" 
+            placeholder="Search by name, research topic, qualification, or course code..."
+          >
+          <select id="pvAdvRoleFilter" class="pv-adv-select">
+            <option value="all">All Roles & Ranks</option>
+            <option value="hod">HOD / Department Leadership</option>
+            <option value="professor">Professors</option>
+            <option value="associate">Associate Professors</option>
+            <option value="assistant">Assistant Professors</option>
+          </select>
+          <select id="pvAdvSort" class="pv-adv-select">
+            <option value="name">Sort by Name (A-Z)</option>
+            <option value="experience">Sort by Experience (High to Low)</option>
+            <option value="patents">Sort by Patents (High to Low)</option>
+            <option value="grants">Sort by Research Grants (High to Low)</option>
+          </select>
         </div>
-    </header>
 
-    <!-- MAIN DIRECTORY GRID -->
-    <main class="csfaculty-main csfaculty-container">
-        <div id="csfaculty-grid" class="csfaculty-grid">
-            <!-- Dynamically populated via JS -->
+        <!-- Filter Stats Counter -->
+        <div class="pv-adv-filter-meta">
+          <span id="pvAdvCountStatus">Showing all faculty members</span>
+          <button id="pvAdvResetBtn" class="pv-adv-reset-btn">Reset Filters</button>
         </div>
-    </main>
+      </div>
 
-    <!-- COMPLETE PROFILE MODAL -->
-    <div id="csfaculty-modal" class="csfaculty-modal" role="dialog" aria-hidden="true">
-        <div class="csfaculty-modal-content">
-            <button class="csfaculty-modal-close" id="csfaculty-modal-close" aria-label="Close modal">&times;</button>
-            
-            <!-- Profile Header -->
-            <div class="csfaculty-modal-header" id="csfaculty-modal-header">
-                <!-- Dynamically populated -->
-            </div>
+      <!-- Directory Grid -->
+      <div class="pv-adv-grid" id="pvAdvGrid">
+        <!-- Rendered via faculty-advanced.js (Skeleton first, then dynamic cards) -->
+      </div>
 
-            <!-- Sticky Horizontal Navigation Tabs -->
-            <nav class="csfaculty-modal-tabs" id="csfaculty-modal-tabs">
-                <button class="csfaculty-tab-btn active" data-tab="overview">Overview</button>
-                <button class="csfaculty-tab-btn" data-tab="biography">Biography</button>
-                <button class="csfaculty-tab-btn" data-tab="education">Education</button>
-                <button class="csfaculty-tab-btn" data-tab="experience">Experience</button>
-                <button class="csfaculty-tab-btn" data-tab="teaching">Teaching</button>
-                <button class="csfaculty-tab-btn" data-tab="research">Research</button>
-                <button class="csfaculty-tab-btn" data-tab="publications">Publications</button>
-                <button class="csfaculty-tab-btn" data-tab="projects">Projects</button>
-                <button class="csfaculty-tab-btn" data-tab="achievements">Achievements</button>
-                <button class="csfaculty-tab-btn" data-tab="gallery">Gallery</button>
-                <button class="csfaculty-tab-btn" data-tab="downloads">Downloads</button>
-                <button class="csfaculty-tab-btn" data-tab="contact">Contact</button>
-            </nav>
-
-            <!-- Tab Content Panes -->
-            <div class="csfaculty-modal-body" id="csfaculty-modal-body">
-                <!-- Dynamically displayed based on active tab -->
-            </div>
-
-            <!-- Modal Footer Action Bar -->
-            <div class="csfaculty-modal-footer">
-                <button class="csfaculty-action-btn" id="csfaculty-btn-email">Send Email</button>
-                <button class="csfaculty-action-btn" id="csfaculty-btn-appointment">Request Appointment</button>
-                <button class="csfaculty-action-btn" id="csfaculty-btn-cv">Download CV</button>
-                <button class="csfaculty-action-btn" id="csfaculty-btn-print">Print Profile</button>
-                <button class="csfaculty-action-btn" id="csfaculty-btn-share">Share Profile</button>
-                <button class="csfaculty-action-btn" id="csfaculty-btn-copy">Copy Contact</button>
-            </div>
-        </div>
     </div>
+  </papervault-faculty-adv>
 
-    <script src="faculty.js"></script>
+  <!-- Advanced Interactive Profile Modal -->
+  <div class="pv-adv-modal-overlay" id="pvAdvModal">
+    <div class="pv-adv-modal-card">
+      <button class="pv-adv-modal-close" id="pvAdvModalClose" title="Close Modal">&times;</button>
+      
+      <!-- Top Section: Dynamic SVG Banner + Infographic Hero -->
+      <div class="pv-adv-modal-hero">
+        <div class="pv-adv-avatar-container" id="pvAdvModalAvatarContainer">
+          <!-- Scalable SVG Avatar Injected Here -->
+        </div>
+
+        <div class="pv-adv-modal-meta">
+          <div class="pv-adv-modal-header-line">
+            <h2 id="pvAdvModalName" class="pv-adv-modal-name">Faculty Name</h2>
+            <span id="pvAdvModalHodBadge" class="pv-adv-hod-badge" style="display: none;">HOD</span>
+          </div>
+          <div id="pvAdvModalDesignation" class="pv-adv-modal-designation">Designation</div>
+          <div id="pvAdvModalQual" class="pv-adv-modal-qual">Qualifications</div>
+          <div id="pvAdvModalSpec" class="pv-adv-modal-spec">Specialization</div>
+
+          <!-- Contact Grid -->
+          <div class="pv-adv-contact-grid">
+            <div class="pv-adv-contact-item"><strong>Email:</strong> <span id="pvAdvModalEmail"></span></div>
+            <div class="pv-adv-contact-item"><strong>Phone:</strong> <span id="pvAdvModalPhone"></span></div>
+            <div class="pv-adv-contact-item"><strong>Office:</strong> <span id="pvAdvModalOffice"></span></div>
+            <div class="pv-adv-contact-item"><strong>ORCID:</strong> <span id="pvAdvModalOrcid"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mid Section: Infographic Metric Bar (Updated: Experience, Patents, Grants) -->
+      <div class="pv-adv-metrics-bar">
+        <div class="pv-adv-metric-card">
+          <div class="pv-adv-metric-val" id="pvAdvMetricExperience">0 Yrs</div>
+          <div class="pv-adv-metric-lbl">Experience</div>
+        </div>
+        <div class="pv-adv-metric-card">
+          <div class="pv-adv-metric-val" id="pvAdvMetricPatents">0</div>
+          <div class="pv-adv-metric-lbl">Patents Held</div>
+        </div>
+        <div class="pv-adv-metric-card">
+          <div class="pv-adv-metric-val" id="pvAdvMetricGrants">$0</div>
+          <div class="pv-adv-metric-lbl">Active Funding</div>
+        </div>
+      </div>
+
+      <!-- Lower Section: Tabbed Content -->
+      <div class="pv-adv-modal-body">
+        <div class="pv-adv-tabs-bar" id="pvAdvModalTabs">
+          <button class="pv-adv-tab-btn pv-adv-tab-active" data-tab="overview">Biography & Overview</button>
+          <button class="pv-adv-tab-btn" data-tab="education">Education & Degrees</button>
+          <button class="pv-adv-tab-btn" data-tab="awards">Awards & Recognition</button>
+          <button class="pv-adv-tab-btn" data-tab="publications">Publications Repository</button>
+          <button class="pv-adv-tab-btn" data-tab="research">Research Grants & Labs</button>
+          <button class="pv-adv-tab-btn" data-tab="courses">Courses & Teaching</button>
+        </div>
+
+        <div class="pv-adv-tab-content" id="pvAdvTabContent">
+          <!-- Dynamic Content Rendered Here -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../js/faculty.js"></script>
 </body>
 </html>

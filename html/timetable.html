@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Timetables | Department of Computer Science</title>
+  <link rel="stylesheet" href="../css/timetable.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <div class="wiki-container">
+    
+    <!-- Institution Header -->
+    <header class="wiki-header">
+    
+      <h1 class="wiki-title">Lecture Schedules</h1>
+      <p class="wiki-subtitle">Department of Computer Science — Academic Year 2026–27 (W.E.F. 15th July 2026)</p>
+    </header>
+
+    <!-- Controls Bar -->
+    <div class="wiki-controls-card">
+      <div class="wiki-search-row">
+        <!-- Program Switcher Tabs -->
+        <div class="wiki-tab-group">
+          <button class="wiki-tab-btn active" id="tabDsBtn"><i class="fa-solid fa-flask"></i> B.Sc. (Data Science)</button>
+          <button class="wiki-tab-btn" id="tabBcaBtn"><i class="fa-solid fa-code"></i> BCA Program</button>
+            <!-- ADD THIS BUTTON inside <div class="wiki-action-group">: -->
+                <button class="wiki-action-btn" id="viewPdfBtn"><i class="fa-solid fa-file-pdf"></i> View Original Document</button>
+
+                <!-- ADD THIS MODAL CONTAINER right above <script src="script.js"></script>: -->
+                <div class="modal-overlay" id="pdfModal">
+                <div class="modal-card pdf-modal-card">
+                    <div class="modal-header">
+                    <h3 id="pdfModalTitle">Original Document Viewer</h3>
+                    <button class="modal-close" id="pdfModalCloseBtn">&times;</button>
+                    </div>
+                    <div class="modal-body pdf-modal-body">
+                    <iframe id="pdfIframe" src="" frameborder="0"></iframe>
+                    </div>
+                </div>
+                </div>
+          
+        </div>
+
+        <!-- Utility Buttons -->
+        <div class="wiki-action-group">
+          <button class="wiki-action-btn" id="printBtn"><i class="fa-solid fa-print"></i> Print / Export PDF</button>
+        </div>
+
+
+      </div>
+
+      <!-- Advanced Filter Controls -->
+      <div class="wiki-filter-row">
+        <div class="wiki-filter-item">
+          <label for="searchInput" class="wiki-label"><i class="fa-solid fa-magnifying-glass"></i> Search Subject / Faculty:</label>
+          <input type="text" id="searchInput" class="wiki-input" placeholder="e.g., Python, Pathan, SPK, Lab...">
+        </div>
+
+        <div class="wiki-filter-item">
+          <label for="dayFilter" class="wiki-label"><i class="fa-solid fa-calendar-day"></i> Filter Day:</label>
+          <select id="dayFilter" class="wiki-select">
+            <option value="all">All Days (Mon - Sat)</option>
+            <option value="MON">Monday</option>
+            <option value="TUE">Tuesday</option>
+            <option value="WED">Wednesday</option>
+            <option value="THU">Thursday</option>
+            <option value="FRI">Friday</option>
+            <option value="SAT">Saturday</option>
+          </select>
+        </div>
+
+        <div class="wiki-filter-item">
+          <label for="classFilter" class="wiki-label"><i class="fa-solid fa-graduation-cap"></i> Filter Class:</label>
+          <select id="classFilter" class="wiki-select">
+            <option value="all">All Classes</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="wiki-meta-row">
+        <span id="activeProgramTag" class="wiki-active-tag">Program: B.Sc. (Data Science) — Sem I & III</span>
+        <span id="timetableMeta" class="wiki-count-status"><i class="fa-regular fa-clock"></i> Effective Date: 15/07/2026</span>
+      </div>
+    </div>
+
+    <!-- Main Timetable Section -->
+    <main id="timetableContent">
+      <section class="wiki-content-block">
+        <div class="block-header-flex">
+          <h2 class="wiki-block-title" id="programHeading">B.Sc. (Data Science) Weekly Schedule</h2>
+          <span id="todayHighlightBadge" class="today-badge" style="display:none;"><i class="fa-solid fa-star"></i> Today's Schedule Highlighted</span>
+        </div>
+        
+        <div class="wiki-table-wrapper">
+          <table class="wiki-table" id="timetableGrid">
+            <thead id="timetableHeader">
+              <!-- Dynamically Generated -->
+            </thead>
+            <tbody id="timetableBody">
+              <!-- Dynamically Generated -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Subject & Faculty Reference Legend -->
+      <section class="wiki-content-block print-break">
+        <h2 class="wiki-block-title"><i class="fa-solid fa-book-bookmark"></i> Course & Faculty Code Legend</h2>
+        <div class="legend-grid" id="courseLegend">
+          <!-- Dynamically Generated Legend Cards -->
+        </div>
+      </section>
+
+      <!-- Institutional Signatures Block -->
+      <footer class="wiki-sign-footer">
+        <div class="sign-box">
+          <div class="sign-line"></div>
+          <strong>Head Of Department</strong>
+        </div>
+        <div class="sign-box">
+          <div class="sign-line"></div>
+          <strong>Principal</strong>
+        </div>
+      </footer>
+    </main>
+
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="modal-overlay" id="slotModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="modalSubjectTitle">Course Details</h3>
+        <button class="modal-close" id="modalCloseBtn">&times;</button>
+      </div>
+      <div class="modal-body" id="modalBodyContent">
+        <!-- Dynamic Content -->
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/timetable.js"></script>
+</body>
+</html>

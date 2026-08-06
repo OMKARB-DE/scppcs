@@ -1,0 +1,232 @@
+:root {
+  --wiki-bg-page: #f8f9fa;
+  --wiki-border-dark: #a2a9b1;
+  --primary-color: #2a5885;
+  --success-color: #28a745;
+  --text-color: #202122;
+}
+
+body {
+  margin: 0;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Lato, Helvetica, Arial, sans-serif;
+  background-color: var(--wiki-bg-page);
+  color: var(--text-color);
+}
+
+.wiki-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.wiki-header {
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--wiki-border-dark);
+  padding-bottom: 12px;
+}
+
+.wiki-header-meta {
+  font-size: 0.9rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.wiki-title {
+  margin: 4px 0;
+  font-size: 2.2rem;
+  color: var(--primary-color);
+}
+
+.wiki-subtitle {
+  margin: 0;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Controls Card */
+.wiki-controls-card {
+  background: #fff;
+  border: 1px solid var(--wiki-border-dark);
+  padding: 16px;
+  margin-bottom: 24px;
+  border-radius: 4px;
+}
+
+.wiki-search-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.wiki-tab-group {
+  display: flex;
+  gap: 8px;
+}
+
+.wiki-tab-btn {
+  background: #e9ecef;
+  border: 1px solid #ced4da;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.wiki-tab-btn.active, .wiki-tab-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+}
+
+.wiki-action-btn {
+  background: #fff;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.wiki-action-btn:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.wiki-filter-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.wiki-filter-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.wiki-label {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #444;
+}
+
+.wiki-select {
+  padding: 8px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+/* Content Blocks & Cards */
+.wiki-content-block {
+  margin-bottom: 32px;
+}
+
+.wiki-block-title {
+  font-size: 1.3rem;
+  color: #333;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 6px;
+  margin-bottom: 16px;
+}
+
+.fee-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.fee-card {
+  background: #fff;
+  border: 1px solid var(--wiki-border-dark);
+  border-top: 4px solid var(--primary-color);
+  padding: 16px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.fee-card h3 {
+  font-size: 1.1rem;
+  margin: 0 0 12px 0;
+  color: var(--text-color);
+}
+
+.fee-amount-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #eaecf0;
+}
+
+.amount-badge {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--primary-color);
+}
+
+.amount-ebc {
+  color: var(--success-color);
+}
+
+/* Table Styling */
+.wiki-table-wrapper {
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid var(--wiki-border-dark);
+}
+
+.wiki-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.breakdown-table {
+  font-size: 0.88rem;
+}
+
+.breakdown-table th {
+  background: #eaecf0;
+  color: #000;
+  text-align: left;
+  border-bottom: 2px solid var(--wiki-border-dark);
+  padding: 10px;
+}
+
+.breakdown-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid #eaecf0;
+}
+
+.breakdown-table tbody tr:hover {
+  background-color: #f1f3f5;
+}
+
+.tuition-highlight {
+  background-color: #fff3cd !important;
+  font-weight: bold;
+}
+
+/* Print Rules */
+@media print {
+  .wiki-controls-card {
+    display: none;
+  }
+  body {
+    background: #fff;
+    padding: 0;
+  }
+  .wiki-table-wrapper {
+    border: none;
+  }
+}

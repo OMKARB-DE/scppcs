@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Computer Science | Shri Shivaji College, Parbhani</title>
+
+        <!-- Google Fonts for Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Advanced Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+   
+    <style>
+       
+       
+       
+       /* Base Reset & Variables - Red changed to Light Green */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        :root {
+            --primary-red: #2e8b57;       /* Changed to Sea Green / Light Green */
+            --dark-maroon: #1e5631;     /* Changed to Darker Green */
+            --text-dark: #111111;
+            --text-muted: #444444;
+            --purple-pill: #a832fc;
+            --border-gray: #e2e8f0;
+        }
+
+        body {
+            background-color: #f0f2f5;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* Centered Layout with Left and Right Spacing */
+        .page-wrapper {
+            max-width: 1100px;
+            margin: 30px auto;
+            background: #ffffff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .container {
+            padding: 40px 50px;
+        }
+
+        @media(max-width: 768px) {
+            .container {
+                padding: 20px 20px;
+            }
+            .page-wrapper {
+                margin: 0;
+            }
+        }
+
+        /* 1. The Hero Section (Top of Page) */
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark-maroon), var(--primary-red));
+            color: #ffffff;
+            text-align: center;
+            padding: 50px 20px;
+            position: relative;
+        }
+
+        .page-badge {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: #d4af37;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 4px;
+        }
+
+        .hero-identity {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .dept-logo-placeholder {
+            width: 50px;
+            height: 50px;
+            background: #ffffff;
+            color: var(--primary-red);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .college-name {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .hero-section h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .value-proposition {
+            font-style: italic;
+            color: #f3f4f6;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        .hero-cta-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            background-color: #ffffff;
+            color: var(--primary-red);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .cta-btn:hover {
+            background-color: #f2f9f5;
+            transform: translateY(-2px);
+        }
+
+        .cta-btn.secondary {
+            background-color: transparent;
+            color: #ffffff;
+            border: 2px solid #ffffff;
+        }
+
+        .cta-btn.secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Navigation Tabs for Messages */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 40px 0 20px 0;
+        }
+
+        .main-tab-btn {
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            background-color: #f8fafc;
+            border: 1px solid var(--border-gray);
+            border-radius: 30px;
+            cursor: pointer;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+        }
+
+        .main-tab-btn:hover {
+            background-color: #edf2f7;
+        }
+
+        .main-tab-btn.active {
+            background-color: var(--primary-red);
+            color: #ffffff;
+            border-color: var(--primary-red);
+        }
+
+        /* Message Box Template */
+        .message-card {
+            display: none;
+            background: #ffffff;
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-bottom: 40px;
+        }
+
+        .message-card.active {
+            display: block;
+        }
+
+        .message-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .message-header-row h2 {
+            font-size: 1.8rem;
+            color: #000000;
+            font-weight: 700;
+        }
+
+        /* Language Toggle Pill */
+        .lang-toggle {
+            display: flex;
+            background-color: var(--purple-pill);
+            padding: 4px;
+            border-radius: 25px;
+            width: 150px;
+            position: relative;
+        }
+
+        .lang-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #ffffff;
+            padding: 6px 0;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 2;
+            text-align: center;
+            outline: none;
+        }
+
+        .lang-btn.active {
+            background-color: #ffffff;
+            color: var(--purple-pill);
+            border-radius: 20px;
+        }
+
+        /* Content Layout Grid */
+        .message-grid {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 30px;
+            align-items: start;
+            background-image: radial-gradient(at 100% 100%, rgba(46, 139, 87, 0.03) 0px, transparent 70%), 
+                              linear-gradient(135deg, transparent 0%, rgba(168, 50, 252, 0.02) 100%);
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        .profile-side {
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            max-width: 200px;
+            aspect-ratio: 1 / 1.15;
+            object-fit: cover;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            background-color: #f3f4f6;
+        }
+
+        .leader-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #000000;
+            margin-top: 12px;
+        }
+
+        .name-underline {
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(to right, #6ab04c, var(--primary-red));
+            margin: 6px auto 10px auto;
+        }
+
+        .leader-designation {
+            font-size: 0.9rem;
+            color: #333;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Right Side Text Block */
+        .text-side {
+            border-left: 1px solid #b8c9dd;
+            padding-left: 25px;
+            min-height: 280px;
+        }
+
+        .welcome-title {
+            color: var(--primary-red);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .message-body p {
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* Standard Content Sections */
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-red);
+            margin-bottom: 15px;
+            font-weight: 700;
+            border-bottom: 2px solid #f0f2f5;
+            padding-bottom: 8px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .info-card {
+            border: 1px solid var(--border-gray);
+            padding: 20px;
+            border-radius: 6px;
+            background: #ffffff;
+        }
+
+        .core-values-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .core-values-list li {
+            background-color: #f8fafc;
+            padding: 10px 15px;
+            border-left: 4px solid var(--primary-red);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* 2. Academic Programs & Courses Infographic Cards */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .program-graphic-card {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 25px 15px;
+            text-align: center;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .program-graphic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--primary-red);
+            border-radius: 8px;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .program-graphic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(46, 139, 87, 0.1);
+            background-color: #f2f9f5;
+        }
+
+        .program-graphic-card:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .program-level {
+            display: inline-block;
+            background-color: #f2f9f5;
+            color: var(--primary-red);
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 12px;
+            margin-bottom: 10px;
+            align-self: center;
+        }
+
+        .program-title {
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .program-details {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .explore-btn, .syllabus-btn {
+            display: inline-block;
+            background: transparent;
+            color: var(--primary-red);
+            border: 1px solid var(--primary-red);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .explore-btn:hover, .syllabus-btn:hover {
+            background: var(--primary-red);
+            color: #ffffff;
+        }
+
+        .syllabus-btn {
+            color: var(--text-muted);
+            border-color: var(--border-gray);
+            background: #f8fafc;
+        }
+        .syllabus-btn:hover {
+            background: var(--text-muted);
+            color: #fff;
+        }
+
+        /* 3. Faculty & Research Profiles */
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .faculty-card {
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            background: #fff;
+            transition: box-shadow 0.3s;
+        }
+
+        .faculty-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+        }
+
+        .faculty-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 12px;
+            border: 2px solid var(--primary-red);
+        }
+
+        .faculty-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+        }
+
+        .faculty-title {
+            font-size: 0.85rem;
+            color: var(--primary-red);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .faculty-meta {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .research-labs-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .lab-box {
+            background: #f2f9f5;
+            border-left: 4px solid var(--primary-red);
+            padding: 15px;
+            border-radius: 4px;
+        }
+
+        .lab-box h4 {
+            color: var(--primary-red);
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+        }
+
+        .lab-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* 4. Student Hub & Live Resources */
+        .student-hub-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        @media(max-width: 768px) {
+            .student-hub-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .hub-panel {
+            background: #f8fafc;
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .hub-panel h3 {
+            font-size: 1.15rem;
+            color: var(--primary-red);
+            margin-bottom: 12px;
+        }
+
+        .portal-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .portal-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+
+        .portal-links a:hover {
+            color: var(--primary-red);
+        }
+
+        /* 5. Placements & Career Success */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .stat-box {
+            background: #f2f9f5;
+            border: 1px solid #c8e6c9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-red);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .testimonial-box {
+            background: #f8fafc;
+            border-left: 4px solid var(--primary-red);
+            padding: 15px 20px;
+            border-radius: 4px;
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        .testimonial-author {
+            display: block;
+            margin-top: 8px;
+            font-weight: 700;
+            color: var(--text-dark);
+            font-style: normal;
+            font-size: 0.9rem;
+        }
+
+        /* 6. Infrastructure & Facilities */
+        .infra-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .infra-card {
+            background: #ffffff;
+            border: 1px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .infra-card h4 {
+            color: var(--primary-red);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .infra-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive Layout Adjustments */
+        @media(max-width: 768px) {
+            .message-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .text-side {
+                border-left: none;
+                border-top: 1px solid #b8c9dd;
+                padding-left: 0;
+                padding-top: 20px;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .message-header-row h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER COMPONENT MOUNT POINT -->
+    <header id="departmentHeader"></header>
+
+    <div class="page-wrapper">
+        
+        <!-- 1. The Hero Section (Top of Page) -->
+        <header class="hero-section">
+            <span class="page-badge">Prospectus & Portal</span>
+            <div class="hero-identity">
+                <div class="dept-logo-placeholder">CS</div>
+                <div class="college-name">श्री शिवाजी महाविद्यालय, परभणी</div>
+            </div>
+            <h1>Department of Computer Science</h1>
+            <p class="value-proposition">"Innovating the Future Through Code and Research"</p>
+            <div class="hero-cta-group">
+                <a href="#programs-section" class="cta-btn">Explore Programs</a>
+                <a href="#admissions" class="cta-btn secondary">Apply Now</a>
+            </div>
+        </header>
+
+        <div class="container">
+
+            <!-- About Section -->
+            <section style="margin-top: 10px;">
+                <h2 class="section-title">About the Department</h2>
+                <p>Shri Shivaji College, Parbhani has been a pioneer institution committed to imparting higher education across the region. The Department of Computer Science mirrors this legacy by bridging the gap between historical fundamentals of computation and modern innovations in software engineering and web technologies.</p>
+                <p>Our courses offer hands-on analytical reasoning skills, data architecture management, and open-source operating environments to prepare students comprehensively for corporate environments.</p>
+            </section>
+
+            <div class="info-grid">
+                <div class="info-card">
+                    <h2 class="section-title" style="border:none; padding:0;">Vision</h2>
+                    <p>To be a premier hub of computer application and information systems study, cultivating ethical professionals who thrive in competitive landscapes and innovate for societal welfare.</p>
+                </div>
+                <div class="info-card">
+                    <h2 class="section-title" style="border:none; padding:0;">Mission</h2>
+                    <p>To supply robust analytical foundations through top-tier environments, accelerate student familiarity with contemporary industrial architectures, and build continuous learning habits.</p>
+                </div>
+            </div>
+
+            <section class="info-card" style="margin-bottom: 30px;">
+                <h2 class="section-title" style="border:none; padding:0;">Core Values</h2>
+                <ul class="core-values-list">
+                    <li>Academic Excellence</li>
+                    <li>Innovation & Logic</li>
+                    <li>Ethical Professionalism</li>
+                    <li>Inclusivity & Growth</li>
+                </ul>
+            </section>
+
+            <!-- Top Tab Selection Buttons -->
+            <div class="tab-navigation">
+                <button class="main-tab-btn active" onclick="switchLeadershipTab('hod-tab')">HOD Message</button>
+                <button class="main-tab-btn" onclick="switchLeadershipTab('principal-tab')">Principal Message</button>
+            </div>
+
+            <!-- ================= HOD MESSAGE TAB ================= -->
+            <div id="hod-tab" class="message-card active">
+                <div class="message-header-row">
+                    <h2>Head of Department's Message</h2>
+                    <div class="lang-toggle">
+                        <button class="lang-btn active" onclick="toggleLanguage('hod', 'en')">English</button>
+                        <button class="lang-btn" onclick="toggleLanguage('hod', 'mr')">मराठी</button>
+                    </div>
+                </div>
+
+                <div class="message-grid">
+                    <div class="profile-side">
+                        <img class="profile-img" src="hod_photo.jpg" alt="Dr. V.M. Pathak">
+                        <div class="leader-name">Dr.V.M.Pathak</div>
+                        <div class="name-underline"></div>
+                        <div class="leader-designation">Head, Department of Computer Science</div>
+                    </div>
+                    <div class="text-side">
+                        <div id="hod-content-en" class="message-body">
+                            <h3 class="welcome-title">Welcome to the Department of Computer Science</h3>
+                            <p>It gives me immense pleasure to welcome you to the Department of Computer Science of Shri Shivaji College, Parbhani.</p>
+                            <p>Our department is dedicated to excellence in teaching, research, innovation and holistic student development. We continuously strive to provide quality education, practical knowledge and industry exposure. We encourage our students to think creatively, develop problem-solving abilities and become responsible professionals.</p>
+                            <p>I warmly invite you to become a part of our department and join us in our journey towards excellence.</p>
+                        </div>
+                        <div id="hod-content-mr" class="message-body" style="display: none;">
+                            <h3 class="welcome-title">संगणक शास्त्र विभागात आपले स्वागत आहे</h3>
+                            <p>श्री शिवाजी कॉलेज, परभणी येथील संगणक शास्त्र विभागात आपले स्वागत करताना मला अत्यंत आनंद होत आहे.</p>
+                            <p>आमचा विभाग उत्कृष्ट अध्यापन, संशोधन, नाविन्यता आणि विद्यार्थ्यांच्या सर्वांगीण विकासासाठी समर्पित आहे. आम्ही सातत्याने दर्जेदार शिक्षण, व्यावहारिक ज्ञान आणि उद्योग क्षेत्राशी ओळख करून देण्याचा प्रयत्न करतो. आम्ही आमच्या विद्यार्थ्यांना सर्जनशील विचार करण्यास, समस्या सोडवण्याची क्षमता विकसित करण्यास आणि जबाबदार व्यावसायिक बनण्यास प्रोत्साहित करतो.</p>
+                            <p>मी तुम्हास आमच्या विभागाचा एक भाग होण्यासाठी आणि उत्कृष्टतेच्या दिशेने आमच्या प्रवासात सामील होण्यासाठी मनःपूर्वक आमंत्रित करतो.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= PRINCIPAL MESSAGE TAB ================= -->
+            <div id="principal-tab" class="message-card">
+                <div class="message-header-row">
+                    <h2>Principal's Message</h2>
+                    <div class="lang-toggle">
+                        <button class="lang-btn active" onclick="toggleLanguage('principal', 'en')">English</button>
+                        <button class="lang-btn" onclick="toggleLanguage('principal', 'mr')">मराठी</button>
+                    </div>
+                </div>
+
+                <div class="message-grid">
+                    <div class="profile-side">
+                        <img class="profile-img" src="principal_photo.jpg" alt="Principal">
+                        <div class="leader-name">Dr. B. U. Jadhav</div>
+                        <div class="name-underline"></div>
+                        <div class="leader-designation">Principal, Shri Shivaji College</div>
+                    </div>
+                    <div class="text-side">
+                        <div id="principal-content-en" class="message-body">
+                            <h3 class="welcome-title">From the Desk of the Principal</h3>
+                            <p>Welcome to our vibrant academic ecosystem. At Shri Shivaji College, we aim to nurture intellectual talent alongside robust moral frameworks.</p>
+                            <p>The Department of Computer Science has been at the forefront of providing technical competence to students from diverse backgrounds. We provide our modern minds with state-of-the-art facilities and experienced educators to turn them into competitive technological assets for the modern world.</p>
+                        </div>
+                        <div id="principal-content-mr" class="message-body" style="display: none;">
+                            <h3 class="welcome-title">प्राचार्यांचे मनोगत</h3>
+                            <p>आमच्या उत्साही शैक्षणिक व्यवस्थेत आपले स्वागत आहे. श्री शिवाजी महाविद्यालयात, आमचे उद्दिष्ट भक्कम नैतिक चौकटीसह बौद्धिक प्रतिभा जोपासणे हे आहे.</p>
+                            <p>संगणक शास्त्र विभाग विविध पार्श्वभूमीतील विद्यार्थ्यांना तांत्रिक क्षमता प्रदान करण्यात आघाडीवर राहिला आहे. आधुनिक जगासाठी स्पर्धात्मक तांत्रिक मालमत्तेत रूपांतरित करण्यासाठी आम्ही विद्यार्थ्यांना अत्याधुनिक सुविधा आणि अनुभवी शिक्षक प्रदान करतो.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. Academic Programs & Courses -->
+            <section id="programs-section" style="margin: 35px 0;">
+                <h2 class="section-title">Academic Programs & Courses</h2>
+                <p style="margin-bottom: 15px; color: var(--text-muted); font-size: 0.95rem;">Explore our specialized undergraduate, postgraduate, and doctoral professional degree pathways:</p>
+                
+                <div class="programs-grid">
+                    <div class="program-graphic-card">
+                        <div>
+                            <span class="program-level">Undergraduate (UG)</span>
+                            <h3 class="program-title">BCA / B.Sc CS</h3>
+                            <p class="program-details"><strong>Tracks:</strong> Software & Web Apps<br><strong>Duration:</strong> 3 Years</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="bca-program.html" class="explore-btn">Explore</a>
+                            <a href="syllabus-bca.pdf" class="syllabus-btn" download>Syllabus PDF</a>
+                        </div>
+                    </div>
+                    <div class="program-graphic-card">
+                        <div>
+                            <span class="program-level">Undergraduate (UG)</span>
+                            <h3 class="program-title">B.Sc Data Science</h3>
+                            <p class="program-details"><strong>Tracks:</strong> AI & Analytics<br><strong>Duration:</strong> 3 Years</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="bsc-ds-program.html" class="explore-btn">Explore</a>
+                            <a href="syllabus-ds.pdf" class="syllabus-btn" download>Syllabus PDF</a>
+                        </div>
+                    </div>
+                    <div class="program-graphic-card">
+                        <div>
+                            <span class="program-level">Postgraduate (PG)</span>
+                            <h3 class="program-title">M.Sc Computer Science</h3>
+                            <p class="program-details"><strong>Tracks:</strong> Cloud & Cyber Systems<br><strong>Duration:</strong> 2 Years</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="msc-cs-program.html" class="explore-btn">Explore</a>
+                            <a href="syllabus-msc.pdf" class="syllabus-btn" download>Syllabus PDF</a>
+                        </div>
+                    </div>
+                    <div class="program-graphic-card">
+                        <div>
+                            <span class="program-level">Doctoral Track</span>
+                            <h3 class="program-title">Ph.D. Research</h3>
+                            <p class="program-details"><strong>Focus:</strong> Advanced Computing<br><strong>Openings:</strong> Active</p>
+                        </div>
+                        <div class="card-actions">
+                            <a href="phd-program.html" class="explore-btn">Explore</a>
+                            <a href="guidelines.pdf" class="syllabus-btn" download>Guidelines</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Faculty & Research Profiles -->
+            <section style="margin: 35px 0;">
+                <h2 class="section-title">Faculty & Research Profiles</h2>
+                <p style="margin-bottom: 15px; color: var(--text-muted); font-size: 0.95rem;">Meet our experienced educators and browse specialized research hubs:</p>
+                
+                <div class="faculty-grid">
+                    <div class="faculty-card">
+                        <img src="hod_photo.jpg" alt="Dr. V.M. Pathak" class="faculty-img">
+                        <div class="faculty-name">Dr. V. M. Pathak</div>
+                        <div class="faculty-title">Head & Professor</div>
+                        <div class="faculty-meta">vmpathak@shivajicollege.edu<br>Office: CS Block 102</div>
+                    </div>
+                    <div class="faculty-card">
+                        <img src="faculty_2.jpg" alt="Dr. S. R. Kulkarni" class="faculty-img">
+                        <div class="faculty-name">Dr. S. R. Kulkarni</div>
+                        <div class="faculty-title">Associate Professor</div>
+                        <div class="faculty-meta">srkulkarni@shivajicollege.edu<br>Office: CS Block 105</div>
+                    </div>
+                    <div class="faculty-card">
+                        <img src="faculty_3.jpg" alt="Prof. A. P. Deshmukh" class="faculty-img">
+                        <div class="faculty-name">Prof. A. P. Deshmukh</div>
+                        <div class="faculty-title">Assistant Professor</div>
+                        <div class="faculty-meta">apdeshmukh@shivajicollege.edu<br>Office: CS Block 108</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <h3 style="font-size: 1.2rem; color: var(--text-dark); margin-bottom: 10px;">Dedicated Research Groups</h3>
+                    <div class="research-labs-list">
+                        <div class="lab-box">
+                            <h4>Robotics & IoT Lab</h4>
+                            <p>Focusing on smart embedded automation, sensor integration, and micro-controllers .</p>
+                        </div>
+                        <div class="lab-box">
+                            <h4>Computer Vision Group</h4>
+                            <p>Active publications in deep learning, image processing, and facial pattern recognition .</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Student Hub & Live Resources -->
+            <section style="margin: 35px 0;">
+                <h2 class="section-title">Student Hub & Live Resources</h2>
+                <div class="student-hub-grid">
+                    <div class="hub-panel">
+                        <h3>Quick Student Portals</h3>
+                        <ul class="portal-links">
+                            <li><a href="#timetable">&rarr; Class Timetables & Semester Schedules</a></li>
+                            <li><a href="#exams">&rarr; Examination Routines & Hall Tickets</a></li>
+                            <li><a href="#grades">&rarr; Internal Grade Tracking Systems</a></li>
+                        </ul>
+                    </div>
+                    <div class="hub-panel">
+                        <h3>Tech Clubs & Hackathons</h3>
+                        <ul class="portal-links">
+                            <li><a href="#acm">&rarr; ACM Student Chapter & Coding Circle</a></li>
+                            <li><a href="#events">&rarr; Upcoming Inter-College Coding Hackathons</a></li>
+                            <li><a href="#achievements">&rarr; Recent Regional Hackathon Achievements</a> </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Placements & Career Success -->
+            <section style="margin: 35px 0;">
+                <h2 class="section-title">Placements & Career Success</h2>
+                <p style="margin-bottom: 15px; color: var(--text-muted); font-size: 0.95rem;">Our alumni build successful futures across leading global information technology firms.</p>
+                
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-number">88%</div>
+                        <div class="stat-label">Employment Rate</div> 
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">6.5 LPA</div>
+                        <div class="stat-label">Average Package</div> 
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">40+</div>
+                        <div class="stat-label">Recruiting Partners</div> 
+                    </div>
+                </div>
+
+                <div class="testimonial-box">
+                    "The rigorous training, coding labs, and active guidance from faculty members at Shri Shivaji College completely shaped my technical foundation, allowing me to transition into a top-tier software company smoothly."
+                    <span class="testimonial-author">— Rohit Joshi, Software Engineer (Alumnus)</span>
+                </div>
+            </section>
+
+            <!-- 6. Infrastructure & Facilities -->
+            <section style="margin: 35px 0;">
+                <h2 class="section-title">Infrastructure & Facilities</h2>
+                <div class="infra-grid">
+                    <div class="infra-card">
+                        <h4>Advanced Computer Labs</h4>
+                        <p>Equipped with high-speed core processing workstations, high configuration terminals, and multi-OS environments .</p>
+                    </div>
+                    <div class="infra-card">
+                        <h4>HPC & Server Clusters</h4>
+                        <p>High-Performance Computing setups dedicated to crunching big data sets and heavy machine learning model iterations .</p>
+                    </div>
+                    <div class="infra-card">
+                        <h4>Maker Space</h4>
+                        <p>Collaborative physical sandbox environments outfitted with 3D printers, IoT hardware kits, and micro-soldering setups .</p>
+                    </div>
+                </div>
+            </section>
+
+            <section style="margin-top: 35px;">
+                <h2 class="section-title">Academic Excellence & Campus Facilities</h2>
+                <p>We boast up-to-date computer testing laboratories built with fast configurations, local networks, and software environments. Students get open access to digital textbook servers and research journals inside our rich college library.</p>
+            </section>
+
+            <section style="margin-top: 25px;">
+                <h2 class="section-title">Why Choose Us?</h2>
+                <p>Choosing the computer science stream here guarantees specialized guidance from a highly qualified teaching faculty, a vibrant peer group community, active placement coaching modules, and robust opportunities via technological project clubs and hackathons.</p>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentFooter"></footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Load Footer Component
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/footer.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentFooter").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/footer.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentFooter === 'function') {
+                        loadDepartmentFooter();
+                    }
+                })
+                .catch(err => console.error("Error loading footer component:", err));
+        });
+    </script>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentHeader === 'function') {
+                        loadDepartmentHeader();
+                    }
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+
+    <!-- JavaScript Handling Tabs & Multi-language features -->
+    <script>
+        // Main Tab switcher logic (HOD vs Principal)
+        function switchLeadershipTab(tabId) {
+            document.querySelectorAll('.message-card').forEach(card => {
+                card.classList.remove('active');
+            });
+            document.querySelectorAll('.main-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Inner Sub-Tab switcher logic (English vs Marathi Language)
+        function toggleLanguage(role, lang) {
+            const container = document.getElementById(`${role}-tab`);
+            const buttons = container.querySelectorAll('.lang-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+
+            const enBlock = document.getElementById(`${role}-content-en`);
+            const mrBlock = document.getElementById(`${role}-content-mr`);
+
+            if (lang === 'mr') {
+                enBlock.style.display = 'none';
+                mrBlock.style.display = 'block';
+            } else {
+                enBlock.style.display = 'block';
+                mrBlock.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

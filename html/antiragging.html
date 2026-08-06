@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="mr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>श्री शिवाजी महाविद्यालय, परभणी - माहिती पुस्तिका (पृष्ठ २५)</title>
+  <!-- Google Fonts for Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Advanced Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-red: #8b0000;
+      --accent-red: #dc2626;
+      --light-red: #fef2f2;
+      --border-red: #fca5a5;
+      --navy-blue: #0f172a;
+      --header-blue: #1e3a8a;
+      --table-hover: #f1f5f9;
+      --text-dark: #1f2937;
+      --text-muted: #4b5563;
+      --gold-accent: #d97706;
+      --gold-bg: #fffbeb;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+      --transition: all 0.25s ease-in-out;
+    }
+
+    /* Reset and Base Styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body.sm-p25-root {
+      background: linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 100%);
+      color: var(--text-dark);
+      font-family: 'Poppins', 'Tiro Devanagari Marathi', serif, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0;
+      line-height: 1.6;
+    }
+
+    /* Main Container Wrap */
+    .sm-p25-main-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 12px;
+    }
+
+    /* Main Container Card */
+    .sm-p25-card-container {
+      background: #ffffff;
+      max-width: 950px;
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: var(--shadow-lg);
+      border: 2px solid var(--primary-red);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Top Accent Line */
+    .sm-p25-card-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #8b0000, #dc2626, #f59e0b, #dc2626, #8b0000);
+    }
+
+    /* Header Styling */
+    .sm-p25-header {
+      background: linear-gradient(135deg, #7f1d1d, #991b1b, #b91c1c);
+      color: #ffffff;
+      padding: 32px 24px 24px 24px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .sm-p25-header-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .sm-p25-header-subtitle {
+      font-size: 16px;
+      font-weight: 500;
+      opacity: 0.95;
+      background: rgba(255, 255, 255, 0.15);
+      display: inline-block;
+      padding: 4px 16px;
+      border-radius: 20px;
+      backdrop-filter: blur(4px);
+    }
+
+    .sm-p25-page-badge {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background-color: #f59e0b;
+      color: #000000;
+      font-weight: 700;
+      font-size: 13px;
+      padding: 4px 12px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Content Area */
+    .sm-p25-content {
+      padding: 32px;
+    }
+
+    /* Section Headers */
+    .sm-p25-section-title {
+      font-size: 20px;
+      color: var(--primary-red);
+      border-bottom: 2px solid var(--border-red);
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+    }
+
+    /* Notice Box */
+    .sm-p25-notice-box {
+      background-color: var(--light-red);
+      border-left: 5px solid var(--accent-red);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      font-size: 15px;
+      color: #7f1d1d;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sm-p25-notice-box strong {
+      color: #991b1b;
+      font-weight: 700;
+    }
+
+    /* List Controls & Formatting */
+    .sm-p25-list-heading {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-red);
+      margin: 20px 0 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sm-p25-list {
+      list-style-type: none;
+      margin-bottom: 24px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .sm-p25-list-item {
+      position: relative;
+      padding-left: 32px;
+      font-size: 15px;
+      color: var(--text-dark);
+      background: #f8fafc;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      padding-right: 14px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      transition: var(--transition);
+    }
+
+    .sm-p25-list-item:hover {
+      background: #ffffff;
+      border-color: var(--border-red);
+      transform: translateX(4px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sm-p25-list-item::before {
+      content: "⚠️";
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      font-size: 14px;
+    }
+
+    .sm-p25-punishment-item::before {
+      content: "⚖️";
+    }
+
+    /* Table Component */
+    .sm-p25-table-wrapper {
+      overflow-x: auto;
+      margin-top: 16px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sm-p25-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      background-color: #ffffff;
+    }
+
+    .sm-p25-table th {
+      background: linear-gradient(135deg, #1e3a8a, #1e40af);
+      color: #ffffff;
+      padding: 14px 18px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .sm-p25-table td {
+      padding: 14px 18px;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 14.5px;
+      color: var(--text-dark);
+      vertical-align: middle;
+      transition: var(--transition);
+    }
+
+    .sm-p25-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .sm-p25-table tbody tr:hover td {
+      background-color: #f0f9ff;
+    }
+
+    .sm-p25-counter-badge {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 14px;
+      display: inline-block;
+      text-align: center;
+      min-width: 45px;
+      box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
+    }
+
+    .sm-p25-store-badge {
+      background: linear-gradient(135deg, #475569, #334155);
+      color: #ffffff;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 14px;
+      display: inline-block;
+      text-align: center;
+      min-width: 65px;
+    }
+
+    /* Computerized Receipt Warning Footer */
+    .sm-p25-footer-alert {
+      margin-top: 28px;
+      background-color: var(--gold-bg);
+      border: 1.5px solid var(--gold-accent);
+      color: #92400e;
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sm-p25-footer-alert-icon {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    /* Emergency Trigger Button */
+    .sm-p25-btn-emergency {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      color: #ffffff;
+      text-align: center;
+      padding: 14px 20px;
+      margin-top: 24px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+      transition: var(--transition);
+      font-family: inherit;
+    }
+
+    .sm-p25-btn-emergency:hover {
+      background: linear-gradient(135deg, #b91c1c, #991b1b);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+    }
+
+    .sm-p25-btn-emergency:active {
+      transform: translateY(0);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 640px) {
+      .sm-p25-content {
+        padding: 20px 16px;
+      }
+      .sm-p25-header {
+        padding: 24px 16px;
+      }
+      .sm-p25-header-title {
+        font-size: 22px;
+      }
+      .sm-p25-header-subtitle {
+        font-size: 14px;
+      }
+      .sm-p25-page-badge {
+        position: static;
+        display: inline-block;
+        margin-bottom: 8px;
+      }
+      .sm-p25-table th, .sm-p25-table td {
+        padding: 10px 12px;
+      }
+    }
+  </style>
+</head>
+<body class="sm-p25-root">
+
+   <!-- COMPONENT INJECTION ELEMENT -->
+    <header id="departmentHeader"></header>
+
+  <!-- MAIN CARD SECTION -->
+  <div class="sm-p25-main-wrapper">
+    <div class="sm-p25-card-container">
+      
+      <!-- Header -->
+      <header class="sm-p25-header">
+        <div class="sm-p25-page-badge">पृष्ठ क्र. २५</div>
+        <h1 class="sm-p25-header-title">श्री शिवाजी महाविद्यालय, परभणी</h1>
+        <div class="sm-p25-header-subtitle">माहिती पुस्तिका (Prospectus)</div>
+      </header>
+
+      <div class="sm-p25-content">
+        
+        <!-- Anti-Ragging Section -->
+        <section>
+          <h2 class="sm-p25-section-title">
+            <span>🛑</span> रॅगिंग प्रतिबंधक अधिनियम
+          </h2>
+          
+          <div class="sm-p25-notice-box">
+            स्वामी रामानंद तीर्थ मराठवाडा विद्यापीठ, नांदेड यांचे पत्र क्र. १ शै प रॅ/ २००९/२०१०/४७४६ दि. १७/०५/२०१० च्या निर्देशानुसार महाविद्यालयीन परिसरात रॅगिंगच्या घटनांना आळा बसावा यासाठी ही माहिती देण्यात येत आहे. <strong>रॅगिंग करणे हा कायद्यानुसार गंभीर गुन्हा आहे.</strong>
+          </div>
+
+          <ul class="sm-p25-list">
+            <li class="sm-p25-list-item">नवप्रवेशित विद्यार्थ्याला बोलून, लिहून, चिडवून, उद्धटपणे वागून त्याला / तिला मानसिक किंवा शारीरिक इजा पोहोचविणे.</li>
+            <li class="sm-p25-list-item">इतरांची मानहानी करणारे व लज्जा उत्पन्न करणारे वर्तन करणे.</li>
+            <li class="sm-p25-list-item">नवप्रवेशित विद्यार्थ्यांवर वरिष्ठत्वाच्या नात्याने जोरजुलूम करणे, दहशत उत्पन्न करणे, किंवा शिक्षा देणे.</li>
+            <li class="sm-p25-list-item">प्रत्यक्ष - अप्रत्यक्षपणे इतर विद्यार्थ्यांना त्रास देणारी कोणतीही कृती करणे.</li>
+          </ul>
+
+          <div class="sm-p25-list-heading">
+            <span>⚖️</span> रॅगिंग करणाऱ्यास होणारी शिक्षा:
+          </div>
+          
+          <ul class="sm-p25-list">
+            <li class="sm-p25-list-item sm-p25-punishment-item">वर्गात बसणे व इतर शैक्षणिक लाभापासून वंचित करणे.</li>
+            <li class="sm-p25-list-item sm-p25-punishment-item">शिष्यवृत्ती, फेलोशीप यांपासून वंचित करणे.</li>
+            <li class="sm-p25-list-item sm-p25-punishment-item">परीक्षेसाठी अपात्र ठरविणे व निकाल राखून ठेवणे.</li>
+            <li class="sm-p25-list-item sm-p25-punishment-item">कोणत्याही युवक महोत्सव किंवा टूर्नामेंटमध्ये सहभागास प्रतिबंध करणे.</li>
+            <li class="sm-p25-list-item sm-p25-punishment-item">एक ते चार सत्रांपर्यंत निलंबित करणे किंवा प्रवेश रद्द करणे.</li>
+          </ul>
+        </section>
+
+        <!-- Administrative Counters Section -->
+        <section style="margin-top: 36px;">
+          <h2 class="sm-p25-section-title">
+            <span>🏛️</span> विद्यार्थ्यांसाठी महाविद्यालयीन कामकाज व्यवस्था
+          </h2>
+          
+          <div class="sm-p25-table-wrapper">
+            <table class="sm-p25-table">
+              <thead>
+                <tr>
+                  <th style="width: 25%;">खिडकी क्र.</th>
+                  <th style="width: 75%;">कामकाज</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="sm-p25-counter-badge">१</span></td>
+                  <td>कनिष्ठ महाविद्यालयीन विद्यार्थ्यांचे सर्व प्रकारचे शुल्क स्वीकारणे.</td>
+                </tr>
+                <tr>
+                  <td><span class="sm-p25-counter-badge">२</span></td>
+                  <td>वरिष्ठ महाविद्यालयीन विद्यार्थ्यांचे सर्व प्रकारचे शुल्क स्वीकारणे.</td>
+                </tr>
+                <tr>
+                  <td><span class="sm-p25-counter-badge">४ व ५</span></td>
+                  <td>पदवी व पदव्युत्तर विभागाचे प्रवेश, परीक्षा, मार्क्स मेमो, टी.सी., बोनाफाईड व विद्यापीठाशी संबंधित कामकाज.</td>
+                </tr>
+                <tr>
+                  <td><span class="sm-p25-counter-badge">६</span></td>
+                  <td>सर्व प्रकारचे शिष्यवृत्ती व इ.बी.सी. संबंधित कामे.</td>
+                </tr>
+                <tr>
+                  <td><span class="sm-p25-counter-badge">९</span></td>
+                  <td>सर्व वर्गाचे ना-देय प्रमाणपत्र (No Dues), सर्व प्रकारची आवेदनपत्र (फॉर्म्स) व माहिती पुस्तिका प्राप्त करणे. (विक्री विभाग)</td>
+                </tr>
+                <tr>
+                  <td><span class="sm-p25-store-badge">स्टोअर</span></td>
+                  <td>झेरॉक्स सुविधा.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Mandatory Computerized Receipt Alert -->
+        <div class="sm-p25-footer-alert">
+          <span class="sm-p25-footer-alert-icon">💻</span>
+          <div>
+            <strong>महत्वाची सूचना :-</strong> कार्यालयाचे संगणकीकरण झालेले असून विद्यार्थ्यांनी संगणकीकृत पावतीचीच (Computerized Receipt) मागणी करावी.
+          </div>
+        </div>
+
+        <!-- Interactive Emergency Action Trigger -->
+        <button class="sm-p25-btn-emergency" onclick="smP25ReportEmergency()">
+          <span>🚨</span>
+          <span>आणीबाणीच्या प्रसंगी रॅगिंग प्रतिबंधक समितीशी संपर्क साधा</span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER COMPONENT MOUNT POINT -->
+  <footer id="departmentFooter"></footer>
+
+  <!-- INTEGRATION & COMPONENT LOADER SCRIPTS -->
+  <script src="../js/header.js"></script>
+  <script>
+      // Load Header Component
+      document.addEventListener("DOMContentLoaded", function () {
+          fetch("../components/header.html")
+              .then(res => res.text())
+              .then(html => {
+                  document.getElementById("departmentHeader").innerHTML = html;
+                  
+                  // Dynamically attach scoped stylesheet
+                  const css = document.createElement("link");
+                  css.rel = "stylesheet";
+                  css.href = "../css/header.css";
+                  document.head.appendChild(css);
+
+                  // Initialize JavaScript features
+                  if (typeof loadDepartmentHeader === 'function') {
+                      loadDepartmentHeader();
+                  }
+              })
+              .catch(err => console.error("Error loading header component:", err));
+      });
+
+      // Load Footer Component
+      document.addEventListener("DOMContentLoaded", function () {
+          fetch("../components/footer.html")
+              .then(res => res.text())
+              .then(html => {
+                  document.getElementById("departmentFooter").innerHTML = html;
+                  
+                  // Inject Footer Scoped Stylesheet
+                  const css = document.createElement("link");
+                  css.rel = "stylesheet";
+                  css.href = "../css/footer.css";
+                  document.head.appendChild(css);
+
+                  // Initialize Footer Scripts
+                  if (typeof loadDepartmentFooter === 'function') {
+                      loadDepartmentFooter();
+                  }
+              })
+              .catch(err => console.error("Error loading footer component:", err));
+      });
+
+      /**
+       * Safe JavaScript logic scoped specifically to Page 25 interactive elements.
+       */
+      function smP25ReportEmergency() {
+        alert("आणीबाणीच्या प्रसंगी कृपया त्वरित महाविद्यालय प्रशासनाशी किंवा 'रॅगिंग प्रतिबंधक समिती'च्या सदस्यांशी संपर्क साधावा.");
+      }
+  </script>
+
+</body>
+</html>

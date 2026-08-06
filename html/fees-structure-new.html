@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fee Structures - Shri Shivaji College, Parbhani</title>
+  
+  <!-- Google Fonts for Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Advanced Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --wiki-bg-page: #f8f9fa;
+      --wiki-border-dark: #a2a9b1;
+      --primary-color: #2a5885;
+      --success-color: #28a745;
+      --text-color: #202122;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Lato, Helvetica, Arial, sans-serif;
+      background-color: var(--wiki-bg-page);
+      color: var(--text-color);
+    }
+
+    .wiki-container {
+      max-width: 1100px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .wiki-header {
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--wiki-border-dark);
+      padding-bottom: 12px;
+    }
+
+    .wiki-header-meta {
+      font-size: 0.9rem;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .wiki-title {
+      margin: 4px 0;
+      font-size: 2.2rem;
+      color: var(--primary-color);
+    }
+
+    .wiki-subtitle {
+      margin: 0;
+      color: #555;
+      font-size: 1rem;
+    }
+
+    /* Controls Card */
+    .wiki-controls-card {
+      background: #fff;
+      border: 1px solid var(--wiki-border-dark);
+      padding: 16px;
+      margin-bottom: 24px;
+      border-radius: 4px;
+    }
+
+    .wiki-search-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .wiki-tab-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .wiki-tab-btn {
+      background: #e9ecef;
+      border: 1px solid #ced4da;
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .wiki-tab-btn.active, .wiki-tab-btn:hover {
+      background: var(--primary-color);
+      color: #fff;
+      border-color: var(--primary-color);
+    }
+
+    .wiki-action-btn {
+      background: #fff;
+      border: 1px solid var(--primary-color);
+      color: var(--primary-color);
+      padding: 8px 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+
+    .wiki-action-btn:hover {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    .wiki-filter-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .wiki-filter-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .wiki-label {
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #444;
+    }
+
+    .wiki-select {
+      padding: 8px;
+      border: 1px solid #ced4da;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    /* Content Blocks & Cards */
+    .wiki-content-block {
+      margin-bottom: 32px;
+    }
+
+    .wiki-block-title {
+      font-size: 1.3rem;
+      color: #333;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 6px;
+      margin-bottom: 16px;
+    }
+
+    .fee-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .fee-card {
+      background: #fff;
+      border: 1px solid var(--wiki-border-dark);
+      border-top: 4px solid var(--primary-color);
+      padding: 16px;
+      border-radius: 4px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .fee-card h3 {
+      font-size: 1.1rem;
+      margin: 0 0 12px 0;
+      color: var(--text-color);
+    }
+
+    .fee-amount-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed #eaecf0;
+    }
+
+    .amount-badge {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: var(--primary-color);
+    }
+
+    .amount-ebc {
+      color: var(--success-color);
+    }
+
+    /* Table Styling */
+    .wiki-table-wrapper {
+      overflow-x: auto;
+      background: #fff;
+      border: 1px solid var(--wiki-border-dark);
+    }
+
+    .wiki-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .breakdown-table {
+      font-size: 0.88rem;
+    }
+
+    .breakdown-table th {
+      background: #eaecf0;
+      color: #000;
+      text-align: left;
+      border-bottom: 2px solid var(--wiki-border-dark);
+      padding: 10px;
+    }
+
+    .breakdown-table td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #eaecf0;
+    }
+
+    .breakdown-table tbody tr:hover {
+      background-color: #f1f3f5;
+    }
+
+    .tuition-highlight {
+      background-color: #fff3cd !important;
+      font-weight: bold;
+    }
+
+    /* Print Rules */
+    @media print {
+      .wiki-controls-card {
+        display: none;
+      }
+      body {
+        background: #fff;
+        padding: 0;
+      }
+      .wiki-table-wrapper {
+        border: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER COMPONENT MOUNT POINT -->
+  <header id="departmentHeader"></header>
+
+  <div class="wiki-container">
+    
+    <header class="wiki-header">
+      <div class="wiki-header-meta">M.S.P. Mandal's</div>
+      <h1 class="wiki-title">Shri Shivaji College, Parbhani</h1>
+      <p class="wiki-subtitle">Academic Fee Structure & Itemized Breakdown — Academic Year 2026–27</p>
+    </header>
+
+    <!-- Controls & Program Switcher -->
+    <div class="wiki-controls-card">
+      <div class="wiki-search-row">
+        <div class="wiki-tab-group">
+          <button class="wiki-tab-btn active" id="tabUgBtn">
+            <i class="fa-solid fa-graduation-cap"></i> Undergraduate Courses (UG)
+          </button>
+          <button class="wiki-tab-btn" id="tabPgBtn">
+            <i class="fa-solid fa-user-graduate"></i> Postgraduate Courses (PG)
+          </button>
+        </div>
+
+        <div class="wiki-action-group">
+          <button class="wiki-action-btn" id="printBtn"><i class="fa-solid fa-print"></i> Print / Export PDF</button>
+        </div>
+      </div>
+
+      <div class="wiki-filter-row">
+        <div class="wiki-filter-item">
+          <label for="courseSelect" class="wiki-label"><i class="fa-solid fa-book"></i> Select Course:</label>
+          <select id="courseSelect" class="wiki-select">
+            <!-- Dynamically populated via JS -->
+          </select>
+        </div>
+
+        <div class="wiki-filter-item">
+          <label for="categorySelect" class="wiki-label"><i class="fa-solid fa-tags"></i> Category / Quota:</label>
+          <select id="categorySelect" class="wiki-select">
+            <option value="PAYING">Paying / General</option>
+            <option value="EBC">EBC / Reserved</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN PAGE SUMMARY SECTION: Course Wise Total Fees -->
+    <section class="wiki-content-block">
+      <h2 class="wiki-block-title"><i class="fa-solid fa-wallet"></i> Overview: Total Course Fees (Category-Wise)</h2>
+      <div class="fee-summary-grid" id="courseSummaryGrid">
+        <!-- Dynamically Generated Summary Cards -->
+      </div>
+    </section>
+
+    <!-- ITEMIZATION SECTION: Complete Breakdown of Fees -->
+    <section class="wiki-content-block">
+      <div class="block-header-flex">
+        <h2 class="wiki-block-title" id="breakdownTitle">Itemized Fee Structure Breakdown</h2>
+      </div>
+
+      <div class="wiki-table-wrapper">
+        <table class="wiki-table breakdown-table" id="feeBreakdownTable">
+          <thead id="feeTableHeader">
+            <!-- Dynamically Generated -->
+          </thead>
+          <tbody id="feeTableBody">
+            <!-- Dynamically Generated -->
+          </tbody>
+          <tfoot id="feeTableFooter">
+            <!-- Dynamically Generated Totals -->
+          </tfoot>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER COMPONENT MOUNT POINT -->
+  <footer id="departmentFooter"></footer>
+
+
+  <!-- COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+  <!-- COMPONENT & APP SCRIPTS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Load Footer Component
+      fetch("../components/footer.html")
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById("departmentFooter").innerHTML = html;
+            
+            // Inject Footer Scoped Stylesheet
+            const css = document.createElement("link");
+            css.rel = "stylesheet";
+            css.href = "../css/footer.css";
+            document.head.appendChild(css);
+
+            // Initialize Footer Scripts
+            if (typeof loadDepartmentFooter === 'function') {
+                loadDepartmentFooter();
+            }
+        })
+        .catch(err => console.error("Error loading footer component:", err));
+
+      // Load Header Component
+
+      
+      fetch("../components/header.html")
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById("departmentHeader").innerHTML = html;
+            
+            // Dynamically attach scoped stylesheet
+            const css = document.createElement("link");
+            css.rel = "stylesheet";
+            css.href = "../css/header.css";
+            document.head.appendChild(css);
+
+            // Initialize JavaScript features
+            if (typeof loadDepartmentHeader === 'function') {
+                loadDepartmentHeader();
+            }
+        })
+        .catch(err => console.error("Error loading header component:", err));
+    });
+  </script>
+
+  <script>
+    // Complete Itemized Particulars
+    const feeParticulars = [
+      { id: 1, name: "Tuition Fees", key: "tuition" },
+      { id: 2, name: "Admission Fees", key: "admission" },
+      { id: 3, name: "Registration Fees", key: "registration" },
+      { id: 4, name: "Library Deposit", key: "lib_deposit" },
+      { id: 5, name: "Library Fees", key: "lib_fees" },
+      { id: 6, name: "Laboratory Fees", key: "lab_fees" },
+      { id: 7, name: "Magazine Fees", key: "magazine" },
+      { id: 8, name: "SAF Fees", key: "saf" },
+      { id: 9, name: "College Games Fees", key: "games" },
+      { id: 10, name: "Gathering Fees", key: "gathering" },
+      { id: 11, name: "Student Welfare Fees", key: "welfare" },
+      { id: 12, name: "College Development Fees", key: "dev_fees" },
+      { id: 13, name: "Identity Card Fees", key: "id_card" },
+      { id: 14, name: "Student Forum Fees", key: "forum" },
+      { id: 15, name: "Home Exam Fees", key: "home_exam" },
+      { id: 16, name: "Medical Exam Fees", key: "medical_exam" },
+      { id: 17, name: "University Sports Fees", key: "uni_sports" },
+      { id: 18, name: "Other Fees", key: "other_fees" },
+      { id: 19, name: "Book Bank", key: "book_bank" },
+      { id: 20, name: "Youth Festival Fees", key: "youth_fest" },
+      { id: 21, name: "Ashwamedh Fees", key: "ashwamedh" },
+      { id: 22, name: "Avishkar & NSS Fees", key: "avishkar_nss" },
+      { id: 23, name: "Emergency Fees", key: "emergency" },
+      { id: 24, name: "Student Insurance Fees", key: "insurance" },
+      { id: 25, name: "Eligibility Fees", key: "eligibility" },
+      { id: 26, name: "Chancellors Office Activities Fees", key: "chancellor" },
+      { id: 27, name: "Zonal Sports Council Fees", key: "zonal_sports" },
+      { id: 28, name: "Processing Fees VDF", key: "processing" },
+      { id: 29, name: "Internet Fees", key: "internet" },
+      { id: 30, name: "Extra Curricular / Activity Fees", key: "extracurricular" }
+    ];
+
+    // Course Master Dataset mapped from document sources
+    const coursesData = {
+      UG: [
+        {
+          id: "bca_bcs",
+          name: "B.C.A / B.C.S",
+          fees: {
+            EBC: { tuition: 0, admission: 50, registration: 20, lib_deposit: 100, lib_fees: 150, lab_fees: 1500, magazine: 50, saf: 10, games: 75, gathering: 70, welfare: 60, dev_fees: 75, id_card: 15, forum: 20, home_exam: 35, medical_exam: 5, uni_sports: 75, other_fees: 25, book_bank: 10, youth_fest: 50, ashwamedh: 30, avishkar_nss: 20, emergency: 15, insurance: 25, eligibility: 132, chancellor: 32, zonal_sports: 50, processing: 100, internet: 600, extracurricular: 365, total: 3764 },
+            PAYING: { tuition: 17600, admission: 50, registration: 20, lib_deposit: 100, lib_fees: 150, lab_fees: 1500, magazine: 50, saf: 10, games: 75, gathering: 70, welfare: 60, dev_fees: 75, id_card: 15, forum: 20, home_exam: 35, medical_exam: 5, uni_sports: 75, other_fees: 25, book_bank: 10, youth_fest: 50, ashwamedh: 30, avishkar_nss: 20, emergency: 15, insurance: 25, eligibility: 132, chancellor: 32, zonal_sports: 50, processing: 100, internet: 600, extracurricular: 365, total: 21364 }
+          }
+        },
+        {
+          id: "ds_bba",
+          name: "B.Sc. Data Science / B.B.A",
+          fees: {
+            EBC: { tuition: 0, admission: 50, registration: 20, lib_deposit: 100, lib_fees: 150, lab_fees: 1500, magazine: 50, saf: 10, games: 75, gathering: 70, welfare: 60, dev_fees: 75, id_card: 15, forum: 20, home_exam: 35, medical_exam: 5, uni_sports: 75, other_fees: 25, book_bank: 10, youth_fest: 50, ashwamedh: 30, avishkar_nss: 20, emergency: 15, insurance: 25, eligibility: 0, chancellor: 32, zonal_sports: 50, processing: 100, internet: 600, extracurricular: 365, total: 3632 },
+            PAYING: { tuition: 17600, admission: 50, registration: 20, lib_deposit: 100, lib_fees: 150, lab_fees: 1500, magazine: 50, saf: 10, games: 75, gathering: 70, welfare: 60, dev_fees: 75, id_card: 15, forum: 20, home_exam: 35, medical_exam: 5, uni_sports: 75, other_fees: 25, book_bank: 10, youth_fest: 50, ashwamedh: 30, avishkar_nss: 20, emergency: 15, insurance: 25, eligibility: 0, chancellor: 32, zonal_sports: 50, processing: 100, internet: 600, extracurricular: 365, total: 21232 }
+          }
+        }
+      ],
+      PG: [
+        {
+          id: "msc_cs",
+          name: "M.Sc. Computer Science / Chemistry",
+          fees: {
+            EBC: { tuition: 24200, admission: 50, registration: 30, lib_deposit: 100, lib_fees: 150, lab_fees: 1500, magazine: 50, saf: 10, games: 75, gathering: 70, welfare: 60, dev_fees: 75, id_card: 15, forum: 20, home_exam: 35, medical_exam: 5, uni_sports: 75, other_fees: 25, book_bank: 10, youth_fest: 50, ashwamedh: 30, avishkar_nss: 20, emergency: 15, insurance: 25, eligibility: 0, chancellor: 32, zonal_sports: 50, processing: 200, internet: 600, extracurricular: 365, total: 27942 },
+            PAYING: { tuition: 24200, admission: 50, registration: 30, lib_deposit: 100, lib_fees: 150, lab_fees: 1500, magazine: 50, saf: 10, games: 75, gathering: 70, welfare: 60, dev_fees: 75, id_card: 15, forum: 20, home_exam: 35, medical_exam: 5, uni_sports: 75, other_fees: 25, book_bank: 10, youth_fest: 50, ashwamedh: 30, avishkar_nss: 20, emergency: 15, insurance: 25, eligibility: 132, chancellor: 32, zonal_sports: 50, processing: 200, internet: 600, extracurricular: 365, total: 28074 }
+          }
+        },
+        {
+          id: "msc_math",
+          name: "M.Sc. Mathematics",
+          fees: {
+            EBC: { tuition: 9350, admission: 50, registration: 30, lib_deposit: 100, lib_fees: 150, lab_fees: 1500, magazine: 50, saf: 10, games: 75, gathering: 70, welfare: 60, dev_fees: 75, id_card: 15, forum: 20, home_exam: 35, medical_exam: 5, uni_sports: 75, other_fees: 25, book_bank: 10, youth_fest: 50, ashwamedh: 30, avishkar_nss: 20, emergency: 15, insurance: 25, eligibility: 0, chancellor: 32, zonal_sports: 50, processing: 200, internet: 600, extracurricular: 365, total: 13092 },
+            PAYING: { tuition: 9350, admission: 50, registration: 30, lib_deposit: 100, lib_fees: 150, lab_fees: 1500, magazine: 50, saf: 10, games: 75, gathering: 70, welfare: 60, dev_fees: 75, id_card: 15, forum: 20, home_exam: 35, medical_exam: 5, uni_sports: 75, other_fees: 25, book_bank: 10, youth_fest: 50, ashwamedh: 30, avishkar_nss: 20, emergency: 15, insurance: 25, eligibility: 132, chancellor: 32, zonal_sports: 50, processing: 200, internet: 600, extracurricular: 365, total: 13224 }
+          }
+        }
+      ]
+    };
+
+    let currentLevel = 'UG';
+
+    // DOM Elements
+    const tabUgBtn = document.getElementById('tabUgBtn');
+    const tabPgBtn = document.getElementById('tabPgBtn');
+    const courseSelect = document.getElementById('courseSelect');
+    const categorySelect = document.getElementById('categorySelect');
+    const printBtn = document.getElementById('printBtn');
+
+    function init() {
+      setupEventListeners();
+      populateCourseOptions();
+      renderFeeView();
+    }
+
+    function setupEventListeners() {
+      tabUgBtn.addEventListener('click', () => switchCategory('UG'));
+      tabPgBtn.addEventListener('click', () => switchCategory('PG'));
+      courseSelect.addEventListener('change', renderFeeView);
+      categorySelect.addEventListener('change', renderFeeView);
+      printBtn.addEventListener('click', () => window.print());
+    }
+
+    function switchCategory(level) {
+      currentLevel = level;
+      tabUgBtn.classList.toggle('active', level === 'UG');
+      tabPgBtn.classList.toggle('active', level === 'PG');
+      
+      populateCourseOptions();
+      renderFeeView();
+    }
+
+    function populateCourseOptions() {
+      courseSelect.innerHTML = '';
+      coursesData[currentLevel].forEach(course => {
+        courseSelect.innerHTML += `<option value="${course.id}">${course.name}</option>`;
+      });
+    }
+
+    function renderFeeView() {
+      renderSummaryCards();
+      renderItemizedTable();
+    }
+
+    function renderSummaryCards() {
+      const container = document.getElementById('courseSummaryGrid');
+      container.innerHTML = '';
+
+      coursesData[currentLevel].forEach(course => {
+        container.innerHTML += `
+          <div class="fee-card">
+            <h3><i class="fa-solid fa-graduation-cap"></i> ${course.name}</h3>
+            <div class="fee-amount-group">
+              <span>Paying Category:</span>
+              <span class="amount-badge">₹${course.fees.PAYING.total.toLocaleString('en-IN')}</span>
+            </div>
+            <div class="fee-amount-group">
+              <span>EBC / Reserved Category:</span>
+              <span class="amount-badge amount-ebc">₹${course.fees.EBC.total.toLocaleString('en-IN')}</span>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function renderItemizedTable() {
+      const courseId = courseSelect.value;
+      const category = categorySelect.value;
+      
+      const course = coursesData[currentLevel].find(c => c.id === courseId);
+      if (!course) return;
+
+      const activeFees = course.fees[category];
+      
+      document.getElementById('breakdownTitle').textContent = 
+        `Itemized Fee Breakup — ${course.name} (${category} Category)`;
+
+      const thead = document.getElementById('feeTableHeader');
+      thead.innerHTML = `
+        <tr>
+          <th style="width: 80px;">Sr. No</th>
+          <th>Fee Particulars</th>
+          <th style="width: 180px; text-align: right;">Amount (₹)</th>
+        </tr>
+      `;
+
+      const tbody = document.getElementById('feeTableBody');
+      tbody.innerHTML = '';
+
+      feeParticulars.forEach(p => {
+        const val = activeFees[p.key] || 0;
+        const isTuition = p.key === 'tuition' ? 'class="tuition-highlight"' : '';
+        
+        tbody.innerHTML += `
+          <tr ${isTuition}>
+            <td style="text-align: center;">${p.id}</td>
+            <td>${p.name}</td>
+            <td style="text-align: right;">${val === 0 ? 'Nil' : '₹' + val.toLocaleString('en-IN')}</td>
+          </tr>
+        `;
+      });
+
+      const tfoot = document.getElementById('feeTableFooter');
+      tfoot.innerHTML = `
+        <tr style="background: var(--wiki-bg-page); font-weight: bold; font-size: 0.95rem;">
+          <td colspan="2" style="text-align: right; padding: 10px;">TOTAL FEES PAYABLE:</td>
+          <td style="text-align: right; color: var(--primary-color); padding: 10px;">₹${activeFees.total.toLocaleString('en-IN')}</td>
+        </tr>
+      `;
+    }
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

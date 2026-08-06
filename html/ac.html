@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SRTMUN Academic Calendar Directory</title>
+  
+  <!-- Combined Stylesheets -->
+  <style>
+    :root {
+      --wiki-bg-page: #f8f9fa;
+      --wiki-bg-white: #ffffff;
+      --wiki-border-dark: #a2a9b1;
+      --wiki-border-light: #eaecf0;
+      --wiki-text-main: #202122;
+      --wiki-text-muted: #54595d;
+      --wiki-accent: #36c;
+      --wiki-accent-bg: #f0f4f8;
+      --wiki-gold: #b58900;
+      --wiki-gold-bg: #fdf6e3;
+      --wiki-green: #198754;
+      --wiki-green-bg: #e8f5e9;
+      --wiki-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      --wiki-font-serif: 'Linux Libertine', 'Georgia', 'Times', serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--wiki-bg-page);
+      color: var(--wiki-text-main);
+      font-family: var(--wiki-font-sans);
+      padding: 24px 16px;
+      line-height: 1.5;
+    }
+
+    .wiki-container {
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .wiki-header {
+      border-bottom: 2px solid var(--wiki-border-dark);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+
+    .wiki-header-meta {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--wiki-text-muted);
+      font-weight: 700;
+    }
+
+    .wiki-title {
+      font-family: var(--wiki-font-serif);
+      font-size: 2.2rem;
+      font-weight: normal;
+      margin: 4px 0;
+    }
+
+    .wiki-subtitle {
+      font-size: 0.95rem;
+      color: var(--wiki-text-muted);
+    }
+
+    /* Infographic Bar */
+    .wiki-infographic-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .wiki-metric-box {
+      background: var(--wiki-bg-white);
+      border: 1px solid var(--wiki-border-dark);
+      border-left: 4px solid var(--wiki-accent);
+      padding: 12px 16px;
+      text-align: center;
+    }
+
+    .wiki-metric-num {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--wiki-accent);
+      line-height: 1;
+    }
+
+    .wiki-metric-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--wiki-text-muted);
+      font-weight: 600;
+      margin-top: 4px;
+    }
+
+    /* Year Grid */
+    .wiki-section {
+      margin-bottom: 24px;
+    }
+
+    .wiki-section-heading {
+      font-size: 1.15rem;
+      font-family: var(--wiki-font-serif);
+      border-bottom: 1px solid var(--wiki-border-light);
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+    }
+
+    .wiki-year-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .wiki-year-card {
+      background: var(--wiki-bg-white);
+      border: 1px solid var(--wiki-border-dark);
+      padding: 14px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .wiki-year-card:hover {
+      border-color: var(--wiki-accent);
+    }
+
+    .wiki-year-card.active {
+      border: 2px solid var(--wiki-accent);
+      background: var(--wiki-accent-bg);
+    }
+
+    .wiki-year-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .wiki-status-badge {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.72rem;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 2px;
+    }
+
+    .status-active {
+      background: var(--wiki-green-bg);
+      color: var(--wiki-green);
+      border: 1px solid var(--wiki-green);
+    }
+
+    .status-archive {
+      background: var(--wiki-bg-page);
+      color: var(--wiki-text-muted);
+      border: 1px solid var(--wiki-border-dark);
+    }
+
+    /* Controls */
+    .wiki-controls-card {
+      background: var(--wiki-bg-white);
+      border: 1px solid var(--wiki-border-dark);
+      padding: 16px;
+      margin-bottom: 28px;
+    }
+
+    .wiki-search-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .wiki-input {
+      flex: 3;
+      min-width: 220px;
+      padding: 8px 12px;
+      font-size: 0.9rem;
+      border: 1px solid var(--wiki-border-dark);
+      outline: none;
+    }
+
+    .wiki-input:focus {
+      border-color: var(--wiki-accent);
+    }
+
+    .wiki-select {
+      flex: 1;
+      min-width: 160px;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      border: 1px solid var(--wiki-border-dark);
+      background: white;
+      cursor: pointer;
+    }
+
+    .wiki-btn {
+      padding: 8px 16px;
+      background: var(--wiki-bg-page);
+      border: 1px solid var(--wiki-border-dark);
+      cursor: pointer;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .wiki-btn:hover {
+      background: var(--wiki-border-light);
+    }
+
+    .wiki-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+      padding-top: 10px;
+      border-top: 1px solid var(--wiki-border-light);
+      font-size: 0.8rem;
+    }
+
+    .wiki-active-tag {
+      font-weight: bold;
+      color: var(--wiki-accent);
+    }
+
+    .wiki-count-status {
+      color: var(--wiki-text-muted);
+    }
+
+    /* Tables */
+    .wiki-content-block {
+      margin-bottom: 32px;
+    }
+
+    .wiki-block-title {
+      font-size: 1.2rem;
+      font-family: var(--wiki-font-serif);
+      border-bottom: 1px solid var(--wiki-border-dark);
+      padding-bottom: 4px;
+      margin-bottom: 12px;
+    }
+
+    .wiki-table-wrapper {
+      overflow-x: auto;
+      background: var(--wiki-bg-white);
+      border: 1px solid var(--wiki-border-dark);
+    }
+
+    .wiki-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+    }
+
+    .wiki-table th, .wiki-table td {
+      padding: 10px 12px;
+      border: 1px solid var(--wiki-border-light);
+    }
+
+    .wiki-table th {
+      background-color: var(--wiki-bg-page);
+      font-weight: 700;
+      border-bottom: 2px solid var(--wiki-border-dark);
+    }
+
+    .wiki-table tbody tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    .wiki-table tbody tr:hover {
+      background-color: var(--wiki-accent-bg);
+    }
+
+    .wiki-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      padding: 2px 6px;
+      font-weight: bold;
+      border-radius: 2px;
+      margin-right: 4px;
+    }
+
+    .badge-ug {
+      background: #e3f2fd;
+      color: #0d47a1;
+      border: 1px solid #90caf9;
+    }
+
+    .badge-pg {
+      background: #f3e5f5;
+      color: #4a148c;
+      border: 1px solid #ce93d8;
+    }
+
+    .wiki-action-btn {
+      color: var(--wiki-accent);
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .wiki-action-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* Events Grid */
+    .wiki-events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .wiki-event-card {
+      background: var(--wiki-bg-white);
+      border: 1px solid var(--wiki-border-dark);
+      padding: 12px 14px;
+      border-left: 4px solid var(--wiki-gold);
+    }
+
+    .wiki-event-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .wiki-event-date {
+      font-size: 0.82rem;
+      color: var(--wiki-text-muted);
+    }
+
+    /* Modal */
+    .wiki-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .wiki-modal-card {
+      background: var(--wiki-bg-white);
+      border: 1px solid var(--wiki-border-dark);
+      width: 100%;
+      max-width: 540px;
+      padding: 20px 24px;
+      position: relative;
+    }
+
+    .wiki-modal-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      font-size: 1.4rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--wiki-text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER COMPONENT MOUNT POINT -->
+  <div id="departmentHeader"></div>
+
+  <div class="wiki-container">
+    
+    <!-- University Header -->
+    <header class="wiki-header">
+      <div class="wiki-header-meta">Swami Ramanand Teerth Marathwada University, Nanded</div>
+      <h1 class="wiki-title">Academic Calendar Directory</h1>
+      <p class="wiki-subtitle">Official schedule for terms, vacations, admissions, examinations, and university festivals.</p>
+    </header>
+
+    <!-- Infographic Stats Bar -->
+    <div class="wiki-infographic-bar">
+      <div class="wiki-metric-box">
+        <span class="wiki-metric-num" id="statTerms">5</span>
+        <span class="wiki-metric-label">Institutional Divisions</span>
+      </div>
+      <div class="wiki-metric-box">
+        <span class="wiki-metric-num" id="statAdmissions">9</span>
+        <span class="wiki-metric-label">Admission Stages</span>
+      </div>
+      <div class="wiki-metric-box">
+        <span class="wiki-metric-num" id="statExams">8</span>
+        <span class="wiki-metric-label">Exam Schedules</span>
+      </div>
+      <div class="wiki-metric-box">
+        <span class="wiki-metric-num" id="statEvents">6</span>
+        <span class="wiki-metric-label">Key Events & Festivals</span>
+      </div>
+    </div>
+
+    <!-- Year Selection Cards -->
+    <section class="wiki-section">
+      <h2 class="wiki-section-heading">Select Academic Session</h2>
+      <div class="wiki-year-grid" id="yearGrid">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- Controls & Search -->
+    <div class="wiki-controls-card">
+      <div class="wiki-search-row">
+        <input 
+          type="text" 
+          id="calendarSearch" 
+          class="wiki-input" 
+          placeholder="Search courses (e.g. Engineering, B.Sc, Law), events, dates, or merit lists..."
+        >
+        <select id="categoryFilter" class="wiki-select">
+          <option value="all">All Categories</option>
+          <option value="terms">Terms & Vacations</option>
+          <option value="admissions">Admission Schedules</option>
+          <option value="exams">Examinations</option>
+          <option value="events">Events & Festivals</option>
+        </select>
+        <button id="resetBtn" class="wiki-btn">Reset</button>
+      </div>
+      
+      <div class="wiki-meta-row">
+        <span id="activeYearTag" class="wiki-active-tag">Active Session: 2026–2027</span>
+        <span id="resultCountStatus" class="wiki-count-status">Showing complete university schedule</span>
+      </div>
+    </div>
+
+    <!-- Main Content Blocks -->
+    <main id="calendarContent">
+      
+      <!-- Terms & Vacations -->
+      <section class="wiki-content-block" id="blockTerms">
+        <h2 class="wiki-block-title">1. Term Duration & Vacation Schedule</h2>
+        <div class="wiki-table-wrapper">
+          <table class="wiki-table">
+            <thead>
+              <tr>
+                <th>College / Institution Type</th>
+                <th>First Term</th>
+                <th>Vacation (Term I)</th>
+                <th>Second Term</th>
+                <th>Vacation (Term II)</th>
+              </tr>
+            </thead>
+            <tbody id="termsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Admission Schedule -->
+      <section class="wiki-content-block" id="blockAdmissions">
+        <h2 class="wiki-block-title">2. Admission Schedule (UG & PG)</h2>
+        <div class="wiki-table-wrapper">
+          <table class="wiki-table">
+            <thead>
+              <tr>
+                <th>Sr.</th>
+                <th>Particulars / Admission Stage</th>
+                <th>Undergraduate (UG)</th>
+                <th>Postgraduate (PG)</th>
+              </tr>
+            </thead>
+            <tbody id="admissionsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Examination Schedule -->
+      <section class="wiki-content-block" id="blockExams">
+        <h2 class="wiki-block-title">3. Examination Schedule</h2>
+        <div class="wiki-table-wrapper">
+          <table class="wiki-table">
+            <thead>
+              <tr>
+                <th>Sr.</th>
+                <th>Name of Examination / Course</th>
+                <th>1st Term Exam Date</th>
+                <th>2nd Term Exam Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="examsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Events & Festivals -->
+      <section class="wiki-content-block" id="blockEvents">
+        <h2 class="wiki-block-title">4. Research Festivals & Youth Events</h2>
+        <div class="wiki-events-grid" id="eventsGrid"></div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Detail Modal -->
+  <div class="wiki-modal-overlay" id="detailModal">
+    <div class="wiki-modal-card">
+      <button class="wiki-modal-close" id="modalCloseBtn">&times;</button>
+      <div id="modalBody"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER COMPONENT MOUNT POINT -->
+  <footer id="departmentFooter"></footer>
+
+  <!-- Combined Scripts -->
+  <script>
+    // Dataset derived directly from SRTMUN Academic Calendars (2025-2026 & 2026-2027)[cite: 24]
+    const calendarDatabase = {
+      "2026-2027": {
+        status: "active",
+        label: "Official Calendar 2026–27",
+        terms: [
+          {
+            institution: "1. All Affiliated Colleges, Constituent Colleges & Recognised Institution",
+            firstTerm: "16/06/2026 To 16/12/2026",
+            vacation1: "22/10/2026 To 15/11/2026",
+            secondTerm: "17/12/2026 To 30/04/2027",
+            vacation2: "02/05/2027 To 15/06/2027"
+          },
+          {
+            institution: "2. All Affiliated Colleges Engineering & Pharmacy",
+            firstTerm: "01/07/2026 To 19/12/2026",
+            vacation1: "02/11/2026 To 21/11/2026",
+            secondTerm: "22/12/2026 To 22/05/2027",
+            vacation2: "24/05/2027 To 02/07/2027"
+          },
+          {
+            institution: "3. All Affiliated Law Colleges",
+            firstTerm: "01/07/2026 To 12/11/2026",
+            vacation1: "13/11/2026 To 03/12/2026",
+            secondTerm: "04/12/2026 To 15/05/2027",
+            vacation2: "17/05/2027 To 30/06/2027"
+          },
+          {
+            institution: "4. Campus & Sub-Campuses School/Dept.",
+            firstTerm: "10/06/2026 To 07/11/2026",
+            vacation1: "12/11/2026 To 07/12/2026",
+            secondTerm: "08/12/2026 To 10/05/2027",
+            vacation2: "11/05/2027 To 09/06/2027"
+          },
+          {
+            institution: "5. All other programes admitting students based on MHT-CET / State Level Entrance exam",
+            firstTerm: "16/06/2026 To 16/12/2026",
+            vacation1: "22/10/2026 To 15/11/2026",
+            secondTerm: "17/12/2026 To 30/04/2027",
+            vacation2: "02/05/2027 To 15/07/2027"
+          }
+        ],
+        admissions: [
+          { sr: "01", stage: "Commencement of Admission", ug: "11/06/2026", pg: "16/06/2026" },
+          { sr: "02", stage: "Last Date of Submission of Application for First Year only", ug: "18/06/2026", pg: "24/06/2026" },
+          { sr: "03", stage: "Display of 1st Merit List for First Year", ug: "19/06/2026", pg: "25/05/2026" },
+          { sr: "04", stage: "Last Date Payment of Fees & submission of documents of 1st Merit List", ug: "23/06/2026", pg: "27/06/2026" },
+          { sr: "05", stage: "Display of 2nd Merit List for First Year", ug: "24/06/2026", pg: "29/06/2026" },
+          { sr: "06", stage: "Last Date Payment of Fees & submission of documents of 2nd Merit List", ug: "29/06/2026", pg: "02/07/2026" },
+          { sr: "07", stage: "Spot Admission & Last date of admission", ug: "30/06/2026", pg: "03/07/2026" },
+          { sr: "08", stage: "Commencement of Classes", ug: "01/07/2026", pg: "06/07/2026" },
+          { sr: "09", stage: "Last Date of Submission of Eligibility Form", ug: "31/08/2026", pg: "31/08/2026" }
+        ],
+        exams: [
+          { sr: "01", name: "BA., B.Com, B.Sc., B.B.A., B.F.A., B. Lib., B.J., B.S.W., B.A. (F.D.), B.A.(Animation), B.A.(M.C.J.), B.A.(R.M.), B.A. (Lalit Kala), Administrative Services", term1: "17/11/2026", term2: "06/04/2027" },
+          { sr: "02", name: "B.C.A., B.Sc.(CS), B.Sc.( Food Sci.), B.Sc.(IT)., B.Sc.(Bio-Tech.), B.Sc. (Bio-Chemistry). B.Sc. (H.S.), B.Sc.(Bio-Informatics), B.Sc. (S.E.), B.Sc. N.T.", term1: "17/11/2026", term2: "06/04/2027" },
+          { sr: "03", name: "All M.A., M.Com,. All M.Sc., M.S.W., All B.Hoc., M.C.A., M.B.A.", term1: "01/12/2026", term2: "13/04/2027" },
+          { sr: "04", name: "Education, Physical Educational, M.J., M.Lib., B.I.D.", term1: "01/12/2026", term2: "13/04/2027" },
+          { sr: "05", name: "All Law Courses", term1: "08/12/2026", term2: "13/04/2027" },
+          { sr: "06", name: "All Engineering Courses & Pharmacy", term1: "01/12/2026", term2: "04/05/2027" },
+          { sr: "07", name: "Campus Schools & Sub-Campus Schools", term1: "12/10/2026", term2: "10/04/2027" },
+          { sr: "08", name: "New Model Degree College", term1: "17/11/2026", term2: "06/04/2027" }
+        ],
+        events: [
+          { title: "Avishkar Research Festival - College Level", dates: "05/10/2026 To 10/10/2026" },
+          { title: "University Level Youth Festival", dates: "14/10/2026 To 17/10/2026" },
+          { title: "Avishkar Research Festival - District Level", dates: "21/10/2026 To 28/10/2026" },
+          { title: "Avishkar Research Festival - University Level", dates: "02/11/2026 To 07/11/2026" },
+          { title: "Avishkar Research Festival - State Level", dates: "12/01/2027 To 14/01/2027" },
+          { title: "Tentative Date of Convocation", dates: "Sept. 2026" }
+        ]
+      },
+      "2025-2026": {
+        status: "archive",
+        label: "Official Calendar 2025–26",
+        terms: [
+          {
+            institution: "1. All Affiliated Colleges, Constituent Colleges & Recognised Institutions",
+            firstTerm: "16/06/2025 To 14/12/2025",
+            vacation1: "16/10/2025 To 09/11/2025",
+            secondTerm: "15/12/2025 To 30/04/2026",
+            vacation2: "02/05/2026 To 15/06/2026"
+          },
+          {
+            institution: "2. All Affiliated Colleges of Engineering & Pharmacy",
+            firstTerm: "01/07/2025 To 30/11/2025",
+            vacation1: "13/10/2025 To 31/10/2025",
+            secondTerm: "01/12/2025 To 21/05/2026",
+            vacation2: "22/05/2026 To 30/06/2026"
+          },
+          {
+            institution: "3. All Affiliated Law Colleges",
+            firstTerm: "01/07/2025 To 04/11/2025",
+            vacation1: "05/11/2025 To 25/11/2025",
+            secondTerm: "26/11/2025 To 16/05/2026",
+            vacation2: "17/05/2026 To 30/06/2026"
+          },
+          {
+            institution: "4. Campus Schools & Sub Campus (IInd Year)",
+            firstTerm: "16/06/2025 To 18/12/2025",
+            vacation1: "24/10/2025 To 18/11/2025",
+            secondTerm: "19/11/2025 To 30/04/2026",
+            vacation2: "02/05/2026 To 15/06/2026"
+          },
+          {
+            institution: "5. All other Courses admitting students based on MHT-CET / State level Entrance exam & Campus Schools (First Year)",
+            firstTerm: "11/07/2025 To 30/11/2025",
+            vacation1: "24/10/2025 To 18/11/2025",
+            secondTerm: "19/11/2025 To 30/04/2026",
+            vacation2: "02/05/2026 To 15/06/2026"
+          }
+        ],
+        admissions: [
+          { sr: "01", stage: "Commencement of Admission", ug: "10/06/2025", pg: "10/06/2025" },
+          { sr: "02", stage: "Last Date of Submission of Application for First Year only", ug: "17/06/2025", pg: "23/06/2025" },
+          { sr: "03", stage: "Display of 1st Merit List for First Year", ug: "18/06/2025", pg: "24/06/2025" },
+          { sr: "04", stage: "Last Date Payment of Fees & submission of documents of 1st Merit List", ug: "20/06/2025", pg: "27/06/2025" },
+          { sr: "05", stage: "Display of 2nd Merit List for First Year", ug: "21/06/2025", pg: "28/06/2025" },
+          { sr: "06", stage: "Last Date Payment of Fees & submission of documents of 2nd Merit List", ug: "23/06/2025", pg: "01/07/2025" },
+          { sr: "07", stage: "Spot Admission & Last date of admission", ug: "24/06/2025", pg: "02/07/2025" },
+          { sr: "08", stage: "Commencement of Classes", ug: "25/06/2025", pg: "03/07/2025" },
+          { sr: "09", stage: "Last Date of Submission of Eligibility Form", ug: "31/08/2025", pg: "31/08/2025" }
+        ],
+        exams: [
+          { sr: "01", name: "BA., B.Com, B.Sc., B.B.A., B.F.A., B.Lib., B.J., B.S.W., B.A.(F.D.), B.A.(Animation), B.A. (M.C.J.), B.A.(R.M.), B.A. (Lalit Kala), Administrative Services", term1: "11/11/2025", term2: "01/04/2026" },
+          { sr: "02", name: "B.C.A., B.Sc.(C.S.), B.Sc. (Food Sci.), B.Sc.(IT), B.Sc. (Bio-Tech.), B.Sc. (Bio-Chemistry), B.Sc. (H.S.), B.Sc. (Bio-Informatics), B.Sc. (S.E.), B.Sc. N.T.", term1: "11/11/2025", term2: "01/04/2026" },
+          { sr: "03", name: "All M.A., M.Com., All M.Sc., M.S.W., All B.Hoc., M.C.A., M.B.A.", term1: "26/11/2025", term2: "16/04/2026" },
+          { sr: "04", name: "Education, Physical Educational, M.J., M.Lib., B.I.D.", term1: "26/11/2025", term2: "01/04/2026" },
+          { sr: "05", name: "All Law Courses", term1: "02/12/2025", term2: "16/04/2026" },
+          { sr: "06", name: "All Engineering Courses & Pharmacy", term1: "10/11/2025", term2: "10/04/2026" },
+          { sr: "07", name: "Campus Schools & Sub-Campus Schools", term1: "25/11/2025", term2: "16/04/2026" },
+          { sr: "08", name: "New Model Degree College", term1: "11/11/2025", term2: "01/04/2026" }
+        ],
+        events: [
+          { title: "Avishkar Research Festival - College Level", dates: "07/10/2025 To 11/10/2025" },
+          { title: "University Level Youth Festival", dates: "09/10/2025 To 12/10/2025" },
+          { title: "Avishkar Research Festival - District Level", dates: "16/10/2025 To 18/11/2025" },
+          { title: "Avishkar Research Festival - University Level", dates: "27/10/2025 To 28/10/2025" },
+          { title: "Avishkar Research Festival - State Level", dates: "12/01/2026 To 14/01/2026" },
+          { title: "Tentative Date of Convocation", dates: "August 2025" }
+        ]
+      }
+    };
+
+    let activeYearKey = "2026-2027";
+
+    // DOM Elements
+    const yearGrid = document.getElementById('yearGrid');
+    const termsTableBody = document.getElementById('termsTableBody');
+    const admissionsTableBody = document.getElementById('admissionsTableBody');
+    const examsTableBody = document.getElementById('examsTableBody');
+    const eventsGrid = document.getElementById('eventsGrid');
+
+    const calendarSearch = document.getElementById('calendarSearch');
+    const categoryFilter = document.getElementById('categoryFilter');
+    const resetBtn = document.getElementById('resetBtn');
+    const activeYearTag = document.getElementById('activeYearTag');
+    const resultCountStatus = document.getElementById('resultCountStatus');
+
+    const detailModal = document.getElementById('detailModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalBody = document.getElementById('modalBody');
+
+    // Render Year Cards
+    function renderYearCards() {
+      yearGrid.innerHTML = '';
+      Object.keys(calendarDatabase).forEach(yearKey => {
+        const data = calendarDatabase[yearKey];
+        const card = document.createElement('div');
+        card.className = `wiki-year-card ${yearKey === activeYearKey ? 'active' : ''}`;
+        
+        const badgeClass = data.status === 'active' ? 'status-active' : 'status-archive';
+
+        card.innerHTML = `
+          <div class="wiki-year-title">Academic Year ${yearKey}</div>
+          <span class="wiki-status-badge ${badgeClass}">${data.label}</span>
+        `;
+
+        card.addEventListener('click', () => {
+          activeYearKey = yearKey;
+          renderYearCards();
+          renderCalendarData();
+        });
+
+        yearGrid.appendChild(card);
+      });
+    }
+
+    // Render Calendar Data
+    function renderCalendarData() {
+      const query = calendarSearch.value.toLowerCase().trim();
+      const category = categoryFilter.value;
+      const calendar = calendarDatabase[activeYearKey];
+
+      activeYearTag.textContent = `Active Session: ${activeYearKey}`;
+
+      // Section Visibilities
+      document.getElementById('blockTerms').style.display = (category === 'all' || category === 'terms') ? 'block' : 'none';
+      document.getElementById('blockAdmissions').style.display = (category === 'all' || category === 'admissions') ? 'block' : 'none';
+      document.getElementById('blockExams').style.display = (category === 'all' || category === 'exams') ? 'block' : 'none';
+      document.getElementById('blockEvents').style.display = (category === 'all' || category === 'events') ? 'block' : 'none';
+
+      // 1. Terms
+      termsTableBody.innerHTML = '';
+      const filteredTerms = calendar.terms.filter(t => 
+        t.institution.toLowerCase().includes(query) ||
+        t.firstTerm.toLowerCase().includes(query) ||
+        t.secondTerm.toLowerCase().includes(query)
+      );
+
+      if (filteredTerms.length === 0) {
+        termsTableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#777;">No matching terms found.</td></tr>`;
+      } else {
+        filteredTerms.forEach(t => {
+          termsTableBody.innerHTML += `
+            <tr>
+              <td><strong>${t.institution}</strong></td>
+              <td>${t.firstTerm}</td>
+              <td>${t.vacation1}</td>
+              <td>${t.secondTerm}</td>
+              <td>${t.vacation2}</td>
+            </tr>
+          `;
+        });
+      }
+
+      // 2. Admissions
+      admissionsTableBody.innerHTML = '';
+      const filteredAdmissions = calendar.admissions.filter(a =>
+        a.stage.toLowerCase().includes(query) ||
+        a.ug.toLowerCase().includes(query) ||
+        a.pg.toLowerCase().includes(query)
+      );
+
+      if (filteredAdmissions.length === 0) {
+        admissionsTableBody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:#777;">No matching admission entries found.</td></tr>`;
+      } else {
+        filteredAdmissions.forEach(a => {
+          admissionsTableBody.innerHTML += `
+            <tr>
+              <td>${a.sr}</td>
+              <td>${a.stage}</td>
+              <td><span class="wiki-badge badge-ug">UG</span> ${a.ug}</td>
+              <td><span class="wiki-badge badge-pg">PG</span> ${a.pg}</td>
+            </tr>
+          `;
+        });
+      }
+
+      // 3. Exams
+      examsTableBody.innerHTML = '';
+      const filteredExams = calendar.exams.filter(e =>
+        e.name.toLowerCase().includes(query) ||
+        e.term1.toLowerCase().includes(query) ||
+        e.term2.toLowerCase().includes(query)
+      );
+
+      if (filteredExams.length === 0) {
+        examsTableBody.innerHTML = `<tr><td colspan="5" style="text-align:center; color:#777;">No matching exam entries found.</td></tr>`;
+      } else {
+        filteredExams.forEach(e => {
+          examsTableBody.innerHTML += `
+            <tr>
+              <td>${e.sr}</td>
+              <td>${e.name}</td>
+              <td><strong>${e.term1}</strong></td>
+              <td><strong>${e.term2}</strong></td>
+              <td><span class="wiki-action-btn" onclick="openExamModal('${e.name.replace(/'/g, "\\'")}', '${e.term1}', '${e.term2}')">View Rules</span></td>
+            </tr>
+          `;
+        });
+      }
+
+      // 4. Events
+      eventsGrid.innerHTML = '';
+      const filteredEvents = calendar.events.filter(ev =>
+        ev.title.toLowerCase().includes(query) ||
+        ev.dates.toLowerCase().includes(query)
+      );
+
+      if (filteredEvents.length === 0) {
+        eventsGrid.innerHTML = `<p style="grid-column: 1/-1; color:#777;">No events found.</p>`;
+      } else {
+        filteredEvents.forEach(ev => {
+          eventsGrid.innerHTML += `
+            <div class="wiki-event-card">
+              <div class="wiki-event-title">${ev.title}</div>
+              <div class="wiki-event-date">Dates: ${ev.dates}</div>
+            </div>
+          `;
+        });
+      }
+
+      resultCountStatus.textContent = query 
+        ? `Filtered results matching "${query}"` 
+        : `Showing complete university schedule for ${activeYearKey}`;
+    }
+
+    // Modal Handler
+    window.openExamModal = function(course, term1, term2) {
+      modalBody.innerHTML = `
+        <h3 style="font-family: var(--wiki-font-serif); margin-bottom: 8px;">Official Exam Guidelines (${activeYearKey})</h3>
+        <p style="font-size: 0.88rem; color: #555; margin-bottom: 12px;"><strong>Course:</strong> ${course}</p>
+        <div style="background: #f8f9fa; border: 1px solid #a2a9b1; padding: 10px; font-size: 0.85rem; margin-bottom: 12px;">
+          <div><strong>1st Term Exam Date:</strong> ${term1}</div>
+          <div><strong>2nd Term Exam Date:</strong> ${term2}</div>
+        </div>
+        <ul style="font-size: 0.82rem; padding-left: 18px; color: #333; line-height: 1.5;">
+          <li>If a holiday falls at the commencement/end of the term, the next working day will be observed as the first/last day.</li>
+          <li>Backlog students' examinations shall commence before regular students' examinations.</li>
+          <li>This schedule also applies to external (distance learning) courses.</li>
+        </ul>
+      `;
+      detailModal.style.display = 'flex';
+    };
+
+    // Component Loader & Event Listeners
+    document.addEventListener("DOMContentLoaded", function () {
+      // Load Header Component
+      fetch("../components/header.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("departmentHeader").innerHTML = html;
+          const css = document.createElement("link");
+          css.rel = "stylesheet";
+          css.href = "../css/header.css";
+          document.head.appendChild(css);
+          if (typeof loadDepartmentHeader === 'function') loadDepartmentHeader();
+        })
+        .catch(err => console.error("Error loading header component:", err));
+
+      // Load Footer Component
+      fetch("../components/footer.html")
+        .then(res => res.text())
+        .then(html => {
+          document.getElementById("departmentFooter").innerHTML = html;
+          const css = document.createElement("link");
+          css.rel = "stylesheet";
+          css.href = "../css/footer.css";
+          document.head.appendChild(css);
+          if (typeof loadDepartmentFooter === 'function') loadDepartmentFooter();
+        })
+        .catch(err => console.error("Error loading footer component:", err));
+    });
+
+    calendarSearch.addEventListener('input', renderCalendarData);
+    categoryFilter.addEventListener('change', renderCalendarData);
+
+    resetBtn.addEventListener('click', () => {
+      calendarSearch.value = '';
+      categoryFilter.value = 'all';
+      renderCalendarData();
+    });
+
+    modalCloseBtn.addEventListener('click', () => {
+      detailModal.style.display = 'none';
+    });
+
+    detailModal.addEventListener('click', (e) => {
+      if (e.target === detailModal) detailModal.style.display = 'none';
+    });
+
+    // Init
+    renderYearCards();
+    renderCalendarData();
+  </script>
+</body>
+</html>

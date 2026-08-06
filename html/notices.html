@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Announcements Hub- Official Academic Notices & Circulars</title>
+  <link rel="stylesheet" href="../css/notices.css">
+<!-- Reusable Component Stylesheets -->
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+
+
+    <!-- Google Fonts for Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Advanced Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+
+<!-- HEADER COMPONENT MOUNT POINT -->
+  <header id="departmentHeader"></header>
+
+  <papervault-notices class="pv-notices-root">
+    <div class="pv-notices-container">
+      
+      <!-- Page Header -->
+      <header class="pv-notices-header">
+        <h1 class="pv-notices-title">Academic Notices & Circulars</h1>
+        <p class="pv-notices-subtitle">Official announcements, examination schedules, and departmental updates archive.</p>
+      </header>
+
+      <!-- Filter & View Controls -->
+      <div class="pv-filter-card">
+        <div class="pv-search-group">
+          <input 
+            type="text" 
+            id="pvNoticeSearch" 
+            class="pv-search-input" 
+            placeholder="Search notices by title, keyword, or reference number..."
+          >
+        </div>
+
+        <!-- Category Tabs -->
+        <div class="pv-tabs-wrapper">
+          <div class="pv-tabs-container" id="pvCategoryTabs">
+            <button class="pv-tab-btn pv-tab-active" data-category="all">All Notices</button>
+            <button class="pv-tab-btn" data-category="examinations">Examinations</button>
+            <button class="pv-tab-btn" data-category="admissions">Admissions</button>
+            <button class="pv-tab-btn" data-category="events">Events & Workshops</button>
+            <button class="pv-tab-btn" data-category="general">General Circulars</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notice Controls Bar (Count + View Switcher) -->
+      <div class="pv-controls-bar">
+        <div class="pv-status-bar" id="pvNoticeStatus">Showing official notices</div>
+        
+        <!-- View Layout Toggle Buttons -->
+        <div class="pv-view-switcher" id="pvViewSwitcher">
+          <button class="pv-view-btn pv-view-active" data-view="grid" title="Grid View">
+            <span class="pv-view-icon">▦</span> Grid
+          </button>
+          <button class="pv-view-btn" data-view="tile" title="Tile View">
+            <span class="pv-view-icon">▧</span> Tile
+          </button>
+          <button class="pv-view-btn" data-view="list" title="List View">
+            <span class="pv-view-icon">☰</span> List
+          </button>
+        </div>
+      </div>
+
+      <!-- Notices Render Container -->
+      <div class="pv-notices-grid pv-view-grid" id="pvNoticesGrid">
+        <!-- Cards dynamically rendered via notices.js -->
+      </div>
+
+    </div>
+  </papervault-notices>
+
+  <!-- PDF Preview Modal -->
+  <div class="pv-modal-overlay" id="pvNoticeModal">
+    <div class="pv-modal-container">
+      <div class="pv-modal-header">
+        <h3 class="pv-modal-title" id="pvModalTitle">Notice Preview</h3>
+        <button class="pv-modal-close" id="pvModalClose">&times;</button>
+      </div>
+      <iframe id="pvPdfFrame" class="pv-pdf-frame" src=""></iframe>
+    </div>
+  </div>
+
+   <!-- FOOTER COMPONENT MOUNT POINT -->
+  <footer id="departmentFooter"></footer>
+
+
+  <!-- COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+  <!-- COMPONENT & APP SCRIPTS -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Load Footer Component
+      fetch("../components/footer.html")
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById("departmentFooter").innerHTML = html;
+            
+            // Inject Footer Scoped Stylesheet
+            const css = document.createElement("link");
+            css.rel = "stylesheet";
+            css.href = "../css/footer.css";
+            document.head.appendChild(css);
+
+            // Initialize Footer Scripts
+            if (typeof loadDepartmentFooter === 'function') {
+                loadDepartmentFooter();
+            }
+        })
+        .catch(err => console.error("Error loading footer component:", err));
+
+      // Load Header Component
+
+      
+      fetch("../components/header.html")
+        .then(res => res.text())
+        .then(html => {
+            document.getElementById("departmentHeader").innerHTML = html;
+            
+            // Dynamically attach scoped stylesheet
+            const css = document.createElement("link");
+            css.rel = "stylesheet";
+            css.href = "../css/header.css";
+            document.head.appendChild(css);
+
+            // Initialize JavaScript features
+            if (typeof loadDepartmentHeader === 'function') {
+                loadDepartmentHeader();
+            }
+        })
+        .catch(err => console.error("Error loading header component:", err));
+    });
+  </script>
+
+
+
+  <script src="../js/notices.js"></script>
+</body>
+</html>

@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaperVault - Previous Year Question Papers | Shri Shivaji College, Parbhani</title>
+  
+  <!-- Google Fonts for Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Advanced Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Combined Stylesheets -->
+  <style>
+    /* ==========================================================================
+       1. QUESTION PAPERS / WIKIPEDIA-INSPIRED MODERN STYLING (QUESTION-PAPERS.CSS)
+       ========================================================================== */
+    :root {
+      --wiki-bg: #f8f9fa;
+      --wiki-card-bg: #ffffff;
+      --wiki-border: #a2a9b1;
+      --wiki-border-light: #eaecf0;
+      --wiki-text: #202122;
+      --wiki-muted: #54595d;
+      --wiki-link: #36c;
+      --wiki-link-hover: #2a4b8d;
+      --wiki-accent-bg: #f0f4f8;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Lato, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--wiki-bg);
+      color: var(--wiki-text);
+      line-height: 1.5;
+      padding: 0;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 16px;
+    }
+
+    /* Big Heading Header Section */
+    .vault-header {
+      text-align: center;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--wiki-border);
+    }
+
+    .vault-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--wiki-text);
+      letter-spacing: -0.5px;
+      font-family: 'Linux Libertine', 'Georgia', 'Times', serif;
+    }
+
+    .vault-subtitle {
+      font-size: 1.1rem;
+      color: var(--wiki-muted);
+      margin-top: 6px;
+      font-weight: 400;
+    }
+
+    /* Search & Filter Section */
+    .filter-panel {
+      background-color: var(--wiki-card-bg);
+      border: 1px solid var(--wiki-border);
+      border-radius: 2px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .search-group {
+      margin-bottom: 16px;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 15px;
+      border: 1px solid var(--wiki-border);
+      border-radius: 2px;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--wiki-link);
+      box-shadow: 0 0 0 1px var(--wiki-link);
+    }
+
+    .filters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .filter-select {
+      width: 100%;
+      padding: 9px 12px;
+      font-size: 14px;
+      border: 1px solid var(--wiki-border);
+      background-color: var(--wiki-card-bg);
+      color: var(--wiki-text);
+      border-radius: 2px;
+      cursor: pointer;
+      outline: none;
+    }
+
+    .filter-select:focus {
+      border-color: var(--wiki-link);
+    }
+
+    .results-count {
+      font-size: 13.5px;
+      color: var(--wiki-muted);
+      margin-bottom: 18px;
+      padding-left: 2px;
+      font-weight: 500;
+    }
+
+    /* Question Papers Grid */
+    .papers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 22px;
+    }
+
+    /* Paper Card Styling */
+    .paper-card {
+      background-color: var(--wiki-card-bg);
+      border: 1px solid var(--wiki-border);
+      border-radius: 2px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .paper-card:hover {
+      border-color: #72777d;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .card-header {
+      border-bottom: 1px solid var(--wiki-border-light);
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    .paper-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--wiki-text);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+
+    .paper-code-badge {
+      display: inline-block;
+      font-family: monospace;
+      font-size: 12px;
+      background-color: var(--wiki-accent-bg);
+      color: var(--wiki-muted);
+      padding: 3px 8px;
+      border: 1px solid var(--wiki-border-light);
+      border-radius: 2px;
+    }
+
+    /* Meta Details Grid */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 14px;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--wiki-muted);
+      font-weight: 600;
+    }
+
+    .meta-value {
+      color: var(--wiki-text);
+      font-weight: 500;
+    }
+
+    /* Actions */
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding-top: 12px;
+      border-top: 1px solid var(--wiki-border-light);
+    }
+
+    .btn {
+      padding: 9px 12px;
+      font-size: 13.5px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .btn-view {
+      background-color: var(--wiki-card-bg);
+      color: var(--wiki-link);
+      border: 1px solid var(--wiki-link);
+    }
+
+    .btn-view:hover {
+      background-color: var(--wiki-accent-bg);
+      color: var(--wiki-link-hover);
+    }
+
+    .btn-download {
+      background-color: var(--wiki-link);
+      color: #ffffff;
+      border: 1px solid var(--wiki-link);
+    }
+
+    .btn-download:hover {
+      background-color: var(--wiki-link-hover);
+    }
+
+    /* In-Page Viewer Modal */
+    .viewer-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.65);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .viewer-content {
+      background: var(--wiki-card-bg);
+      width: 100%;
+      max-width: 1000px;
+      height: 90vh;
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--wiki-border);
+    }
+
+    .viewer-header {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--wiki-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--wiki-bg);
+    }
+
+    .viewer-title {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .btn-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      color: var(--wiki-muted);
+      padding: 0 8px;
+    }
+
+    .btn-close:hover {
+      color: var(--wiki-text);
+    }
+
+    .pdf-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .no-results {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 40px;
+      background: var(--wiki-card-bg);
+      border: 1px dashed var(--wiki-border);
+      color: var(--wiki-muted);
+    }
+
+
+    /* ==========================================================================
+       2. ADVANCED PREMIUM WHITE FOOTER SYSTEM (STRICT UNIQUE PREFIX: deptx-)
+       ========================================================================== */
+    :root {
+      --deptx-primary: #0A0F1D;
+      --deptx-secondary: #1D4ED8;
+      --deptx-secondary-glow: rgba(29, 78, 216, 0.08);
+      --deptx-text: #0F172A;
+      --deptx-text-muted: #475569;
+      --deptx-bg: #FFFFFF;
+      --deptx-bg-light: #F8FAFC;
+      --deptx-border: #E2E8F0;
+      --deptx-shadow-footer: 0 -15px 40px -10px rgba(15, 23, 42, 0.03);
+      --deptx-transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --deptx-primary: #F8FAFC;
+      --deptx-secondary: #3B82F6;
+      --deptx-secondary-glow: rgba(59, 130, 246, 0.15);
+      --deptx-text: #F1F5F9;
+      --deptx-text-muted: #94A3B8;
+      --deptx-bg: #0B0F19;
+      --deptx-bg-light: #131B2E;
+      --deptx-border: #1E293B;
+      --deptx-shadow-footer: 0 -15px 40px -10px rgba(0, 0, 0, 0.4);
+    }
+
+    .deptx-footer {
+      background-color: var(--deptx-bg);
+      color: var(--deptx-text);
+      font-family: var(--font-family);
+      border-top: 1px solid var(--deptx-border);
+      box-shadow: var(--deptx-shadow-footer);
+      position: relative;
+      z-index: 10;
+    }
+
+    .deptx-footer-affiliate-bar {
+      background-color: var(--deptx-bg-light);
+      border-bottom: 1px solid var(--deptx-border);
+      padding: 12px 0;
+      font-size: 0.82rem;
+    }
+
+    .deptx-footer-affiliate-flex {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .deptx-footer-affiliate-title {
+      font-weight: 700;
+      color: var(--deptx-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .deptx-footer-affiliate-title i {
+      color: var(--deptx-secondary);
+    }
+
+    .deptx-footer-affiliate-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .deptx-footer-affiliate-links a {
+      color: var(--deptx-text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--deptx-transition);
+    }
+
+    .deptx-footer-affiliate-links a:hover {
+      color: var(--deptx-secondary);
+      text-decoration: underline;
+    }
+
+    .deptx-footer-dot {
+      color: var(--deptx-border);
+      font-size: 0.7rem;
+    }
+
+    .deptx-footer-top {
+      padding: 50px 0 35px;
+      background: linear-gradient(180deg, var(--deptx-bg-light) 0%, var(--deptx-bg) 100%);
+    }
+
+    .deptx-footer-container {
+      max-width: 1360px;
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .deptx-footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.9fr 1.1fr 1.2fr;
+      gap: 32px;
+    }
+
+    .deptx-footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .deptx-footer-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--deptx-primary);
+    }
+
+    .deptx-footer-logo-icon {
+      font-size: 1.7rem;
+      color: var(--deptx-secondary);
+    }
+
+    .deptx-footer-logo-divider {
+      width: 1px;
+      height: 32px;
+      background: var(--deptx-border);
+    }
+
+    .deptx-footer-college-name {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      color: var(--deptx-text-muted);
+      display: block;
+      text-transform: uppercase;
+    }
+
+    .deptx-footer-dept-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--deptx-primary);
+      margin: 2px 0 0;
+      letter-spacing: -0.3px;
+    }
+
+    .deptx-footer-text {
+      font-size: 0.83rem;
+      color: var(--deptx-text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .deptx-footer-accreditation-badges {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .deptx-footer-badge {
+      background: var(--deptx-secondary-glow);
+      color: var(--deptx-secondary);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.7rem;
+      border: 1px solid rgba(29, 78, 216, 0.12);
+    }
+
+    .deptx-footer-title {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--deptx-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 2px solid var(--deptx-border);
+      padding-bottom: 10px;
+    }
+
+    .deptx-footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .deptx-footer-links li {
+      margin-bottom: 9px;
+    }
+
+    .deptx-footer-links a {
+      color: var(--deptx-text-muted);
+      text-decoration: none;
+      font-size: 0.83rem;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--deptx-transition);
+    }
+
+    .deptx-footer-links a i {
+      font-size: 0.68rem;
+      color: var(--deptx-secondary);
+      transition: var(--deptx-transition);
+    }
+
+    .deptx-footer-links a:hover {
+      color: var(--deptx-secondary);
+      transform: translateX(4px);
+    }
+
+    .deptx-footer-contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .deptx-footer-contact-list p {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.82rem;
+      color: var(--deptx-text-muted);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    .deptx-footer-contact-list i {
+      color: var(--deptx-secondary);
+      margin-top: 3px;
+    }
+
+    .deptx-footer-newsletter-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--deptx-primary);
+      margin-bottom: 8px;
+    }
+
+    .deptx-footer-form {
+      display: flex;
+      background: var(--deptx-bg);
+      border: 1px solid var(--deptx-border);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: var(--deptx-transition);
+    }
+
+    .deptx-footer-form:focus-within {
+      border-color: var(--deptx-secondary);
+      box-shadow: 0 0 0 3px var(--deptx-secondary-glow);
+    }
+
+    .deptx-footer-form input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 9px 12px;
+      font-size: 0.82rem;
+      color: var(--deptx-text);
+      outline: none;
+    }
+
+    .deptx-footer-form button {
+      background: var(--deptx-secondary);
+      color: #FFF;
+      border: none;
+      padding: 0 15px;
+      cursor: pointer;
+      transition: var(--deptx-transition);
+    }
+
+    .deptx-footer-form button:hover {
+      background: #1D4ED8;
+    }
+
+    .deptx-footer-bottom {
+      background-color: var(--deptx-bg);
+      border-top: 1px solid var(--deptx-border);
+      padding: 18px 0;
+      font-size: 0.78rem;
+    }
+
+    .deptx-footer-bottom-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .deptx-footer-copyright {
+      color: var(--deptx-text-muted);
+      margin: 0;
+    }
+
+    .deptx-footer-legal-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--deptx-text-muted);
+    }
+
+    .deptx-footer-legal-links a {
+      color: var(--deptx-text-muted);
+      text-decoration: none;
+      transition: var(--deptx-transition);
+    }
+
+    .deptx-footer-legal-links a:hover { color: var(--deptx-secondary); }
+
+    .deptx-footer-socials {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .deptx-footer-socials a {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--deptx-border);
+      background: var(--deptx-bg);
+      color: var(--deptx-text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: var(--deptx-transition);
+    }
+
+    .deptx-footer-socials a:hover {
+      background: var(--deptx-secondary);
+      color: #FFF;
+      border-color: var(--deptx-secondary);
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 1024px) {
+      .deptx-footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .deptx-footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .deptx-footer-bottom-flex,
+      .deptx-footer-affiliate-flex {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER COMPONENT MOUNT POINT -->
+  <header id="departmentHeader"></header>
+
+  <!-- MAIN CONTAINER WITH PAPER VAULT CONTENT -->
+  <div class="main-container">
+    <!-- Big Title Heading -->
+    <header class="vault-header">
+      <h1 class="vault-title">PaperVault</h1>
+      <p class="vault-subtitle">Academic Previous Year Question Papers Archive</p>
+    </header>
+
+    <!-- Advanced Search and Filters -->
+    <div class="filter-panel">
+      <div class="search-group">
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="Search by Paper Name or Subject Code (e.g. Data Structures, CS302)..."
+        >
+      </div>
+
+      <div class="filters-grid">
+        <select id="filterClass" class="filter-select">
+          <option value="">All Classes</option>
+          <option value="B.Tech">B.Tech</option>
+          <option value="B.Sc">B.Sc</option>
+          <option value="M.Tech">M.Tech</option>
+          <option value="BCA">BCA</option>
+        </select>
+
+        <select id="filterSem" class="filter-select">
+          <option value="">All Semesters</option>
+          <option value="Sem 1">Sem 1</option>
+          <option value="Sem 2">Sem 2</option>
+          <option value="Sem 3">Sem 3</option>
+          <option value="Sem 4">Sem 4</option>
+          <option value="Sem 5">Sem 5</option>
+          <option value="Sem 6">Sem 6</option>
+        </select>
+
+        <select id="filterYear" class="filter-select">
+          <option value="">All Years</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+        </select>
+
+        <select id="filterSeason" class="filter-select">
+          <option value="">All Seasons</option>
+          <option value="Summer">Summer</option>
+          <option value="Winter">Winter</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Results Status -->
+    <div class="results-count" id="resultsCount">Showing all papers</div>
+
+    <!-- Question Papers Container -->
+    <div class="papers-grid" id="papersGrid">
+      <!-- Dynamic rendering via JavaScript -->
+    </div>
+  </div>
+
+  <!-- In-Page PDF Viewer Modal -->
+  <div class="viewer-modal" id="viewerModal">
+    <div class="viewer-content">
+      <div class="viewer-header">
+        <span class="viewer-title" id="viewerTitle">PDF Document Preview</span>
+        <button class="btn-close" id="btnCloseModal">&times;</button>
+      </div>
+      <iframe id="pdfFrame" class="pdf-frame" src=""></iframe>
+    </div>
+  </div>
+
+  <!-- ADVANCED FOOTER COMPONENT CONTENT -->
+  <footer class="deptx-footer">
+    <!-- Top Highlights / Quick Affiliation Bar -->
+    <div class="deptx-footer-affiliate-bar">
+        <div class="deptx-footer-container deptx-footer-affiliate-flex">
+            <span class="deptx-footer-affiliate-title"><i class="fas fa-link"></i> Key Institutional Portals:</span>
+            <div class="deptx-footer-affiliate-links">
+                <a href="https://www.srtmun.ac.in" target="_blank" rel="noopener">SRTMUN University</a>
+                <span class="deptx-footer-dot">•</span>
+                <a href="https://www.shivajicollege.ac.in" target="_blank" rel="noopener">Shri Shivaji College Parbhani</a>
+                <span class="deptx-footer-dot">•</span>
+                <a href="https://www.ugc.ac.in" target="_blank" rel="noopener">UGC India</a>
+                <span class="deptx-footer-dot">•</span>
+                <a href="https://mahadbt.maharashtra.gov.in" target="_blank" rel="noopener">MahaDBT Scholarship</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="deptx-footer-top">
+        <div class="deptx-footer-container deptx-footer-grid">
+            <!-- Column 1: Brand & About -->
+            <div class="deptx-footer-col">
+                <div class="deptx-footer-brand">
+                    <div class="deptx-footer-logo-group">
+                        <i class="fas fa-university deptx-footer-logo-icon"></i>
+                        <div class="deptx-footer-logo-divider"></div>
+                        <i class="fas fa-laptop-code deptx-footer-logo-icon"></i>
+                    </div>
+                    <div>
+                        <span class="deptx-footer-college-name">DEPARTMENT OF COMPUTER SCIENCE</span>
+                        <h3 class="deptx-footer-dept-name">Shri Shivaji College, Parbhani</h3>
+                    </div>
+                </div>
+                <p class="deptx-footer-text">
+                    Affiliated to Swami Ramanand Teerth Marathwada University (SRTMUN), Nanded. Committed to delivering excellence in technical education, research innovation, and holistic student development.
+                </p>
+                <div class="deptx-footer-accreditation-badges">
+                    <span class="deptx-footer-badge"><i class="fas fa-certificate"></i> NAAC Re-Accredited</span>
+                    <span class="deptx-footer-badge"><i class="fas fa-star"></i> UGC 2f & 12B</span>
+                    <span class="deptx-footer-badge"><i class="fas fa-shield-alt"></i> ISO Certified</span>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div class="deptx-footer-col">
+                <h4 class="deptx-footer-title"><i class="fas fa-compass"></i> Quick Links</h4>
+                <ul class="deptx-footer-links">
+                    <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Department</a></li>
+                    <li><a href="programs.html"><i class="fas fa-chevron-right"></i> Academic Programs</a></li>
+                    <li><a href="faculty.html"><i class="fas fa-chevron-right"></i> Faculty Profile</a></li>
+                    <li><a href="research.html"><i class="fas fa-chevron-right"></i> Research & Publications</a></li>
+                    <li><a href="admissions.html"><i class="fas fa-chevron-right"></i> Admissions & Fee Structure</a></li>
+                    <li><a href="placements.html"><i class="fas fa-chevron-right"></i> Placements & Recruiters</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Important External Portals -->
+            <div class="deptx-footer-col">
+                <h4 class="deptx-footer-title"><i class="fas fa-globe-americas"></i> Regulatory & Portals</h4>
+                <ul class="deptx-footer-links">
+                    <li><a href="https://www.srtmun.ac.in" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> SRTMUN Official Portal</a></li>
+                    <li><a href="https://www.shivajicollege.ac.in" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> Shri Shivaji College, Parbhani</a></li>
+                    <li><a href="https://www.ugc.ac.in" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> University Grants Commission (UGC)</a></li>
+                    <li><a href="https://mahadbt.maharashtra.gov.in" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> MahaDBT Scholarship Portal</a></li>
+                    <li><a href="https://www.aicte-india.org" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> AICTE Guidelines</a></li>
+                    <li><a href="antiragging.html"><i class="fas fa-chevron-right" style="color:#DC2626;"></i> <span style="color:#DC2626; font-weight:600;">Anti-Ragging Cell</span></a></li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Newsletter & Contact Info -->
+            <div class="deptx-footer-col">
+                <h4 class="deptx-footer-title"><i class="fas fa-headset"></i> Connect With Us</h4>
+                <div class="deptx-footer-contact-list">
+                    <p><i class="fas fa-map-marker-alt"></i><span>Basmat Road, Shivaji Nagar, Parbhani, Maharashtra - 431401</span></p>
+                    <p><i class="fas fa-phone-alt"></i><span>+91 (02452) 221223 / 221224</span></p>
+                    <p><i class="fas fa-envelope"></i><span>cs_department@shivajicollege.ac.in</span></p>
+                </div>
+                <div class="deptx-footer-newsletter">
+                    <span class="deptx-footer-newsletter-label">Subscribe to Campus Bulletins</span>
+                    <form class="deptx-footer-form" onsubmit="event.preventDefault();">
+                        <input type="email" placeholder="Enter institutional email..." required aria-label="Email Address">
+                        <button type="submit" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER BOTTOM BAR -->
+    <div class="deptx-footer-bottom">
+        <div class="deptx-footer-container deptx-footer-bottom-flex">
+            <p class="deptx-footer-copyright">
+                &copy; 2026 Department of Computer Science, Shri Shivaji College, Parbhani. All Rights Reserved.
+            </p>
+            <div class="deptx-footer-legal-links">
+                <a href="#">Privacy Policy</a>
+                <span>|</span>
+                <a href="#">Terms of Use</a>
+                <span>|</span>
+                <a href="#">SRTMUN Affiliation Info</a>
+                <span>|</span>
+                <a href="#">Webmaster</a>
+            </div>
+            <div class="deptx-footer-socials">
+                <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" rel="noopener" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+  <!-- INTEGRATED JAVASCRIPT LOGIC -->
+
+  <!-- COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+  <script>
+    // 1. Header Component Loader Logic
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("../components/header.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("departmentHeader").innerHTML = html;
+                
+                // Dynamically attach scoped header stylesheet
+                const css = document.createElement("link");
+                css.rel = "stylesheet";
+                css.href = "../css/header.css";
+                document.head.appendChild(css);
+
+                // Initialize JavaScript features if function exists
+                if (typeof loadDepartmentHeader === 'function') {
+                    loadDepartmentHeader();
+                }
+            })
+            .catch(err => console.error("Error loading header component:", err));
+    });
+
+    // 2. Question Papers Dataset & Interactive Logic
+    const papersData = [
+      {
+        id: 1,
+        name: "Data Structures & Algorithms",
+        code: "CS302",
+        marks: 70,
+        duration: "3 Hours",
+        year: "2024",
+        class: "B.Tech",
+        sem: "Sem 3",
+        season: "Winter",
+        pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      },
+      {
+        id: 2,
+        name: "Database Management Systems",
+        code: "CS401",
+        marks: 80,
+        duration: "3 Hours",
+        year: "2024",
+        class: "B.Tech",
+        sem: "Sem 4",
+        season: "Summer",
+        pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      },
+      {
+        id: 3,
+        name: "Discrete Mathematics",
+        code: "MA201",
+        marks: 60,
+        duration: "2.5 Hours",
+        year: "2023",
+        class: "B.Sc",
+        sem: "Sem 2",
+        season: "Winter",
+        pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      },
+      {
+        id: 4,
+        name: "Computer Networks",
+        code: "BCA502",
+        marks: 75,
+        duration: "3 Hours",
+        year: "2025",
+        class: "BCA",
+        sem: "Sem 5",
+        season: "Summer",
+        pdfUrl: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf"
+      }
+    ];
+
+    // DOM Elements
+    const papersGrid = document.getElementById('papersGrid');
+    const searchInput = document.getElementById('searchInput');
+    const filterClass = document.getElementById('filterClass');
+    const filterSem = document.getElementById('filterSem');
+    const filterYear = document.getElementById('filterYear');
+    const filterSeason = document.getElementById('filterSeason');
+    const resultsCount = document.getElementById('resultsCount');
+    const viewerModal = document.getElementById('viewerModal');
+    const pdfFrame = document.getElementById('pdfFrame');
+    const viewerTitle = document.getElementById('viewerTitle');
+    const btnCloseModal = document.getElementById('btnCloseModal');
+
+    // Render Paper Cards
+    function renderPapers(papers) {
+      papersGrid.innerHTML = '';
+      resultsCount.textContent = `Showing ${papers.length} paper${papers.length === 1 ? '' : 's'}`;
+
+      if (papers.length === 0) {
+        papersGrid.innerHTML = `<div class="no-results">No question papers match your current search and filter criteria.</div>`;
+        return;
+      }
+
+      papers.forEach(paper => {
+        const card = document.createElement('div');
+        card.className = 'paper-card';
+        card.innerHTML = `
+          <div>
+            <div class="card-header">
+              <h3 class="paper-name">${paper.name}</h3>
+              <span class="paper-code-badge">${paper.code}</span>
+            </div>
+            <div class="meta-grid">
+              <div class="meta-item">
+                <span class="meta-label">Class</span>
+                <span class="meta-value">${paper.class}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Semester</span>
+                <span class="meta-value">${paper.sem}</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Year & Season</span>
+                <span class="meta-value">${paper.year} (${paper.season})</span>
+              </div>
+              <div class="meta-item">
+                <span class="meta-label">Marks / Duration</span>
+                <span class="meta-value">${paper.marks} M / ${paper.duration}</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-view" onclick="openPdfViewer('${paper.pdfUrl}', '${paper.name} (${paper.code})')">View PDF</button>
+            <a class="btn btn-download" href="${paper.pdfUrl}" target="_blank" rel="noopener noreferrer" download="${paper.code}_${paper.year}.pdf">Download</a>
+          </div>
+        `;
+        papersGrid.appendChild(card);
+      });
+    }
+
+    // Filter Logic
+    function filterPapers() {
+      const searchTerm = searchInput.value.toLowerCase().trim();
+      const selectedClass = filterClass.value;
+      const selectedSem = filterSem.value;
+      const selectedYear = filterYear.value;
+      const selectedSeason = filterSeason.value;
+
+      const filtered = papersData.filter(paper => {
+        const matchesSearch = paper.name.toLowerCase().includes(searchTerm) || 
+                              paper.code.toLowerCase().includes(searchTerm);
+        const matchesClass = !selectedClass || paper.class === selectedClass;
+        const matchesSem = !selectedSem || paper.sem === selectedSem;
+        const matchesYear = !selectedYear || paper.year === selectedYear;
+        const matchesSeason = !selectedSeason || paper.season === selectedSeason;
+
+        return matchesSearch && matchesClass && matchesSem && matchesYear && matchesSeason;
+      });
+
+      renderPapers(filtered);
+    }
+
+    // Modal In-Page PDF Controls
+    function openPdfViewer(url, title) {
+      viewerTitle.textContent = title;
+      pdfFrame.src = url;
+      viewerModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePdfViewer() {
+      viewerModal.style.display = 'none';
+      pdfFrame.src = '';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Event Listeners for Filters
+    if(searchInput) searchInput.addEventListener('input', filterPapers);
+    if(filterClass) filterClass.addEventListener('change', filterPapers);
+    if(filterSem) filterSem.addEventListener('change', filterPapers);
+    if(filterYear) filterYear.addEventListener('change', filterPapers);
+    if(filterSeason) filterSeason.addEventListener('change', filterPapers);
+    if(btnCloseModal) btnCloseModal.addEventListener('click', closePdfViewer);
+
+    // Initial Render on Page Load
+    renderPapers(papersData);
+  </script>
+
+  <!-- External Header Logic Script Support -->
+  <script src="../js/header.js"></script>
+</body>
+</html>

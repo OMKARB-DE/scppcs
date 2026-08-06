@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaperVault - Previous Year Question Papers</title>
+  <link rel="stylesheet" href="../css/question-papers.css">
+
+
+  <!-- Google Fonts for Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Marathi:ital@0;1&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome for Advanced Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+
+   <!-- COMPONENT INJECTION ELEMENT -->
+    <header id="departmentHeader"></header>
+
+  <div class="main-container">
+    <!-- Big Title Heading -->
+    <header class="vault-header">
+      <h1 class="vault-title">PaperVault</h1>
+      <p class="vault-subtitle">Academic Previous Year Question Papers Archive</p>
+    </header>
+
+    <!-- Advanced Search and Filters -->
+    <div class="filter-panel">
+      <div class="search-group">
+        <input 
+          type="text" 
+          id="searchInput" 
+          class="search-input" 
+          placeholder="Search by Paper Name or Subject Code (e.g. Data Structures, CS302)..."
+        >
+      </div>
+
+      <div class="filters-grid">
+        <select id="filterClass" class="filter-select">
+          <option value="">All Classes</option>
+          <option value="B.Tech">B.Tech</option>
+          <option value="B.Sc">B.Sc</option>
+          <option value="M.Tech">M.Tech</option>
+          <option value="BCA">BCA</option>
+        </select>
+
+        <select id="filterSem" class="filter-select">
+          <option value="">All Semesters</option>
+          <option value="Sem 1">Sem 1</option>
+          <option value="Sem 2">Sem 2</option>
+          <option value="Sem 3">Sem 3</option>
+          <option value="Sem 4">Sem 4</option>
+          <option value="Sem 5">Sem 5</option>
+          <option value="Sem 6">Sem 6</option>
+        </select>
+
+        <select id="filterYear" class="filter-select">
+          <option value="">All Years</option>
+          <option value="2025">2025</option>
+          <option value="2024">2024</option>
+          <option value="2023">2023</option>
+          <option value="2022">2022</option>
+        </select>
+
+        <select id="filterSeason" class="filter-select">
+          <option value="">All Seasons</option>
+          <option value="Summer">Summer</option>
+          <option value="Winter">Winter</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Results Status -->
+    <div class="results-count" id="resultsCount">Showing all papers</div>
+
+    <!-- Question Papers Container -->
+    <div class="papers-grid" id="papersGrid">
+      <!-- Dynamic rendering via JavaScript -->
+    </div>
+  </div>
+
+  <!-- In-Page PDF Viewer Modal -->
+  <div class="viewer-modal" id="viewerModal">
+    <div class="viewer-content">
+      <div class="viewer-header">
+        <span class="viewer-title" id="viewerTitle">PDF Document Preview</span>
+        <button class="btn-close" id="btnCloseModal">&times;</button>
+      </div>
+      <iframe id="pdfFrame" class="pdf-frame" src=""></iframe>
+    </div>
+  </div>
+
+
+  <!-- FOOTER COMPONENT MOUNT POINT -->
+<footer id="departmentFooter"></footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Load Footer Component
+        fetch("../components/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("departmentFooter").innerHTML = html;
+                
+                // Inject Footer Scoped Stylesheet
+                const css = document.createElement("link");
+                css.rel = "stylesheet";
+                css.href = "../css/footer.css";
+                document.head.appendChild(css);
+
+                // Initialize Footer Scripts
+                if (typeof loadDepartmentFooter === 'function') {
+                    loadDepartmentFooter();
+                }
+            })
+            .catch(err => console.error("Error loading footer component:", err));
+    });
+</script>
+
+
+<!-- COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    // Dynamically attach scoped stylesheet
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    // Initialize JavaScript features
+                    loadDepartmentHeader();
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+
+  <script src="../js/question-papers.js"></script>
+</body>
+</html>

@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Department Faculty Directory</title>
+  <style>
+    /* Isolated Namespace & Scoped Styles (facdir-) to Prevent Conflicts with Header/Footer Components */
+    :root {
+      --facdir-bg-page: #f8f9fa;
+      --facdir-bg-white: #ffffff;
+      --facdir-border-dark: #a2a9b1;
+      --facdir-border-light: #eaecf0;
+      --facdir-text-main: #202122;
+      --facdir-text-muted: #54595d;
+      --facdir-accent: #36c;
+      --facdir-accent-hover: #2a4b8d;
+      --facdir-accent-bg: #f0f4f8;
+      --facdir-gold: #b58900;
+      --facdir-gold-bg: #fdf6e3;
+      --facdir-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Lato, Helvetica, Arial, sans-serif;
+      --facdir-font-serif: 'Linux Libertine', 'Georgia', 'Times', serif;
+    }
+
+    .facdir-root-wrapper {
+      display: block;
+      width: 100%;
+      background-color: var(--facdir-bg-page);
+      color: var(--facdir-text-main);
+      font-family: var(--facdir-font-sans);
+      padding: 32px 16px;
+      box-sizing: border-box;
+    }
+
+    .facdir-root-wrapper * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .facdir-container {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    /* Page Header Section */
+    .facdir-header {
+      text-align: center;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--facdir-border-dark);
+    }
+
+    .facdir-title {
+      font-size: 2.5rem;
+      font-family: var(--facdir-font-serif);
+      color: var(--facdir-text-main);
+    }
+
+    .facdir-subtitle {
+      font-size: 1rem;
+      color: var(--facdir-text-muted);
+      margin-top: 4px;
+    }
+
+    /* Search & Filter Box */
+    .facdir-filter-box {
+      background: var(--facdir-bg-white);
+      border: 1px solid var(--facdir-border-dark);
+      padding: 20px;
+      margin-bottom: 24px;
+      border-radius: 2px;
+    }
+
+    .facdir-search-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .facdir-input {
+      flex: 2;
+      min-width: 260px;
+      padding: 10px 14px;
+      font-size: 14.5px;
+      border: 1px solid var(--facdir-border-dark);
+      border-radius: 2px;
+      outline: none;
+    }
+
+    .facdir-input:focus {
+      border-color: var(--facdir-accent);
+      box-shadow: 0 0 0 1px var(--facdir-accent);
+    }
+
+    .facdir-select {
+      flex: 1;
+      min-width: 180px;
+      padding: 10px 14px;
+      font-size: 14px;
+      border: 1px solid var(--facdir-border-dark);
+      border-radius: 2px;
+      background-color: var(--facdir-bg-white);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .facdir-filter-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px solid var(--facdir-border-light);
+      font-size: 13px;
+      color: var(--facdir-text-muted);
+    }
+
+    .facdir-reset-btn {
+      background: none;
+      border: none;
+      color: var(--facdir-accent);
+      cursor: pointer;
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    /* Grid Layout */
+    .facdir-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 20px;
+    }
+
+    /* Faculty Card */
+    .facdir-card {
+      background: var(--facdir-bg-white);
+      border: 1px solid var(--facdir-border-dark);
+      border-radius: 2px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .facdir-card:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .facdir-card-hod {
+      border: 2px solid var(--facdir-gold);
+    }
+
+    .facdir-hod-badge {
+      background-color: var(--facdir-gold-bg);
+      color: #8a6d0b;
+      border: 1px solid var(--facdir-gold);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 3px 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .facdir-card-top {
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .facdir-infographic-avatar {
+      width: 90px;
+      height: 90px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: 2px solid var(--facdir-border-light);
+      background: var(--facdir-accent-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .facdir-card-details {
+      flex: 1;
+    }
+
+    .facdir-card-name-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 4px;
+    }
+
+    .facdir-card-name {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--facdir-text-main);
+      line-height: 1.3;
+    }
+
+    .facdir-card-desig {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--facdir-accent);
+      margin-bottom: 4px;
+    }
+
+    .facdir-card-qual {
+      font-size: 12px;
+      color: var(--facdir-text-muted);
+      margin-bottom: 6px;
+    }
+
+    .facdir-card-spec {
+      font-size: 12px;
+      background: var(--facdir-accent-bg);
+      color: var(--facdir-accent-hover);
+      padding: 3px 8px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    .facdir-card-metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      text-align: center;
+      border-top: 1px solid var(--facdir-border-light);
+      border-bottom: 1px solid var(--facdir-border-light);
+      background-color: var(--facdir-bg-page);
+      padding: 8px 0;
+    }
+
+    .facdir-metric-item {
+      border-right: 1px solid var(--facdir-border-light);
+    }
+
+    .facdir-metric-item:last-child {
+      border-right: none;
+    }
+
+    .facdir-metric-num {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--facdir-text-main);
+    }
+
+    .facdir-metric-tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--facdir-text-muted);
+    }
+
+    .facdir-card-footer {
+      padding: 12px 20px;
+      margin-top: auto;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .facdir-profile-btn {
+      width: 100%;
+      padding: 8px 14px;
+      background-color: var(--facdir-bg-white);
+      color: var(--facdir-accent);
+      border: 1px solid var(--facdir-accent);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.15s ease;
+    }
+
+    .facdir-profile-btn:hover {
+      background-color: var(--facdir-accent);
+      color: #ffffff;
+    }
+
+    /* Skeleton States */
+    .facdir-skeleton .facdir-skel-box {
+      background: linear-gradient(90deg, #edf0f3 25%, #f5f7f9 50%, #edf0f3 75%);
+      background-size: 200% 100%;
+      animation: facdirShimmer 1.5s infinite;
+    }
+
+    @keyframes facdirShimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .facdir-skel-circle {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+    }
+
+    .facdir-skel-line {
+      height: 14px;
+      margin-bottom: 8px;
+      border-radius: 2px;
+    }
+
+    /* Modal Overlay */
+    .facdir-modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 3000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .facdir-modal-card {
+      background: var(--facdir-bg-white);
+      width: 100%;
+      max-width: 920px;
+      max-height: 90vh;
+      border: 1px solid var(--facdir-border-dark);
+      overflow-y: auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      border-radius: 2px;
+    }
+
+    .facdir-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 18px;
+      font-size: 28px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--facdir-text-muted);
+      z-index: 10;
+    }
+
+    .facdir-modal-hero {
+      padding: 28px 28px 20px 28px;
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      background-color: var(--facdir-bg-page);
+      border-bottom: 1px solid var(--facdir-border-light);
+    }
+
+    .facdir-avatar-container {
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: 3px solid var(--facdir-bg-white);
+      background-color: var(--facdir-accent-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .facdir-modal-meta {
+      flex: 1;
+    }
+
+    .facdir-modal-header-line {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .facdir-modal-name {
+      font-size: 24px;
+      font-family: var(--facdir-font-serif);
+      color: var(--facdir-text-main);
+    }
+
+    .facdir-modal-designation {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--facdir-accent);
+    }
+
+    .facdir-modal-qual, .facdir-modal-spec {
+      font-size: 13.5px;
+      color: var(--facdir-text-muted);
+      margin-top: 2px;
+    }
+
+    .facdir-contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 8px;
+      margin-top: 14px;
+      padding: 10px 14px;
+      background: var(--facdir-bg-white);
+      border: 1px solid var(--facdir-border-light);
+      font-size: 13px;
+    }
+
+    .facdir-metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: var(--facdir-bg-white);
+      border-bottom: 1px solid var(--facdir-border-dark);
+    }
+
+    .facdir-metric-card {
+      padding: 14px;
+      text-align: center;
+      border-right: 1px solid var(--facdir-border-light);
+    }
+
+    .facdir-metric-card:last-child {
+      border-right: none;
+    }
+
+    .facdir-metric-val {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--facdir-accent);
+    }
+
+    .facdir-metric-lbl {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--facdir-text-muted);
+      letter-spacing: 0.5px;
+    }
+
+    .facdir-modal-body {
+      padding: 20px 28px;
+    }
+
+    .facdir-tabs-bar {
+      display: flex;
+      gap: 4px;
+      border-bottom: 2px solid var(--facdir-border-light);
+      margin-bottom: 20px;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .facdir-tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--facdir-text-muted);
+      cursor: pointer;
+      margin-bottom: -2px;
+      flex-shrink: 0;
+    }
+
+    .facdir-tab-btn.facdir-tab-active {
+      color: var(--facdir-accent);
+      border-bottom-color: var(--facdir-accent);
+    }
+
+    .facdir-tab-content {
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--facdir-text-main);
+    }
+
+    .facdir-tab-content ul {
+      padding-left: 20px;
+    }
+
+    .facdir-tab-content li {
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .facdir-modal-hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER COMPONENT MOUNT POINT -->
+  <div id="departmentHeader"></div>
+
+  <!-- MAIN FACULTY DIRECTORY CONTENT WRAPPER -->
+  <div class="facdir-root-wrapper">
+    <div class="facdir-container">
+      
+      <!-- Page Header -->
+      <header class="facdir-header">
+        <h1 class="facdir-title">Department Faculty Directory</h1>
+        <p class="facdir-subtitle">Academic leadership, teaching expertise, research portfolios, and academic background.</p>
+      </header>
+
+      <!-- Search & Filter Bar -->
+      <div class="facdir-filter-box">
+        <div class="facdir-search-row">
+          <input 
+            type="text" 
+            id="facdirSearchInput" 
+            class="facdir-input" 
+            placeholder="Search by name, research topic, qualification, or course code..."
+          >
+          <select id="facdirRoleFilter" class="facdir-select">
+            <option value="all">All Roles & Ranks</option>
+            <option value="hod">HOD / Department Leadership</option>
+            <option value="professor">Professors</option>
+            <option value="associate">Associate Professors</option>
+            <option value="assistant">Assistant Professors</option>
+          </select>
+          <select id="facdirSortSelect" class="facdir-select">
+            <option value="name">Sort by Name (A-Z)</option>
+            <option value="experience">Sort by Experience (High to Low)</option>
+            <option value="patents">Sort by Patents (High to Low)</option>
+            <option value="grants">Sort by Research Grants (High to Low)</option>
+          </select>
+        </div>
+
+        <div class="facdir-filter-meta">
+          <span id="facdirCountStatus">Showing all faculty members</span>
+          <button id="facdirResetBtn" class="facdir-reset-btn">Reset Filters</button>
+        </div>
+      </div>
+
+      <!-- Directory Grid -->
+      <div class="facdir-grid" id="facdirGridContainer">
+        <!-- Injected via JavaScript -->
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER COMPONENT MOUNT POINT -->
+  <footer id="departmentFooter"></footer>
+
+  <!-- PROFILE MODAL -->
+  <div class="facdir-modal-overlay" id="facdirModalOverlay">
+    <div class="facdir-modal-card">
+      <button class="facdir-modal-close" id="facdirModalCloseBtn" title="Close">&times;</button>
+      
+      <div class="facdir-modal-hero">
+        <div class="facdir-avatar-container" id="facdirModalAvatarBox"></div>
+        <div class="facdir-modal-meta">
+          <div class="facdir-modal-header-line">
+            <h2 id="facdirModalName" class="facdir-modal-name">Faculty Name</h2>
+            <span id="facdirModalHodBadge" class="facdir-hod-badge" style="display: none;">HOD</span>
+          </div>
+          <div id="facdirModalDesignation" class="facdir-modal-designation">Designation</div>
+          <div id="facdirModalQual" class="facdir-modal-qual">Qualifications</div>
+          <div id="facdirModalSpec" class="facdir-modal-spec">Specialization</div>
+
+          <div class="facdir-contact-grid">
+            <div><strong>Email:</strong> <span id="facdirModalEmail"></span></div>
+            <div><strong>Phone:</strong> <span id="facdirModalPhone"></span></div>
+            <div><strong>Office:</strong> <span id="facdirModalOffice"></span></div>
+            <div><strong>ORCID:</strong> <span id="facdirModalOrcid"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="facdir-metrics-bar">
+        <div class="facdir-metric-card">
+          <div class="facdir-metric-val" id="facdirMetricExp">0 Yrs</div>
+          <div class="facdir-metric-lbl">Experience</div>
+        </div>
+        <div class="facdir-metric-card">
+          <div class="facdir-metric-val" id="facdirMetricPat">0</div>
+          <div class="facdir-metric-lbl">Patents Held</div>
+        </div>
+        <div class="facdir-metric-card">
+          <div class="facdir-metric-val" id="facdirMetricGrants">$0</div>
+          <div class="facdir-metric-lbl">Active Funding</div>
+        </div>
+      </div>
+
+      <div class="facdir-modal-body">
+        <div class="facdir-tabs-bar" id="facdirModalTabsBar">
+          <button class="facdir-tab-btn facdir-tab-active" data-tab="overview">Biography & Overview</button>
+          <button class="facdir-tab-btn" data-tab="education">Education & Degrees</button>
+          <button class="facdir-tab-btn" data-tab="awards">Awards & Recognition</button>
+          <button class="facdir-tab-btn" data-tab="publications">Publications Repository</button>
+          <button class="facdir-tab-btn" data-tab="research">Research Grants & Labs</button>
+          <button class="facdir-tab-btn" data-tab="courses">Courses & Teaching</button>
+        </div>
+
+        <div class="facdir-tab-content" id="facdirTabContentArea"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPONENT LOADER SCRIPTS & APP LOGIC -->
+  <script src="../js/header.js"></script>
+  <script>
+    // 1. Header Component Loader Script
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("../components/header.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("departmentHeader").innerHTML = html;
+                
+                // Dynamically attach header scoped stylesheet
+                const css = document.createElement("link");
+                css.rel = "stylesheet";
+                css.href = "../css/header.css";
+                document.head.appendChild(css);
+
+                // Initialize JavaScript features
+                if (typeof loadDepartmentHeader === 'function') {
+                    loadDepartmentHeader();
+                }
+            })
+            .catch(err => console.error("Error loading header component:", err));
+    });
+
+    // 2. Footer Component Loader Script
+    document.addEventListener("DOMContentLoaded", function () {
+        fetch("../components/footer.html")
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById("departmentFooter").innerHTML = html;
+                
+                // Inject Footer Scoped Stylesheet
+                const css = document.createElement("link");
+                css.rel = "stylesheet";
+                css.href = "../css/footer.css";
+                document.head.appendChild(css);
+
+                // Initialize Footer Scripts
+                if (typeof loadDepartmentFooter === 'function') {
+                    loadDepartmentFooter();
+                }
+            })
+            .catch(err => console.error("Error loading footer component:", err));
+    });
+
+    // 3. Faculty Directory Application Logic & Dataset
+    const facdirDataset = [
+      {
+        id: "FAC-HOD-01",
+        isHod: true,
+        name: "Dr. Eleanor Vance",
+        roleGroup: "hod",
+        designation: "Head of Department & Senior Professor",
+        qualification: "Ph.D. in Computer Science (Stanford University)",
+        specialization: "Artificial Intelligence & Natural Language Processing",
+        email: "e.vance@university.edu",
+        phone: "+1 (555) 234-5678",
+        office: "Alan Turing Block, Suite 301",
+        orcid: "0000-0002-1825-0097",
+        metrics: { experience: 18, patents: 4, activeGrants: "$1.4M" },
+        avatarTheme: { bg: "#e6f0fa", accent: "#2a4b8d", symbol: "AI" },
+        overview: "Dr. Eleanor Vance serves as the Head of Department. She has published over 90 peer-reviewed papers on neural machine translation and context-aware transformer models.",
+        education: [
+          "Ph.D. in Computer Science — Stanford University (2008)",
+          "M.S. in Computer Science & Artificial Intelligence — MIT (2004)",
+          "B.S. in Computer Engineering — UC Berkeley (2002)"
+        ],
+        awards: [
+          "National Leadership in Computing Award (2024)",
+          "IEEE Senior Member Recognition (2021)",
+          "Outstanding Doctoral Dissertation Advisor Award (2018)"
+        ],
+        publications: [
+          "Vance, E., & Miller, K. (2025). 'Contextual Attention Mechanisms in Large Scale LLMs.' Journal of AI Research, 45(3), 112-128.",
+          "Vance, E., et al. (2023). 'Ethical Benchmarks in Generative Systems.' IEEE Transactions on Software Engineering, 18(1), 45-59."
+        ],
+        research: "Principal Investigator for $1.4M NSF Grant: 'Ethical & Scalable Neural Architectures' (2024–2027).",
+        courses: ["CS-401: Advanced Artificial Intelligence", "CS-602: Deep Learning Architectures"]
+      },
+      {
+        id: "FAC-PROF-02",
+        isHod: false,
+        name: "Prof. Marcus Brody",
+        roleGroup: "professor",
+        designation: "Professor of Cybersecurity",
+        qualification: "Ph.D. in Information Security (MIT)",
+        specialization: "Zero-Knowledge Cryptography & Distributed Systems",
+        email: "m.brody@university.edu",
+        phone: "+1 (555) 876-5432",
+        office: "Cybernetics Wing, Room 104",
+        orcid: "0000-0001-9234-1102",
+        metrics: { experience: 14, patents: 3, activeGrants: "$850K" },
+        avatarTheme: { bg: "#fef3c7", accent: "#b45309", symbol: "SEC" },
+        overview: "Prof. Brody leads the Cryptographic Security Lab. His work centers on secure multi-party computation and zero-knowledge proof applications for enterprise consensus.",
+        education: [
+          "Ph.D. in Information Security — Massachusetts Institute of Technology (2012)",
+          "M.S. in Applied Mathematics — Harvard University (2008)",
+          "B.S. in Computer Science — Carnegie Mellon University (2006)"
+        ],
+        awards: [
+          "Best Paper Award — Cryptography & Network Security Conference (2023)",
+          "University Research Excellence Medal (2020)"
+        ],
+        publications: [
+          "Brody, M. (2024). 'Non-Interactive Zero-Knowledge Proofs in Distributed Systems.' Cryptography Quarterly, 12(2), 204-219."
+        ],
+        research: "Director of the National Cyber Defense Infrastructure Project ($850K Grant).",
+        courses: ["CS-305: Network Security Protocols", "CS-512: Applied Modern Cryptography"]
+      },
+      {
+        id: "FAC-ASSOC-03",
+        isHod: false,
+        name: "Dr. Sophia Chen",
+        roleGroup: "associate",
+        designation: "Associate Professor",
+        qualification: "Ph.D. in Data Science (UC Berkeley)",
+        specialization: "Big Data Stream Analytics & Cloud Infrastructure",
+        email: "s.chen@university.edu",
+        phone: "+1 (555) 345-6789",
+        office: "Data Engineering Center, Room 208",
+        orcid: "0000-0003-4412-8871",
+        metrics: { experience: 10, patents: 2, activeGrants: "$600K" },
+        avatarTheme: { bg: "#e0e7ff", accent: "#4338ca", symbol: "DATA" },
+        overview: "Dr. Sophia Chen focuses on low-latency stream processing pipelines and adaptive resource allocation in cloud environments.",
+        education: [
+          "Ph.D. in Data Science — UC Berkeley (2016)",
+          "M.S. in Software Systems — Georgia Tech (2012)",
+          "B.S. in Information Technology — University of Washington (2010)"
+        ],
+        awards: [
+          "ACM Rising Star in Distributed Systems (2022)",
+          "Faculty Excellence in Teaching Award (2019)"
+        ],
+        publications: [
+          "Chen, S., & Zhang, R. (2025). 'Low-Latency Stream Partitioning in Cloud Clusters.' ACM Transactions on Database Systems."
+        ],
+        research: "Lead Researcher, Edge-Cloud Query Optimization Framework.",
+        courses: ["DS-201: Foundations of Data Engineering", "DS-405: Cloud Computing Platforms"]
+      },
+      {
+        id: "FAC-ASST-04",
+        isHod: false,
+        name: "Dr. Aris Thorne",
+        roleGroup: "assistant",
+        designation: "Assistant Professor",
+        qualification: "Ph.D. in Quantum Computing (Oxford University)",
+        specialization: "Quantum Algorithms & Fault-Tolerant Circuits",
+        email: "a.thorne@university.edu",
+        phone: "+1 (555) 456-7890",
+        office: "Physics & Computing Annex, Room 112",
+        orcid: "0000-0002-5561-9012",
+        metrics: { experience: 6, patents: 1, activeGrants: "$420K" },
+        avatarTheme: { bg: "#ecfdf5", accent: "#047857", symbol: "QNT" },
+        overview: "Dr. Thorne's research explores error-correcting codes and compilation techniques for NISQ (Noisy Intermediate-Scale Quantum) processors.",
+        education: [
+          "Ph.D. in Quantum Computing — University of Oxford (2020)",
+          "M.Phys. in Theoretical Physics — Imperial College London (2016)"
+        ],
+        awards: [
+          "Early Career Quantum Researcher Fellowship (2023)",
+          "Oxford Doctoral Fellowship Grant (2017)"
+        ],
+        publications: [
+          "Thorne, A. (2024). 'Fault-Tolerant Quantum Circuit Synthesis.' Quantum Information Review, 8(4)."
+        ],
+        research: "Quantum Hardware Emulation Initiative Grantee.",
+        courses: ["CS-480: Introduction to Quantum Computing", "CS-610: Quantum Algorithms"]
+      }
+    ];
+
+    function createSvgAvatar(theme, size = 90) {
+      return `
+        <svg width="${size}" height="${size}" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="${theme.bg}" stroke="${theme.accent}" stroke-width="2"/>
+          <circle cx="50" cy="38" r="18" fill="${theme.accent}" opacity="0.85"/>
+          <path d="M 22 82 C 22 62, 35 56, 50 56 C 65 56, 78 62, 78 82 Z" fill="${theme.accent}" opacity="0.85"/>
+          <rect x="62" y="14" width="30" height="16" rx="3" fill="${theme.accent}"/>
+          <text x="77" y="25" fill="#ffffff" font-size="9" font-weight="bold" font-family="sans-serif" text-anchor="middle">${theme.symbol}</text>
+        </svg>
+      `;
+    }
+
+    const gridContainer = document.getElementById('facdirGridContainer');
+    const searchInput = document.getElementById('facdirSearchInput');
+    const roleFilter = document.getElementById('facdirRoleFilter');
+    const sortSelect = document.getElementById('facdirSortSelect');
+    const countStatus = document.getElementById('facdirCountStatus');
+    const resetBtn = document.getElementById('facdirResetBtn');
+    const modalOverlay = document.getElementById('facdirModalOverlay');
+    const modalCloseBtn = document.getElementById('facdirModalCloseBtn');
+    const tabContentArea = document.getElementById('facdirTabContentArea');
+
+    let currentFacultyRecord = null;
+    let currentActiveTab = 'overview';
+
+    function renderSkeletonLoaders() {
+      gridContainer.innerHTML = '';
+      for (let i = 0; i < 4; i++) {
+        const skel = document.createElement('div');
+        skel.className = 'facdir-card facdir-skeleton';
+        skel.innerHTML = `
+          <div class="facdir-card-top">
+            <div class="facdir-skel-circle facdir-skel-box"></div>
+            <div style="flex: 1;">
+              <div class="facdir-skel-line facdir-skel-box" style="width: 70%;"></div>
+              <div class="facdir-skel-line facdir-skel-box" style="width: 40%;"></div>
+              <div class="facdir-skel-line facdir-skel-box" style="width: 90%;"></div>
+            </div>
+          </div>
+          <div class="facdir-card-metrics">
+            <div class="facdir-skel-box" style="height: 30px; margin: 0 10px;"></div>
+            <div class="facdir-skel-box" style="height: 30px; margin: 0 10px;"></div>
+            <div class="facdir-skel-box" style="height: 30px; margin: 0 10px;"></div>
+          </div>
+        `;
+        gridContainer.appendChild(skel);
+      }
+    }
+
+    function renderDirectoryGrid(records) {
+      gridContainer.innerHTML = '';
+      countStatus.textContent = `Showing ${records.length} faculty profile${records.length === 1 ? '' : 's'}`;
+
+      if (records.length === 0) {
+        gridContainer.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; background: white; border: 1px dashed var(--facdir-border-dark);">No faculty profiles match your specified search criteria.</div>`;
+        return;
+      }
+
+      records.forEach(faculty => {
+        const card = document.createElement('div');
+        card.className = `facdir-card ${faculty.isHod ? 'facdir-card-hod' : ''}`;
+        
+        card.innerHTML = `
+          <div class="facdir-card-top">
+            <div class="facdir-infographic-avatar">
+              ${createSvgAvatar(faculty.avatarTheme, 80)}
+            </div>
+            <div class="facdir-card-details">
+              <div class="facdir-card-name-row">
+                <h3 class="facdir-card-name">${faculty.name}</h3>
+                ${faculty.isHod ? `<span class="facdir-hod-badge">HOD</span>` : ''}
+              </div>
+              <div class="facdir-card-desig">${faculty.designation}</div>
+              <div class="facdir-card-qual">${faculty.qualification}</div>
+              <div class="facdir-card-spec">Area: ${faculty.specialization}</div>
+            </div>
+          </div>
+
+          <div class="facdir-card-metrics">
+            <div class="facdir-metric-item">
+              <div class="facdir-metric-num">${faculty.metrics.experience} Yrs</div>
+              <div class="facdir-metric-tag">Experience</div>
+            </div>
+            <div class="facdir-metric-item">
+              <div class="facdir-metric-num">${faculty.metrics.patents}</div>
+              <div class="facdir-metric-tag">Patents</div>
+            </div>
+            <div class="facdir-metric-item">
+              <div class="facdir-metric-num">${faculty.metrics.activeGrants}</div>
+              <div class="facdir-metric-tag">Funding</div>
+            </div>
+          </div>
+
+          <div class="facdir-card-footer">
+            <button class="facdir-profile-btn" onclick="openFacultyProfileModal('${faculty.id}')">See Profile</button>
+          </div>
+        `;
+        gridContainer.appendChild(card);
+      });
+    }
+
+    function filterAndSortFaculty() {
+      const query = searchInput.value.toLowerCase().trim();
+      const roleVal = roleFilter.value;
+      const sortVal = sortSelect.value;
+
+      let filtered = facdirDataset.filter(faculty => {
+        const matchesQuery = faculty.name.toLowerCase().includes(query) ||
+                             faculty.specialization.toLowerCase().includes(query) ||
+                             faculty.qualification.toLowerCase().includes(query) ||
+                             faculty.courses.some(c => c.toLowerCase().includes(query));
+
+        const matchesRole = roleVal === 'all' || 
+                            (roleVal === 'hod' && faculty.isHod) ||
+                            (roleVal === faculty.roleGroup);
+
+        return matchesQuery && matchesRole;
+      });
+
+      filtered.sort((a, b) => {
+        if (sortVal === 'name') return a.name.localeCompare(b.name);
+        if (sortVal === 'experience') return b.metrics.experience - a.metrics.experience;
+        if (sortVal === 'patents') return b.metrics.patents - a.metrics.patents;
+        if (sortVal === 'grants') {
+          const gA = parseFloat(a.metrics.activeGrants.replace(/[^0-9.]/g, ''));
+          const gB = parseFloat(b.metrics.activeGrants.replace(/[^0-9.]/g, ''));
+          return gB - gA;
+        }
+        return 0;
+      });
+
+      renderDirectoryGrid(filtered);
+    }
+
+    window.openFacultyProfileModal = function(facultyId) {
+      const faculty = facdirDataset.find(f => f.id === facultyId);
+      if (!faculty) return;
+
+      currentFacultyRecord = faculty;
+      currentActiveTab = 'overview';
+
+      document.getElementById('facdirModalAvatarBox').innerHTML = createSvgAvatar(faculty.avatarTheme, 100);
+
+      document.getElementById('facdirModalName').textContent = faculty.name;
+      document.getElementById('facdirModalDesignation').textContent = faculty.designation;
+      document.getElementById('facdirModalQual').textContent = faculty.qualification;
+      document.getElementById('facdirModalSpec').textContent = `Specialization: ${faculty.specialization}`;
+
+      document.getElementById('facdirModalEmail').textContent = faculty.email;
+      document.getElementById('facdirModalPhone').textContent = faculty.phone;
+      document.getElementById('facdirModalOffice').textContent = faculty.office;
+      document.getElementById('facdirModalOrcid').textContent = faculty.orcid;
+
+      const hodBadge = document.getElementById('facdirModalHodBadge');
+      hodBadge.style.display = faculty.isHod ? 'inline-block' : 'none';
+
+      document.getElementById('facdirMetricExp').textContent = `${faculty.metrics.experience} Yrs`;
+      document.getElementById('facdirMetricPat').textContent = faculty.metrics.patents;
+      document.getElementById('facdirMetricGrants').textContent = faculty.metrics.activeGrants;
+
+      renderTabPane();
+      modalOverlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    };
+
+    function renderTabPane() {
+      document.querySelectorAll('.facdir-tab-btn').forEach(btn => {
+        if (btn.getAttribute('data-tab') === currentActiveTab) {
+          btn.classList.add('facdir-tab-active');
+        } else {
+          btn.classList.remove('facdir-tab-active');
+        }
+      });
+
+      if (!currentFacultyRecord) return;
+
+      if (currentActiveTab === 'overview') {
+        tabContentArea.innerHTML = `<p>${currentFacultyRecord.overview}</p>`;
+      } else if (currentActiveTab === 'education') {
+        const list = currentFacultyRecord.education.map(e => `<li>${e}</li>`).join('');
+        tabContentArea.innerHTML = `<ul>${list}</ul>`;
+      } else if (currentActiveTab === 'awards') {
+        const list = currentFacultyRecord.awards.map(a => `<li>${a}</li>`).join('');
+        tabContentArea.innerHTML = `<ul>${list}</ul>`;
+      } else if (currentActiveTab === 'publications') {
+        const list = currentFacultyRecord.publications.map(p => `<li>${p}</li>`).join('');
+        tabContentArea.innerHTML = `<ul>${list}</ul>`;
+      } else if (currentActiveTab === 'research') {
+        tabContentArea.innerHTML = `<p>${currentFacultyRecord.research}</p>`;
+      } else if (currentActiveTab === 'courses') {
+        const list = currentFacultyRecord.courses.map(c => `<li>${c}</li>`).join('');
+        tabContentArea.innerHTML = `<ul>${list}</ul>`;
+      }
+    }
+
+    searchInput.addEventListener('input', filterAndSortFaculty);
+    roleFilter.addEventListener('change', filterAndSortFaculty);
+    sortSelect.addEventListener('change', filterAndSortFaculty);
+
+    resetBtn.addEventListener('click', () => {
+      searchInput.value = '';
+      roleFilter.value = 'all';
+      sortSelect.value = 'name';
+      filterAndSortFaculty();
+    });
+
+    document.getElementById('facdirModalTabsBar').addEventListener('click', (e) => {
+      if (e.target.classList.contains('facdir-tab-btn')) {
+        currentActiveTab = e.target.getAttribute('data-tab');
+        renderTabPane();
+      }
+    });
+
+    modalCloseBtn.addEventListener('click', () => {
+      modalOverlay.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    });
+
+    renderSkeletonLoaders();
+    setTimeout(() => {
+      filterAndSortFaculty();
+    }, 800);
+  </script>
+</body>
+</html>
