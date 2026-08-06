@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Computer Science & Engineering</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER COMPONENT MOUNT POINT -->
+    <header id="departmentHeader"></header>
+
+    <!-- SECTION 1: HERO SLIDER -->
+    <section class="hero-slider" id="hero-slider" aria-label="Department Highlights Slider">
+        <div class="slider-wrapper">
+            <!-- Slide 1 -->
+            <div class="slide active">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1920&q=80" alt="Programming and Code" class="slide-bg">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="slide-subtitle">Excellence in Computing</span>
+                    <h1 class="slide-title">Pioneering the Future of Computer Science</h1>
+                    <p class="slide-desc">Empowering the next generation of innovators, researchers, and technology leaders through world-class education.</p>
+                    <div class="slide-actions">
+                        <a href="#why-choose" class="btn btn-primary btn-ripple">Explore Department</a>
+                        <a href="#notices" class="btn btn-secondary btn-ripple">Admissions 2026</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 2 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1920&q=80" alt="Artificial Intelligence Research" class="slide-bg">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="slide-subtitle">Advanced Research & AI</span>
+                    <h1 class="slide-title">Cutting-Edge Artificial Intelligence & Robotics</h1>
+                    <p class="slide-desc">Pushing the boundaries of machine learning, neural networks, and autonomous intelligent systems.</p>
+                    <div class="slide-actions">
+                        <a href="#research" class="btn btn-primary btn-ripple">Research Labs</a>
+                        <a href="#stats" class="btn btn-secondary btn-ripple">Our Impact</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide 3 -->
+            <div class="slide">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80" alt="Students in Campus" class="slide-bg">
+                <div class="slide-overlay"></div>
+                <div class="slide-content">
+                    <span class="slide-subtitle">Vibrant Campus Life</span>
+                    <h1 class="slide-title">Collaborative Learning & Global Opportunities</h1>
+                    <p class="slide-desc">A thriving ecosystem for hackathons, innovation, entrepreneurship, and top-tier global placements.</p>
+                    <div class="slide-actions">
+                        <a href="#recruiters" class="btn btn-primary btn-ripple">Placements</a>
+                        <a href="#gallery" class="btn btn-secondary btn-ripple">Campus Tour</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slider Controls -->
+        <button class="slider-btn prev-btn" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next-btn" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
+
+        <!-- Slider Indicators -->
+        <div class="slider-indicators">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+        </div>
+    </section>
+
+    <!-- SECTION 2: ACADEMIC INFORMATION AREA -->
+    <section class="section-padding bg-light" id="notices">
+        <div class="container grid-2">
+            <!-- Left: Academic Notices -->
+            <div class="notice-board">
+                <div class="section-header-inline">
+                    <div>
+                        <h2 class="section-title">Academic Notices</h2>
+                        <p class="section-subtitle">Latest updates, circulars, and schedules</p>
+                    </div>
+                    <div class="notice-search">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="notice-search-input" placeholder="Search notices..." aria-label="Search notices">
+                    </div>
+                </div>
+                <div class="notice-scroll-list" id="notice-list">
+                    <!-- Notice Item 1 -->
+                    <div class="notice-card" data-title="Ph.D. Entrance Examination 2026 Schedule">
+                        <div class="date-badge">
+                            <span class="day">12</span>
+                            <span class="month">AUG</span>
+                        </div>
+                        <div class="notice-info">
+                            <div class="notice-meta">
+                                <span class="badge badge-new">NEW</span>
+                                <span class="category">Admissions</span>
+                            </div>
+                            <h3 class="notice-title">Schedule & Guidelines for Ph.D. Entrance Examination Fall 2026</h3>
+                            <p class="notice-desc">All shortlisted candidates are instructed to report to Academic Block B with original credentials.</p>
+                        </div>
+                        <a href="#" class="notice-download" aria-label="Download PDF"><i class="fas fa-file-pdf"></i></a>
+                    </div>
+                    <!-- Notice Item 2 -->
+                    <div class="notice-card" data-title="B.Tech End Semester Exam Timetable">
+                        <div class="date-badge">
+                            <span class="day">08</span>
+                            <span class="month">AUG</span>
+                        </div>
+                        <div class="notice-info">
+                            <div class="notice-meta">
+                                <span class="category">Examinations</span>
+                            </div>
+                            <h3 class="notice-title">End-Semester Final Examination Timetable (UG & PG)</h3>
+                            <p class="notice-desc">Detailed timetable for Autumn Semester examinations is now officially available.</p>
+                        </div>
+                        <a href="#" class="notice-download" aria-label="Download PDF"><i class="fas fa-file-pdf"></i></a>
+                    </div>
+                    <!-- Notice Item 3 -->
+                    <div class="notice-card" data-title="Annual Hackathon Registration Open">
+                        <div class="date-badge">
+                            <span class="day">02</span>
+                            <span class="month">AUG</span>
+                        </div>
+                        <div class="notice-info">
+                            <div class="notice-meta">
+                                <span class="badge badge-new">NEW</span>
+                                <span class="category">Events</span>
+                            </div>
+                            <h3 class="notice-title">Registration open for National HackNova 2026</h3>
+                            <p class="notice-desc">Team registrations are open for 36-hour flagship hackathon. Exciting prize pools!</p>
+                        </div>
+                        <a href="#" class="notice-download" aria-label="Download PDF"><i class="fas fa-file-pdf"></i></a>
+                    </div>
+                </div>
+                <a href="#" class="btn-link">View All Circulars & Notices <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <!-- Right: Announcements & Events Timeline -->
+            <div class="events-board">
+                <div class="section-header-inline">
+                    <div>
+                        <h2 class="section-title">Announcements & Events</h2>
+                        <p class="section-subtitle">Upcoming seminars, workshops, and lectures</p>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <!-- Event 1 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="event-meta">
+                                <span class="event-badge badge-workshop">Workshop</span>
+                                <span class="event-time"><i class="far fa-clock"></i> Aug 18, 2026 | 10:00 AM</span>
+                            </div>
+                            <h3 class="event-title">Hands-On Workshop on Quantum Computing Algorithms</h3>
+                            <p class="event-location"><i class="fas fa-map-marker-alt"></i> Turing Hall, Dept. of CS</p>
+                            <button class="btn-sm btn-outline">View Details</button>
+                        </div>
+                    </div>
+                    <!-- Event 2 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="event-meta">
+                                <span class="event-badge badge-lecture">Guest Lecture</span>
+                                <span class="event-time"><i class="far fa-clock"></i> Aug 24, 2026 | 02:30 PM</span>
+                            </div>
+                            <h3 class="event-title">Distinguished Speaker Series: Scalable System Design</h3>
+                            <p class="event-location"><i class="fas fa-map-marker-alt"></i> Main Auditorium & Online</p>
+                            <button class="btn-sm btn-outline">View Details</button>
+                        </div>
+                    </div>
+                    <!-- Event 3 -->
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="event-meta">
+                                <span class="event-badge badge-seminar">Seminar</span>
+                                <span class="event-time"><i class="far fa-clock"></i> Sep 01, 2026 | 11:00 AM</span>
+                            </div>
+                            <h3 class="event-title">Symposium on Ethical AI & Generative Safety</h3>
+                            <p class="event-location"><i class="fas fa-map-marker-alt"></i> Seminar Hall 2</p>
+                            <button class="btn-sm btn-outline">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: DEPARTMENT STATISTICS -->
+    <section class="section-padding" id="stats">
+        <div class="container">
+            <div class="text-center max-w-700">
+                <span class="section-tag">Impact in Numbers</span>
+                <h2 class="section-title">Department Statistics</h2>
+                <p class="section-subtitle">Excellence reflected through scale, research performance, and outcomes.</p>
+            </div>
+            
+            <div class="grid-stats">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="stat-number"><span class="counter" data-target="48">0</span>+</div>
+                    <div class="stat-label">Total Faculty</div>
+                    <p class="stat-desc">World-class professors & researchers</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-book-open"></i></div>
+                    <div class="stat-number"><span class="counter" data-target="65">0</span>+</div>
+                    <div class="stat-label">Total Courses Offered</div>
+                    <p class="stat-desc">UG, PG, and specialized tracks</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="stat-number"><span class="counter" data-target="1250">0</span>+</div>
+                    <div class="stat-label">Total Students</div>
+                    <p class="stat-desc">Active learners across programs</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-microscope"></i></div>
+                    <div class="stat-number"><span class="counter" data-target="110">0</span>+</div>
+                    <div class="stat-label">Research Scholars</div>
+                    <p class="stat-desc">Ph.D. & Post-Doctoral fellows</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-newspaper"></i></div>
+                    <div class="stat-number"><span class="counter" data-target="850">0</span>+</div>
+                    <div class="stat-label">Publications</div>
+                    <p class="stat-desc">Top-tier journals & conferences</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-award"></i></div>
+                    <div class="stat-number"><span class="counter" data-target="98">0</span>%</div>
+                    <div class="stat-label">Placement Rate</div>
+                    <p class="stat-desc">Consistently high placement average</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="stat-number"><span class="counter" data-target="52">0</span> LPA</div>
+                    <div class="stat-label">Highest Package</div>
+                    <p class="stat-desc">International placement offer</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="stat-number"><span class="counter" data-target="18">0</span></div>
+                    <div class="stat-label">Advanced Labs</div>
+                    <p class="stat-desc">High-performance GPU & Systems labs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: INSTITUTE ORGANIZATIONAL HIERARCHY -->
+    <section class="section-padding bg-light" id="hierarchy">
+        <div class="container">
+            <div class="text-center max-w-700">
+                <span class="section-tag">Governance & Leadership</span>
+                <h2 class="section-title">Organizational Hierarchy</h2>
+                <p class="section-subtitle">Structured administrative and academic leadership framework.</p>
+            </div>
+
+            <div class="tree-container">
+                <div class="tree">
+                    <ul>
+                        <li>
+                            <div class="tree-node">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Chairperson">
+                                <div class="node-title">Prof. Arthur Pendelton</div>
+                                <div class="node-role">Chairperson</div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <div class="tree-node">
+                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Principal">
+                                        <div class="node-title">Dr. S. K. Kulkarni</div>
+                                        <div class="node-role">Principal / Director</div>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            <div class="tree-node">
+                                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Dean Academics">
+                                                <div class="node-title">Dr. Meera Sharma</div>
+                                                <div class="node-role">Dean Academics</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="tree-node node-highlight">
+                                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Head of Department">
+                                                <div class="node-title">Dr. Rajesh V. Patil</div>
+                                                <div class="node-role">Head of Department (HoD)</div>
+                                            </div>
+                                            <ul>
+                                                <li>
+                                                    <div class="tree-node">
+                                                        <i class="fas fa-chalkboard-teacher node-icon"></i>
+                                                        <div class="node-title">Faculty Members</div>
+                                                        <div class="node-role">Teaching & Research</div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="tree-node">
+                                                        <i class="fas fa-user-graduate node-icon"></i>
+                                                        <div class="node-title">Students</div>
+                                                        <div class="node-role">UG, PG & Scholars</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <div class="tree-node">
+                                                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80" alt="Dean Research">
+                                                <div class="node-title">Dr. Robert Chen</div>
+                                                <div class="node-role">Dean Research & Development</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: LEADERSHIP MESSAGES -->
+    <section class="section-padding" id="leadership">
+        <div class="container">
+            <div class="section-header-inline">
+                <div>
+                    <span class="section-tag">Vision & Values</span>
+                    <h2 class="section-title">Leadership Messages</h2>
+                </div>
+                <!-- Language Toggle Button -->
+                <div class="lang-switch-wrapper">
+                    <span class="lang-label">Language:</span>
+                    <div class="lang-toggle-btn" id="lang-toggle">
+                        <button class="lang-btn active" data-lang="en">English</button>
+                        <button class="lang-btn" data-lang="mr">मराठी</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leader Message Card 1: HOD -->
+            <div class="leadership-card">
+                <div class="leader-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Dr. Rajesh V. Patil" class="leader-img">
+                </div>
+                <div class="leader-content">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <h3 class="leader-name">Dr. Rajesh V. Patil</h3>
+                    <p class="leader-designation">Head of Department | Ph.D., M.Tech (IIT Bombay)</p>
+                    
+                    <!-- Dynamic Message Box -->
+                    <div class="message-body" id="hod-message">
+                        <!-- Loaded dynamically via JS -->
+                    </div>
+
+                    <div class="leader-footer">
+                        <div class="signature">R. V. Patil</div>
+                        <button class="btn-sm btn-outline">Read Full Profile</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leader Message Card 2: Principal -->
+            <div class="leadership-card mt-30">
+                <div class="leader-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Dr. S. K. Kulkarni" class="leader-img">
+                </div>
+                <div class="leader-content">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <h3 class="leader-name">Dr. S. K. Kulkarni</h3>
+                    <p class="leader-designation">Principal / Director | Ph.D. (IISc Bangalore)</p>
+                    
+                    <!-- Dynamic Message Box -->
+                    <div class="message-body" id="principal-message">
+                        <!-- Loaded dynamically via JS -->
+                    </div>
+
+                    <div class="leader-footer">
+                        <div class="signature">S. K. Kulkarni</div>
+                        <button class="btn-sm btn-outline">Read Full Profile</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: RECRUITERS -->
+    <section class="section-padding bg-light" id="recruiters">
+        <div class="container">
+            <div class="text-center max-w-700">
+                <span class="section-tag">Industry Partnerships</span>
+                <h2 class="section-title">Top Recruiting Partners</h2>
+                <p class="section-subtitle">Our alumni lead innovations in world-leading technology companies.</p>
+            </div>
+
+            <div class="logo-slider">
+                <div class="logo-track">
+                    <!-- Logos Array x2 for Infinite Loop -->
+                    <div class="logo-item"><i class="fab fa-google"></i> Google</div>
+                    <div class="logo-item"><i class="fab fa-microsoft"></i> Microsoft</div>
+                    <div class="logo-item"><i class="fab fa-amazon"></i> Amazon</div>
+                    <div class="logo-item"><i class="fab fa-apple"></i> Apple</div>
+                    <div class="logo-item"><i class="fab fa-meta"></i> Meta</div>
+                    <div class="logo-item"><i class="fab fa-ibm"></i> IBM</div>
+                    <div class="logo-item"><i class="fas fa-microchip"></i> Intel</div>
+                    <div class="logo-item"><i class="fas fa-database"></i> Oracle</div>
+                    <div class="logo-item"><i class="fas fa-network-wired"></i> Cisco</div>
+                    <div class="logo-item"><i class="fas fa-bolt"></i> Nvidia</div>
+
+                    <!-- Repeated Set -->
+                    <div class="logo-item"><i class="fab fa-google"></i> Google</div>
+                    <div class="logo-item"><i class="fab fa-microsoft"></i> Microsoft</div>
+                    <div class="logo-item"><i class="fab fa-amazon"></i> Amazon</div>
+                    <div class="logo-item"><i class="fab fa-apple"></i> Apple</div>
+                    <div class="logo-item"><i class="fab fa-meta"></i> Meta</div>
+                    <div class="logo-item"><i class="fab fa-ibm"></i> IBM</div>
+                    <div class="logo-item"><i class="fas fa-microchip"></i> Intel</div>
+                    <div class="logo-item"><i class="fas fa-database"></i> Oracle</div>
+                    <div class="logo-item"><i class="fas fa-network-wired"></i> Cisco</div>
+                    <div class="logo-item"><i class="fas fa-bolt"></i> Nvidia</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: WHY CHOOSE OUR DEPARTMENT -->
+    <section class="section-padding" id="why-choose">
+        <div class="container">
+            <div class="text-center max-w-700">
+                <span class="section-tag">Key Differentiators</span>
+                <h2 class="section-title">Why Choose Our Department</h2>
+                <p class="section-subtitle">Combining academic rigor, practical exposure, and state-of-the-art facilities.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3 class="feature-title">Distinguished Faculty</h3>
+                    <p class="feature-desc">Learn directly from world-renowned researchers, doctorates, and industry veterans.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3 class="feature-title">Modern Infrastructure</h3>
+                    <p class="feature-desc">Access high-performance compute clusters, specialized robotics labs, and AI hubs.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-handshake"></i></div>
+                    <h3 class="feature-title">Industry Collaborations</h3>
+                    <p class="feature-desc">Active MoUs with top tech conglomerates for joint research, projects, and internships.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-atom"></i></div>
+                    <h3 class="feature-title">Research Excellence</h3>
+                    <p class="feature-desc">Generous funding for undergraduate research, publications, and international conferences.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                    <h3 class="feature-title">Incubation & Startups</h3>
+                    <p class="feature-desc">Dedicated incubation support turning innovative student projects into viable technology ventures.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                    <h3 class="feature-title">Global Network</h3>
+                    <p class="feature-desc">Active worldwide alumni network providing mentorship, referrals, and career growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 8: RESEARCH AREAS -->
+    <section class="section-padding bg-light" id="research">
+        <div class="container">
+            <div class="text-center max-w-700">
+                <span class="section-tag">Innovation Frontiers</span>
+                <h2 class="section-title">Research Focus Areas</h2>
+                <p class="section-subtitle">Exploring tomorrow's computing paradigms today.</p>
+            </div>
+
+            <div class="grid-4">
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-brain"></i></div>
+                    <h3 class="research-title">Artificial Intelligence</h3>
+                    <p class="research-desc">Deep learning, natural language understanding, and autonomous systems.</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3 class="research-title">Cyber Security</h3>
+                    <p class="research-desc">Cryptography, network defense, threat intelligence, and privacy.</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-cubes"></i></div>
+                    <h3 class="research-title">Blockchain Tech</h3>
+                    <p class="research-desc">Distributed consensus systems, smart contracts, and decentralized apps.</p>
+                </div>
+                <div class="research-card">
+                    <div class="research-icon"><i class="fas fa-cloud"></i></div>
+                    <h3 class="research-title">Cloud Computing</h3>
+                    <p class="research-desc">Virtualization, serverless architectures, and distributed systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 9: LABORATORIES -->
+    <section class="section-padding" id="labs">
+        <div class="container">
+            <div class="text-center max-w-700">
+                <span class="section-tag">Hands-On Environment</span>
+                <h2 class="section-title">State-of-the-Art Laboratories</h2>
+                <p class="section-subtitle">Equipped with cutting-edge hardware and software stacks.</p>
+            </div>
+
+            <div class="grid-3">
+                <div class="lab-card">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80" alt="AI & Robotics Lab" class="lab-img">
+                    <div class="lab-content">
+                        <h3 class="lab-title">AI & Robotics High-Perf Lab</h3>
+                        <p class="lab-desc">High-speed GPU workstations dedicated to computer vision and deep learning training.</p>
+                        <ul class="lab-specs">
+                            <li><i class="fas fa-check"></i> NVIDIA A100 Tensor Core GPUs</li>
+                            <li><i class="fas fa-check"></i> 64 Workstations</li>
+                            <li><i class="fas fa-check"></i> Ubuntu / ROS Environment</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lab-card">
+                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Cyber Security Lab" class="lab-img">
+                    <div class="lab-content">
+                        <h3 class="lab-title">Cyber Security & Forensics</h3>
+                        <p class="lab-desc">Isolated network environments for penetration testing, security analysis, and research.</p>
+                        <ul class="lab-specs">
+                            <li><i class="fas fa-check"></i> Isolated Fiber Sandbox Network</li>
+                            <li><i class="fas fa-check"></i> Kali Linux / Forensic Toolkits</li>
+                            <li><i class="fas fa-check"></i> 40 Dedicated Systems</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="lab-card">
+                    <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Software Engineering Lab" class="lab-img">
+                    <div class="lab-content">
+                        <h3 class="lab-title">Advanced Systems & Software Lab</h3>
+                        <p class="lab-desc">Designed for full-stack software development, cloud computing, and open-source research.</p>
+                        <ul class="lab-specs">
+                            <li><i class="fas fa-check"></i> Dual Monitor Workstations</li>
+                            <li><i class="fas fa-check"></i> Intel i9 13th Gen, 32GB RAM</li>
+                            <li><i class="fas fa-check"></i> Gigabit Ethernet Network</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 10: PHOTO GALLERY -->
+    <section class="section-padding bg-light" id="gallery">
+        <div class="container">
+            <div class="text-center max-w-700">
+                <span class="section-tag">Campus Life</span>
+                <h2 class="section-title">Department Gallery</h2>
+                <p class="section-subtitle">Moments from events, research showcases, and campus activities.</p>
+            </div>
+
+            <!-- Masonry Grid -->
+            <div class="gallery-grid">
+                <div class="gallery-item" data-src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1200&q=80">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600&q=80" alt="Students in Library" class="gallery-img">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item" data-src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1200&q=80">
+                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="Hackathon Event" class="gallery-img">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item" data-src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80">
+                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Seminar Presentation" class="gallery-img">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+                <div class="gallery-item" data-src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1200&q=80">
+                    <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=600&q=80" alt="Campus Building" class="gallery-img">
+                    <div class="gallery-overlay"><i class="fas fa-search-plus"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" aria-hidden="true">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Enlarged view">
+    </div>
+
+    <!-- SECTION 11: STUDENT ACHIEVEMENTS -->
+    <section class="section-padding" id="achievements">
+        <div class="container">
+            <div class="text-center max-w-700">
+                <span class="section-tag">Excellence Recognized</span>
+                <h2 class="section-title">Student Achievements</h2>
+                <p class="section-subtitle">Celebrating the accomplishments of our talented students.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="event-badge badge-workshop">National Rank 1</span>
+                        <h3 class="event-title">Smart India Hackathon Winners 2025</h3>
+                        <p class="event-location">Team "CyberKnights" secured 1st position in the AI Security division nationwide.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="event-badge badge-lecture">Research Paper</span>
+                        <h3 class="event-title">Best Student Paper Award at IEEE CVPR</h3>
+                        <p class="event-location">Published breakthrough findings in neural render pipeline optimization.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 12: LATEST VIDEOS -->
+    <section class="section-padding bg-light" id="videos">
+        <div class="container">
+            <div class="text-center max-w-700">
+                <span class="section-tag">Media & Life</span>
+                <h2 class="section-title">Featured Videos</h2>
+                <p class="section-subtitle">Experience our campus culture, student reviews, and research tours.</p>
+            </div>
+
+            <div class="grid-2">
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Department Video Tour">
+                        <a href="https://www.youtube.com" target="_blank" rel="noopener" class="play-btn" aria-label="Play video"><i class="fas fa-play"></i></a>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Virtual Department Tour & Research Facilities</h3>
+                        <p class="video-desc">Take an interactive walkthrough of our computing labs, auditoriums, and interactive spaces.</p>
+                    </div>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-thumbnail">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="Student Testimonials">
+                        <a href="https://www.youtube.com" target="_blank" rel="noopener" class="play-btn" aria-label="Play video"><i class="fas fa-play"></i></a>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Student Experience & Placement Stories</h3>
+                        <p class="video-desc">Hear directly from our graduating class about their research journeys and career pathways.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Floating Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></button>
+   
+    <!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentFooter"></footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Load Footer Component
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/footer.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentFooter").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/footer.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentFooter === 'function') {
+                        loadDepartmentFooter();
+                    }
+                })
+                .catch(err => console.error("Error loading footer component:", err));
+        });
+    </script>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentHeader === 'function') {
+                        loadDepartmentHeader();
+                    }
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
