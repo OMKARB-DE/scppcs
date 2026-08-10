@@ -23,7 +23,7 @@ body {
   background-color: var(--wiki-bg);
   color: var(--wiki-text);
   line-height: 1.5;
-  padding: 32px 16px;
+
 }
 
 .main-container {

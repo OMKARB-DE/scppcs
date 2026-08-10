@@ -1,0 +1,339 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Process | Department of Computer Science â€” Shri Shivaji College, Parbhani</title>
+<!-- Department Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/dept-logo3.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/dept-logo3.png">
+
+    <!-- Apple / Mobile -->
+    <link rel="apple-touch-icon" href="/images/dept-logo3.png">
+
+    <link rel="stylesheet" href="admission-process.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body data-theme="bca">
+
+
+   
+    <!-- HEADER COMPONENT MOUNT POINT -->
+    <header id="departmentHeader"></header>
+    <div class="admission-wrapper">
+
+        <!-- 4. PAGE INTRODUCTION -->
+        <section class="admission-header-section" aria-labelledby="page-title">
+            <div class="metadata-badge">
+                <svg class="meta-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                <span>Department of Computer Science Â· Shri Shivaji College, Parbhani</span>
+            </div>
+            <h1 id="page-title" class="main-title">Admission Process</h1>
+            <p class="main-subtitle">Course-wise admission journey for undergraduate and postgraduate programs</p>
+            <p class="main-description">
+                Follow the complete admission journey for your selected program â€” from eligibility and application to merit selection, document verification, fee payment and final admission confirmation.
+            </p>
+        </section>
+
+        <!-- 25. CURRENT ADMISSION NOTICE AREA -->
+        <section class="current-notice-strip" aria-label="Current Admission Information">
+            <div class="notice-left">
+                <span class="pulse-dot"></span>
+                <div class="notice-info">
+                    <span class="notice-label">Admission Year: <strong id="curr-year">2026â€“27</strong></span>
+                    <span class="notice-divider">|</span>
+                    <span class="notice-label">Selected Program: <strong id="curr-prog-name">BCA</strong></span>
+                    <span class="notice-divider">|</span>
+                    <span class="notice-label">Status: <strong id="curr-status-text" class="status-highlight">Applications Open / To Be Announced</strong></span>
+                </div>
+            </div>
+            <div class="notice-right">
+                <span class="last-updated">Last Updated: <span id="curr-date">August 2026</span></span>
+                <a href="#" id="official-notice-btn" class="notice-action-btn" target="_blank" rel="noopener">
+                    <span>View Official Notice</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- 5. ADVANCED PROGRAM SELECTOR -->
+        <section class="program-selector-section" aria-labelledby="selector-heading">
+            <div class="section-header-compact">
+                <h2 id="selector-heading">Select Your Program</h2>
+                <p>Choose your program to view its complete admission journey</p>
+            </div>
+            
+            <div class="program-navigator" role="tablist" aria-label="Programs">
+                <button class="program-card active" role="tab" aria-selected="true" aria-controls="journey-panel" data-program="bca">
+                    <div class="prog-card-top">
+                        <span class="prog-badge ug">UG Â· 3 Years</span>
+                        <div class="prog-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        </div>
+                    </div>
+                    <div class="prog-card-body">
+                        <span class="prog-code">BCA</span>
+                        <h3 class="prog-fullname">Bachelor of Computer Applications</h3>
+                    </div>
+                    <div class="prog-card-footer">
+                        <span class="admission-mode-tag cet">CET Based</span>
+                        <span class="stages-count">14 Stages</span>
+                    </div>
+                </button>
+
+                <button class="program-card" role="tab" aria-selected="false" aria-controls="journey-panel" data-program="bscCS">
+                    <div class="prog-card-top">
+                        <span class="prog-badge ug">UG Â· 3 Years</span>
+                        <div class="prog-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                        </div>
+                    </div>
+                    <div class="prog-card-body">
+                        <span class="prog-code">B.Sc CS</span>
+                        <h3 class="prog-fullname">Bachelor of Science in Computer Science</h3>
+                    </div>
+                    <div class="prog-card-footer">
+                        <span class="admission-mode-tag merit">Merit Based</span>
+                        <span class="stages-count">12 Stages</span>
+                    </div>
+                </button>
+
+                <button class="program-card" role="tab" aria-selected="false" aria-controls="journey-panel" data-program="bscDS">
+                    <div class="prog-card-top">
+                        <span class="prog-badge ug">UG Â· 3 Years</span>
+                        <div class="prog-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                        </div>
+                    </div>
+                    <div class="prog-card-body">
+                        <span class="prog-code">B.Sc Data Science</span>
+                        <h3 class="prog-fullname">Bachelor of Science in Data Science</h3>
+                    </div>
+                    <div class="prog-card-footer">
+                        <span class="admission-mode-tag merit">Merit Based</span>
+                        <span class="stages-count">11 Stages</span>
+                    </div>
+                </button>
+
+                <button class="program-card" role="tab" aria-selected="false" aria-controls="journey-panel" data-program="mscCS">
+                    <div class="prog-card-top">
+                        <span class="prog-badge pg">PG Â· 2 Years</span>
+                        <div class="prog-icon-wrap">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                        </div>
+                    </div>
+                    <div class="prog-card-body">
+                        <span class="prog-code">M.Sc CS</span>
+                        <h3 class="prog-fullname">Master of Science in Computer Science</h3>
+                    </div>
+                    <div class="prog-card-footer">
+                        <span class="admission-mode-tag hybrid">Merit + First Come First Serve</span>
+                        <span class="stages-count">10 Stages</span>
+                    </div>
+                </button>
+            </div>
+        </section>
+
+        <!-- 7. ADMISSION MODE SUMMARY -->
+        <section class="admission-summary-strip" aria-label="Admission Mode Summary">
+            <div class="summary-header">
+                <span class="summary-label-title">ADMISSION MODE</span>
+                <span id="active-mode-title" class="summary-mode-name">Maharashtra BCA/BBA CET</span>
+            </div>
+            <div id="mode-flow-strip" class="mode-flow-container"></div>
+        </section>
+
+        <!-- ALTERNATING TIMELINE ROUTE MAP (Infographic style inspired) -->
+        <section class="route-map-section" aria-labelledby="route-heading">
+            <div class="route-map-header">
+                <div class="title-group">
+                    <h2 id="route-heading">Your Admission Journey</h2>
+                    <p>Interactive timeline roadmap â€” click any milestone node to inspect stage details, requirements, and actions.</p>
+                </div>
+                <div class="route-legend" aria-label="Route Legend">
+                    <div class="legend-item"><span class="legend-dot completed"></span><span>Completed / Available</span></div>
+                    <div class="legend-item"><span class="legend-dot current"></span><span>Current Stage</span></div>
+                    <div class="legend-item"><span class="legend-dot upcoming"></span><span>Upcoming</span></div>
+                </div>
+            </div>
+
+            <!-- Alternating Timeline Infographic Container -->
+            <div class="timeline-infographic-container" id="journey-panel">
+                <!-- Dynamically rendered alternating timeline nodes will render here -->
+            </div>
+        </section>
+
+        <!-- 11. DETAILED STAGE INSPECTION PANEL -->
+        <section class="stage-detail-section" id="stage-detail-container" aria-label="Stage Information Panel">
+            <div class="stage-detail-card">
+                <div class="stage-detail-header">
+                    <span class="stage-badge-num" id="detail-stage-num">Stage 01</span>
+                    <h3 id="detail-stage-title">Select a stage above to view details</h3>
+                </div>
+                <div class="stage-detail-grid">
+                    <div class="detail-col">
+                        <h4>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                            Required Action
+                        </h4>
+                        <p id="detail-stage-action">Click any node on the admission timeline roadmap to inspect precise guidelines, candidate requirements, and instructions for that particular step.</p>
+                    </div>
+                    <div class="detail-col">
+                        <h4>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                            What You Need / Documents
+                        </h4>
+                        <ul id="detail-stage-docs" class="detail-checklist">
+                            <li><span>Select a milestone above to inspect checklist requirements.</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="stage-detail-footer">
+                    <div class="note-box">
+                        <strong>Important Note:</strong> <span id="detail-stage-note">All procedures must be completed within official timelines announced by the competent authority or college administration.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 17. REQUIRED DOCUMENTS SECTION -->
+        <section class="documents-section" aria-labelledby="docs-heading">
+            <div class="section-header-row">
+                <div>
+                    <h2 id="docs-heading">Required Documents</h2>
+                    <p>Course-specific document checklist for verification and final admission</p>
+                </div>
+                <button class="primary-btn" id="open-checklist-modal-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+                    <span>Open Checklist Modal</span>
+                </button>
+            </div>
+
+            <div class="documents-grid" id="documents-grid-container"></div>
+        </section>
+
+        <!-- 24. IMPORTANT INFORMATION PANEL & 26. OFFICIAL LINKS -->
+        <section class="info-links-grid">
+            <div class="info-panel" aria-labelledby="before-apply-heading">
+                <div class="info-panel-header">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    <h3 id="before-apply-heading">Before You Apply</h3>
+                </div>
+                <ul class="info-list">
+                    <li>Verify your qualifying examination eligibility before registration.</li>
+                    <li>Keep original certificates and attested photocopies ready.</li>
+                    <li>Ensure scanned passport photographs and signatures adhere to specifications.</li>
+                    <li>Regularly check admission notices and official portal updates.</li>
+                    <li>Double-check spelling of candidate name, date of birth, and category details.</li>
+                    <li>Keep application login credentials and transaction receipts secure.</li>
+                    <li>Complete fee payments well before stated deadlines to avoid technical failures.</li>
+                </ul>
+                <div class="warning-callout">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    <p><strong>Disclaimer:</strong> Admission procedures, dates, eligibility requirements, fees and official rules are subject to change per notifications issued by Swami Ramanand Teerth Marathwada University, Nanded, State CET Cell Maharashtra, and Shri Shivaji College, Parbhani.</p>
+                </div>
+            </div>
+
+            <div class="portals-panel" aria-labelledby="portals-heading">
+                <div class="info-panel-header">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                    <h3 id="portals-heading">Important Portals & Help</h3>
+                </div>
+                <p class="portals-sub">Access verified official portals for registration, status tracking, and notices:</p>
+                
+                <div class="portal-buttons-stack" id="portal-buttons-container"></div>
+
+                <div class="helpdesk-box">
+                    <h4>Department Admission Helpdesk</h4>
+                    <p>Shri Shivaji College Campus, Basmath Road, Parbhani, Maharashtra 431401</p>
+                    <p class="help-contact">Email: cs-admission@shivajicollege.org | Phone: +91 (02452) XXXXXX</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 19-22. FREQUENTLY ASKED QUESTIONS -->
+        <section class="faq-section" aria-labelledby="faq-heading">
+            <div class="section-header-compact">
+                <h2 id="faq-heading">Frequently Asked Questions</h2>
+                <p>Common queries regarding admission criteria, timelines, and document protocols</p>
+            </div>
+
+            <div class="faq-accordion" id="faq-accordion-container" role="region"></div>
+        </section>
+
+    </div>
+
+    <!-- 18. DOCUMENT CHECKLIST MODAL -->
+    <div class="modal-backdrop" id="checklist-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+        <div class="modal-container">
+            <div class="modal-header">
+                <div>
+                    <span class="modal-subtitle" id="modal-course-tag">BCA Program</span>
+                    <h3 id="modal-title">Admission Document Checklist</h3>
+                </div>
+                <button class="modal-close-btn" id="close-modal-btn" aria-label="Close Modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-instructions">Check off documents as you organize them for verification. You can print this checklist for your personal records.</p>
+                <div class="modal-checklist-grid" id="modal-checklist-items"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn" id="close-modal-footer-btn">Cancel</button>
+                <button class="primary-btn" id="print-checklist-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                    <span>Print Checklist</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentFooter"></footer>`r`n`r`n    <!-- HEADER COMPONENT LOADER SCRIPT -->`r`n    <script src="../js/footer.js"></script>`r`n`r`n    <!-- SCRIPTS -->
+    <script>
+        // Load Footer Component
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/footer.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentFooter").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/footer.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentFooter === 'function') {
+                        loadDepartmentFooter();
+                    }
+                })
+                .catch(err => console.error("Error loading footer component:", err));
+        });
+    </script>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentHeader === 'function') {
+                        loadDepartmentHeader();
+                    }
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+
+    <script src="admission-process.js"></script>
+</body>
+</html>

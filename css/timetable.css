@@ -24,7 +24,7 @@ body {
   background-color: var(--wiki-bg-page);
   color: var(--wiki-text-main);
   font-family: var(--wiki-font-sans);
-  padding: 24px 16px;
+ 
   line-height: 1.5;
 }
 

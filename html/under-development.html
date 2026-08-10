@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Under Development | Dept. of Computer Science, Shri Shivaji College, Parbhani</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dept-under-bg: #F8FFF9;
+            --dept-under-card: #FFFFFF;
+            --dept-under-primary: #1B5E20;
+            --dept-under-secondary: #2E7D32;
+            --dept-under-accent: #43A047;
+            --dept-under-border: #E6F3E8;
+            --dept-under-text: #2C3E50;
+            --dept-under-muted: #6C757D;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dept-under-bg);
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(67, 160, 71, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(27, 94, 32, 0.06) 0px, transparent 50%);
+            color: var(--dept-under-text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            padding: 40px 20px;
+        }
+
+        /* Floating background particles */
+        .dept-under-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .dept-under-particle {
+            position: absolute;
+            display: block;
+            list-style: none;
+            background: rgba(67, 160, 71, 0.15);
+            animation: dept-under-float-particle 20s linear infinite;
+            bottom: -150px;
+            border-radius: 50%;
+        }
+
+        .dept-under-particle:nth-child(1) { left: 10%; width: 80px; height: 80px; animation-duration: 18s; }
+        .dept-under-particle:nth-child(2) { left: 20%; width: 20px; height: 20px; animation-duration: 12s; animation-delay: 2s; }
+        .dept-under-particle:nth-child(3) { left: 35%; width: 50px; height: 50px; animation-duration: 25s; animation-delay: 4s; }
+        .dept-under-particle:nth-child(4) { left: 50%; width: 60px; height: 60px; animation-duration: 15s; animation-delay: 0s; }
+        .dept-under-particle:nth-child(5) { left: 65%; width: 30px; height: 30px; animation-duration: 22s; animation-delay: 3s; }
+        .dept-under-particle:nth-child(6) { left: 80%; width: 70px; height: 70px; animation-duration: 19s; animation-delay: 1s; }
+
+        @keyframes dept-under-float-particle {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.8; }
+            100% { transform: translateY(-1000px) rotate(720deg); opacity: 0; }
+        }
+
+        /* Main Container with Glassmorphism */
+        .dept-under-container {
+            position: relative;
+            z-index: 2;
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 50px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 20px 40px rgba(27, 94, 32, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            animation: dept-under-fadeUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes dept-under-fadeUp {
+            from { opacity: 0; transform: translateY(40px) scale(0.98); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        /* Header Info Badge & Titles */
+        .dept-under-badge {
+            background: linear-gradient(135deg, var(--dept-under-primary), var(--dept-under-secondary));
+            color: #FFFFFF;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            display: inline-block;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 15px rgba(27, 94, 32, 0.2);
+            animation: dept-under-pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes dept-under-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        .dept-under-illustration-wrapper {
+            margin: 20px 0 30px;
+            position: relative;
+        }
+
+        .dept-under-illustration {
+            font-size: 5rem;
+            background: linear-gradient(135deg, var(--dept-under-primary), var(--dept-under-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: dept-under-float 3.5s ease-in-out infinite;
+            display: inline-block;
+            filter: drop-shadow(0 10px 15px rgba(67, 160, 71, 0.2));
+        }
+
+        @keyframes dept-under-float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(2deg); }
+        }
+
+        .dept-under-title {
+            font-size: 2.5rem;
+            color: var(--dept-under-primary);
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .dept-under-subtitle {
+            font-size: 1.05rem;
+            color: var(--dept-under-muted);
+            margin-bottom: 35px;
+            font-weight: 400;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* College / Dept Sub-header */
+        .dept-under-college-info {
+            font-size: 0.9rem;
+            color: var(--dept-under-secondary);
+            font-weight: 600;
+            margin-bottom: 30px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Feature Cards Grid */
+        .dept-under-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .dept-under-card {
+            background: var(--dept-under-card);
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid var(--dept-under-border);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .dept-under-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--dept-under-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .dept-under-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(27, 94, 32, 0.1);
+            border-color: rgba(67, 160, 71, 0.3);
+        }
+
+        .dept-under-card:hover::before {
+            opacity: 1;
+        }
+
+        .dept-under-card-icon {
+            width: 50px;
+            height: 50px;
+            background: #E8F5E9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .dept-under-card:hover .dept-under-card-icon {
+            background: var(--dept-under-primary);
+        }
+
+        .dept-under-card-icon i {
+            font-size: 1.35rem;
+            color: var(--dept-under-primary);
+            transition: color 0.3s ease;
+        }
+
+        .dept-under-card:hover .dept-under-card-icon i {
+            color: #FFFFFF;
+        }
+
+        .dept-under-card h3 {
+            font-size: 1.1rem;
+            color: var(--dept-under-primary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .dept-under-card p {
+            font-size: 0.85rem;
+            color: var(--dept-under-muted);
+            line-height: 1.5;
+        }
+
+        /* Progress Section */
+        .dept-under-progress-section {
+            background: #FFFFFF;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid var(--dept-under-border);
+            margin: 40px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+
+        .dept-under-progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--dept-under-primary);
+            font-size: 0.95rem;
+        }
+
+        .dept-under-bar-bg {
+            height: 12px;
+            background: #E8F5E9;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dept-under-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--dept-under-secondary), var(--dept-under-accent));
+            width: 0%;
+            border-radius: 6px;
+            transition: width 2s cubic-bezier(0.1, 1, 0.1, 1);
+            position: relative;
+        }
+
+        .dept-under-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: dept-under-shimmer 2s infinite;
+        }
+
+        @keyframes dept-under-shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Timeline Section */
+        .dept-under-timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin: 40px 0 20px;
+            padding: 0 10px;
+        }
+
+        .dept-under-timeline::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 40px;
+            right: 40px;
+            height: 3px;
+            background: var(--dept-under-border);
+            z-index: 1;
+        }
+
+        .dept-under-timeline-step {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            flex: 1;
+        }
+
+        .dept-under-timeline-icon {
+            width: 40px;
+            height: 40px;
+            background: #FFFFFF;
+            border: 2px solid var(--dept-under-border);
+            color: var(--dept-under-muted);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .dept-under-timeline-step.completed .dept-under-timeline-icon {
+            background: var(--dept-under-secondary);
+            border-color: var(--dept-under-secondary);
+            color: #FFFFFF;
+        }
+
+        .dept-under-timeline-step.active .dept-under-timeline-icon {
+            background: var(--dept-under-accent);
+            border-color: var(--dept-under-accent);
+            color: #FFFFFF;
+            box-shadow: 0 0 0 5px rgba(67, 160, 71, 0.2);
+            animation: dept-under-pulse 2s infinite;
+        }
+
+        .dept-under-timeline-step span {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--dept-under-muted);
+        }
+
+        .dept-under-timeline-step.active span, .dept-under-timeline-step.completed span {
+            color: var(--dept-under-primary);
+            font-weight: 600;
+        }
+
+        /* Interactive Buttons with Ripple Effect */
+        .dept-under-btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 35px 0 25px;
+        }
+
+        .dept-under-btn {
+            position: relative;
+            overflow: hidden;
+            padding: 14px 28px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dept-under-primary-btn {
+            background: var(--dept-under-primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(27, 94, 32, 0.2);
+        }
+
+        .dept-under-primary-btn:hover {
+            background: var(--dept-under-secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(27, 94, 32, 0.3);
+        }
+
+        .dept-under-secondary-btn {
+            background: var(--dept-under-secondary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.2);
+        }
+
+        .dept-under-secondary-btn:hover {
+            background: var(--dept-under-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(46, 125, 50, 0.3);
+        }
+
+        .dept-under-outline-btn {
+            border: 2px solid var(--dept-under-primary);
+            color: var(--dept-under-primary);
+            background: transparent;
+        }
+
+        .dept-under-outline-btn:hover {
+            background: rgba(27, 94, 32, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Ripple Effect Element */
+        .dept-under-ripple {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: dept-under-ripple-anim 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes dept-under-ripple-anim {
+            to { transform: scale(4); opacity: 0; }
+        }
+
+        /* Inspiring Quote */
+        .dept-under-quote {
+            font-style: italic;
+            color: var(--dept-under-muted);
+            font-size: 0.95rem;
+            margin: 25px 0;
+            padding: 0 20px;
+        }
+
+        /* Contact Details Grid */
+        .dept-under-contact {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid var(--dept-under-border);
+            font-size: 0.85rem;
+            color: var(--dept-under-muted);
+        }
+
+        .dept-under-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dept-under-contact-item i {
+            color: var(--dept-under-accent);
+        }
+
+        /* Footer Section */
+        .dept-under-footer {
+            margin-top: 20px;
+            color: #999;
+            font-size: 0.8rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 768px) {
+            .dept-under-container { padding: 25px; }
+            .dept-under-title { font-size: 2rem; }
+            .dept-under-timeline { display: none; } /* Hide complex timeline on small screens to preserve layout */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating Background Particles -->
+    <ul class="dept-under-particles">
+        <li class="dept-under-particle"></li>
+        <li class="dept-under-particle"></li>
+        <li class="dept-under-particle"></li>
+        <li class="dept-under-particle"></li>
+        <li class="dept-under-particle"></li>
+        <li class="dept-under-particle"></li>
+    </ul>
+
+    <div class="dept-under-container">
+        
+        <!-- Badge -->
+        <div class="dept-under-badge"><i class="fas fa-hard-hat"></i> Coming Soon</div>
+
+        <!-- College Branding Info -->
+        <div class="dept-under-college-info">
+            Department of Computer Science &bull; Shri Shivaji College, Parbhani<br>
+            <span style="font-size: 0.8rem; opacity: 0.8;">NAAC "A++" Accredited &bull; </span>
+        </div>
+
+        <!-- Large Animated Illustration -->
+        <div class="dept-under-illustration-wrapper">
+            <div class="dept-under-illustration">
+                <i class="fas fa-laptop-code"></i>
+            </div>
+        </div>
+
+        <!-- Main Heading & Sub Heading -->
+        <h1 class="dept-under-title">This Page is Under Development</h1>
+        <p class="dept-under-subtitle">We are working hard to bring this section online. It will be available soon with enhanced features and updated academic resources.</p>
+
+        <!-- Expected Features Cards -->
+        <div class="dept-under-grid">
+            <div class="dept-under-card">
+                <div class="dept-under-card-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                <h3>Faculty Profiles</h3>
+                <p>Detailed directory, qualifications, achievements, and research works of our faculty members.</p>
+            </div>
+            <div class="dept-under-card">
+                <div class="dept-under-card-icon"><i class="fas fa-briefcase"></i></div>
+                <h3>Placement Portal</h3>
+                <p>Recruitment statistics, top corporate partners, training schedules, and alumni career paths.</p>
+            </div>
+            <div class="dept-under-card">
+                <div class="dept-under-card-icon"><i class="fas fa-book-open"></i></div>
+                <h3>Research & NPTEL</h3>
+                <p>Explore publications, ongoing research grants, patent records, and student NPTEL certifications.</p>
+            </div>
+            <div class="dept-under-card">
+                <div class="dept-under-card-icon"><i class="fas fa-file-download"></i></div>
+                <h3>Question Papers</h3>
+                <p>Digital archive of previous semester question papers, syllabus copies, and lab manuals.</p>
+            </div>
+        </div>
+
+        <!-- Development Progress Section -->
+        <div class="dept-under-progress-section">
+            <div class="dept-under-progress-header">
+                <span>Development Progress</span>
+                <span><span id="dept-under-counter">0</span>% Completed</span>
+            </div>
+            <div class="dept-under-bar-bg">
+                <div id="dept-under-bar" class="dept-under-bar-fill"></div>
+            </div>
+
+            <!-- Timeline Expected Features -->
+            <div class="dept-under-timeline">
+                <div class="dept-under-timeline-step completed">
+                    <div class="dept-under-timeline-icon"><i class="fas fa-check"></i></div>
+                    <span>Planning</span>
+                </div>
+                <div class="dept-under-timeline-step completed">
+                    <div class="dept-under-timeline-icon"><i class="fas fa-check"></i></div>
+                    <span>Design</span>
+                </div>
+                <div class="dept-under-timeline-step active">
+                    <div class="dept-under-timeline-icon"><i class="fas fa-code"></i></div>
+                    <span>Development</span>
+                </div>
+                <div class="dept-under-timeline-step">
+                    <div class="dept-under-timeline-icon"><i class="fas fa-vial"></i></div>
+                    <span>Testing</span>
+                </div>
+                <div class="dept-under-timeline-step">
+                    <div class="dept-under-timeline-icon"><i class="fas fa-rocket"></i></div>
+                    <span>Launching</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inspiring Quote -->
+        <div class="dept-under-quote">
+            "Great things take time. We're building something better for you."
+        </div>
+
+        <!-- Buttons -->
+        <div class="dept-under-btn-group">
+            <button class="dept-under-btn dept-under-primary-btn" id="dept-under-back-btn">
+                <i class="fas fa-arrow-left"></i> Go Back
+            </button>
+            <button class="dept-under-btn dept-under-secondary-btn" id="dept-under-home-btn">
+                <i class="fas fa-home"></i> Go to Home
+            </button>
+            <button class="dept-under-btn dept-under-outline-btn" id="dept-under-contact-btn">
+                <i class="fas fa-envelope"></i> Contact Department
+            </button>
+        </div>
+
+        <!-- Contact Section Details -->
+        <div class="dept-under-contact">
+            <div class="dept-under-contact-item"><i class="fas fa-envelope"></i> cs@shivajicollege.ac.in</div>
+            <div class="dept-under-contact-item"><i class="fas fa-phone-alt"></i> +91 (02452) XXX XXX</div>
+            <div class="dept-under-contact-item"><i class="fas fa-globe"></i> www.shivajicollege.ac.in</div>
+            <div class="dept-under-contact-item"><i class="fas fa-clock"></i> Mon - Sat: 10:00 AM - 5:30 PM</div>
+        </div>
+
+        <!-- Footer -->
+        <div class="dept-under-footer">
+            &copy; 2026 Department of Computer Science, Shri Shivaji College, Parbhani. All rights reserved.
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Animate Progress Bar & Counter
+            const bar = document.getElementById('dept-under-bar');
+            const counter = document.getElementById('dept-under-counter');
+            let currentProgress = 0;
+            const targetProgress = 72;
+            
+            setTimeout(() => {
+                const progressInterval = setInterval(() => {
+                    if (currentProgress >= targetProgress) {
+                        clearInterval(progressInterval);
+                    } else {
+                        currentProgress++;
+                        bar.style.width = currentProgress + '%';
+                        counter.textContent = currentProgress;
+                    }
+                }, 25);
+            }, 300);
+
+            // 2. Button Ripple Effect Animation
+            const buttons = document.querySelectorAll('.dept-under-btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const rect = button.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('dept-under-ripple');
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    
+                    button.appendChild(ripple);
+                    setTimeout(() => ripple.remove(), 600);
+                });
+            });
+
+            // 3. Navigation Actions
+            document.getElementById('dept-under-back-btn').addEventListener('click', function() {
+                if (window.history.length > 1) {
+                    window.history.back();
+                } else {
+                    window.location.href = '#';
+                }
+            });
+
+            document.getElementById('dept-under-home-btn').addEventListener('click', function() {
+                window.location.href = '#';
+            });
+
+            document.getElementById('dept-under-contact-btn').addEventListener('click', function() {
+                window.location.href = 'mailto:cs@shivajicollege.ac.in';
+            });
+        });
+    </script>
+</body>
+</html>

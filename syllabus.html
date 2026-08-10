@@ -1,0 +1,111 @@
+<!-- syllabus.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Computer Science - Official Syllabus Portal</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="syllabus.css">
+</head>
+<body>
+  <!-- FOOTER COMPONENT MOUNT POINT -->
+    <header id="departmentHeader"></header>
+    <div class="main-container">
+        
+        <!-- Header Actions / Actions Top Right -->
+        <div class="top-action-bar">
+            <div class="portal-brand">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Department of Computer Science — Digital University Handbook</span>
+            </div>
+            <div class="action-buttons">
+                <button class="btn-outline" id="btnDownloadPDF" title="Download Syllabus PDF"><i class="fa-solid fa-file-pdf"></i> Download PDF</button>
+                <button class="btn-outline" id="btnPrint" title="Print Syllabus"><i class="fa-solid fa-print"></i> Print</button>
+                <button class="btn-outline" id="btnShare" title="Share Portal"><i class="fa-solid fa-share-nodes"></i> Share</button>
+            </div>
+        </div>
+
+        <!-- Top Toolbar -->
+        <div class="top-toolbar">
+            <div class="toolbar-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="searchInput" placeholder="Search Course Name or Course Code...">
+            </div>
+
+            <div class="toolbar-filters">
+                <select id="filterProgramme" class="toolbar-select">
+                    <option value="">All Programmes</option>
+                    <option value="BCA">BCA</option>
+                    <option value="B.Sc Computer Science">B.Sc Computer Science</option>
+                    <option value="B.Sc Data Science">B.Sc Data Science</option>
+                    <option value="M.Sc Computer Science">M.Sc Computer Science</option>
+                </select>
+
+                <select id="filterSemester" class="toolbar-select">
+                    <option value="">All Semesters</option>
+                    <option value="Semester I">Semester I</option>
+                    <option value="Semester II">Semester II</option>
+                    <option value="Semester III">Semester III</option>
+                    <option value="Semester IV">Semester IV</option>
+                    <option value="Semester V">Semester V</option>
+                    <option value="Semester VI">Semester VI</option>
+                </select>
+
+                <select id="filterPattern" class="toolbar-select">
+                    <option value="">Academic Pattern</option>
+                    <option value="NEP 2020">NEP 2020</option>
+                    <option value="Choice Based Credit System">CBCS</option>
+                </select>
+
+                <button class="btn-reset" id="btnReset" title="Reset Filters"><i class="fa-solid fa-rotate-right"></i> Reset</button>
+            </div>
+
+            <div class="view-switchers">
+                <button class="view-btn active" data-view="grid" title="Grid View"><i class="fa-solid fa-table-cells-large"></i></button>
+                <button class="view-btn" data-view="tile" title="Tile View"><i class="fa-solid fa-grip"></i></button>
+                <button class="view-btn" data-view="list" title="List View"><i class="fa-solid fa-list"></i></button>
+            </div>
+        </div>
+
+        <!-- Programme Pill Tabs -->
+        <div class="programme-tabs-wrapper">
+            <div class="programme-tabs" id="programmeTabs">
+                <button class="pill-tab active" data-programme="All">All Programmes</button>
+                <button class="pill-tab" data-programme="BCA">BCA</button>
+                <button class="pill-tab" data-programme="B.Sc Computer Science">B.Sc Computer Science</button>
+                <button class="pill-tab" data-programme="B.Sc Data Science">B.Sc Data Science</button>
+                <button class="pill-tab" data-programme="M.Sc Computer Science">M.Sc Computer Science</button>
+            </div>
+        </div>
+
+        <!-- Sticky Semester Tabs -->
+        <div class="semester-tabs-sticky-wrapper">
+            <div class="semester-tabs" id="semesterTabs">
+                <button class="sem-tab active" data-sem="All">All Semesters</button>
+                <button class="sem-tab" data-sem="Semester I">Semester I</button>
+                <button class="sem-tab" data-sem="Semester II">Semester II</button>
+                <button class="sem-tab" data-sem="Semester III">Semester III</button>
+                <button class="sem-tab" data-sem="Semester IV">Semester IV</button>
+                <button class="sem-tab" data-sem="Semester V">Semester V</button>
+                <button class="sem-tab" data-sem="Semester VI">Semester VI</button>
+            </div>
+        </div>
+
+        <!-- Main Content Area / View Container -->
+        <div class="content-viewport grid-view" id="contentViewport">
+            <!-- Dynamically populated via syllabus.js -->
+        </div>
+
+    </div>
+
+
+   
+    <!-- JavaScript Data and Logic -->
+    <script src="syllabus.js"></script>
+</body>
+</html>

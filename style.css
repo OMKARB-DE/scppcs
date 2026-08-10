@@ -160,115 +160,55 @@ body {
 }
 .badge-new { background-color: #D32F2F; color: #FFF; }
 
-/* ==========================================================================
-   SECTION 1: HERO SLIDER
-   ========================================================================== */
-
+/* Hero Section Container */
 .hero-slider {
     position: relative;
-    height: 650px;
     width: 100%;
+    height: 100vh; /* Adjust height as needed, e.g., 500px or 100vh for full screen */
     overflow: hidden;
-    background-color: #000;
-}
-
-.slide {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.slide.active { opacity: 1; }
-
-.slide-bg {
-    position: absolute;
-    width: 100%; height: 100%;
-    object-fit: cover;
-}
-
-.slide-overlay {
-    position: absolute;
-    width: 100%; height: 100%;
-    background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.75) 100%);
-}
-
-.slide-content {
+/* Slider Wrapper / Slide */
+.hero-slider .slider-wrapper {
     position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Video Styling */
+.hero-slider .slide-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Optional Dark Overlay for better contrast */
+.hero-slider .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Adjust opacity (0.3) as needed */
     z-index: 2;
-    text-align: center;
-    color: #FFFFFF;
-    max-width: 850px;
-    padding: 0 20px;
 }
-
-.slide-subtitle {
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 12px;
-    display: block;
-    color: rgba(255, 255, 255, 0.85);
-}
-
-.slide-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 3.2rem;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 16px;
-}
-
-.slide-desc {
-    font-size: 1.15rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 30px;
-}
-
-.slide-actions {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-}
-
-/* Slider Controls */
-.slider-btn {
-    position: absolute;
-    top: 50%; transform: translateY(-50%);
-    z-index: 10;
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: #FFF;
-    width: 50px; height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    backdrop-filter: blur(5px);
-    transition: var(--transition);
-}
-.slider-btn:hover { background: #FFFFFF; color: #111; }
-.prev-btn { left: 30px; }
-.next-btn { right: 30px; }
-
-.slider-indicators {
-    position: absolute;
-    bottom: 30px; left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    display: flex; gap: 10px;
-}
-
-.dot {
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    cursor: pointer;
-    transition: var(--transition);
-}
-.dot.active { width: 32px; border-radius: 6px; background: #FFFFFF; }
 
 /* ==========================================================================
    SECTION 2: ACADEMIC NOTICES & EVENTS
@@ -491,7 +431,7 @@ body {
 .leader-designation { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 20px; font-weight: 600; }
 .message-body { font-size: 0.98rem; color: #333; line-height: 1.7; margin-bottom: 24px; }
 .leader-footer { display: flex; justify-content: space-between; align-items: center; }
-.signature { font-family: 'Source Sans Pro', cursive; font-size: 1.5rem; font-style: italic; font-weight: 600; color: var(--accent-blue); }
+.signature { font-family: 'Source Sans Pro', cursive; font-size: 1rem; font-style: italic; font-weight: 600; color: var(--accent-blue); }
 
 /* ==========================================================================
    SECTION 6: RECRUITERS SLIDER
@@ -666,3 +606,252 @@ body {
     .notice-search { width: 100%; margin-top: 10px; }
     .section-header-inline { flex-direction: column; align-items: flex-start; }
 }
+
+
+
+
+/* ==========================================================
+           CSS RESET & VARIABLES
+           ========================================================== */
+        :root {
+            --dept-primary: #1B5E20;
+            --dept-secondary: #2E7D32;
+            --dept-accent: #43A047;
+            --dept-gold: #D4AF37;
+            --dept-light-gold: #F4D03F;
+            --dept-bg: #FFFFFF;
+            --dept-glow: rgba(67, 160, 71, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+      
+
+
+
+        /* ==========================================================
+           SPLASH SCREEN CONTAINER
+           ========================================================== */
+        .dept-loader-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--dept-bg);
+            background-image: radial-gradient(circle at center, var(--dept-glow) 0%, transparent 65%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 600ms cubic-bezier(0.4, 0, 0.2, 1), 
+                        filter 600ms cubic-bezier(0.4, 0, 0.2, 1);
+            filter: blur(0px);
+            transform: scale(1);
+        }
+
+        .dept-loader-screen.dept-loader-fade-out {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.03);
+            filter: blur(8px);
+        }
+
+        /* ==========================================================
+           LOADER WRAPPER & LAYOUT (300px Diameter)
+           ========================================================== */
+        .dept-loader-wrapper {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Subtle Glow behind Logo */
+        .dept-loader-glow {
+            position: absolute;
+            width: 170px;
+            height: 170px;
+            background: var(--dept-accent);
+            border-radius: 50%;
+            filter: blur(30px);
+            opacity: 0.25;
+            z-index: 1;
+        }
+
+        /* Faint Pulse Ring (expands every 2 seconds) */
+        .dept-loader-pulse {
+            position: absolute;
+            width: 210px;
+            height: 210px;
+            border: 2px solid var(--dept-accent);
+            border-radius: 50%;
+            z-index: 2;
+            opacity: 0;
+            animation: deptPulseRingAnim 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+        }
+
+        @keyframes deptPulseRingAnim {
+            0% { transform: scale(1); opacity: 0.5; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+
+        /* ==========================================================
+           STATIC LOGO SPECIFICATIONS (210px Size)
+           ========================================================== */
+        .dept-loader-logo-container {
+            position: relative;
+            width: 210px;
+            height: 210px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            opacity: 1 !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .dept-loader-logo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: contain;
+            display: block;
+            opacity: 1 !important;
+            filter: none !important;
+        }
+
+        /* ==========================================================
+           SEGMENTED ROTATING ARCS (SVG-based for 60 FPS precision)
+           ========================================================== */
+        .dept-loader-arc-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300px;
+            height: 300px;
+            z-index: 4;
+            pointer-events: none;
+            overflow: visible;
+        }
+
+        /* Arc Layer Animations */
+        .dept-loader-arc-one {
+            transform-origin: center;
+            animation: deptRotateClockwise 5s linear infinite;
+        }
+
+        .dept-loader-arc-two {
+            transform-origin: center;
+            animation: deptRotateCounterClockwise 3.5s linear infinite;
+        }
+
+        .dept-loader-arc-three {
+            transform-origin: center;
+            animation: deptRotateClockwise 2.8s linear infinite;
+        }
+
+        @keyframes deptRotateClockwise {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes deptRotateCounterClockwise {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-360deg); }
+        }
+
+        /* ==========================================================
+           TINY GLOWING TRAVELING DOTS
+           ========================================================== */
+        .dept-loader-dot {
+            fill: var(--dept-light-gold);
+            filter: drop-shadow(0 0 4px var(--dept-gold));
+            animation: deptDotPulse 1.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes deptDotPulse {
+            0% { opacity: 0.4; r: 3px; }
+            100% { opacity: 1; r: 5px; }
+        }
+
+        /* ==========================================================
+           TYPOGRAPHY BELOW LOGO
+           ========================================================== */
+        .dept-loader-text {
+            margin-top: 26px;
+            text-align: center;
+            z-index: 5;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: deptFadeInText 0.8s ease forwards 0.3s;
+        }
+
+        .dept-loader-text h1 {
+            font-size: 3rem;
+            font-family: georgia, 'Times New Roman', Times, serif;
+            font-weight: 700;
+            color: #2E7D32;
+            letter-spacing: 0.4px;
+            margin-bottom: 5px;
+        }
+
+        .dept-loader-text p {
+            font-size: 1.50rem;
+            font-weight: 400;
+            color: #6B7280;
+            letter-spacing: 0.2px;
+        }
+
+        @keyframes deptFadeInText {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==========================================================
+           RESPONSIVE ADJUSTMENTS
+           ========================================================== */
+        @media (max-width: 768px) {
+            .dept-nav {
+                padding: 15px 20px;
+            }
+            .dept-nav-links {
+                display: none;
+            }
+            .dept-hero h1 {
+                font-size: 2.2rem;
+            }
+            .dept-hero h2 {
+                font-size: 1.2rem;
+            }
+            .dept-loader-wrapper {
+                width: 260px;
+                height: 260px;
+            }
+            .dept-loader-arc-svg {
+                width: 260px;
+                height: 260px;
+            }
+            .dept-loader-logo-container {
+                width: 180px;
+                height: 180px;
+            }
+            .dept-loader-logo {
+                width: 162px;
+                height: 162px;
+            }
+        }

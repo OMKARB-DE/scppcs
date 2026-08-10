@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en" class="dept-header-html">
+<head class="dept-header-head">
+    <meta charset="UTF-8" class="dept-header-meta">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" class="dept-header-meta">
+    <title class="dept-header-title">Department of Computer Science | Shri Shivaji College, Parbhani</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" class="dept-header-font">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" class="dept-header-icon-css">
+    <!-- Scoped Unique Internal Stylesheet -->
+    <style class="dept-header-style">
+        :root {
+            --dept-primary: #1B5E20;
+            --dept-secondary: #2E7D32;
+            --dept-accent: #43A047;
+            --dept-background: #FFFFFF;
+            --dept-border: #E8ECEF;
+            --dept-hover: #F5FFF7;
+            --dept-text: #1F2937;
+            --dept-text-light: #4B5563;
+            --dept-top-bg: #F8FFF9;
+            --dept-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .dept-header-html *, 
+        .dept-header-html *::before, 
+        .dept-header-html *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .dept-header-body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dept-background);
+            color: var(--dept-text);
+            overflow-x: hidden;
+        }
+
+        .dept-header-anchor {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .dept-header-list {
+            list-style: none;
+        }
+
+        .dept-header-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ====================================================
+           TOP INFO BAR
+           ==================================================== */
+        .dept-header-top-bar {
+            height: 38px;
+            background-color: var(--dept-top-bg);
+            border-bottom: 1px solid var(--dept-border);
+            font-size: 13px;
+            color: var(--dept-text-light);
+            display: flex;
+            align-items: center;
+        }
+
+        .dept-header-top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .dept-header-top-left, .dept-header-top-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .dept-header-top-link {
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-top-link:hover {
+            color: var(--dept-primary);
+        }
+
+        .dept-header-top-icon {
+            color: var(--dept-secondary);
+            margin-right: 4px;
+        }
+
+        .dept-header-top-divider {
+            color: #CBD5E1;
+        }
+
+        .dept-header-top-highlight {
+            background-color: var(--dept-primary);
+            color: #FFFFFF !important;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-top-highlight:hover {
+            background-color: var(--dept-secondary);
+        }
+
+        /* ====================================================
+           MAIN HEADER (Middle Header with Brand & Actions)
+           ==================================================== */
+        .dept-header-main {
+            background-color: var(--dept-background);
+            border-bottom: 1px solid var(--dept-border);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding-top: 14px;
+            padding-bottom: 14px;
+        }
+
+        /* LEFT SECTION (Logo & Titles) */
+        .dept-header-left-section {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .dept-header-logo-link {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Updated Department Logo Image Container */
+        .dept-header-logo-box {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #F8FAFC;
+            border: 1px solid var(--dept-border);
+            box-shadow: 0 4px 10px rgba(27, 94, 32, 0.1);
+            flex-shrink: 0;
+        }
+
+        .dept-header-logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dept-header-titles-box {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dept-header-main-title {
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--dept-primary);
+            line-height: 1.2;
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-main-title:hover {
+            color: var(--dept-secondary);
+        }
+
+        .dept-header-sub-title {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--dept-text-light);
+            margin-bottom: 3px;
+        }
+
+        .dept-header-badges-box {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dept-header-badge {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 1px 6px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .dept-header-badge-naac {
+            background-color: #E8F5E9;
+            color: var(--dept-primary);
+            border: 1px solid #C8E6C9;
+        }
+
+        .dept-header-badge-auto {
+            background-color: #E3F2FD;
+            color: #1565C0;
+            border: 1px solid #BBDEFB;
+        }
+
+        .dept-header-badge-univ {
+            background-color: #FFF8E1;
+            color: #F57F17;
+            border: 1px solid #FFE0B2;
+        }
+
+        /* RIGHT SECTION (Actions & Search) */
+        .dept-header-right-section {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dept-header-action-btn {
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 9px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-outline-btn {
+            background-color: transparent;
+            border: 1px solid var(--dept-border);
+            color: var(--dept-text);
+        }
+
+        .dept-header-outline-btn:hover {
+            border-color: var(--dept-primary);
+            color: var(--dept-primary);
+            background-color: var(--dept-hover);
+        }
+
+        .dept-header-primary-btn {
+            background-color: var(--dept-primary);
+            border: 1px solid var(--dept-primary);
+            color: #FFFFFF;
+        }
+
+        .dept-header-primary-btn:hover {
+            background-color: var(--dept-secondary);
+            border-color: var(--dept-secondary);
+            box-shadow: 0 4px 12px rgba(27, 94, 32, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .dept-header-icon-action-btn {
+            width: 38px;
+            height: 38px;
+            border-radius: 6px;
+            background-color: #F8FAFC;
+            border: 1px solid var(--dept-border);
+            color: var(--dept-text);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-icon-action-btn:hover {
+            background-color: var(--dept-hover);
+            color: var(--dept-primary);
+            border-color: var(--dept-accent);
+        }
+
+        .dept-header-hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: var(--dept-text);
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        /* ====================================================
+           NAVIGATION BAR (Placed Below Middle Header, Centered)
+           ==================================================== */
+        .dept-header-nav-bar {
+            background-color: var(--dept-background);
+            border-top: 1px solid var(--dept-border);
+            border-bottom: 1px solid var(--dept-border);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative; /* Fixed: container for absolute mega menus */
+        }
+
+        .dept-header-center-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            position: relative; /* Fixed: keeps layout containment proper */
+        }
+
+        .dept-header-nav-list {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            flex-wrap: wrap;
+            padding: 6px 0;
+        }
+
+        .dept-header-nav-item {
+            position: relative; /* Fixed: container for standard dropdown menus */
+        }
+
+        .dept-header-nav-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--dept-text);
+            padding: 8px 12px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            border-radius: 4px;
+            transition: var(--dept-transition);
+            white-space: nowrap;
+        }
+
+        .dept-header-nav-arrow {
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .dept-header-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 2px;
+            left: 12px;
+            right: 12px;
+            height: 2px;
+            background-color: var(--dept-primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .dept-header-nav-link:hover::after, 
+        .dept-header-nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        .dept-header-nav-link:hover, 
+        .dept-header-nav-link.active {
+            color: var(--dept-primary);
+            background-color: var(--dept-hover);
+        }
+
+        /* Standard Dropdowns */
+        .dept-header-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 240px;
+            background-color: var(--dept-background);
+            border: 1px solid var(--dept-border);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--dept-transition);
+            z-index: 100;
+        }
+
+        .dept-header-dropdown-parent:hover .dept-header-dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dept-header-dropdown-parent:hover .dept-header-nav-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dept-header-dropdown-item-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--dept-text);
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-dropdown-item-link i {
+            color: var(--dept-secondary);
+            font-size: 14px;
+            width: 16px;
+            text-align: center;
+        }
+
+        .dept-header-dropdown-item-link:hover {
+            background-color: var(--dept-hover);
+            color: var(--dept-primary);
+            padding-left: 20px;
+        }
+
+        /* Mega Menu Styles - Fixed positioning & interaction bugs */
+        .dept-header-megamenu-parent {
+            position: relative; /* Fixed: changed from static to relative so absolute mega-menu drops correctly under the list item */
+        }
+
+        .dept-header-mega-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%; /* Center relative to parent */
+            transform: translateX(-50%) translateY(10px); /* Center and offset for animation */
+            width: 650px; /* Fixed explicit clean width instead of full 100% viewport span */
+            background-color: var(--dept-background);
+            border: 1px solid var(--dept-border);
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--dept-transition);
+            z-index: 100;
+        }
+
+        .dept-header-megamenu-parent:hover .dept-header-mega-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .dept-header-megamenu-parent:hover .dept-header-nav-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dept-header-mega-container {
+            width: 100%;
+            margin: 0 auto;
+            padding: 24px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .dept-header-mega-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--dept-primary);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 2px solid var(--dept-hover);
+            padding-bottom: 6px;
+        }
+
+        .dept-header-mega-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dept-header-mega-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            border-radius: 6px;
+            border: 1px solid var(--dept-border);
+            background-color: #FAFAFA;
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-mega-item:hover {
+            background-color: var(--dept-hover);
+            border-color: var(--dept-accent);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(27, 94, 32, 0.08);
+        }
+
+        .dept-header-mega-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .dept-header-mega-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--dept-text);
+        }
+
+        .dept-header-mega-details {
+            font-size: 11px;
+            color: var(--dept-text-light);
+        }
+
+        .dept-header-quick-view {
+            font-size: 11px;
+            font-weight: 500;
+            color: #FFFFFF;
+            background-color: var(--dept-secondary);
+            padding: 3px 10px;
+            border-radius: 4px;
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-mega-item:hover .dept-header-quick-view {
+            background-color: var(--dept-primary);
+        }
+
+        .dept-header-mega-banner {
+            grid-column: span 2;
+            margin-top: 10px;
+            background: linear-gradient(135deg, var(--dept-primary), var(--dept-secondary));
+            padding: 12px 18px;
+            border-radius: 6px;
+            color: #FFFFFF;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dept-header-mega-banner p {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .dept-header-mega-banner-btn {
+            background-color: #FFFFFF;
+            color: var(--dept-primary);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-mega-banner-btn:hover {
+            background-color: #F0F0F0;
+        }
+
+        /* ====================================================
+           ANNOUNCEMENT BAR (Marquee)
+           ==================================================== */
+        .dept-header-announcement-bar {
+            background-color: var(--dept-primary);
+            color: #FFFFFF;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .dept-header-announcement-container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .dept-header-announcement-badge {
+            background-color: #FFFFFF;
+            color: var(--dept-primary);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 2;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .dept-header-marquee-wrapper {
+            overflow: hidden;
+            width: 100%;
+            white-space: nowrap;
+            position: relative;
+            margin-left: 15px;
+        }
+
+        .dept-header-marquee-content {
+            display: inline-block;
+            animation: deptHeaderMarquee 30s linear infinite;
+        }
+
+        .dept-header-marquee-content:hover {
+            animation-play-state: paused;
+        }
+
+        .dept-header-marquee-item {
+            display: inline-block;
+            margin-right: 50px;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .dept-header-marquee-item a {
+            color: #FFFFFF;
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-marquee-item a:hover {
+            text-decoration: underline;
+            color: #C8E6C9;
+        }
+
+        @keyframes deptHeaderMarquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ====================================================
+           FULLSCREEN SEARCH OVERLAY
+           ==================================================== */
+        .dept-header-search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--dept-transition);
+            backdrop-filter: blur(10px);
+        }
+
+        .dept-header-search-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dept-header-search-close {
+            position: absolute;
+            top: 40px;
+            right: 50px;
+            background: none;
+            border: none;
+            font-size: 28px;
+            color: var(--dept-text);
+            cursor: pointer;
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-search-close:hover {
+            color: var(--dept-primary);
+            transform: rotate(90deg);
+        }
+
+        .dept-header-search-container {
+            width: 100%;
+            max-width: 800px;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .dept-header-search-container h2 {
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--dept-primary);
+            margin-bottom: 24px;
+        }
+
+        .dept-header-search-input-box {
+            position: relative;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .dept-header-search-input-box i {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: var(--dept-secondary);
+        }
+
+        .dept-header-search-input {
+            width: 100%;
+            height: 60px;
+            padding: 0 20px 0 60px;
+            font-size: 18px;
+            font-family: 'Poppins', sans-serif;
+            border: 2px solid var(--dept-border);
+            border-radius: 12px;
+            outline: none;
+            transition: var(--dept-transition);
+            background-color: #FAFAFA;
+        }
+
+        .dept-header-search-input:focus {
+            border-color: var(--dept-primary);
+            background-color: #FFFFFF;
+            box-shadow: 0 8px 24px rgba(27, 94, 32, 0.1);
+        }
+
+        .dept-header-search-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dept-header-tags-title {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--dept-text-light);
+            margin-right: 4px;
+        }
+
+        .dept-header-search-tag {
+            font-size: 12px;
+            font-weight: 500;
+            background-color: var(--dept-hover);
+            color: var(--dept-primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            border: 1px solid #C8E6C9;
+            transition: var(--dept-transition);
+        }
+
+        .dept-header-search-tag:hover {
+            background-color: var(--dept-primary);
+            color: #FFFFFF;
+        }
+
+        .dept-header-search-results {
+            margin-top: 20px;
+            max-height: 250px;
+            overflow-y: auto;
+            text-align: left;
+        }
+
+        /* ====================================================
+           RESPONSIVE STYLES
+           ==================================================== */
+        @media (max-width: 1200px) {
+            .dept-header-main-title {
+                font-size: 18px;
+            }
+            .dept-header-sub-title {
+                font-size: 11px;
+            }
+            .dept-header-nav-link {
+                padding: 8px 8px;
+                font-size: 13px;
+            }
+            .dept-header-mega-menu {
+                width: 580px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .dept-header-top-bar {
+                display: none;
+            }
+            .dept-header-hamburger-btn {
+                display: block;
+            }
+            .dept-header-nav-bar {
+                position: fixed;
+                top: 83px;
+                left: -100%;
+                width: 300px;
+                height: calc(100vh - 83px);
+                background-color: var(--dept-background);
+                justify-content: flex-start;
+                align-items: flex-start;
+                box-shadow: 10px 0 30px rgba(0,0,0,0.1);
+                transition: var(--dept-transition);
+                overflow-y: auto;
+                z-index: 999;
+                border-top: none;
+            }
+            .dept-header-nav-bar.active {
+                left: 0;
+            }
+            .dept-header-center-section {
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding: 20px;
+                width: 100%;
+            }
+            .dept-header-nav-list {
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+                gap: 0;
+                padding: 0;
+            }
+            .dept-header-nav-item {
+                width: 100%;
+                border-bottom: 1px solid var(--dept-border);
+            }
+            .dept-header-nav-link {
+                width: 100%;
+                padding: 12px 10px;
+                justify-content: space-width;
+                justify-content: space-between;
+                border-radius: 0;
+            }
+            .dept-header-nav-link::after {
+                display: none;
+            }
+            .dept-header-dropdown-menu, 
+            .dept-header-mega-menu {
+                position: static;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+                background-color: #F8FAFC;
+                padding-left: 15px;
+                max-height: 0;
+                overflow: hidden;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                transition: max-height 0.3s ease;
+            }
+            .dept-header-dropdown-parent.mobile-open .dept-header-dropdown-menu,
+            .dept-header-megamenu-parent.mobile-open .dept-header-mega-menu {
+                max-height: 600px;
+                padding: 10px 0 10px 15px;
+            }
+            .dept-header-mega-container {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 10px;
+            }
+            .dept-header-mega-banner {
+                grid-column: span 1;
+            }
+            .dept-header-action-text {
+                display: none;
+            }
+            .dept-header-action-btn {
+                padding: 8px 10px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .dept-header-main-container {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+            .dept-header-logo-box {
+                width: 44px;
+                height: 44px;
+            }
+            .dept-header-main-title {
+                font-size: 14px;
+            }
+            .dept-header-sub-title {
+                font-size: 10px;
+            }
+-           .dept-header-badges-box {
+                display: none;
+            }
+            .dept-header-action-btn {
+                display: none;
+            }
+            .dept-header-search-close {
+                top: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body class="dept-header-body">
+
+    <!-- TOP INFO BAR -->
+    <div class="dept-header-top-bar">
+        <div class="dept-header-container dept-header-top-container">
+            <div class="dept-header-top-left">
+                <a href="mailto:cs_dept@shivajicollege.edu.in" class="dept-header-anchor dept-header-top-link"><i class="fas fa-envelope dept-header-top-icon"></i> cs_dept@shivajicollege.edu.in</a>
+                <span class="dept-header-top-divider">|</span>
+                <a href="tel:+912452220159" class="dept-header-anchor dept-header-top-link"><i class="fas fa-phone-alt dept-header-top-icon"></i> +91 2452 220159</a>
+                <span class="dept-header-top-divider">|</span>
+                <span class="dept-header-top-timing"><i class="fas fa-clock dept-header-top-icon"></i> Mon - Sat: 9:00 AM - 5:30 PM</span>
+            </div>
+            <div class="dept-header-top-right">
+                <a href="#iqac" class="dept-header-anchor dept-header-top-link">IQAC</a>
+                <a href="#nirf" class="dept-header-anchor dept-header-top-link">NIRF</a>
+                <a href="#naac" class="dept-header-anchor dept-header-top-link">NAAC</a>
+                <a href="#aishe" class="dept-header-anchor dept-header-top-link">AISHE</a>
+                <a href="#alumni" class="dept-header-anchor dept-header-top-link">Alumni</a>
+                <a href="#student-portal" class="dept-header-anchor dept-header-top-highlight">Student Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN MIDDLE HEADER (Brand & Actions) -->
+    <header class="dept-header-main" id="deptHeaderMain">
+        <div class="dept-header-container dept-header-main-container">
+            
+            <!-- LEFT SECTION: Department Logo Image & Titles -->
+            <div class="dept-header-left-section">
+                <a href="index.html" class="dept-header-anchor dept-header-logo-link">
+                    <div class="dept-header-logo-box">
+                        <!-- Department Logo Image -->
+                        <img src="images/dept-logo3.png" alt="Department Logo" class="dept-header-logo-img">
+                    </div>
+                </a>
+                <div class="dept-header-titles-box">
+                    <a href="index.html" class="dept-header-anchor dept-header-main-title">Department of Computer Science</a>
+                    <span class="dept-header-sub-title">Shri Shivaji College, Parbhani</span>
+                    <div class="dept-header-badges-box">
+                        <span class="dept-header-badge dept-header-badge-naac">NAAC "A++" Accredited</span>
+                        <span class="dept-header-badge dept-header-badge-auto">Autonomous</span>
+                        <span class="dept-header-badge dept-header-badge-univ">SRTMUN</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT SECTION: Action Buttons & Search -->
+            <div class="dept-header-right-section">
+                <button class="dept-header-action-btn dept-header-outline-btn" id="deptHeaderProspectusBtn"><i class="fas fa-download"></i> <span class="dept-header-action-text">Prospectus</span></button>
+                <a href="admissions.html" class="dept-header-anchor dept-header-action-btn dept-header-primary-btn"><span class="dept-header-action-text">Admission</span></a>
+                <button class="dept-header-icon-action-btn" id="deptHeaderSearchTrigger" title="Search Website"><i class="fas fa-search"></i></button>
+                <button class="dept-header-hamburger-btn" id="deptHeaderHamburgerBtn" aria-label="Toggle Navigation"><i class="fas fa-bars"></i></button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- NAVIGATION BAR (Placed Below Middle Header, Center-Aligned) -->
+    <nav class="dept-header-nav-bar" id="deptHeaderNavBar">
+        <div class="dept-header-container dept-header-center-section">
+            <ul class="dept-header-list dept-header-nav-list" id="deptHeaderNavMenu">
+                <li class="dept-header-nav-item"><a href="index.html" class="dept-header-anchor dept-header-nav-link active">Home</a></li>
+                <li class="dept-header-nav-item"><a href="about.html" class="dept-header-anchor dept-header-nav-link">About</a></li>
+                
+                <!-- Department Dropdown -->
+                <li class="dept-header-nav-item dept-header-dropdown-parent">
+                    <a href="department.html" class="dept-header-anchor dept-header-nav-link">Department <i class="fas fa-chevron-down dept-header-nav-arrow"></i></a>
+                    <ul class="dept-header-list dept-header-dropdown-menu">
+                        <li class="dept-header-dropdown-item"><a href="about-dept.html" class="dept-header-anchor dept-header-dropdown-item-link"><i class="fas fa-info-circle"></i> About Department</a></li>
+                        <li class="dept-header-dropdown-item"><a href="vision-mission.html" class="dept-header-anchor dept-header-dropdown-item-link"><i class="fas fa-bullseye"></i> Vision & Mission</a></li>
+                        <li class="dept-header-dropdown-item"><a href="infrastructure.html" class="dept-header-anchor dept-header-dropdown-item-link"><i class="fas fa-laptop-code"></i> Infrastructure & Labs</a></li>
+                        <li class="dept-header-dropdown-item"><a href="board-of-studies.html" class="dept-header-anchor dept-header-dropdown-item-link"><i class="fas fa-users-cog"></i> Board of Studies</a></li>
+                    </ul>
+                </li>
+
+                <!-- Faculty Dropdown -->
+                <li class="dept-header-nav-item dept-header-dropdown-parent">
+                    <a href="faculty.html" class="dept-header-anchor dept-header-nav-link">Faculty <i class="fas fa-chevron-down dept-header-nav-arrow"></i></a>
+                    <ul class="dept-header-list dept-header-dropdown-menu">
+                        <li class="dept-header-dropdown-item"><a href="hod.html" class="dept-header-anchor dept-header-dropdown-item-link"><i class="fas fa-user-tie"></i> Head of Department</a></li>
+                        <li class="dept-header-dropdown-item"><a href="teaching-faculty.html" class="dept-header-anchor dept-header-dropdown-item-link"><i class="fas fa-chalkboard-teacher"></i> Teaching Faculty</a></li>
+                        <li class="dept-header-dropdown-item"><a href="non-teaching.html" class="dept-header-anchor dept-header-dropdown-item-link"><i class="fas fa-users"></i> Non-Teaching Staff</a></li>
+                        <li class="dept-header-dropdown-item"><a href="faculty-achievements.html" class="dept-header-anchor dept-header-dropdown-item-link"><i class="fas fa-award"></i> Faculty Achievements</a></li>
+                        <li class="dept-header-dropdown-item"><a href="faculty-research.html" class="dept-header-anchor dept-header-dropdown-item-link"><i class="fas fa-microscope"></i> Faculty Research</a></li>
+                    </ul>
+                </li>
+
+                <!-- Programmes Mega Menu Parent (Fixed: changed class from static to relative container layout) -->
+                <li class="dept-header-nav-item dept-header-megamenu-parent">
+                    <a href="programmes.html" class="dept-header-anchor dept-header-nav-link">Programmes <i class="fas fa-chevron-down dept-header-nav-arrow"></i></a>
+                    <div class="dept-header-mega-menu">
+                        <div class="dept-header-mega-container">
+                            <div class="dept-header-mega-col">
+                                <h4 class="dept-header-mega-title"><i class="fas fa-graduation-cap"></i> Undergraduate</h4>
+                                <ul class="dept-header-list dept-header-mega-links">
+                                    <li>
+                                        <a href="bca.html" class="dept-header-anchor dept-header-mega-item">
+                                            <div class="dept-header-mega-info">
+                                                <span class="dept-header-mega-name">BCA</span>
+                                                <span class="dept-header-mega-details">3 Years | 120 Seats | Min 45% in 10+2</span>
+                                            </div>
+                                            <span class="dept-header-quick-view">View</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="bsc-cs.html" class="dept-header-anchor dept-header-mega-item">
+                                            <div class="dept-header-mega-info">
+                                                <span class="dept-header-mega-name">B.Sc Computer Science</span>
+                                                <span class="dept-header-mega-details">3 Years | 80 Seats | Science Stream</span>
+                                            </div>
+                                            <span class="dept-header-quick-view">View</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="bsc-ds.html" class="dept-header-anchor dept-header-mega-item">
+                                            <div class="dept-header-mega-info">
+                                                <span class="dept-header-mega-name">B.Sc Data Science</span>
+                                                <span class="dept-header-mega-details">3 Years | 60 Seats | Math/Science</span>
+                                            </div>
+                                            <span class="dept-header-quick-view">View</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="dept-header-mega-col">
+                                <h4 class="dept-header-mega-title"><i class="fas fa-user-graduate"></i> Postgraduate</h4>
+                                <ul class="dept-header-list dept-header-mega-links">
+                                    <li>
+                                        <a href="msc-cs.html" class="dept-header-anchor dept-header-mega-item">
+                                            <div class="dept-header-mega-info">
+                                                <span class="dept-header-mega-name">M.Sc Computer Science</span>
+                                                <span class="dept-header-mega-details">2 Years | 40 Seats | B.Sc. (CS/BCA)</span>
+                                            </div>
+                                            <span class="dept-header-quick-view">View</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="dept-header-mega-banner">
+                                <p>Admission Open for Academic Year 2026-27</p>
+                                <a href="admissions.html" class="dept-header-anchor dept-header-mega-banner-btn">Apply Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
+                <li class="dept-header-nav-item"><a href="admissions.html" class="dept-header-anchor dept-header-nav-link">Admissions</a></li>
+                
+                <!-- Research Dropdown -->
+                <li class="dept-header-nav-item dept-header-dropdown-parent">
+                    <a href="research.html" class="dept-header-anchor dept-header-nav-link">Research <i class="fas fa-chevron-down dept-header-nav-arrow"></i></a>
+                    <ul class="dept-header-list dept-header-dropdown-menu">
+                        <li class="dept-header-dropdown-item"><a href="phd-center.html" class="dept-header-anchor dept-header-dropdown-item-link"><i class="fas fa-book"></i> Ph.D. Research Center</a></li>
+                        <li class="dept-header-dropdown-item"><a href="publications.html" class="dept-header-anchor dept-header-dropdown-item-link"><i class="fas fa-file-alt"></i> Research Publications</a></li>
+                        <li class="dept-header-dropdown-item"><a href="projects.html" class="dept-header-anchor dept-header-dropdown-item-link"><i class="fas fa-project-diagram"></i> Funded Projects</a></li>
+                    </ul>
+                </li>
+
+                <li class="dept-header-nav-item"><a href="placements.html" class="dept-header-anchor dept-header-nav-link">Placements</a></li>
+                <li class="dept-header-nav-item"><a href="nptel.html" class="dept-header-anchor dept-header-nav-link">NPTEL</a></li>
+                <li class="dept-header-nav-item"><a href="achievements.html" class="dept-header-anchor dept-header-nav-link">Achievements</a></li>
+                <li class="dept-header-nav-item"><a href="gallery.html" class="dept-header-anchor dept-header-nav-link">Gallery</a></li>
+                <li class="dept-header-nav-item"><a href="downloads.html" class="dept-header-anchor dept-header-nav-link">Downloads</a></li>
+                <li class="dept-header-nav-item"><a href="contact.html" class="dept-header-anchor dept-header-nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ANNOUNCEMENT TICKER BAR -->
+    <div class="dept-header-announcement-bar">
+        <div class="dept-header-announcement-container">
+            <div class="dept-header-announcement-badge"><i class="fas fa-bullhorn"></i> Updates</div>
+            <div class="dept-header-marquee-wrapper">
+                <div class="dept-header-marquee-content">
+                    <span class="dept-header-marquee-item"><a href="#" class="dept-header-anchor">Admissions Open for Academic Year 2026-27 - Apply Now!</a></span>
+                    <span class="dept-header-marquee-item"><a href="#" class="dept-header-anchor">Placement Registration Started for Final Year Students (Batch 2026)</a></span>
+                    <span class="dept-header-marquee-item"><a href="#" class="dept-header-anchor">NPTEL Local Chapter July-Dec Registration Link is Now Live</a></span>
+                    <span class="dept-header-marquee-item"><a href="#" class="dept-header-anchor">M.Sc Computer Science Entrance Exam Schedule Announced</a></span>
+                    <span class="dept-header-marquee-item"><a href="#" class="dept-header-anchor">New Research Grant Awarded to Computer Science Department by DST</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FULLSCREEN SEARCH OVERLAY -->
+    <div class="dept-header-search-overlay" id="deptHeaderSearchOverlay">
+        <button class="dept-header-search-close" id="deptHeaderSearchClose"><i class="fas fa-times"></i></button>
+        <div class="dept-header-search-container">
+            <h2>Explore Department Portal</h2>
+            <div class="dept-header-search-input-box">
+                <i class="fas fa-search"></i>
+                <input type="text" class="dept-header-search-input" id="deptHeaderSearchInput" placeholder="Search faculty, courses, syllabus, placements, notices..." autocomplete="off">
+            </div>
+            <div class="dept-header-search-tags">
+                <span class="dept-header-tags-title">Quick Categories:</span>
+                <a href="#" class="dept-header-anchor dept-header-search-tag">Faculty</a>
+                <a href="#" class="dept-header-anchor dept-header-search-tag">Course</a>
+                <a href="#" class="dept-header-anchor dept-header-search-tag">Syllabus</a>
+                <a href="#" class="dept-header-anchor dept-header-search-tag">Placement</a>
+                <a href="#" class="dept-header-anchor dept-header-search-tag">Notice</a>
+                <a href="#" class="dept-header-anchor dept-header-search-tag">NPTEL</a>
+                <a href="#" class="dept-header-anchor dept-header-search-tag">Gallery</a>
+                <a href="#" class="dept-header-anchor dept-header-search-tag">Downloads</a>
+            </div>
+            <div class="dept-header-search-results" id="deptHeaderSearchResults"></div>
+        </div>
+    </div>
+
+    <!-- Internal JavaScript -->
+    <script class="dept-header-script">
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. Mobile Menu Toggle
+            const hamburgerBtn = document.getElementById('deptHeaderHamburgerBtn');
+            const navBar = document.getElementById('deptHeaderNavBar');
+
+            if (hamburgerBtn && navBar) {
+                hamburgerBtn.addEventListener('click', () => {
+                    navBar.classList.toggle('active');
+                    const icon = hamburgerBtn.querySelector('i');
+                    if (navBar.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+
+            // 2. Mobile Accordion Dropdowns
+            const dropdownParents = document.querySelectorAll('.dept-header-dropdown-parent, .dept-header-megamenu-parent');
+            
+            dropdownParents.forEach(parent => {
+                const link = parent.querySelector('.dept-header-nav-link');
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        parent.classList.toggle('mobile-open');
+                        
+                        dropdownParents.forEach(other => {
+                            if (other !== parent) {
+                                other.classList.remove('mobile-open');
+                            }
+                        });
+                    }
+                });
+            });
+
+            // 3. Fullscreen Search Overlay Interactivity
+            const searchTrigger = document.getElementById('deptHeaderSearchTrigger');
+            const searchOverlay = document.getElementById('deptHeaderSearchOverlay');
+            const searchClose = document.getElementById('deptHeaderSearchClose');
+            const searchInput = document.getElementById('deptHeaderSearchInput');
+            const searchResults = document.getElementById('deptHeaderSearchResults');
+
+            if (searchTrigger && searchOverlay && searchClose) {
+                searchTrigger.addEventListener('click', () => {
+                    searchOverlay.classList.add('active');
+                    setTimeout(() => {
+                        if (searchInput) searchInput.focus();
+                    }, 300);
+                });
+
+                searchClose.addEventListener('click', () => {
+                    searchOverlay.classList.remove('active');
+                    if (searchInput) searchInput.value = '';
+                    if (searchResults) searchResults.innerHTML = '';
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
+                        searchOverlay.classList.remove('active');
+                    }
+                });
+            }
+
+            // Simulated Search Filter Logic
+            if (searchInput && searchResults) {
+                const mockDatabase = [
+                    { title: "Dr. V. K. Patil (Head of Department)", category: "Faculty", url: "#" },
+                    { title: "Bachelor of Computer Applications (BCA)", category: "Course", url: "#" },
+                    { title: "B.Sc. Computer Science Syllabus 2026", category: "Syllabus", url: "#" },
+                    { title: "Campus Placement Drive - TCS & Infosys", category: "Placement", url: "#" },
+                    { title: "M.Sc. Computer Science Admission Notification", category: "Notice", url: "#" },
+                    { title: "NPTEL Local Chapter Toppers List", category: "NPTEL", url: "#" },
+                    { title: "Annual Tech Fest 'SYNTAX 2026' Gallery", category: "Gallery", url: "#" },
+                    { title: "Student Academic Calendar & Downloads", category: "Downloads", url: "#" }
+                ];
+
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase().trim();
+                    searchResults.innerHTML = '';
+
+                    if (query.length > 0) {
+                        const filtered = mockDatabase.filter(item => 
+                            item.title.toLowerCase().includes(query) || 
+                            item.category.toLowerCase().includes(query)
+                        );
+
+                        if (filtered.length > 0) {
+                            const list = document.createElement('ul');
+                            list.style.listStyle = 'none';
+                            list.style.padding = '0';
+                            
+                            filtered.forEach(item => {
+                                const li = document.createElement('li');
+                                li.style.padding = '10px 15px';
+                                li.style.borderBottom = '1px solid #E8ECEF';
+                                li.style.borderRadius = '6px';
+                                li.style.marginBottom = '6px';
+                                li.style.backgroundColor = '#FAFAFA';
+                                li.style.transition = 'all 0.2s ease';
+                                
+                                li.innerHTML = `<a href="${item.url}" style="display: flex; justify-content: space-between; align-items: center; color: #1F2937; text-decoration: none;">
+                                    <span style="font-weight: 500; font-size: 14px;">${item.title}</span>
+                                    <span style="font-size: 11px; background-color: #E8F5E9; color: #1B5E20; padding: 2px 8px; border-radius: 4px; font-weight: 600;">${item.category}</span>
+                                </a>`;
+                                
+                                li.addEventListener('mouseenter', () => { li.style.backgroundColor = '#F5FFF7'; });
+                                li.addEventListener('mouseleave', () => { li.style.backgroundColor = '#FAFAFA'; });
+                                
+                                list.appendChild(li);
+                            });
+                            searchResults.appendChild(list);
+                        } else {
+                            searchResults.innerHTML = `<p style="color: #64748B; font-size: 14px; padding: 10px;">No matching results found for "<b>${query}</b>". Try searching for Faculty, Course, or Syllabus.</p>`;
+                        }
+                    }
+                });
+            }
+
+            // 4. Sticky Header Enhancement (Dynamic Shadow on Scroll)
+            const mainHeader = document.getElementById('deptHeaderMain');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    mainHeader.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.08)';
+                } else {
+                    mainHeader.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.03)';
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

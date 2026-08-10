@@ -1,0 +1,1646 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department of Computer Science - Shri Shivaji College, Parbhani (Wikipedia Style)</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Linux+Libertine:ital,wght@0,400;0,700;1,400&family=sans-serif&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --dept-faculty-bg-white: #FFFFFF;
+            --dept-faculty-bg-light: #F8FFF9;
+            --dept-faculty-primary: #1B5E20;
+            --dept-faculty-secondary: #2E7D32;
+            --dept-faculty-accent: #43A047;
+            --dept-faculty-text-dark: #202122;
+            --dept-faculty-text-muted: #54595d;
+            --dept-faculty-border: #a2a9b1;
+            --dept-faculty-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+            --dept-faculty-radius: 2px;
+            --dept-faculty-transition: all 0.2s ease-in-out;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body.dept-faculty-body-locked {
+            overflow: hidden;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: #fdfdfd;
+            color: var(--dept-faculty-text-dark);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .dept-faculty-page {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 30px;
+            background: var(--dept-faculty-bg-white);
+            border-left: 1px solid #eaecf0;
+            border-right: 1px solid #eaecf0;
+            border-top: 1px solid #eaecf0;
+            border-bottom: 1px solid #eaecf0;
+            min-height: 100vh;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Top Section - Wikipedia Infobox / Header Style */
+        .dept-faculty-top-section {
+            border-bottom: 1px solid var(--dept-faculty-border);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .dept-faculty-title {
+            font-family: 'Linux Libertine', Georgia, serif;
+            font-size: 2.2rem;
+            font-weight: normal;
+            border-bottom: 1px solid #a2a9b1;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .dept-faculty-subtitle {
+            font-size: 1rem;
+            color: var(--dept-faculty-text-muted);
+            margin-bottom: 20px;
+        }
+
+        .dept-faculty-stats-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            background: #f8f9fa;
+            border: 1px solid var(--dept-faculty-border);
+            padding: 15px;
+            border-radius: var(--dept-faculty-radius);
+        }
+
+        .dept-faculty-stat-card {
+            flex: 1;
+            min-width: 130px;
+            text-align: center;
+            background: #fff;
+            padding: 10px;
+            border: 1px solid #eaecf0;
+        }
+
+        .dept-faculty-stat-number {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--dept-faculty-primary);
+        }
+
+        .dept-faculty-stat-label {
+            font-size: 0.8rem;
+            color: var(--dept-faculty-text-muted);
+        }
+
+        /* Search & Filter Toolbar */
+        .dept-faculty-toolbar {
+            background: #f8f9fa;
+            border: 1px solid var(--dept-faculty-border);
+            padding: 15px;
+            border-radius: var(--dept-faculty-radius);
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dept-faculty-toolbar-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dept-faculty-search-box {
+            flex: 1;
+            min-width: 280px;
+            position: relative;
+        }
+
+        .dept-faculty-search-box i {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--dept-faculty-text-muted);
+        }
+
+        .dept-faculty-search-input {
+            width: 100%;
+            padding: 8px 10px 8px 32px;
+            border: 1px solid var(--dept-faculty-border);
+            border-radius: var(--dept-faculty-radius);
+            font-size: 0.9rem;
+            outline: none;
+            background: #fff;
+        }
+
+        .dept-faculty-search-input:focus {
+            border-color: #36c;
+            box-shadow: inset 0 0 0 1px #36c;
+        }
+
+        .dept-faculty-filter-selects {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .dept-faculty-select {
+            padding: 8px 10px;
+            border: 1px solid var(--dept-faculty-border);
+            border-radius: var(--dept-faculty-radius);
+            font-size: 0.85rem;
+            background: #fff;
+            color: var(--dept-faculty-text-dark);
+            cursor: pointer;
+        }
+
+        .dept-faculty-view-toggle {
+            display: flex;
+            gap: 2px;
+            background: #eaecf0;
+            padding: 2px;
+            border-radius: var(--dept-faculty-radius);
+        }
+
+        .dept-faculty-view-btn {
+            background: #fff;
+            border: none;
+            padding: 6px 10px;
+            cursor: pointer;
+            color: var(--dept-faculty-text-muted);
+            font-size: 0.85rem;
+        }
+
+        .dept-faculty-view-btn.active {
+            background: var(--dept-faculty-primary);
+            color: #fff;
+        }
+
+        /* Faculty Cards Grid Layout */
+        .dept-faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .dept-faculty-grid.list-view {
+            grid-template-columns: 1fr;
+        }
+
+        .dept-faculty-card {
+            background: #fff;
+            border: 1px solid var(--dept-faculty-border);
+            border-radius: var(--dept-faculty-radius);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: var(--dept-faculty-transition);
+        }
+
+        .dept-faculty-grid.list-view .dept-faculty-card {
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .dept-faculty-card:hover {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .dept-faculty-photo-wrapper {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: #eaecf0;
+        }
+
+        .dept-faculty-grid.list-view .dept-faculty-photo-wrapper {
+            width: 180px;
+            height: 100%;
+            min-height: 180px;
+            flex-shrink: 0;
+        }
+
+        .dept-faculty-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .dept-faculty-card-content {
+            padding: 15px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dept-faculty-name {
+            font-family: 'Linux Libertine', Georgia, serif;
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #0645ad;
+        }
+
+        .dept-faculty-designation {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--dept-faculty-primary);
+        }
+
+        .dept-faculty-meta-info {
+            font-size: 0.8rem;
+            color: var(--dept-faculty-text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .dept-faculty-specialization {
+            font-size: 0.8rem;
+            background: #f8f9fa;
+            border: 1px solid #eaecf0;
+            color: var(--dept-faculty-primary);
+            padding: 2px 6px;
+            border-radius: 2px;
+            align-self: flex-start;
+        }
+
+        .dept-faculty-social-icons {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+        }
+
+        .dept-faculty-social-icon {
+            width: 26px;
+            height: 26px;
+            background: #f8f9fa;
+            border: 1px solid var(--dept-faculty-border);
+            color: var(--dept-faculty-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            text-decoration: none;
+        }
+
+        .dept-faculty-social-icon:hover {
+            background: var(--dept-faculty-primary);
+            color: #fff;
+        }
+
+        .dept-faculty-card-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #eaecf0;
+        }
+
+        .dept-faculty-btn {
+            flex: 1;
+            padding: 6px 10px;
+            border-radius: var(--dept-faculty-radius);
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            border: 1px solid var(--dept-faculty-border);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .dept-faculty-btn-primary {
+            background: var(--dept-faculty-primary);
+            color: #fff;
+            border-color: var(--dept-faculty-primary);
+        }
+
+        .dept-faculty-btn-primary:hover {
+            background: var(--dept-faculty-secondary);
+        }
+
+        .dept-faculty-btn-outline {
+            background: #fff;
+            color: var(--dept-faculty-text-dark);
+        }
+
+        .dept-faculty-btn-outline:hover {
+            background: #f8f9fa;
+        }
+
+        /* Fullscreen Profile Modal (Wikipedia Dialog Style) */
+        .dept-faculty-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease, visibility 0.2s ease;
+        }
+
+        .dept-faculty-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dept-faculty-modal-container {
+            background: #fff;
+            width: 92vw;
+            height: 90vh;
+            border: 1px solid var(--dept-faculty-border);
+            box-shadow: 0 4px 23px 0 rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .dept-faculty-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--dept-faculty-text-muted);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .dept-faculty-modal-close:hover {
+            color: #000;
+        }
+
+        .dept-faculty-modal-body {
+            display: flex;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /* Left Side Content Area with Tabs */
+        .dept-faculty-profile-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            overflow: hidden;
+            background: #fff;
+        }
+
+        .dept-faculty-profile-header-card {
+            padding: 20px 25px;
+            background: #f8f9fa;
+            border-bottom: 1px solid var(--dept-faculty-border);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .dept-faculty-profile-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--dept-faculty-border);
+            flex-shrink: 0;
+        }
+
+        .dept-faculty-profile-info-grid {
+            flex: 1;
+        }
+
+        .dept-faculty-profile-name {
+            font-family: 'Linux Libertine', Georgia, serif;
+            font-size: 1.6rem;
+            font-weight: normal;
+            color: #000;
+            margin-bottom: 3px;
+        }
+
+        .dept-faculty-profile-designation {
+            font-size: 0.95rem;
+            font-weight: bold;
+            color: var(--dept-faculty-primary);
+            margin-bottom: 8px;
+        }
+
+        .dept-faculty-profile-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--dept-faculty-text-muted);
+        }
+
+        .dept-faculty-profile-badge {
+            background: #fff;
+            padding: 3px 8px;
+            border-radius: 2px;
+            border: 1px solid var(--dept-faculty-border);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Horizontal Tabs Navigation (Wikipedia Article Section Style) */
+        .dept-faculty-tabs-nav {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 1px solid var(--dept-faculty-border);
+            overflow-x: auto;
+            flex-shrink: 0;
+        }
+
+        .dept-faculty-tabs-nav::-webkit-scrollbar {
+            height: 3px;
+        }
+
+        .dept-faculty-tabs-nav::-webkit-scrollbar-thumb {
+            background: var(--dept-faculty-border);
+        }
+
+        .dept-faculty-tab-btn {
+            padding: 10px 15px;
+            background: transparent;
+            border: none;
+            border-right: 1px solid #eaecf0;
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #0645ad;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .dept-faculty-tab-btn:hover {
+            background: #fff;
+        }
+
+        .dept-faculty-tab-btn.active {
+            color: var(--dept-faculty-text-dark);
+            background: #fff;
+            border-bottom: 2px solid var(--dept-faculty-primary);
+        }
+
+        /* Tab Content Panes */
+        .dept-faculty-tabs-content-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 25px;
+            background: #fff;
+        }
+
+        .dept-faculty-tab-pane {
+            display: none;
+        }
+
+        .dept-faculty-tab-pane.active {
+            display: block;
+        }
+
+        /* Right Sidebar Panel inside Modal (Wikipedia Infobox Style) */
+        .dept-faculty-profile-sidebar {
+            width: 280px;
+            background: #f8f9fa;
+            border-left: 1px solid var(--dept-faculty-border);
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .dept-faculty-sidebar-section-title {
+            font-family: 'Linux Libertine', Georgia, serif;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000;
+            padding-bottom: 4px;
+            border-bottom: 1px solid var(--dept-faculty-border);
+        }
+
+        .dept-faculty-sidebar-stat-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dept-faculty-sidebar-stat-item {
+            background: #fff;
+            padding: 8px 10px;
+            border: 1px solid var(--dept-faculty-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+
+        .dept-faculty-sidebar-stat-name {
+            color: var(--dept-faculty-text-muted);
+        }
+
+        .dept-faculty-sidebar-stat-val {
+            font-weight: bold;
+            color: var(--dept-faculty-primary);
+        }
+
+        .dept-faculty-content-block {
+            margin-bottom: 20px;
+        }
+
+        .dept-faculty-content-title {
+            font-family: 'Linux Libertine', Georgia, serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #eaecf0;
+            padding-bottom: 3px;
+        }
+
+        .dept-faculty-content-text {
+            font-size: 0.9rem;
+            color: var(--dept-faculty-text-dark);
+            margin-bottom: 10px;
+        }
+
+        .dept-faculty-timeline {
+            position: relative;
+            padding-left: 15px;
+            border-left: 1px solid var(--dept-faculty-border);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .dept-faculty-timeline-item {
+            position: relative;
+        }
+
+        .dept-faculty-timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -19px;
+            top: 4px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--dept-faculty-primary);
+            border: 1px solid #fff;
+        }
+
+        .dept-faculty-gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 10px;
+        }
+
+        .dept-faculty-gallery-img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border: 1px solid var(--dept-faculty-border);
+            border-radius: var(--dept-faculty-radius);
+        }
+
+        @media (max-width: 1024px) {
+            .dept-faculty-modal-body {
+                flex-direction: column;
+                overflow-y: auto;
+            }
+            .dept-faculty-profile-sidebar {
+                width: 100%;
+                border-left: none;
+                border-top: 1px solid var(--dept-faculty-border);
+            }
+            .dept-faculty-modal-container {
+                height: 95vh;
+                width: 98vw;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dept-faculty-profile-header-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            .dept-faculty-profile-badges {
+                justify-content: center;
+            }
+            .dept-faculty-top-section {
+                padding: 15px 10px;
+            }
+            .dept-faculty-title {
+                font-size: 1.8rem;
+            }
+            .dept-faculty-toolbar-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- HEADER COMPONENT MOUNT POINT -->
+    <header id="departmentHeader"></header>
+
+    <div class="dept-faculty-page">
+        <!-- Top Section / Wiki Header -->
+        <header class="dept-faculty-top-section">
+            <h1 class="dept-faculty-title">Department Faculty</h1>
+            <p class="dept-faculty-subtitle">From Wikipedia, the free encyclopedia &mdash; Department of Computer Science, Shri Shivaji College, Parbhani</p>
+            
+            <div class="dept-faculty-stats-grid">
+                <div class="dept-faculty-stat-card">
+                    <div class="dept-faculty-stat-number" id="dept-faculty-total-count">0</div>
+                    <div class="dept-faculty-stat-label">Total Faculty</div>
+                </div>
+                <div class="dept-faculty-stat-card">
+                    <div class="dept-faculty-stat-number" id="dept-faculty-prof-count">0</div>
+                    <div class="dept-faculty-stat-label">Professors</div>
+                </div>
+                <div class="dept-faculty-stat-card">
+                    <div class="dept-faculty-stat-number" id="dept-faculty-assoc-count">0</div>
+                    <div class="dept-faculty-stat-label">Associate Professors</div>
+                </div>
+                <div class="dept-faculty-stat-card">
+                    <div class="dept-faculty-stat-number" id="dept-faculty-asst-count">0</div>
+                    <div class="dept-faculty-stat-label">Assistant Professors</div>
+                </div>
+                <div class="dept-faculty-stat-card">
+                    <div class="dept-faculty-stat-number" id="dept-faculty-visiting-count">0</div>
+                    <div class="dept-faculty-stat-label">Visiting Faculty</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Search & Filter Toolbar -->
+        <div class="dept-faculty-toolbar">
+            <div class="dept-faculty-toolbar-row">
+                <div class="dept-faculty-search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="dept-faculty-search-input" class="dept-faculty-search-input" placeholder="Search faculty records...">
+                </div>
+                <div class="dept-faculty-view-toggle">
+                    <button class="dept-faculty-view-btn active" id="dept-faculty-grid-view-btn" title="Grid View"><i class="fas fa-th"></i> Grid</button>
+                    <button class="dept-faculty-view-btn" id="dept-faculty-list-view-btn" title="List View"><i class="fas fa-list"></i> List</button>
+                </div>
+            </div>
+            
+            <div class="dept-faculty-toolbar-row">
+                <div class="dept-faculty-filter-selects">
+                    <select id="dept-faculty-filter-designation" class="dept-faculty-select">
+                        <option value="">All Designations</option>
+                        <option value="Professor">Professor</option>
+                        <option value="Associate Professor">Associate Professor</option>
+                        <option value="Assistant Professor">Assistant Professor</option>
+                        <option value="Visiting Faculty">Visiting Faculty</option>
+                    </select>
+
+                    <select id="dept-faculty-filter-qualification" class="dept-faculty-select">
+                        <option value="">All Qualifications</option>
+                        <option value="Ph.D.">Ph.D.</option>
+                        <option value="M.Tech">M.Tech</option>
+                        <option value="MCA">MCA</option>
+                    </select>
+
+                    <select id="dept-faculty-filter-research" class="dept-faculty-select">
+                        <option value="">All Research Areas</option>
+                        <option value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option value="Data Science">Data Science</option>
+                        <option value="Cyber Security">Cyber Security</option>
+                        <option value="Cloud Computing">Cloud Computing</option>
+                    </select>
+
+                    <select id="dept-faculty-filter-experience" class="dept-faculty-select">
+                        <option value="">All Experience</option>
+                        <option value="5">5+ Years</option>
+                        <option value="10">10+ Years</option>
+                        <option value="15">15+ Years</option>
+                    </select>
+                </div>
+
+                <div class="dept-faculty-filter-selects">
+                    <select id="dept-faculty-sort-select" class="dept-faculty-select">
+                        <option value="name">Sort by Name</option>
+                        <option value="experience">Sort by Experience</option>
+                        <option value="qualification">Sort by Qualification</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Faculty Cards Grid -->
+        <div class="dept-faculty-grid" id="dept-faculty-grid-container">
+            <!-- Rendered via JavaScript -->
+        </div>
+    </div>
+
+    <!-- Fullscreen Profile Modal Popup -->
+    <div class="dept-faculty-modal" id="dept-faculty-profile-modal">
+        <div class="dept-faculty-modal-container">
+            <button class="dept-faculty-modal-close" id="dept-faculty-modal-close-btn"><i class="fas fa-times"></i></button>
+            
+            <div class="dept-faculty-modal-body">
+                <!-- Left Main Panel with Tabs -->
+                <div class="dept-faculty-profile-main">
+                    <!-- Profile Header Inside Modal -->
+                    <div class="dept-faculty-profile-header-card">
+                        <img src="" alt="" class="dept-faculty-profile-avatar" id="dept-modal-avatar">
+                        <div class="dept-faculty-profile-info-grid">
+                            <h2 class="dept-faculty-profile-name" id="dept-modal-name"></h2>
+                            <div class="dept-faculty-profile-designation" id="dept-modal-designation"></div>
+                            <div class="dept-faculty-profile-badges">
+                                <span class="dept-faculty-profile-badge" id="dept-modal-qual"><i class="fas fa-graduation-cap"></i> <span class="val"></span></span>
+                                <span class="dept-faculty-profile-badge" id="dept-modal-exp"><i class="fas fa-briefcase"></i> <span class="val"></span></span>
+                                <span class="dept-faculty-profile-badge" id="dept-modal-dept"><i class="fas fa-building"></i> <span class="val"></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Horizontal Tabs Navigation -->
+                    <div class="dept-faculty-tabs-nav" id="dept-faculty-tabs-nav">
+                        <button class="dept-faculty-tab-btn active" data-tab="overview">Overview</button>
+                        <button class="dept-faculty-tab-btn" data-tab="education">Education</button>
+                        <button class="dept-faculty-tab-btn" data-tab="teaching">Teaching</button>
+                        <button class="dept-faculty-tab-btn" data-tab="research">Research</button>
+                        <button class="dept-faculty-tab-btn" data-tab="publications">Publications</button>
+                        <button class="dept-faculty-tab-btn" data-tab="projects">Projects</button>
+                        <button class="dept-faculty-tab-btn" data-tab="patents">Patents</button>
+                        <button class="dept-faculty-tab-btn" data-tab="courses">Courses</button>
+                        <button class="dept-faculty-tab-btn" data-tab="achievements">Achievements</button>
+                        <button class="dept-faculty-tab-btn" data-tab="awards">Awards</button>
+                        <button class="dept-faculty-tab-btn" data-tab="memberships">Memberships</button>
+                        <button class="dept-faculty-tab-btn" data-tab="admin">Admin Roles</button>
+                        <button class="dept-faculty-tab-btn" data-tab="downloads">Downloads</button>
+                        <button class="dept-faculty-tab-btn" data-tab="gallery">Gallery</button>
+                        <button class="dept-faculty-tab-btn" data-tab="contact">Contact</button>
+                    </div>
+
+                    <!-- Tab Contents Area -->
+                    <div class="dept-faculty-tabs-content-area" id="dept-faculty-tabs-content-area">
+                        <!-- Tab 1: Overview -->
+                        <div class="dept-faculty-tab-pane active" id="tab-overview">
+                            <div class="dept-faculty-content-block">
+                                <h3 class="dept-faculty-content-title">Biography</h3>
+                                <p class="dept-faculty-content-text" id="dept-bio-text"></p>
+                            </div>
+                            <div class="dept-faculty-content-block">
+                                <h3 class="dept-faculty-content-title">Professional Summary</h3>
+                                <p class="dept-faculty-content-text" id="dept-summary-text"></p>
+                            </div>
+                            <div class="dept-faculty-content-block">
+                                <h3 class="dept-faculty-content-title">Research Interests & Expertise</h3>
+                                <p class="dept-faculty-content-text" id="dept-research-interests-text"></p>
+                            </div>
+                            <div class="dept-faculty-content-block">
+                                <h3 class="dept-faculty-content-title">Languages Known</h3>
+                                <p class="dept-faculty-content-text" id="dept-languages-text"></p>
+                            </div>
+                        </div>
+
+                        <!-- Tab 2: Education -->
+                        <div class="dept-faculty-tab-pane" id="tab-education">
+                            <h3 class="dept-faculty-content-title">Educational Background</h3>
+                            <div class="dept-faculty-timeline" id="dept-education-timeline"></div>
+                        </div>
+
+                        <!-- Tab 3: Teaching -->
+                        <div class="dept-faculty-tab-pane" id="tab-teaching">
+                            <div class="dept-faculty-content-block">
+                                <h3 class="dept-faculty-content-title">Teaching Overview</h3>
+                                <p class="dept-faculty-content-text" id="dept-teaching-overview"></p>
+                            </div>
+                            <div class="dept-faculty-content-block">
+                                <h3 class="dept-faculty-content-title">Subjects Taught / Current Courses</h3>
+                                <ul id="dept-subjects-list" style="padding-left: 20px; margin-bottom: 20px;"></ul>
+                            </div>
+                            <div class="dept-faculty-content-block">
+                                <h3 class="dept-faculty-content-title">Student Feedback Score</h3>
+                                <p class="dept-faculty-content-text" id="dept-feedback-text"></p>
+                            </div>
+                        </div>
+
+                        <!-- Tab 4: Research -->
+                        <div class="dept-faculty-tab-pane" id="tab-research">
+                            <div class="dept-faculty-content-block">
+                                <h3 class="dept-faculty-content-title">Active Research Focus</h3>
+                                <p class="dept-faculty-content-text" id="dept-active-research-text"></p>
+                            </div>
+                            <div class="dept-faculty-content-block">
+                                <h3 class="dept-faculty-content-title">Collaborations & Research Groups</h3>
+                                <p class="dept-faculty-content-text" id="dept-collaborations-text"></p>
+                            </div>
+                        </div>
+
+                        <!-- Tab 5: Publications -->
+                        <div class="dept-faculty-tab-pane" id="tab-publications">
+                            <h3 class="dept-faculty-content-title">Published Works</h3>
+                            <div style="margin-bottom: 15px;">
+                                <input type="text" id="dept-pub-search" class="dept-faculty-search-input" placeholder="Search publications...">
+                            </div>
+                            <div id="dept-publications-container"></div>
+                        </div>
+
+                        <!-- Tab 6: Projects -->
+                        <div class="dept-faculty-tab-pane" id="tab-projects">
+                            <h3 class="dept-faculty-content-title">Grants & Sponsored Projects</h3>
+                            <div id="dept-projects-container"></div>
+                        </div>
+
+                        <!-- Tab 7: Patents -->
+                        <div class="dept-faculty-tab-pane" id="tab-patents">
+                            <h3 class="dept-faculty-content-title">Patents Filed & Granted</h3>
+                            <div id="dept-patents-container"></div>
+                        </div>
+
+                        <!-- Tab 8: Courses -->
+                        <div class="dept-faculty-tab-pane" id="tab-courses">
+                            <h3 class="dept-faculty-content-title">MOOCs, NPTEL & Laboratories</h3>
+                            <div id="dept-courses-container"></div>
+                        </div>
+
+                        <!-- Tab 9: Achievements -->
+                        <div class="dept-faculty-tab-pane" id="tab-achievements">
+                            <h3 class="dept-faculty-content-title">Academic & Professional Achievements</h3>
+                            <ul id="dept-achievements-list" style="padding-left: 20px;"></ul>
+                        </div>
+
+                        <!-- Tab 10: Awards -->
+                        <div class="dept-faculty-tab-pane" id="tab-awards">
+                            <h3 class="dept-faculty-content-title">Honors & Awards</h3>
+                            <ul id="dept-awards-list" style="padding-left: 20px;"></ul>
+                        </div>
+
+                        <!-- Tab 11: Memberships -->
+                        <div class="dept-faculty-tab-pane" id="tab-memberships">
+                            <h3 class="dept-faculty-content-title">Professional Society Memberships</h3>
+                            <ul id="dept-memberships-list" style="padding-left: 20px;"></ul>
+                        </div>
+
+                        <!-- Tab 12: Admin Roles -->
+                        <div class="dept-faculty-tab-pane" id="tab-admin">
+                            <h3 class="dept-faculty-content-title">Administrative & Institutional Responsibilities</h3>
+                            <ul id="dept-admin-list" style="padding-left: 20px;"></ul>
+                        </div>
+
+                        <!-- Tab 13: Downloads -->
+                        <div class="dept-faculty-tab-pane" id="tab-downloads">
+                            <h3 class="dept-faculty-content-title">Document Downloads</h3>
+                            <div id="dept-downloads-container" style="display: flex; flex-direction: column; gap: 10px;"></div>
+                        </div>
+
+                        <!-- Tab 14: Gallery -->
+                        <div class="dept-faculty-tab-pane" id="tab-gallery">
+                            <h3 class="dept-faculty-content-title">Photo Gallery & Events</h3>
+                            <div class="dept-faculty-gallery-grid" id="dept-gallery-grid"></div>
+                        </div>
+
+                        <!-- Tab 15: Contact -->
+                        <div class="dept-faculty-tab-pane" id="tab-contact">
+                            <h3 class="dept-faculty-content-title">Direct Contact Information</h3>
+                            <p class="dept-faculty-content-text" id="dept-contact-office"></p>
+                            <p class="dept-faculty-content-text" id="dept-contact-hours"></p>
+                            <button class="dept-faculty-btn dept-faculty-btn-primary" style="margin-top: 15px; width: auto;" onclick="alert('Appointment request sent successfully!')">Book Appointment</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar Panel / Wiki Infobox -->
+                <div class="dept-faculty-profile-sidebar">
+                    <div class="dept-faculty-sidebar-section-title">Quick Metrics</div>
+                    <div class="dept-faculty-sidebar-stat-list">
+                        <div class="dept-faculty-sidebar-stat-item">
+                            <span class="dept-faculty-sidebar-stat-name">Experience</span>
+                            <span class="dept-faculty-sidebar-stat-val" id="sidebar-stat-exp">-</span>
+                        </div>
+                        <div class="dept-faculty-sidebar-stat-item">
+                            <span class="dept-faculty-sidebar-stat-name">Publications</span>
+                            <span class="dept-faculty-sidebar-stat-val" id="sidebar-stat-pubs">-</span>
+                        </div>
+                        <div class="dept-faculty-sidebar-stat-item">
+                            <span class="dept-faculty-sidebar-stat-name">Projects</span>
+                            <span class="dept-faculty-sidebar-stat-val" id="sidebar-stat-proj">-</span>
+                        </div>
+                        <div class="dept-faculty-sidebar-stat-item">
+                            <span class="dept-faculty-sidebar-stat-name">Patents</span>
+                            <span class="dept-faculty-sidebar-stat-val" id="sidebar-stat-pat">-</span>
+                        </div>
+                        <div class="dept-faculty-sidebar-stat-item">
+                            <span class="dept-faculty-sidebar-stat-name">Awards</span>
+                            <span class="dept-faculty-sidebar-stat-val" id="sidebar-stat-awd">-</span>
+                        </div>
+                    </div>
+
+                    <div class="dept-faculty-sidebar-section-title" style="margin-top: 10px;">External Links</div>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <a href="#" id="sidebar-link-scholar" target="_blank" class="dept-faculty-btn dept-faculty-btn-outline"><i class="fab fa-google"></i> Google Scholar</a>
+                        <a href="#" id="sidebar-link-researchgate" target="_blank" class="dept-faculty-btn dept-faculty-btn-outline"><i class="fab fa-researchgate"></i> ResearchGate</a>
+                        <a href="#" id="sidebar-link-linkedin" target="_blank" class="dept-faculty-btn dept-faculty-btn-outline"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                        <a href="#" id="sidebar-link-orcid" target="_blank" class="dept-faculty-btn dept-faculty-btn-outline"><i class="fab fa-orcid"></i> ORCID</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentFooter"></footer>`r`n`r`n    <!-- HEADER COMPONENT LOADER SCRIPT -->`r`n    <script src="../js/footer.js"></script>`r`n`r`n    <!-- SCRIPTS -->
+    <script>
+        // Load Footer Component
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/footer.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentFooter").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/footer.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentFooter === 'function') {
+                        loadDepartmentFooter();
+                    }
+                })
+                .catch(err => console.error("Error loading footer component:", err));
+        });
+    </script>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentHeader === 'function') {
+                        loadDepartmentHeader();
+                    }
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+
+    <!-- JavaScript Data and Application Logic -->
+    <script>
+        const deptFacultyData = [
+            {
+                id: 1,
+                name: "Dr. Rajesh V. Kulkarni",
+                designation: "Professor & Head",
+                qualification: "Ph.D. in Computer Science",
+                department: "Department of Computer Science",
+                experience: "22 Years",
+                experienceYears: 22,
+                specialization: "Artificial Intelligence & Data Mining",
+                email: "rajesh.kulkarni@shivajicollege.edu",
+                phone: "+91 98221 44556",
+                officeNumber: "Cabin 101, CS Building",
+                researchInterests: "Machine Learning, Neural Networks, Big Data Analytics",
+                googleScholar: "https://scholar.google.com",
+                researchGate: "https://researchgate.net",
+                linkedIn: "https://linkedin.com",
+                orcid: "https://orcid.org",
+                photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600",
+                bio: "Dr. Rajesh V. Kulkarni is a Professor and Head of the Computer Science Department at Shri Shivaji College, Parbhani. He has over two decades of dedicated teaching and research experience in core computer science domains.",
+                summary: "Expert in Artificial Intelligence and Soft Computing with over 45 international publications, multiple funded research projects, and active guidance for doctoral candidates.",
+                languagesKnown: "English, Marathi, Hindi",
+                education: [
+                    { degree: "Ph.D. in Computer Science", university: "Dr. B.A.M. University, Aurangabad", year: "2010", cgpa: "Distinction" },
+                    { degree: "M.Tech in Computer Engineering", university: "IIT Bombay", year: "2003", cgpa: "8.9 CGPA" },
+                    { degree: "B.E. in Computer Science", university: "SGBAU", year: "2001", cgpa: "85%" }
+                ],
+                teachingOverview: "Extensive experience teaching advanced graduate and undergraduate computing curricula with emphasis on practical coding applications.",
+                subjects: ["Advanced Artificial Intelligence", "Data Mining & Warehousing", "Machine Learning Algorithms"],
+                feedbackScore: "4.9 / 5.0 (Excellent)",
+                activeResearch: "Developing resilient deep learning models for predictive analysis in agricultural resource distribution.",
+                collaborations: "Collaborating with state agricultural universities and tech parks.",
+                publications: [
+                    { title: "Deep Learning Approaches in Crop Yield Prediction", journal: "IEEE Transactions on Cybernetics", year: "2024", type: "Journal" },
+                    { title: "Optimized Neural Networks for Resource Management", journal: "Springer International Conference", year: "2023", type: "Conference" }
+                ],
+                projects: [
+                    { title: "AI-Driven Smart Agriculture Management System", agency: "UGC Major Project", budget: "â‚¹25 Lakhs", duration: "3 Years" }
+                ],
+                patents: [
+                    { name: "Smart IoT Sensor Node for Soil Nutrient Analysis", status: "Published", year: "2023", number: "IN2023410XXXX" }
+                ],
+                coursesList: ["NPTEL Deep Learning Certified Mentor", "Coursera AI Specialization Instructor"],
+                achievements: ["Best Researcher Award 2022 by state university", "Keynote speaker at 5 International conferences"],
+                awards: ["State Excellence in Education Award 2021", "Shri Shivaji Ratna Award 2019"],
+                memberships: ["IEEE Senior Member", "CSI Life Member", "ACM Professional Member"],
+                adminRoles: ["Head of Department", "Chairman, Board of Studies", "IQAC Steering Committee Member"],
+                downloadsList: [
+                    { name: "Complete Curriculum Vitae", size: "1.2 MB", link: "#" },
+                    { name: "List of Publications", size: "650 KB", link: "#" }
+                ],
+                gallery: [
+                    "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=400",
+                    "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=400"
+                ],
+                officeHours: "Monday to Friday: 10:00 AM - 4:00 PM"
+            },
+            {
+                id: 2,
+                name: "Dr. Smita R. Deshmukh",
+                designation: "Associate Professor",
+                qualification: "Ph.D. in Cyber Security",
+                department: "Department of Computer Science",
+                experience: "16 Years",
+                experienceYears: 16,
+                specialization: "Cyber Security & Cryptography",
+                email: "smita.deshmukh@shivajicollege.edu",
+                phone: "+91 94221 77889",
+                officeNumber: "Cabin 104, CS Building",
+                researchInterests: "Network Security, Blockchain Technology, Cryptographic Protocols",
+                googleScholar: "https://scholar.google.com",
+                researchGate: "https://researchgate.net",
+                linkedIn: "https://linkedin.com",
+                orcid: "https://orcid.org",
+                photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=600",
+                bio: "Dr. Smita R. Deshmukh serves as Associate Professor specializing in Cyber Security. She has pioneered multiple awareness programs regarding digital safety across rural academic networks.",
+                summary: "Accomplished researcher in cryptography and blockchain systems with over 30 papers published in peer-reviewed journals.",
+                languagesKnown: "English, Marathi",
+                education: [
+                    { degree: "Ph.D. in Cyber Security", university: "Savitribai Phule Pune University", year: "2014", cgpa: "First Class" },
+                    { degree: "M.E. Computer Networks", university: "COEP Pune", year: "2007", cgpa: "9.2 CGPA" }
+                ],
+                teachingOverview: "Passionate about secure coding standards and secure infrastructure design for modern cloud operations.",
+                subjects: ["Information Security & Auditing", "Cryptography", "Computer Networks"],
+                feedbackScore: "4.8 / 5.0",
+                activeResearch: "Lightweight cryptographic schemes for Internet of Things (IoT) ecosystems.",
+                collaborations: "Cyber Crime Cell advisory member.",
+                publications: [
+                    { title: "Blockchain Based Secure Data Transfer in IoT", journal: "Elsevier Computers & Security", year: "2024", type: "Journal" }
+                ],
+                projects: [
+                    { title: "Secure Framework for Rural Banking Digital Transactions", agency: "DST", budget: "â‚¹18 Lakhs", duration: "2 Years" }
+                ],
+                patents: [
+                    { name: "Encrypted Secure Key Exchange Protocol", status: "Granted", year: "2022", number: "IN389201" }
+                ],
+                coursesList: ["NPTEL Information Security", "Ethical Hacking Workshop Coordinator"],
+                achievements: ["Women Researcher Excellence Award 2023"],
+                awards: ["Best Faculty in Cyber Security Research 2021"],
+                memberships: ["ACM Member", "IEEE Computer Society"],
+                adminRoles: ["Exam Incharge", "NBA Coordinator"],
+                downloadsList: [
+                    { name: "Academic CV", size: "900 KB", link: "#" }
+                ],
+                gallery: [
+                    "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400"
+                ],
+                officeHours: "Tuesday & Thursday: 2:00 PM - 5:00 PM"
+            },
+            {
+                id: 3,
+                name: "Prof. Anil B. Jadhav",
+                designation: "Assistant Professor",
+                qualification: "M.Tech, Ph.D. Pursuing",
+                department: "Department of Computer Science",
+                experience: "10 Years",
+                experienceYears: 10,
+                specialization: "Cloud Computing & DevOps",
+                email: "anil.jadhav@shivajicollege.edu",
+                phone: "+91 97665 33442",
+                officeNumber: "Cabin 108, CS Building",
+                researchInterests: "Cloud Resource Allocation, Containerization, Distributed Systems",
+                googleScholar: "https://scholar.google.com",
+                researchGate: "https://researchgate.net",
+                linkedIn: "https://linkedin.com",
+                orcid: "https://orcid.org",
+                photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600",
+                bio: "Prof. Anil B. Jadhav is an energetic Assistant Professor focused on Cloud Architectures and scalable system software development.",
+                summary: "Expert in modern cloud technologies, serverless architecture, and automated CI/CD pipelines.",
+                languagesKnown: "English, Marathi, Hindi",
+                education: [
+                    { degree: "M.Tech in Software Engineering", university: "VJTI Mumbai", year: "2015", cgpa: "8.5 CGPA" },
+                    { degree: "B.Tech in Computer Science", university: "Dr. B.A.M.U.", year: "2013", cgpa: "81%" }
+                ],
+                teachingOverview: "Hands-on instruction of cloud platforms, Linux kernel programming, and container orchestration tools.",
+                subjects: ["Cloud Computing", "Operating Systems", "Data Structures & Algorithms"],
+                feedbackScore: "4.7 / 5.0",
+                activeResearch: "Energy-efficient container migration policies in edge cloud data centers.",
+                collaborations: "AWS Educate institutional lead.",
+                publications: [
+                    { title: "Performance Analysis of Serverless Containers", journal: "IEEE Cloud Computing", year: "2023", type: "Journal" }
+                ],
+                projects: [
+                    { title: "Automated Campus Cloud Infrastructure Setup", agency: "Institutional Grant", budget: "â‚¹5 Lakhs", duration: "1 Year" }
+                ],
+                patents: [],
+                coursesList: ["AWS Certified Solutions Architect", "NPTEL Cloud Computing Lead Instructor"],
+                achievements: ["Outstanding Teacher Award 2022"],
+                awards: ["Best Mentor in Hackathons 2023"],
+                memberships: ["CSI Member", "ISTE Life Member"],
+                adminRoles: ["Website Coordinator", "Time Table Incharge"],
+                downloadsList: [
+                    { name: "Faculty Resume", size: "800 KB", link: "#" }
+                ],
+                gallery: [
+                    "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=400"
+                ],
+                officeHours: "Monday, Wednesday: 11:00 AM - 2:00 PM"
+            },
+            {
+                id: 4,
+                name: "Dr. Pooja S. Shinde",
+                designation: "Assistant Professor",
+                qualification: "Ph.D. in Data Science",
+                department: "Department of Computer Science",
+                experience: "8 Years",
+                experienceYears: 8,
+                specialization: "Data Science & Big Data",
+                email: "pooja.shinde@shivajicollege.edu",
+                phone: "+91 95521 11223",
+                officeNumber: "Cabin 110, CS Building",
+                researchInterests: "Predictive Modeling, Natural Language Processing, Data Mining",
+                googleScholar: "https://scholar.google.com",
+                researchGate: "https://researchgate.net",
+                linkedIn: "https://linkedin.com",
+                orcid: "https://orcid.org",
+                photo: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=600",
+                bio: "Dr. Pooja S. Shinde specializes in Data Science and Natural Language Processing algorithms for Indic languages.",
+                summary: "Active researcher with publications in top-tier data analytics journals and extensive coding bootcamp coordination.",
+                languagesKnown: "English, Marathi, Hindi",
+                education: [
+                    { degree: "Ph.D. in Data Science", university: "NIT Nagpur", year: "2020", cgpa: "Distinction" },
+                    { degree: "MCA", university: "Pune University", year: "2016", cgpa: "9.0 CGPA" }
+                ],
+                teachingOverview: "Focuses on Python programming, statistical modeling, and real-world data visualization techniques.",
+                subjects: ["Python for Data Science", "Big Data Analytics", "Database Management Systems"],
+                feedbackScore: "4.9 / 5.0",
+                activeResearch: "Sentiment analysis models for regional language social media feeds.",
+                collaborations: "Data science industry mentorship programs.",
+                publications: [
+                    { title: "Sentiment Analysis in Marathi Text Using Deep Transformers", journal: "ACM Transactions on Asian Language Processing", year: "2024", type: "Journal" }
+                ],
+                projects: [
+                    { title: "Regional Language NLP Corpus Generation", agency: "AICTE", budget: "â‚¹10 Lakhs", duration: "2 Years" }
+                ],
+                patents: [],
+                coursesList: ["Python Institute Certified Associate", "Tableau Academic Partner"],
+                achievements: ["Young Scientist Award 2021"],
+                awards: ["Excellence in Research Publication 2023"],
+                memberships: ["ACM Member"],
+                adminRoles: ["NAAC Criterion III Member", "Women Grievance Cell Co-coordinator"],
+                downloadsList: [
+                    { name: "Detailed CV", size: "750 KB", link: "#" }
+                ],
+                gallery: [],
+                officeHours: "Wednesday & Friday: 3:00 PM - 5:00 PM"
+            },
+            {
+                id: 5,
+                name: "Prof. Kiran M. Joshi",
+                designation: "Visiting Faculty",
+                qualification: "M.Tech in Software Engineering",
+                department: "Department of Computer Science",
+                experience: "12 Years",
+                experienceYears: 12,
+                specialization: "Full Stack & Enterprise Architecture",
+                email: "kiran.joshi@shivajicollege.edu",
+                phone: "+91 98811 55667",
+                officeNumber: "Cabin 115, CS Building",
+                researchInterests: "Microservices Architecture, Enterprise Application Integration",
+                googleScholar: "https://scholar.google.com",
+                researchGate: "https://researchgate.net",
+                linkedIn: "https://linkedin.com",
+                orcid: "https://orcid.org",
+                photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=600",
+                bio: "Prof. Kiran M. Joshi is a seasoned industry architect and visiting faculty bringing cutting-edge software engineering practices into the classroom.",
+                summary: "Brings over a decade of corporate software development experience building scalable enterprise products.",
+                languagesKnown: "English, Marathi",
+                education: [
+                    { degree: "M.Tech in Software Systems", university: "BITS Pilani", year: "2014", cgpa: "8.7 CGPA" },
+                    { degree: "B.E. Computer Engineering", university: "BATU", year: "2012", cgpa: "78%" }
+                ],
+                teachingOverview: "Delivers intensive practical modules on enterprise software stack and modern web frameworks.",
+                subjects: ["Full Stack Web Development", "Enterprise Java", "Software Architecture"],
+                feedbackScore: "4.8 / 5.0",
+                activeResearch: "Design patterns for distributed microservice robustness.",
+                collaborations: "Tech Lead at Global Software Solutions.",
+                publications: [
+                    { title: "Scalability Challenges in Microservice Migration", journal: "IEEE Software", year: "2022", type: "Journal" }
+                ],
+                projects: [],
+                patents: [],
+                coursesList: ["Certified Kubernetes Administrator", "Spring Professional"],
+                achievements: ["Industry Expert Lecture Series Lead"],
+                awards: ["Corporate Innovation Award 2020"],
+                memberships: ["CSI Member"],
+                adminRoles: ["Industry-Academia Interface Coordinator"],
+                downloadsList: [
+                    { name: "Industry CV", size: "600 KB", link: "#" }
+                ],
+                gallery: [],
+                officeHours: "Saturday: 10:00 AM - 1:00 PM"
+            }
+        ];
+
+        // DOM Elements
+        const gridContainer = document.getElementById('dept-faculty-grid-container');
+        const searchInput = document.getElementById('dept-faculty-search-input');
+        const designationFilter = document.getElementById('dept-faculty-filter-designation');
+        const qualificationFilter = document.getElementById('dept-faculty-filter-qualification');
+        const researchFilter = document.getElementById('dept-faculty-filter-research');
+        const experienceFilter = document.getElementById('dept-faculty-filter-experience');
+        const sortSelect = document.getElementById('dept-faculty-sort-select');
+        const gridViewBtn = document.getElementById('dept-faculty-grid-view-btn');
+        const listViewBtn = document.getElementById('dept-faculty-list-view-btn');
+
+        // Stat Counters
+        const totalCountEl = document.getElementById('dept-faculty-total-count');
+        const profCountEl = document.getElementById('dept-faculty-prof-count');
+        const assocCountEl = document.getElementById('dept-faculty-assoc-count');
+        const asstCountEl = document.getElementById('dept-faculty-asst-count');
+        const visitingCountEl = document.getElementById('dept-faculty-visiting-count');
+
+        // Modal Elements
+        const profileModal = document.getElementById('dept-faculty-profile-modal');
+        const modalCloseBtn = document.getElementById('dept-faculty-modal-close-btn');
+
+        // Initialize Stats
+        function updateStats(data) {
+            totalCountEl.textContent = data.length;
+            profCountEl.textContent = data.filter(f => f.designation.includes('Professor') && !f.designation.includes('Associate') && !f.designation.includes('Assistant')).length;
+            assocCountEl.textContent = data.filter(f => f.designation.includes('Associate')).length;
+            asstCountEl.textContent = data.filter(f => f.designation.includes('Assistant')).length;
+            visitingCountEl.textContent = data.filter(f => f.designation.includes('Visiting')).length;
+        }
+
+        // Render Faculty Cards
+        function renderFacultyCards(data) {
+            gridContainer.innerHTML = '';
+            if (data.length === 0) {
+                gridContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 30px; color: var(--dept-faculty-text-muted);">No faculty members found matching your criteria.</p>';
+                return;
+            }
+
+            data.forEach(faculty => {
+                const card = document.createElement('div');
+                card.className = 'dept-faculty-card';
+                card.innerHTML = `
+                    <div class="dept-faculty-photo-wrapper">
+                        <img src="${faculty.photo}" alt="${faculty.name}" class="dept-faculty-photo">
+                    </div>
+                    <div class="dept-faculty-card-content">
+                        <h3 class="dept-faculty-name">${faculty.name}</h3>
+                        <div class="dept-faculty-designation">${faculty.designation}</div>
+                        <div class="dept-faculty-meta-info">
+                            <span><i class="fas fa-graduation-cap"></i> ${faculty.qualification}</span>
+                            <span><i class="fas fa-briefcase"></i> Experience: ${faculty.experience}</span>
+                            <span><i class="fas fa-envelope"></i> ${faculty.email}</span>
+                        </div>
+                        <span class="dept-faculty-specialization">${faculty.specialization}</span>
+                        <div class="dept-faculty-social-icons">
+                            <a href="${faculty.googleScholar}" target="_blank" class="dept-faculty-social-icon" title="Google Scholar"><i class="fab fa-google"></i></a>
+                            <a href="${faculty.orcid}" target="_blank" class="dept-faculty-social-icon" title="ORCID"><i class="fab fa-orcid"></i></a>
+                            <a href="${faculty.linkedIn}" target="_blank" class="dept-faculty-social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                        <div class="dept-faculty-card-actions">
+                            <button class="dept-faculty-btn dept-faculty-btn-primary dept-faculty-profile-trigger" data-id="${faculty.id}"><i class="fas fa-user-circle"></i> Full Profile</button>
+                            <a href="mailto:${faculty.email}" class="dept-faculty-btn dept-faculty-btn-outline"><i class="fas fa-paper-plane"></i> Email</a>
+                        </div>
+                    </div>
+                `;
+                gridContainer.appendChild(card);
+            });
+
+            // Bind profile click triggers
+            document.querySelectorAll('.dept-faculty-profile-trigger').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const facultyId = parseInt(e.currentTarget.getAttribute('data-id'));
+                    openFacultyProfileModal(facultyId);
+                });
+            });
+        }
+
+        // Filter and Sort Logic
+        function filterAndSortFaculty() {
+            let result = [...deptFacultyData];
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            const desigVal = designationFilter.value;
+            const qualVal = qualificationFilter.value;
+            const resVal = researchFilter.value;
+            const expVal = experienceFilter.value;
+            const sortVal = sortSelect.value;
+
+            // Search
+            if (searchTerm) {
+                result = result.filter(f => 
+                    f.name.toLowerCase().includes(searchTerm) ||
+                    f.qualification.toLowerCase().includes(searchTerm) ||
+                    f.specialization.toLowerCase().includes(searchTerm) ||
+                    f.researchInterests.toLowerCase().includes(searchTerm)
+                );
+            }
+
+            // Designation Filter
+            if (desigVal) {
+                result = result.filter(f => f.designation.includes(desigVal));
+            }
+
+            // Qualification Filter
+            if (qualVal) {
+                result = result.filter(f => f.qualification.includes(qualVal));
+            }
+
+            // Research Filter
+            if (resVal) {
+                result = result.filter(f => f.specialization.includes(resVal) || f.researchInterests.includes(resVal));
+            }
+
+            // Experience Filter
+            if (expVal) {
+                const minExp = parseInt(expVal);
+                result = result.filter(f => f.experienceYears >= minExp);
+            }
+
+            // Sort
+            result.sort((a, b) => {
+                if (sortVal === 'name') {
+                    return a.name.localeCompare(b.name);
+                } else if (sortVal === 'experience') {
+                    return b.experienceYears - a.experienceYears;
+                } else if (sortVal === 'qualification') {
+                    return a.qualification.localeCompare(b.qualification);
+                }
+                return 0;
+            });
+
+            renderFacultyCards(result);
+        }
+
+        // Event Listeners for Filters
+        searchInput.addEventListener('input', filterAndSortFaculty);
+        designationFilter.addEventListener('change', filterAndSortFaculty);
+        qualificationFilter.addEventListener('change', filterAndSortFaculty);
+        researchFilter.addEventListener('change', filterAndSortFaculty);
+        experienceFilter.addEventListener('change', filterAndSortFaculty);
+        sortSelect.addEventListener('change', filterAndSortFaculty);
+
+        // View Toggles
+        gridViewBtn.addEventListener('click', () => {
+            gridViewBtn.classList.add('active');
+            listViewBtn.classList.remove('active');
+            gridContainer.classList.remove('list-view');
+        });
+
+        listViewBtn.addEventListener('click', () => {
+            listViewBtn.classList.add('active');
+            gridViewBtn.classList.remove('active');
+            gridContainer.classList.add('list-view');
+        });
+
+        // Open Full Profile Modal and Populate Data
+        function openFacultyProfileModal(id) {
+            const faculty = deptFacultyData.find(f => f.id === id);
+            if (!faculty) return;
+
+            // Header Info
+            document.getElementById('dept-modal-avatar').src = faculty.photo;
+            document.getElementById('dept-modal-name').textContent = faculty.name;
+            document.getElementById('dept-modal-designation').textContent = faculty.designation;
+            document.querySelector('#dept-modal-qual .val').textContent = faculty.qualification;
+            document.querySelector('#dept-modal-exp .val').textContent = faculty.experience;
+            document.querySelector('#dept-modal-dept .val').textContent = faculty.department;
+
+            // Sidebar Metrics
+            document.getElementById('sidebar-stat-exp').textContent = faculty.experience;
+            document.getElementById('sidebar-stat-pubs').textContent = faculty.publications.length;
+            document.getElementById('sidebar-stat-proj').textContent = faculty.projects.length;
+            document.getElementById('sidebar-stat-pat').textContent = faculty.patents.length;
+            document.getElementById('sidebar-stat-awd').textContent = faculty.awards.length;
+
+            // Sidebar Links
+            document.getElementById('sidebar-link-scholar').href = faculty.googleScholar;
+            document.getElementById('sidebar-link-researchgate').href = faculty.researchGate;
+            document.getElementById('sidebar-link-linkedin').href = faculty.linkedIn;
+            document.getElementById('sidebar-link-orcid').href = faculty.orcid;
+
+            // Tab 1: Overview
+            document.getElementById('dept-bio-text').textContent = faculty.bio;
+            document.getElementById('dept-summary-text').textContent = faculty.summary;
+            document.getElementById('dept-research-interests-text').textContent = faculty.researchInterests;
+            document.getElementById('dept-languages-text').textContent = faculty.languagesKnown;
+
+            // Tab 2: Education
+            const eduTimeline = document.getElementById('dept-education-timeline');
+            eduTimeline.innerHTML = '';
+            faculty.education.forEach(edu => {
+                const item = document.createElement('div');
+                item.className = 'dept-faculty-timeline-item';
+                item.innerHTML = `
+                    <strong>${edu.degree}</strong>
+                    <div style="font-size: 0.85rem; color: var(--dept-faculty-text-muted);">${edu.university} (${edu.year})</div>
+                    <div style="font-size: 0.8rem; color: var(--dept-faculty-primary);">Performance: ${edu.cgpa}</div>
+                `;
+                eduTimeline.appendChild(item);
+            });
+
+            // Tab 3: Teaching
+            document.getElementById('dept-teaching-overview').textContent = faculty.teachingOverview;
+            const subList = document.getElementById('dept-subjects-list');
+            subList.innerHTML = '';
+            faculty.subjects.forEach(sub => {
+                const li = document.createElement('li');
+                li.textContent = sub;
+                subList.appendChild(li);
+            });
+            document.getElementById('dept-feedback-text').textContent = faculty.feedbackScore;
+
+            // Tab 4: Research
+            document.getElementById('dept-active-research-text').textContent = faculty.activeResearch;
+            document.getElementById('dept-collaborations-text').textContent = faculty.collaborations;
+
+            // Tab 5: Publications
+            const pubContainer = document.getElementById('dept-publications-container');
+            pubContainer.innerHTML = '';
+            faculty.publications.forEach(pub => {
+                const p = document.createElement('div');
+                p.style.marginBottom = '10px';
+                p.style.padding = '10px';
+                p.style.background = '#f8f9fa';
+                p.style.border = '1px solid var(--dept-faculty-border)';
+                p.innerHTML = `<strong>${pub.title}</strong><div style="font-size: 0.8rem; color: var(--dept-faculty-text-muted);">${pub.journal} - ${pub.year} (${pub.type})</div>`;
+                pubContainer.appendChild(p);
+            });
+
+            // Tab 6: Projects
+            const projContainer = document.getElementById('dept-projects-container');
+            projContainer.innerHTML = '';
+            if (faculty.projects.length === 0) {
+                projContainer.innerHTML = '<p style="color: var(--dept-faculty-text-muted);">No active projects listed.</p>';
+            } else {
+                faculty.projects.forEach(proj => {
+                    const pr = document.createElement('div');
+                    pr.style.marginBottom = '10px';
+                    pr.style.padding = '10px';
+                    pr.style.background = '#f8f9fa';
+                    pr.style.border = '1px solid var(--dept-faculty-border)';
+                    pr.innerHTML = `<strong>${proj.title}</strong><div style="font-size: 0.8rem; color: var(--dept-faculty-text-muted);">Agency: ${proj.agency} | Budget: ${proj.budget} | Duration: ${proj.duration}</div>`;
+                    projContainer.appendChild(pr);
+                });
+            }
+
+            // Tab 7: Patents
+            const patContainer = document.getElementById('dept-patents-container');
+            patContainer.innerHTML = '';
+            if (faculty.patents.length === 0) {
+                patContainer.innerHTML = '<p style="color: var(--dept-faculty-text-muted);">No patents filed yet.</p>';
+            } else {
+                faculty.patents.forEach(pat => {
+                    const pt = document.createElement('div');
+                    pt.style.marginBottom = '10px';
+                    pt.style.padding = '10px';
+                    pt.style.background = '#f8f9fa';
+                    pt.style.border = '1px solid var(--dept-faculty-border)';
+                    pt.innerHTML = `<strong>${pat.name}</strong><div style="font-size: 0.8rem; color: var(--dept-faculty-text-muted);">Status: ${pat.status} | Year: ${pat.year} | Patent No: ${pat.number}</div>`;
+                    patContainer.appendChild(pt);
+                });
+            }
+
+            // Tab 8: Courses
+            const coursesContainer = document.getElementById('dept-courses-container');
+            coursesContainer.innerHTML = '<ul style="padding-left: 20px;">' + faculty.coursesList.map(c => `<li>${c}</li>`).join('') + '</ul>';
+
+            // Tab 9: Achievements
+            const achList = document.getElementById('dept-achievements-list');
+            achList.innerHTML = faculty.achievements.map(a => `<li>${a}</li>`).join('');
+
+            // Tab 10: Awards
+            const awdList = document.getElementById('dept-awards-list');
+            awdList.innerHTML = faculty.awards.map(aw => `<li>${aw}</li>`).join('');
+
+            // Tab 11: Memberships
+            const membList = document.getElementById('dept-memberships-list');
+            membList.innerHTML = faculty.memberships.map(m => `<li>${m}</li>`).join('');
+
+            // Tab 12: Admin Roles
+            const adminList = document.getElementById('dept-admin-list');
+            adminList.innerHTML = faculty.adminRoles.map(ad => `<li>${ad}</li>`).join('');
+
+            // Tab 13: Downloads
+            const downContainer = document.getElementById('dept-downloads-container');
+            downContainer.innerHTML = '';
+            faculty.downloadsList.forEach(dl => {
+                const link = document.createElement('a');
+                link.href = dl.link;
+                link.className = 'dept-faculty-btn dept-faculty-btn-outline';
+                link.innerHTML = `<i class="fas fa-download"></i> ${dl.name} (${dl.size})`;
+                downContainer.appendChild(link);
+            });
+
+            // Tab 14: Gallery
+            const galleryGrid = document.getElementById('dept-gallery-grid');
+            galleryGrid.innerHTML = '';
+            if (faculty.gallery.length === 0) {
+                galleryGrid.innerHTML = '<p style="color: var(--dept-faculty-text-muted);">No gallery images available.</p>';
+            } else {
+                faculty.gallery.forEach(imgUrl => {
+                    const img = document.createElement('img');
+                    img.src = imgUrl;
+                    img.className = 'dept-faculty-gallery-img';
+                    galleryGrid.appendChild(img);
+                });
+            }
+
+            // Tab 15: Contact
+            document.getElementById('dept-contact-office').innerHTML = `<strong>Office Address:</strong> ${faculty.officeNumber}, Department of Computer Science, Shri Shivaji College, Parbhani, Maharashtra - 431401.<br><strong>Email:</strong> ${faculty.email}<br><strong>Phone:</strong> ${faculty.phone}`;
+            document.getElementById('dept-contact-hours').innerHTML = `<strong>Office Hours:</strong> ${faculty.officeHours}`;
+
+            // Reset modal tabs to first tab (Overview)
+            document.querySelectorAll('.dept-faculty-tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.dept-faculty-tab-pane').forEach(p => p.classList.remove('active'));
+            document.querySelector('.dept-faculty-tab-btn[data-tab="overview"]').classList.add('active');
+            document.getElementById('tab-overview').classList.add('active');
+
+            // Open Modal
+            profileModal.classList.add('active');
+            document.body.classList.add('dept-faculty-body-locked');
+        }
+
+        // Close Modal Functions
+        function closeFacultyModal() {
+            profileModal.classList.remove('active');
+            document.body.classList.remove('dept-faculty-body-locked');
+        }
+
+        modalCloseBtn.addEventListener('click', closeFacultyModal);
+        profileModal.addEventListener('click', (e) => {
+            if (e.target === profileModal) {
+                closeFacultyModal();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && profileModal.classList.contains('active')) {
+                closeFacultyModal();
+            }
+        });
+
+        // Tab Navigation inside Modal
+        const modalTabButtons = document.querySelectorAll('.dept-faculty-tab-btn');
+        modalTabButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetTab = btn.getAttribute('data-tab');
+
+                modalTabButtons.forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.dept-faculty-tab-pane').forEach(p => p.classList.remove('active'));
+
+                btn.classList.add('active');
+                document.getElementById(`tab-${targetTab}`).classList.add('active');
+            });
+        });
+
+        // Initialize Page on Load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStats(deptFacultyData);
+            renderFacultyCards(deptFacultyData);
+        });
+    </script>
+</body>
+</html>

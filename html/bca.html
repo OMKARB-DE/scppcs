@@ -1,0 +1,660 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bachelor of Computer Applications | Department of Computer Science | Shri Shivaji College, Parbhani</title>
+
+  <!-- Department Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/dept-logo3.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/dept-logo3.png">
+
+    <!-- Apple / Mobile -->
+    <link rel="apple-touch-icon" href="../images/dept-logo3.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../css/courses.css" />
+</head>
+<body>
+
+
+    <!-- HEADER COMPONENT MOUNT POINT -->
+    <header id="departmentHeader"></header>
+
+
+
+  <!-- ================= HERO / BANNER ================= -->
+  <section class="hero" id="hero">
+    <div class="dot-grid" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+
+      <!-- ---------- Left : copy ---------- -->
+      <div class="hero-copy">
+        <span class="badge" data-animate>
+          <i class="fa-solid fa-circle-check"></i>
+          Admissions Open 2026-27
+        </span>
+
+        <h1 class="title" data-animate>
+          <span class="title-dark">Bachelor of</span>
+          <span class="title-green">Computer<br />Applications</span>
+        </h1>
+
+        <div class="heading-rule" data-animate></div>
+
+        <p class="lead" data-animate>
+          Build your career in Software Development, Artificial Intelligence,
+          Cloud Computing, Cyber Security and Data Science with an
+          industry-oriented curriculum.
+        </p>
+
+        <div class="cta-row" data-animate>
+          <button class="btn btn-primary" id="applyBtn" type="button">
+            <i class="fa-solid fa-graduation-cap"></i>
+            Apply Now
+          </button>
+          <button class="btn btn-outline" id="brochureBtn" type="button">
+            <i class="fa-solid fa-download"></i>
+            Download Brochure
+          </button>
+        </div>
+
+        <!-- ---------- Stat cards ---------- -->
+        <div class="stats">
+          <div class="stat-card" data-animate>
+            <div class="stat-icon"><i class="fa-solid fa-calendar-days"></i></div>
+            <div class="stat-num" data-target="3" data-suffix="">0</div>
+            <div class="stat-label">Years</div>
+            <div class="stat-bar"></div>
+            <div class="stat-sub">Duration</div>
+          </div>
+
+          <div class="stat-card" data-animate>
+            <div class="stat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="stat-num" data-target="6" data-suffix="">0</div>
+            <div class="stat-label">Semesters</div>
+            <div class="stat-bar"></div>
+            <div class="stat-sub">Program</div>
+          </div>
+
+          <div class="stat-card" data-animate>
+            <div class="stat-icon"><i class="fa-solid fa-user-group"></i></div>
+            <div class="stat-num" data-target="60" data-suffix="">0</div>
+            <div class="stat-label">Intake</div>
+            <div class="stat-bar"></div>
+            <div class="stat-sub">Seats</div>
+          </div>
+
+          <div class="stat-card" data-animate>
+            <div class="stat-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+            <div class="stat-num" data-target="100" data-suffix="%">0</div>
+            <div class="stat-label">Placement</div>
+            <div class="stat-bar"></div>
+            <div class="stat-sub">Assistance</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---------- Right : student + floating chips ---------- -->
+      <div class="stage" data-animate>
+        <div class="circle" aria-hidden="true"></div>
+
+        <svg class="ring" viewBox="0 0 620 620" aria-hidden="true">
+          <circle cx="310" cy="310" r="282" fill="none"
+                  stroke="#16a34a" stroke-opacity=".35" stroke-width="2"
+                  stroke-dasharray="3 16" stroke-linecap="round" />
+        </svg>
+
+        
+
+        <!-- Floating tech chips -->
+        <div class="chip-wrap wrap-python" data-depth="1.5">
+          <div class="chip" style="animation-delay:.1s">
+            <span class="chip-icon"><i class="fa-brands fa-python"></i></span>Python
+          </div>
+        </div>
+        <div class="chip-wrap wrap-coding" data-depth="1.1">
+          <div class="chip" style="animation-delay:.7s">
+            <span class="chip-icon"><i class="fa-solid fa-code"></i></span>Coding
+          </div>
+        </div>
+        <div class="chip-wrap wrap-cloud" data-depth="1.8">
+          <div class="chip" style="animation-delay:1.3s">
+            <span class="chip-icon"><i class="fa-solid fa-cloud"></i></span>Cloud&nbsp;Computing
+          </div>
+        </div>
+        <div class="chip-wrap wrap-db" data-depth="1.2">
+          <div class="chip" style="animation-delay:.4s">
+            <span class="chip-icon"><i class="fa-solid fa-database"></i></span>Database
+          </div>
+        </div>
+        <div class="chip-wrap wrap-ai" data-depth="1.6">
+          <div class="chip" style="animation-delay:1s">
+            <span class="chip-icon"><i class="fa-solid fa-brain"></i></span>Artificial Intelligence&nbsp;&amp;&nbsp;Machine Learning
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status"></div>
+
+  
+<section class="course-section">
+
+<div class="container">
+
+<!-- Heading -->
+
+
+
+<!-- Tabs -->
+
+<div class="tabs">
+
+<button class="tab active" data-tab="overview">
+
+<i class="fa-solid fa-circle-info"></i>
+
+Overview
+
+</button>
+
+<button class="tab" data-tab="eligibility">
+
+<i class="fa-solid fa-user-check"></i>
+
+Eligibility
+
+</button>
+
+<button class="tab" data-tab="curriculum">
+
+<i class="fa-solid fa-book-open"></i>
+
+Curriculum
+
+</button>
+
+<button class="tab" data-tab="fees">
+
+<i class="fa-solid fa-indian-rupee-sign"></i>
+
+Fees
+
+</button>
+
+<button class="tab" data-tab="admission">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+Admission
+
+</button>
+
+<button class="tab" data-tab="career">
+
+<i class="fa-solid fa-briefcase"></i>
+
+Career
+
+</button>
+
+<button class="tab" data-tab="faq">
+
+<i class="fa-solid fa-circle-question"></i>
+
+FAQ
+
+</button>
+
+</div>
+
+<!-- ============================= -->
+
+<!-- Overview -->
+
+<!-- ============================= -->
+
+<div class="tab-content active" id="overview">
+
+<table>
+
+<tr>
+
+<th>Course Name</th>
+
+<td>Bachelor of Computer Applications (BCA)</td>
+
+</tr>
+
+<tr>
+
+<th>Duration</th>
+
+<td>3 Years (6 Semesters)</td>
+
+</tr>
+
+<tr>
+
+<th>Eligibility</th>
+
+<td>12th Pass (Any Stream)</td>
+
+</tr>
+
+<tr>
+
+<th>Intake Capacity</th>
+
+<td>60 Seats</td>
+
+</tr>
+
+<tr>
+
+<th>Admission Type</th>
+
+<td>MH CET/ Through CAP</td>
+
+</tr>
+
+<tr>
+
+<th>Medium</th>
+
+<td>English</td>
+
+</tr>
+
+<tr>
+
+<th>Affiliation</th>
+
+<td>AICTE,Swami Ramanand Teerth Marathwada University, Nanded</td>
+
+</tr>
+
+
+
+</table>
+
+</div>
+
+<!-- ============================= -->
+
+<!-- Eligibility -->
+
+<!-- ============================= -->
+
+<div class="tab-content" id="eligibility">
+
+<table>
+
+<tr>
+
+<th>Qualification</th>
+
+<td>Higher Secondary (12th)</td>
+
+</tr>
+
+<tr>
+
+<th>Stream</th>
+
+<td>Any Stream</td>
+
+</tr>
+
+<tr>
+
+<th>Minimum Marks</th>
+
+<td>As per University Norms</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Reservation</th>
+
+<td>As per Government Rules</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- ============================= -->
+
+<!-- Curriculum -->
+
+<!-- ============================= -->
+
+<div class="tab-content" id="curriculum">
+
+<div class="accordion">
+
+    <div class="accordion-item">
+
+        <button class="accordion-header">
+
+            <span>Semester I</span>
+
+            <i class="fas fa-plus"></i>
+
+        </button>
+
+        <div class="accordion-content">
+
+            <ul>
+                <li>Programming Fundamentals</li>
+                <li>Digital Electronics</li>
+                <li>Mathematics-I</li>
+                <li>Communication Skills</li>
+                <li>Practical Lab</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="accordion-item">
+
+        <button class="accordion-header">
+
+            <span>Semester II</span>
+
+            <i class="fas fa-plus"></i>
+
+        </button>
+
+        <div class="accordion-content">
+
+            <ul>
+
+                <li>Data Structures</li>
+                <li>Database Management System</li>
+                <li>Computer Organization</li>
+                <li>Environmental Studies</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- ============================= -->
+
+<!-- Fees -->
+
+<!-- ============================= -->
+
+<div class="tab-content" id="fees">
+
+<table>
+
+<tr>
+
+<th>Tuition Fee</th>
+
+<td>17,600</td>
+
+</tr>
+
+<tr>
+
+<th>Laboratory Fees</th>
+
+<td>1,500</td>
+
+</tr>
+
+<tr>
+
+<th>Other Fees</th>
+
+<td>2,246</td>
+
+</tr>
+
+<tr>
+
+<th>Total Fee</th>
+
+<td>21,346</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- ============================= -->
+
+<!-- Admission -->
+
+<!-- ============================= -->
+
+<div class="tab-content" id="admission">
+
+<table>
+
+<tr>
+
+<th>Admission Mode</th>
+
+<td>Online / Offline</td>
+
+</tr>
+
+<tr>
+
+<th>Selection</th>
+
+<td>MH CET/ Through CAP Round</td>
+
+</tr>
+
+<tr>
+
+<th>Required Documents</th>
+
+<td>As Per MH CET Guidelines</td>
+
+</tr>
+
+<tr>
+
+<th>Contact</th>
+
+<td>Prof. Sandip M. Surve</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- ============================= -->
+
+<!-- Career -->
+
+<!-- ============================= -->
+
+<div class="tab-content" id="career">
+
+<table>
+
+<tr>
+
+<th>Career Options</th>
+
+<td>
+
+Software Developer, Web Developer, Data Analyst, Cloud Engineer,
+
+Cyber Security Analyst, Mobile App Developer, Database Administrator
+
+</td>
+
+</tr>
+
+<tr>
+
+<th>Higher Studies</th>
+
+<td>MCA, MSc CS, MBA, MSc IT</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- ============================= -->
+
+<!-- FAQ -->
+
+<!-- ============================= -->
+
+<div class="tab-content" id="faq">
+
+<div class="accordion">
+
+<div class="accordion-item">
+
+<button class="accordion-header">
+
+<span>Who can apply for BCA?</span>
+
+<i class="fas fa-plus"></i>
+
+</button>
+
+<div class="accordion-content">
+
+<p>
+
+Students who have passed HSC (12th) from any recognized board.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="accordion-item">
+
+<button class="accordion-header">
+
+<span>Is Mathematics compulsory?</span>
+
+<i class="fas fa-plus"></i>
+
+</button>
+
+<div class="accordion-content">
+
+<p>
+
+No. Students from any stream are eligible as per university rules.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+    <!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentFooter"></footer>`r`n`r`n    <!-- HEADER COMPONENT LOADER SCRIPT -->`r`n    <script src="../js/footer.js"></script>`r`n`r`n    <!-- SCRIPTS -->
+    <script>
+        // Load Footer Component
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/footer.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentFooter").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/footer.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentFooter === 'function') {
+                        loadDepartmentFooter();
+                    }
+                })
+                .catch(err => console.error("Error loading footer component:", err));
+        });
+    </script>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentHeader === 'function') {
+                        loadDepartmentHeader();
+                    }
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+
+<!-- =========================
+        FOOTER END
+========================= -->
+
+  <!-- Script -->
+  <script src="../js/courses.js"></script>
+</body>
+</html>
+

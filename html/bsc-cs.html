@@ -1,0 +1,766 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>B.Sc. Computer Science | Department of Computer Science | Shri Shivaji College, Parbhani</title>
+
+  <!-- Department Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/dept-logo3.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/dept-logo3.png">
+
+    <!-- Apple / Mobile -->
+    <link rel="apple-touch-icon" href="../images/dept-logo3.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="../css/courses.css" />
+</head>
+<body>
+
+
+
+       <!-- HEADER COMPONENT MOUNT POINT -->
+    <header id="departmentHeader"></header>
+
+
+  
+
+
+
+  <!-- ================= HERO / BANNER ================= -->
+  <section class="hero" id="hero">
+    <div class="dot-grid" aria-hidden="true"></div>
+
+    <div class="hero-inner">
+
+      <!-- ---------- Left : copy ---------- -->
+      <div class="hero-copy">
+        <span class="badge" data-animate>
+          <i class="fa-solid fa-circle-check"></i>
+          Admissions Open 2026-27
+        </span>
+
+        <h1 class="title" data-animate>
+          <span class="title-dark">B.Sc.</span>
+          <span class="title-green">Computer<br />Science</span>
+        </h1>
+
+        <div class="heading-rule" data-animate></div>
+
+        <p class="lead" data-animate>
+          Gain solid foundational knowledge in programming, core algorithms, database systems, 
+          and advanced computing models under the NEP-2020 curriculum framework of SRTMUN.
+        </p>
+
+        <div class="cta-row" data-animate>
+          <button class="btn btn-primary" id="applyBtn" type="button">
+            <i class="fa-solid fa-graduation-cap"></i>
+            Apply Now
+          </button>
+          <button class="btn btn-outline" id="brochureBtn" type="button">
+            <i class="fa-solid fa-download"></i>
+            Download Brochure
+          </button>
+        </div>
+
+        <!-- ---------- Stat cards ---------- -->
+        <div class="stats">
+          <div class="stat-card" data-animate>
+            <div class="stat-icon"><i class="fa-solid fa-calendar-days"></i></div>
+            <div class="stat-num" data-target="3" data-suffix="">0</div>
+            <div class="stat-label">Years</div>
+            <div class="stat-bar"></div>
+            <div class="stat-sub">Duration</div>
+          </div>
+
+          <div class="stat-card" data-animate>
+            <div class="stat-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="stat-num" data-target="6" data-suffix="">0</div>
+            <div class="stat-label">Semesters</div>
+            <div class="stat-bar"></div>
+            <div class="stat-sub">Program</div>
+          </div>
+
+          <div class="stat-card" data-animate>
+            <div class="stat-icon"><i class="fa-solid fa-user-group"></i></div>
+            <div class="stat-num" data-target="80" data-suffix="">0</div>
+            <div class="stat-label">Intake</div>
+            <div class="stat-bar"></div>
+            <div class="stat-sub">Seats</div>
+          </div>
+
+          <div class="stat-card" data-animate>
+            <div class="stat-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+            <div class="stat-num" data-target="100" data-suffix="%">0</div>
+            <div class="stat-label">Placement</div>
+            <div class="stat-bar"></div>
+            <div class="stat-sub">Assistance</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ---------- Right : tech stack + background elements ---------- -->
+      <div class="stage" data-animate>
+        <div class="circle" aria-hidden="true"></div>
+
+        <svg class="ring" viewBox="0 0 620 620" aria-hidden="true">
+          <circle cx="310" cy="310" r="282" fill="none"
+                  stroke="#16a34a" stroke-opacity=".35" stroke-width="2"
+                  stroke-dasharray="3 16" stroke-linecap="round" />
+        </svg>
+
+        <!-- Floating tech chips -->
+        <div class="chip-wrap wrap-python" data-depth="1.5">
+          <div class="chip" style="animation-delay:.1s">
+            <span class="chip-icon"><i class="fa-solid fa-code"></i></span>C / C++
+          </div>
+        </div>
+        <div class="chip-wrap wrap-coding" data-depth="1.1">
+          <div class="chip" style="animation-delay:.7s">
+            <span class="chip-icon"><i class="fa-brands fa-java"></i></span>Java
+          </div>
+        </div>
+        <div class="chip-wrap wrap-cloud" data-depth="1.8">
+          <div class="chip" style="animation-delay:1.3s">
+            <span class="chip-icon"><i class="fa-solid fa-network-wired"></i></span>Networking
+          </div>
+        </div>
+        <div class="chip-wrap wrap-db" data-depth="1.2">
+          <div class="chip" style="animation-delay:.4s">
+            <span class="chip-icon"><i class="fa-solid fa-database"></i></span>Relational Databases
+          </div>
+        </div>
+        <div class="chip-wrap wrap-ai" data-depth="1.6">
+          <div class="chip" style="animation-delay:1s">
+            <span class="chip-icon"><i class="fa-solid fa-shield-halved"></i></span>Cybersecurity
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Toast notification -->
+  <div class="toast" id="toast" role="status"></div>
+
+  
+<section class="course-section">
+
+<div class="container">
+
+<!-- Tabs -->
+
+<div class="tabs">
+
+<button class="tab active" data-tab="overview">
+
+<i class="fa-solid fa-circle-info"></i>
+
+Overview
+
+</button>
+
+<button class="tab" data-tab="eligibility">
+
+<i class="fa-solid fa-user-check"></i>
+
+Eligibility
+
+</button>
+
+<button class="tab" data-tab="curriculum">
+
+<i class="fa-solid fa-book-open"></i>
+
+Curriculum
+
+</button>
+
+<button class="tab" data-tab="fees">
+
+<i class="fa-solid fa-indian-rupee-sign"></i>
+
+Fees
+
+</button>
+
+<button class="tab" data-tab="admission">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+Admission
+
+</button>
+
+<button class="tab" data-tab="career">
+
+<i class="fa-solid fa-briefcase"></i>
+
+Career
+
+</button>
+
+<button class="tab" data-tab="faq">
+
+<i class="fa-solid fa-circle-question"></i>
+
+FAQ
+
+</button>
+
+</div>
+
+<!-- ============================= -->
+
+<!-- Overview -->
+
+<!-- ============================= -->
+
+<div class="tab-content active" id="overview">
+
+<table>
+
+<tr>
+
+<th>Course Name</th>
+
+<td>Bachelor of Science in Computer Science (B.Sc. CS)</td>
+
+</tr>
+
+<tr>
+
+<th>Duration</th>
+
+<td>3 Years (6 Semesters)  Exit Option after 1st/2nd Year as per NEP 2020</td>
+
+</tr>
+
+<tr>
+
+<th>Eligibility</th>
+
+<td>12th Pass (Science Stream preferred with Mathematics / Computer / IT Optional)</td>
+
+</tr>
+
+<tr>
+
+<th>Intake Capacity</th>
+
+<td>80 Students</td>
+
+</tr>
+
+<tr>
+
+<th>Admission Type</th>
+
+<td>Merit Based</td>
+
+</tr>
+
+<tr>
+
+<th>Medium</th>
+
+<td>English</td>
+
+</tr>
+
+<tr>
+
+<th>Affiliation</th>
+
+<td>Swami Ramanand Teerth Marathwada University (SRTMUN), Nanded</td>
+
+</tr>
+
+
+
+</table>
+
+</div>
+
+<!-- ============================= -->
+
+<!-- Eligibility -->
+
+<!-- ============================= -->
+
+<div class="tab-content" id="eligibility">
+
+<table>
+
+<tr>
+
+<th>Qualification</th>
+
+<td>Higher Secondary School Certificate (12th / HSC / equivalent)</td>
+
+</tr>
+
+<tr>
+
+<th>Stream</th>
+
+<td>Science Stream with Mathematics, Physics, Chemistry OR Vocational Computer/IT courses</td>
+
+</tr>
+
+<tr>
+
+<th>Minimum Marks</th>
+
+<td>As per SRTMUN &amp; Government of Maharashtra norms</td>
+
+</tr>
+
+
+
+<tr>
+
+<th>Reservation Benefits</th>
+
+<td>Applicable for reservation category candidates as per state government policy</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- ============================= -->
+
+<!-- Curriculum -->
+
+<!-- ============================= -->
+
+<div class="tab-content" id="curriculum">
+
+<div class="accordion">
+
+    <div class="accordion-item">
+
+        <button class="accordion-header">
+
+            <span>Semester I (NEP-2020)</span>
+
+            <i class="fas fa-plus"></i>
+
+        </button>
+
+        <div class="accordion-content">
+
+            <ul>
+                <li>SBCSC101: Programming in C (Theory)</li>
+                <li>SBCSC102: Operating System (Theory)</li>
+                <li>SBCSG101: Introduction to Information Technology (Generic Elective)</li>
+                <li>SBCSG102: Mathematical Techniques in Computer Science (Generic Elective)</li>
+                <li>SBCSS101: Web Programming using HTML (SEC)</li>
+                <li>SBCSV101: Office Automation (Vocational Course)</li>
+                <li>SBCSC103: Practical Lab on C &amp; OS</li>
+            </ul>
+
+        </div>
+
+    </div>
+
+
+    <div class="accordion-item">
+
+        <button class="accordion-header">
+
+            <span>Semester II (NEP-2020)</span>
+
+            <i class="fas fa-plus"></i>
+
+        </button>
+
+        <div class="accordion-content">
+
+            <ul>
+
+                <li>SBCSC151: OOPs with C++ (Theory)</li>
+                <li>SBCSC152: Computer Network (Theory)</li>
+                <li>SBCSG151: Discrete Mathematics (Generic Elective)</li>
+                <li>SBCSV151: Web Designing &amp; Hosting (Vocational Course)</li>
+                <li>SBCSS151: Python Programming (Skill Enhancement)</li>
+                <li>SBCSC153: Practical Lab on C++ &amp; Networks</li>
+                <li>Co-curricular Activities / Value Education Course (VEC)</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="accordion-item">
+
+        <button class="accordion-header">
+
+            <span>Semester III (NEP-2020)</span>
+
+            <i class="fas fa-plus"></i>
+
+        </button>
+
+        <div class="accordion-content">
+
+            <ul>
+
+                <li>SCSCCT1201: Data Structures using C</li>
+                <li>SCSCCT1202: Programming in C++</li>
+                <li>SDSCMT1201: Programming Logic Concepts (Theory)</li>
+                <li>SDSCGE1201: Cyber Security (Generic Elective)</li>
+                <li>SCSCVSC1201: Web Programming (Vocational Course)</li>
+                <li>SCSCCP1203 &amp; 1204: Practical Lab Courses III &amp; IV</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="accordion-item">
+
+        <button class="accordion-header">
+
+            <span>Semester IV (NEP-2020)</span>
+
+            <i class="fas fa-plus"></i>
+
+        </button>
+
+        <div class="accordion-content">
+
+            <ul>
+
+                <li>SCSCCT1251: Programming in Java</li>
+                <li>SCSCCT1252: Relational Database Management System (RDBMS)</li>
+                <li>SDSCMT1251: Web Technology</li>
+                <li>SDSCGE1251: Data Analysis (Generic Elective)</li>
+                <li>SCSCVSC1251: Web Programming using WordPress (Vocational)</li>
+                <li>SCSCCP1253 &amp; 1254: Practical Lab Courses V &amp; VI</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="accordion-item">
+
+        <button class="accordion-header">
+
+            <span>Semester V (NEP-2020)</span>
+
+            <i class="fas fa-plus"></i>
+
+        </button>
+
+        <div class="accordion-content">
+
+            <ul>
+
+                <li>OCS-301: Software Engineering (Theory)</li>
+                <li>OCS-302 (Elective-A): Programming in Visual Basic</li>
+                <li>OCS-302 (Elective-B): Advanced Java Programming</li>
+                <li>OCS-303 (SEC-III): System Security OR Data Science</li>
+                <li>Practical Lab Course VII (VB / Adv Java Practicals)</li>
+                <li>Vocational / Project Phase-I</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="accordion-item">
+
+        <button class="accordion-header">
+
+            <span>Semester VI (NEP-2020)</span>
+
+            <i class="fas fa-plus"></i>
+
+        </button>
+
+        <div class="accordion-content">
+
+            <ul>
+
+                <li>OCS-304: Software Testing (Theory)</li>
+                <li>OCS-305 (Elective-A): Relational Database Management System</li>
+                <li>OCS-305 (Elective-B): Data Mining</li>
+                <li>OCS-306 (SEC-IV): Website Development OR Image Processing</li>
+                <li>OCS-307: Practical Lab VIII based on Electives</li>
+                <li>OCS-308: Major Project Work / Internship</li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<!-- ============================= -->
+
+<!-- Fees -->
+
+<!-- ============================= -->
+
+<div class="tab-content" id="fees">
+
+<table>
+
+<tr>
+
+<th>Tuition Fee (Per Year)</th>
+
+<td>17,600</td>
+
+</tr>
+
+<tr>
+
+<th>Laboratory Fee</th>
+
+<td>1,500</td>
+
+</tr>
+
+<tr>
+
+<th>Other Fees</th>
+
+<td>2,246</td>
+
+</tr>
+
+<tr>
+
+<th>Total Estimated Fee</th>
+
+<td>21,346</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- ============================= -->
+
+<!-- Admission -->
+
+<!-- ============================= -->
+
+<div class="tab-content" id="admission">
+
+<table>
+
+<tr>
+
+<th>Admission Mode</th>
+
+<td>Direct Physical Admission Desk</td>
+
+</tr>
+
+<tr>
+
+<th>Selection Process</th>
+
+<td>Strict Merit-List calculation based on 12th Percentage Marks</td>
+
+</tr>
+
+<tr>
+
+<th>Required Documents</th>
+
+<td>10th Marksheet &amp; Board Certificate, 12th Marksheet, Transfer Certificate (TC/LC), Migration Certificate (if applicable), Reservation Category Certificate, Aadhaar Card, passport photographs</td>
+
+</tr>
+
+<tr>
+
+<th>Admission Helpline</th>
+
+<td>Department Admission Coordinator desk</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- ============================= -->
+
+<!-- Career -->
+
+<!-- ============================= -->
+
+<div class="tab-content" id="career">
+
+<table>
+
+<tr>
+
+<th>Career Options</th>
+
+<td>
+
+Software Developer, System Administrator, Web Designer, IT Support Analyst, Database Executive, Network Associate, Junior Tester
+
+</td>
+
+</tr>
+
+<tr>
+
+<th>Higher Studies</th>
+
+<td>M.Sc. Computer Science, MCA (Master of Computer Applications), M.Sc. Information Technology, MBA, PG Diploma in Cybersecurity</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<!-- ============================= -->
+
+<!-- FAQ -->
+
+<!-- ============================= -->
+
+<div class="tab-content" id="faq">
+
+<div class="accordion">
+
+<div class="accordion-item">
+
+<button class="accordion-header">
+
+<span>What is the basic difference between B.Sc. CS and BCA?</span>
+
+<i class="fas fa-plus"></i>
+
+</button>
+
+<div class="accordion-content">
+
+<p>
+
+B.Sc. Computer Science focuses more on computer logic, system architecture, mathematical principles, and structural programming theories, whereas BCA concentrates on commercial business application development and software implementation tools.
+
+</p>
+
+</div>
+
+</div>
+
+
+
+<div class="accordion-item">
+
+<button class="accordion-header">
+
+<span>Is the exit option under NEP 2020 active?</span>
+
+<i class="fas fa-plus"></i>
+
+</button>
+
+<div class="accordion-content">
+
+<p>
+
+Yes. Under the NEP-2020 framework implemented by SRTMUN, students can exit after 1 Year with a "UG Certificate in Computer Science" or after 2 Years with a "UG Diploma in Computer Science".
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+ <!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentFooter"></footer>`r`n`r`n    <!-- HEADER COMPONENT LOADER SCRIPT -->`r`n    <script src="../js/footer.js"></script>`r`n`r`n    <!-- SCRIPTS -->
+    <script>
+        // Load Footer Component
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/footer.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentFooter").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/footer.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentFooter === 'function') {
+                        loadDepartmentFooter();
+                    }
+                })
+                .catch(err => console.error("Error loading footer component:", err));
+        });
+    </script>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentHeader === 'function') {
+                        loadDepartmentHeader();
+                    }
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+
+<!-- =========================
+        FOOTER END
+========================= -->
+
+  <!-- Script -->
+  <script src="../js/courses.js"></script>
+</body>
+</html>

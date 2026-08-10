@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -259,7 +259,7 @@
     <header class="wiki-header">
       <div class="wiki-header-meta">M.S.P. Mandal's</div>
       <h1 class="wiki-title">Shri Shivaji College, Parbhani</h1>
-      <p class="wiki-subtitle">Academic Fee Structure & Itemized Breakdown — Academic Year 2026–27</p>
+      <p class="wiki-subtitle">Academic Fee Structure & Itemized Breakdown â€” Academic Year 2026â€“27</p>
     </header>
 
     <!-- Controls & Program Switcher -->
@@ -332,7 +332,7 @@
   <footer id="departmentFooter"></footer>
 
 
-  <!-- COMPONENT LOADER SCRIPT -->
+    <script src="../js/footer.js"></script>`r`n  <!-- COMPONENT LOADER SCRIPT -->
     <script src="../js/header.js"></script>
   <!-- COMPONENT & APP SCRIPTS -->
   <script>
@@ -508,11 +508,11 @@
             <h3><i class="fa-solid fa-graduation-cap"></i> ${course.name}</h3>
             <div class="fee-amount-group">
               <span>Paying Category:</span>
-              <span class="amount-badge">₹${course.fees.PAYING.total.toLocaleString('en-IN')}</span>
+              <span class="amount-badge">â‚¹${course.fees.PAYING.total.toLocaleString('en-IN')}</span>
             </div>
             <div class="fee-amount-group">
               <span>EBC / Reserved Category:</span>
-              <span class="amount-badge amount-ebc">₹${course.fees.EBC.total.toLocaleString('en-IN')}</span>
+              <span class="amount-badge amount-ebc">â‚¹${course.fees.EBC.total.toLocaleString('en-IN')}</span>
             </div>
           </div>
         `;
@@ -529,14 +529,14 @@
       const activeFees = course.fees[category];
       
       document.getElementById('breakdownTitle').textContent = 
-        `Itemized Fee Breakup — ${course.name} (${category} Category)`;
+        `Itemized Fee Breakup â€” ${course.name} (${category} Category)`;
 
       const thead = document.getElementById('feeTableHeader');
       thead.innerHTML = `
         <tr>
           <th style="width: 80px;">Sr. No</th>
           <th>Fee Particulars</th>
-          <th style="width: 180px; text-align: right;">Amount (₹)</th>
+          <th style="width: 180px; text-align: right;">Amount (â‚¹)</th>
         </tr>
       `;
 
@@ -551,7 +551,7 @@
           <tr ${isTuition}>
             <td style="text-align: center;">${p.id}</td>
             <td>${p.name}</td>
-            <td style="text-align: right;">${val === 0 ? 'Nil' : '₹' + val.toLocaleString('en-IN')}</td>
+            <td style="text-align: right;">${val === 0 ? 'Nil' : 'â‚¹' + val.toLocaleString('en-IN')}</td>
           </tr>
         `;
       });
@@ -560,7 +560,7 @@
       tfoot.innerHTML = `
         <tr style="background: var(--wiki-bg-page); font-weight: bold; font-size: 0.95rem;">
           <td colspan="2" style="text-align: right; padding: 10px;">TOTAL FEES PAYABLE:</td>
-          <td style="text-align: right; color: var(--primary-color); padding: 10px;">₹${activeFees.total.toLocaleString('en-IN')}</td>
+          <td style="text-align: right; color: var(--primary-color); padding: 10px;">â‚¹${activeFees.total.toLocaleString('en-IN')}</td>
         </tr>
       `;
     }

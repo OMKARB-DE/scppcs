@@ -1,0 +1,146 @@
+[
+  {
+    "category": "Subjects",
+    "semester": "V",
+    "subjectCode": "SDSCCT1301",
+    "subjectName": "Fundamental of ML",
+    "sourcePages": "10-12",
+    "file": "Subjects/SDSCCT1301_Fundamental-of-ML.pdf"
+  },
+  {
+    "category": "Subjects",
+    "semester": "V",
+    "subjectCode": "SDSCCT1302",
+    "subjectName": "Natural Language Processing",
+    "sourcePages": "13-16",
+    "file": "Subjects/SDSCCT1302_Natural-Language-Processing.pdf"
+  },
+  {
+    "category": "Subjects",
+    "semester": "V",
+    "subjectCode": "SDSCIK1303",
+    "subjectName": "Introduction to Super Computing",
+    "sourcePages": "17-20",
+    "file": "Subjects/SDSCIK1303_Introduction-to-Super-Computing.pdf"
+  },
+  {
+    "category": "Subjects",
+    "semester": "V",
+    "subjectCode": "SDSCET1301",
+    "subjectName": "Fundamental of Cloud Computing",
+    "sourcePages": "27-29",
+    "file": "Subjects/SDSCET1301_Fundamental-of-Cloud-Computing.pdf"
+  },
+  {
+    "category": "Subjects",
+    "semester": "VI",
+    "subjectCode": "SDSCCT1351",
+    "subjectName": "Computer Vision and Image Analytics",
+    "sourcePages": "34-36",
+    "file": "Subjects/SDSCCT1351_Computer-Vision-and-Image-Analytics.pdf"
+  },
+  {
+    "category": "Subjects",
+    "semester": "VI",
+    "subjectCode": "SDSCCT1352",
+    "subjectName": "Deep Learning",
+    "sourcePages": "37-39",
+    "file": "Subjects/SDSCCT1352_Deep-Learning.pdf"
+  },
+  {
+    "category": "Subjects",
+    "semester": "VI",
+    "subjectCode": "SDSCCT1353",
+    "subjectName": "Time Series Analysis",
+    "sourcePages": "40-42",
+    "file": "Subjects/SDSCCT1353_Time-Series-Analysis.pdf"
+  },
+  {
+    "category": "Subjects",
+    "semester": "VI",
+    "subjectCode": "SDSCET1351",
+    "subjectName": "Big Data Analytics",
+    "sourcePages": "47-49",
+    "file": "Subjects/SDSCET1351_Big-Data-Analytics.pdf"
+  },
+  {
+    "category": "Labs",
+    "semester": "V",
+    "subjectCode": "SDSCCP1304",
+    "subjectName": "Fundamental of ML (P)",
+    "sourcePages": "21-22",
+    "file": "Labs/SDSCCP1304_Fundamental-of-ML-(P).pdf"
+  },
+  {
+    "category": "Labs",
+    "semester": "V",
+    "subjectCode": "SDSCCP1305",
+    "subjectName": "Natural Language Processing (P)",
+    "sourcePages": "23-26",
+    "file": "Labs/SDSCCP1305_Natural-Language-Processing-(P).pdf"
+  },
+  {
+    "category": "Labs",
+    "semester": "V",
+    "subjectCode": "SDSCEP1301",
+    "subjectName": "Fundamental of Cloud Computing (P)",
+    "sourcePages": "30-31",
+    "file": "Labs/SDSCEP1301_Fundamental-of-Cloud-Computing-(P).pdf"
+  },
+  {
+    "category": "Labs",
+    "semester": "V",
+    "subjectCode": "SDSCVC1301",
+    "subjectName": "Data Warehousing",
+    "sourcePages": "32-33",
+    "file": "Labs/SDSCVC1301_Data-Warehousing.pdf"
+  },
+  {
+    "category": "Labs",
+    "semester": "VI",
+    "subjectCode": "SDSCCP1354",
+    "subjectName": "Computer Vision and Image Analysis (P)",
+    "sourcePages": "43-44",
+    "file": "Labs/SDSCCP1354_Computer-Vision-and-Image-Analysis-(P).pdf"
+  },
+  {
+    "category": "Labs",
+    "semester": "VI",
+    "subjectCode": "SDSCCP1355",
+    "subjectName": "Deep Learning (P)",
+    "sourcePages": "45-46",
+    "file": "Labs/SDSCCP1355_Deep-Learning-(P).pdf"
+  },
+  {
+    "category": "Labs",
+    "semester": "VI",
+    "subjectCode": "SDSCEP1351",
+    "subjectName": "Big Data Analytics (P)",
+    "sourcePages": "50-51",
+    "file": "Labs/SDSCEP1351_Big-Data-Analytics-(P).pdf"
+  },
+  {
+    "category": "Labs",
+    "semester": "VI",
+    "subjectCode": "SDSCVC1351",
+    "subjectName": "Generative AI Tools",
+    "sourcePages": "53-55",
+    "file": "Labs/SDSCVC1351_Generative-AI-Tools.pdf"
+  },
+  {
+    "category": "Other",
+    "semester": "V",
+    "subjectCode": "SDSCFP1301",
+    "subjectName": "Project",
+    "sourcePages": "5-6",
+    "file": "Other/SDSCFP1301_Project.pdf"
+  },
+  {
+    "category": "Other",
+    "semester": "VI",
+    "subjectCode": "SDSCOJ1351",
+    "subjectName": "OJT",
+    "sourcePages": "7-8",
+    "file": "Other/SDSCOJ1351_OJT.pdf"
+  }
+]

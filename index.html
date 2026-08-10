@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Department of Computer Science & Engineering</title>
+    <title>Home | Department of Computer Science | Shri Shivaji College, Parbhani   </title>
+<!-- Department Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/dept-logo3.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/dept-logo3.png">
+
+    <!-- Apple / Mobile -->
+    <link rel="apple-touch-icon" href="../images/dept-logo3.png">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,67 +22,90 @@
 </head>
 <body>
 
+
+
+  <!-- Premium Splash Screen Component -->
+    <div class="dept-loader-screen" id="deptLoaderScreen">
+        <div class="dept-loader-wrapper">
+            <!-- Background Glow & Pulse Ring -->
+            <div class="dept-loader-glow"></div>
+            <div class="dept-loader-pulse"></div>
+
+            <!-- Segmented Rotating Arcs (SVG Loader System) -->
+            <svg class="dept-loader-arc-svg" viewBox="0 0 300 300">
+                <defs>
+                    <linearGradient id="deptGradPrimary" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#1B5E20" />
+                        <stop offset="100%" stop-color="#43A047" />
+                    </linearGradient>
+                    <linearGradient id="deptGradGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#D4AF37" />
+                        <stop offset="100%" stop-color="#F4D03F" />
+                    </linearGradient>
+                </defs>
+
+                <!-- Outer Arc Group (Clockwise, 5s, Radius ~138px) -->
+                <g class="dept-loader-arc-one">
+                    <circle cx="150" cy="150" r="138" fill="none" stroke="url(#deptGradPrimary)" stroke-width="3" stroke-linecap="round" stroke-dasharray="100 220" />
+                    <circle cx="150" cy="150" r="138" fill="none" stroke="#2E7D32" stroke-width="3" stroke-linecap="round" stroke-dasharray="45 350" stroke-dashoffset="-140" />
+                    <circle cx="150" cy="150" r="138" fill="none" stroke="url(#deptGradGold)" stroke-width="3" stroke-linecap="round" stroke-dasharray="70 280" stroke-dashoffset="-220" />
+                    <circle cx="150" cy="150" r="138" fill="none" stroke="#43A047" stroke-width="3" stroke-linecap="round" stroke-dasharray="25 320" stroke-dashoffset="-310" />
+                    <!-- Glowing Dot -->
+                    <circle class="dept-loader-dot" cx="288" cy="150" r="4" />
+                </g>
+
+                <!-- Middle Arc Group (Anticlockwise, 3.5s, Radius ~126px) -->
+                <g class="dept-loader-arc-two">
+                    <circle cx="150" cy="150" r="126" fill="none" stroke="url(#deptGradGold)" stroke-width="3" stroke-linecap="round" stroke-dasharray="60 220" />
+                    <circle cx="150" cy="150" r="126" fill="none" stroke="#1B5E20" stroke-width="3" stroke-linecap="round" stroke-dasharray="90 200" stroke-dashoffset="-90" />
+                    <circle cx="150" cy="150" r="126" fill="none" stroke="#43A047" stroke-width="3" stroke-linecap="round" stroke-dasharray="30 280" stroke-dashoffset="-210" />
+                    <!-- Glowing Dot -->
+                    <circle class="dept-loader-dot" cx="150" cy="24" r="4" />
+                </g>
+
+                <!-- Inner Arc Group (Clockwise, 2.8s, Radius ~114px) -->
+                <g class="dept-loader-arc-three">
+                    <circle cx="150" cy="150" r="114" fill="none" stroke="#2E7D32" stroke-width="3" stroke-linecap="round" stroke-dasharray="40 180" />
+                    <circle cx="150" cy="150" r="114" fill="none" stroke="url(#deptGradGold)" stroke-width="3" stroke-linecap="round" stroke-dasharray="50 170" stroke-dashoffset="-70" />
+                    <circle cx="150" cy="150" r="114" fill="none" stroke="#43A047" stroke-width="3" stroke-linecap="round" stroke-dasharray="25 200" stroke-dashoffset="-140" />
+                </g>
+            </svg>
+
+            <!-- Static Department Logo (210px Size) -->
+            <div class="dept-loader-logo-container">
+                <img src="/images/dept-logo3.png" alt="Department Logo" class="dept-loader-logo" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'180\' height=\'180\' viewBox=\'0 0 180 180\'><rect width=\'180\' height=\'180\' fill=\'%231B5E20\'/><text x=\'50%\' y=\'50%\' dominant-baseline=\'middle\' text-anchor=\'middle\' fill=\'white\' font-family=\'sans-serif\' font-size=\'20\' font-weight=\'bold\'>LOGO</text></svg>'">
+            </div>
+        </div>
+
+        <!-- Typography Below Logo -->
+        <div class="dept-loader-text">
+             <p>Welcome To</p>
+            <h1>Department of Computer Science</h1>
+            <p>Shri Shivaji College, Parbhani</p>
+        </div>
+    </div>
+
+
+
+
     <!-- HEADER COMPONENT MOUNT POINT -->
     <header id="departmentHeader"></header>
 
-    <!-- SECTION 1: HERO SLIDER -->
-    <section class="hero-slider" id="hero-slider" aria-label="Department Highlights Slider">
-        <div class="slider-wrapper">
-            <!-- Slide 1 -->
-            <div class="slide active">
-                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1920&q=80" alt="Programming and Code" class="slide-bg">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <span class="slide-subtitle">Excellence in Computing</span>
-                    <h1 class="slide-title">Pioneering the Future of Computer Science</h1>
-                    <p class="slide-desc">Empowering the next generation of innovators, researchers, and technology leaders through world-class education.</p>
-                    <div class="slide-actions">
-                        <a href="#why-choose" class="btn btn-primary btn-ripple">Explore Department</a>
-                        <a href="#notices" class="btn btn-secondary btn-ripple">Admissions 2026</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Slide 2 -->
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1920&q=80" alt="Artificial Intelligence Research" class="slide-bg">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <span class="slide-subtitle">Advanced Research & AI</span>
-                    <h1 class="slide-title">Cutting-Edge Artificial Intelligence & Robotics</h1>
-                    <p class="slide-desc">Pushing the boundaries of machine learning, neural networks, and autonomous intelligent systems.</p>
-                    <div class="slide-actions">
-                        <a href="#research" class="btn btn-primary btn-ripple">Research Labs</a>
-                        <a href="#stats" class="btn btn-secondary btn-ripple">Our Impact</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Slide 3 -->
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1920&q=80" alt="Students in Campus" class="slide-bg">
-                <div class="slide-overlay"></div>
-                <div class="slide-content">
-                    <span class="slide-subtitle">Vibrant Campus Life</span>
-                    <h1 class="slide-title">Collaborative Learning & Global Opportunities</h1>
-                    <p class="slide-desc">A thriving ecosystem for hackathons, innovation, entrepreneurship, and top-tier global placements.</p>
-                    <div class="slide-actions">
-                        <a href="#recruiters" class="btn btn-primary btn-ripple">Placements</a>
-                        <a href="#gallery" class="btn btn-secondary btn-ripple">Campus Tour</a>
-                    </div>
-                </div>
-            </div>
+   <!-- SECTION 1: HERO VIDEO -->
+<section class="hero-slider" id="hero-slider" aria-label="Department Campus View">
+    <div class="slider-wrapper">
+        <div class="slide active" style="width: 100%; height: 100%; position: relative;">
+            <video autoplay muted loop playsinline class="slide-bg" style="width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0;">
+                <source src="/scp-campus.mp4" type="video/mp4">
+                <source src="/scp-campus.mp4" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+            
+            <!-- Optional Overlay to make text/content readable if placed on top -->
+            <div class="video-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.3);"></div>
         </div>
-
-        <!-- Slider Controls -->
-        <button class="slider-btn prev-btn" aria-label="Previous Slide"><i class="fas fa-chevron-left"></i></button>
-        <button class="slider-btn next-btn" aria-label="Next Slide"><i class="fas fa-chevron-right"></i></button>
-
-        <!-- Slider Indicators -->
-        <div class="slider-indicators">
-            <span class="dot active" data-index="0"></span>
-            <span class="dot" data-index="1"></span>
-            <span class="dot" data-index="2"></span>
-        </div>
-    </section>
+    </div>
+</section>
 
     <!-- SECTION 2: ACADEMIC INFORMATION AREA -->
     <section class="section-padding bg-light" id="notices">
@@ -273,23 +303,23 @@
                     <ul>
                         <li>
                             <div class="tree-node">
-                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80" alt="Chairperson">
-                                <div class="node-title">Prof. Arthur Pendelton</div>
-                                <div class="node-role">Chairperson</div>
+                                <img src="/images/Shri Prakashrao Solanke.png" alt="President">
+                                <div class="node-title">Shri. Prakashrao Solanke</div>
+                                <div class="node-role">President</div>
                             </div>
                             <ul>
                                 <li>
                                     <div class="tree-node">
-                                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Principal">
-                                        <div class="node-title">Dr. S. K. Kulkarni</div>
-                                        <div class="node-role">Principal / Director</div>
+                                        <img src="/images/Shri Satish Chavan.png" alt="Secretary">
+                                        <div class="node-title">Shri. Satishrao Chavan</div>
+                                        <div class="node-role">Secretary</div>
                                     </div>
                                     <ul>
                                         <li>
                                             <div class="tree-node">
-                                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Dean Academics">
-                                                <div class="node-title">Dr. Meera Sharma</div>
-                                                <div class="node-role">Dean Academics</div>
+                                                <img src="/images/Dr Balasaheb Jadhav.png" alt="Principal">
+                                                <div class="node-title">Dr Balasaheb Jadhav</div>
+                                                <div class="node-role"> Principal</div>
                                             </div>
                                         </li>
                                         <li>
@@ -353,20 +383,20 @@
             <!-- Leader Message Card 1: HOD -->
             <div class="leadership-card">
                 <div class="leader-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=500&q=80" alt="Dr. Rajesh V. Patil" class="leader-img">
+                    <img src="/images/Dr Balasaheb Jadhav.png" alt="Dr. Balasaheb U. Jadhav" class="leader-img">
                 </div>
                 <div class="leader-content">
                     <i class="fas fa-quote-left quote-icon"></i>
-                    <h3 class="leader-name">Dr. Rajesh V. Patil</h3>
-                    <p class="leader-designation">Head of Department | Ph.D., M.Tech (IIT Bombay)</p>
+                    <h3 class="leader-name">Dr. Balasaheb U. Jadhav</h3>
+                    <p class="leader-designation"> Principle </p>
                     
                     <!-- Dynamic Message Box -->
-                    <div class="message-body" id="hod-message">
+                    <div class="message-body" id="principal-message">
                         <!-- Loaded dynamically via JS -->
                     </div>
 
                     <div class="leader-footer">
-                        <div class="signature">R. V. Patil</div>
+                        <div class="signature">Dr. Balasaheb U. Jadhav</div>
                         <button class="btn-sm btn-outline">Read Full Profile</button>
                     </div>
                 </div>
@@ -375,20 +405,20 @@
             <!-- Leader Message Card 2: Principal -->
             <div class="leadership-card mt-30">
                 <div class="leader-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80" alt="Dr. S. K. Kulkarni" class="leader-img">
+                    <img src="/images/hod.png" alt="Dr. Vaibhav Pathak" class="leader-img">
                 </div>
                 <div class="leader-content">
                     <i class="fas fa-quote-left quote-icon"></i>
-                    <h3 class="leader-name">Dr. S. K. Kulkarni</h3>
-                    <p class="leader-designation">Principal / Director | Ph.D. (IISc Bangalore)</p>
+                    <h3 class="leader-name">Dr.Vaibhav M. Pathak</h3>
+                    <p class="leader-designation">Head of Department</p>
                     
                     <!-- Dynamic Message Box -->
-                    <div class="message-body" id="principal-message">
+                    <div class="message-body" id="hod-message">
                         <!-- Loaded dynamically via JS -->
                     </div>
 
                     <div class="leader-footer">
-                        <div class="signature">S. K. Kulkarni</div>
+                        <div class="signature">Dr. Vaibhav M. Pathak</div>
                         <button class="btn-sm btn-outline">Read Full Profile</button>
                     </div>
                 </div>
@@ -673,6 +703,8 @@
     <!-- FOOTER COMPONENT MOUNT POINT -->
     <footer id="departmentFooter"></footer>
 
+     <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/footer.js"></script>
     <!-- SCRIPTS -->
     <script>
         // Load Footer Component
@@ -716,7 +748,25 @@
                 .catch(err => console.error("Error loading header component:", err));
         });
     </script>
+    
+<!-- Vanilla JavaScript for Exact 2-Second Timing and Transition -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const splashScreen = document.getElementById('deptLoaderScreen');
 
+            const splashDuration = 2000;
+            const transitionDuration = 600;
+
+            setTimeout(() => {
+                splashScreen.classList.add('dept-loader-fade-out');
+
+                setTimeout(() => {
+                    splashScreen.remove();
+                }, transitionDuration);
+
+            }, splashDuration);
+        });
+    </script>
 
     <!-- External JavaScript -->
     <script src="script.js"></script>

@@ -1,0 +1,1591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Notice Board Portal - Computer Science | Shri Shivaji College, Parbhani</title>
+    <!-- Google Font: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Reset & Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dept-notice-bg: #F8FFF9;
+            --dept-notice-card: #FFFFFF;
+            --dept-notice-primary: #1B5E20;
+            --dept-notice-secondary: #2E7D32;
+            --dept-notice-accent: #43A047;
+            --dept-notice-border: #E6F3E8;
+            --dept-notice-text-main: #112211;
+            --dept-notice-text-muted: #556655;
+            --dept-notice-shadow: 0 10px 30px rgba(27, 94, 32, 0.06);
+            --dept-notice-radius: 12px;
+            --dept-notice-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dept-notice-bg);
+            color: var(--dept-notice-text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* Utility / Global Layout */
+        .dept-notice-page {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Top Header Section */
+        .dept-notice-header {
+            background: linear-gradient(135deg, #ffffff 0%, var(--dept-notice-bg) 100%);
+            border: 1px solid var(--dept-notice-border);
+            border-radius: var(--dept-notice-radius);
+            padding: 36px;
+            box-shadow: var(--dept-notice-shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dept-notice-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--dept-notice-primary);
+        }
+
+        .dept-notice-header-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dept-notice-primary);
+            margin-bottom: 8px;
+        }
+
+        .dept-notice-header-subtitle {
+            font-size: 1.05rem;
+            color: var(--dept-notice-text-muted);
+            margin-bottom: 12px;
+        }
+
+        /* Sticky Advanced Filter Toolbar */
+        .dept-notice-toolbar {
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--dept-notice-border);
+            border-radius: var(--dept-notice-radius);
+            padding: 16px 20px;
+            box-shadow: 0 8px 32px rgba(27, 94, 32, 0.08);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dept-notice-search-wrap {
+            flex: 1;
+            min-width: 240px;
+            position: relative;
+        }
+
+        .dept-notice-search-wrap i {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--dept-notice-text-muted);
+        }
+
+        .dept-notice-search {
+            width: 100%;
+            padding: 10px 14px 10px 40px;
+            border: 1px solid var(--dept-notice-border);
+            border-radius: 8px;
+            background: var(--dept-notice-card);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.9rem;
+            color: var(--dept-notice-text-main);
+            transition: var(--dept-notice-transition);
+        }
+
+        .dept-notice-search:focus {
+            outline: none;
+            border-color: var(--dept-notice-primary);
+            box-shadow: 0 0 0 3px rgba(27, 94, 32, 0.1);
+        }
+
+        .dept-notice-filters-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .dept-notice-select {
+            padding: 10px 14px;
+            border: 1px solid var(--dept-notice-border);
+            border-radius: 8px;
+            background: var(--dept-notice-card);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            color: var(--dept-notice-text-main);
+            cursor: pointer;
+            transition: var(--dept-notice-transition);
+        }
+
+        .dept-notice-select:focus {
+            outline: none;
+            border-color: var(--dept-notice-primary);
+        }
+
+        .dept-notice-btn {
+            padding: 10px 18px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--dept-notice-transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dept-notice-btn-primary {
+            background: var(--dept-notice-primary);
+            color: #ffffff;
+        }
+
+        .dept-notice-btn-primary:hover {
+            background: var(--dept-notice-secondary);
+        }
+
+        .dept-notice-btn-outline {
+            background: transparent;
+            border: 1px solid var(--dept-notice-border);
+            color: var(--dept-notice-text-main);
+        }
+
+        .dept-notice-btn-outline:hover {
+            background: var(--dept-notice-border);
+        }
+
+        /* Category Filter Chips */
+        .dept-notice-chips-container {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+            scrollbar-width: thin;
+        }
+
+        .dept-notice-chips-container::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .dept-notice-chips-container::-webkit-scrollbar-thumb {
+            background: var(--dept-notice-border);
+            border-radius: 4px;
+        }
+
+        .dept-notice-chip {
+            padding: 8px 16px;
+            background: var(--dept-notice-card);
+            border: 1px solid var(--dept-notice-border);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--dept-notice-text-muted);
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--dept-notice-transition);
+            position: relative;
+        }
+
+        .dept-notice-chip:hover {
+            border-color: var(--dept-notice-accent);
+            color: var(--dept-notice-primary);
+        }
+
+        .dept-notice-chip.active {
+            background: var(--dept-notice-primary);
+            color: #ffffff;
+            border-color: var(--dept-notice-primary);
+            box-shadow: 0 4px 12px rgba(27, 94, 32, 0.2);
+        }
+
+        /* Layout & Main Area Structure */
+        .dept-notice-main-layout {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 24px;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .dept-notice-main-layout {
+                grid-template-columns: 1fr;
+            }
+            .dept-notice-sidebar {
+                display: none;
+            }
+        }
+
+        .dept-notice-content-area {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .dept-notice-view-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--dept-notice-card);
+            padding: 12px 20px;
+            border: 1px solid var(--dept-notice-border);
+            border-radius: var(--dept-notice-radius);
+        }
+
+        .dept-notice-view-options {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dept-notice-view-btn {
+            background: transparent;
+            border: 1px solid var(--dept-notice-border);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--dept-notice-text-muted);
+            transition: var(--dept-notice-transition);
+        }
+
+        .dept-notice-view-btn.active, .dept-notice-view-btn:hover {
+            background: var(--dept-notice-border);
+            color: var(--dept-notice-primary);
+            border-color: var(--dept-notice-accent);
+        }
+
+        /* Pinned Notices Section */
+        .dept-notice-pinned-container {
+            background: linear-gradient(135deg, #f1f8f2 0%, #e8f5e9 100%);
+            border: 1px dashed var(--dept-notice-accent);
+            border-radius: var(--dept-notice-radius);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .dept-notice-pinned-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--dept-notice-primary);
+            font-size: 1.05rem;
+        }
+
+        /* Container View Layouts */
+        .dept-notice-container {
+            transition: var(--dept-notice-transition);
+        }
+
+        /* Grid View: 3 cards per row */
+        .dept-notice-container.grid-view {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Tile View: 2 wider cards per row */
+        .dept-notice-container.tile-view {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        /* List View: Full width horizontal cards */
+        .dept-notice-container.list-view {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        @media (max-width: 900px) {
+            .dept-notice-container.grid-view, .dept-notice-container.tile-view {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Notice Card Design */
+        .dept-notice-card-item {
+            background: var(--dept-notice-card);
+            border: 1px solid var(--dept-notice-border);
+            border-radius: var(--dept-notice-radius);
+            padding: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+            transition: var(--dept-notice-transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dept-notice-card-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--dept-notice-shadow);
+            border-color: var(--dept-notice-accent);
+        }
+
+        .dept-notice-card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+
+        .dept-notice-badges {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .dept-notice-badge {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dept-notice-badge-cat {
+            background: #e8f5e9;
+            color: var(--dept-notice-primary);
+        }
+
+        .dept-notice-badge-priority {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .dept-notice-badge-new {
+            background: #fff3e0;
+            color: #ef6c00;
+            animation: pulse-badge 1.5s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0% { opacity: 1; }
+            50% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        .dept-notice-meta-info {
+            font-size: 0.75rem;
+            color: var(--dept-notice-text-muted);
+        }
+
+        .dept-notice-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--dept-notice-text-main);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .dept-notice-desc {
+            font-size: 0.85rem;
+            color: var(--dept-notice-text-muted);
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .dept-notice-card-footer {
+            border-top: 1px solid var(--dept-notice-border);
+            padding-top: 12px;
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dept-notice-details-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--dept-notice-text-muted);
+        }
+
+        .dept-notice-actions {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .dept-notice-action-btn {
+            padding: 6px 10px;
+            border-radius: 6px;
+            border: 1px solid var(--dept-notice-border);
+            background: transparent;
+            font-size: 0.75rem;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            color: var(--dept-notice-text-main);
+            cursor: pointer;
+            transition: var(--dept-notice-transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dept-notice-action-btn:hover {
+            background: var(--dept-notice-primary);
+            color: #ffffff;
+            border-color: var(--dept-notice-primary);
+        }
+
+        /* Sidebar Component */
+        .dept-notice-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .dept-notice-widget {
+            background: var(--dept-notice-card);
+            border: 1px solid var(--dept-notice-border);
+            border-radius: var(--dept-notice-radius);
+            padding: 20px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+        }
+
+        .dept-notice-widget-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--dept-notice-primary);
+            margin-bottom: 14px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid var(--dept-notice-border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dept-notice-widget-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dept-notice-widget-item {
+            font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--dept-notice-border);
+            cursor: pointer;
+        }
+
+        .dept-notice-widget-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .dept-notice-widget-item a {
+            color: var(--dept-notice-text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--dept-notice-transition);
+        }
+
+        .dept-notice-widget-item a:hover {
+            color: var(--dept-notice-primary);
+        }
+
+        .dept-notice-widget-date {
+            font-size: 0.72rem;
+            color: var(--dept-notice-text-muted);
+        }
+
+        /* Timeline Accordion */
+        .dept-notice-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dept-notice-timeline-item {
+            border: 1px solid var(--dept-notice-border);
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--dept-notice-card);
+        }
+
+        .dept-notice-timeline-header {
+            padding: 12px 16px;
+            background: #fafafa;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--dept-notice-primary);
+            transition: var(--dept-notice-transition);
+        }
+
+        .dept-notice-timeline-header:hover {
+            background: var(--dept-notice-border);
+        }
+
+        .dept-notice-timeline-body {
+            padding: 12px 16px;
+            font-size: 0.8rem;
+            color: var(--dept-notice-text-muted);
+            display: none;
+            border-top: 1px solid var(--dept-notice-border);
+        }
+
+        .dept-notice-timeline-item.active .dept-notice-timeline-body {
+            display: block;
+        }
+
+        /* Fullscreen Modal Popup */
+        .dept-notice-modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--dept-notice-transition);
+        }
+
+        .dept-notice-modal-backdrop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dept-notice-modal-content {
+            background: var(--dept-notice-card);
+            width: 90vw;
+            height: 90vh;
+            max-width: 1200px;
+            border-radius: var(--dept-notice-radius);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transform: scale(0.95);
+            transition: var(--dept-notice-transition);
+        }
+
+        .dept-notice-modal-backdrop.show .dept-notice-modal-content {
+            transform: scale(1);
+        }
+
+        .dept-notice-modal-header {
+            padding: 16px 24px;
+            background: var(--dept-notice-primary);
+            color: #ffffff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dept-notice-modal-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .dept-notice-modal-close {
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .dept-notice-modal-body {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            overflow: hidden;
+        }
+
+        @media (max-width: 850px) {
+            .dept-notice-modal-body {
+                grid-template-columns: 1fr;
+                overflow-y: auto;
+            }
+        }
+
+        .dept-notice-modal-sidebar-info {
+            padding: 24px;
+            background: #fafafa;
+            border-right: 1px solid var(--dept-notice-border);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            overflow-y: auto;
+        }
+
+        .dept-notice-modal-viewer {
+            flex: 1;
+            background: #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .dept-notice-modal-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .dept-notice-modal-toolbar {
+            padding: 10px 16px;
+            background: #333;
+            color: #fff;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .dept-notice-modal-tool-btn {
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dept-notice-modal-tool-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Empty State */
+        .dept-notice-empty {
+            text-align: center;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            background: var(--dept-notice-card);
+            border: 1px solid var(--dept-notice-border);
+            border-radius: var(--dept-notice-radius);
+        }
+
+        .dept-notice-empty i {
+            font-size: 3rem;
+            color: var(--dept-notice-accent);
+        }
+
+        .dept-notice-empty p {
+            font-size: 1rem;
+            color: var(--dept-notice-text-muted);
+        }
+
+        /* Load More Center */
+        .dept-notice-load-more-wrap {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        /* Footer Info */
+        .dept-notice-footer-info {
+            text-align: center;
+            padding: 24px;
+            font-size: 0.8rem;
+            color: var(--dept-notice-text-muted);
+            border-top: 1px solid var(--dept-notice-border);
+            margin-top: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dept-notice-page">
+
+        <!-- Top Header Section (Stats Removed) -->
+        <header class="dept-notice-header">
+            <h1 class="dept-notice-header-title">Department Notice Board</h1>
+           
+            <p style="font-size: 0.9rem; color: var(--dept-notice-text-muted);">Latest Academic Notices, Circulars, Examination Updates, Placements and Events</p>
+        </header>
+
+        <!-- Advanced Filter Toolbar -->
+        <div class="dept-notice-toolbar">
+            <div class="dept-notice-search-wrap">
+                <i class="fas fa-search"></i>
+                <input type="text" id="dept-notice-search-input" class="dept-notice-search" placeholder="Search by title, description, category, notice number, department, issued by...">
+            </div>
+            
+            <div class="dept-notice-filters-group">
+                <select id="dept-notice-filter-category" class="dept-notice-select">
+                    <option value="">All Categories</option>
+                </select>
+                <select id="dept-notice-filter-year" class="dept-notice-select">
+                    <option value="">Academic Year</option>
+                    <option value="2025-2026">2025-2026</option>
+                    <option value="2024-2025">2024-2025</option>
+                </select>
+                <select id="dept-notice-filter-priority" class="dept-notice-select">
+                    <option value="">Priority</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Normal">Normal</option>
+                </select>
+                <select id="dept-notice-filter-sort" class="dept-notice-select">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="alphabetical">Alphabetical</option>
+                    <option value="downloads">Most Downloaded</option>
+                    <option value="views">Most Viewed</option>
+                </select>
+                <button id="dept-notice-reset-btn" class="dept-notice-btn dept-notice-btn-outline" title="Reset Filters">
+                    <i class="fas fa-undo"></i> Reset
+                </button>
+            </div>
+        </div>
+
+        <!-- Category Filter Chips -->
+        <div class="dept-notice-chips-container" id="dept-notice-chips-wrapper">
+            <!-- Dynamically populated chips -->
+        </div>
+
+        <!-- Main Workspace Layout -->
+        <div class="dept-notice-main-layout">
+            
+            <!-- Content Area -->
+            <div class="dept-notice-content-area">
+                
+                <!-- View Control Toolbar -->
+                <div class="dept-notice-view-controls">
+                    <span style="font-size: 0.85rem; font-weight: 500; color: var(--dept-notice-text-muted);" id="dept-notice-count-indicator">Showing notices</span>
+                    <div class="dept-notice-view-options">
+                        <button class="dept-notice-view-btn active" data-view="grid" title="Grid View"><i class="fas fa-th"></i> Grid</button>
+                        <button class="dept-notice-view-btn" data-view="tile" title="Tile View"><i class="fas fa-th-large"></i> Tile</button>
+                        <button class="dept-notice-view-btn" data-view="list" title="List View"><i class="fas fa-list"></i> List</button>
+                    </div>
+                </div>
+
+                <!-- Pinned Notices Area -->
+                <div class="dept-notice-pinned-container" id="dept-notice-pinned-wrap">
+                    <div class="dept-notice-pinned-header">
+                        <i class="fas fa-thumbtack" style="color: var(--dept-notice-primary);"></i> Pinned Important Notices
+                    </div>
+                    <div id="dept-notice-pinned-list" style="display: flex; flex-direction: column; gap: 10px;">
+                        <!-- Pinned cards inserted here -->
+                    </div>
+                </div>
+
+                <!-- Notices Listing Container -->
+                <div class="dept-notice-container grid-view" id="dept-notice-listings-container">
+                    <!-- Dynamic Notice Cards -->
+                </div>
+
+                <!-- Empty State -->
+                <div class="dept-notice-empty" id="dept-notice-empty-state" style="display: none;">
+                    <i class="fas fa-folder-open"></i>
+                    <p>No notices match your search.</p>
+                    <button class="dept-notice-btn dept-notice-btn-primary" onclick="resetAllFilters()">Clear Filters</button>
+                </div>
+
+                <!-- Load More Section -->
+                <div class="dept-notice-load-more-wrap" id="dept-notice-loadmore-wrap">
+                    <button id="dept-notice-loadmore-btn" class="dept-notice-btn dept-notice-btn-outline">
+                        <i class="fas fa-plus-circle"></i> Load More Notices
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- Sidebar Component -->
+            <aside class="dept-notice-sidebar">
+                
+                <!-- Recent Notices Widget -->
+                <div class="dept-notice-widget">
+                    <div class="dept-notice-widget-title"><i class="fas fa-clock"></i> Recent Notices</div>
+                    <ul class="dept-notice-widget-list" id="dept-notice-recent-list">
+                        <!-- Populated via JS -->
+                    </ul>
+                </div>
+
+                <!-- Popular Notices Widget -->
+                <div class="dept-notice-widget">
+                    <div class="dept-notice-widget-title"><i class="fas fa-fire"></i> Popular & Trending</div>
+                    <ul class="dept-notice-widget-list" id="dept-notice-popular-list">
+                        <!-- Populated via JS -->
+                    </ul>
+                </div>
+
+                <!-- Year Wise Timeline Accordion -->
+                <div class="dept-notice-widget">
+                    <div class="dept-notice-widget-title"><i class="fas fa-calendar-alt"></i> Notice Timeline</div>
+                    <div class="dept-notice-timeline" id="dept-notice-timeline-container">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+
+            </aside>
+
+        </div>
+
+       
+
+    </div>
+
+    <!-- Fullscreen PDF Preview Modal -->
+    <div class="dept-notice-modal-backdrop" id="dept-notice-modal">
+        <div class="dept-notice-modal-content">
+            <div class="dept-notice-modal-header">
+                <div class="dept-notice-modal-title" id="dept-notice-modal-title">Notice Preview</div>
+                <button class="dept-notice-modal-close" id="dept-notice-modal-close"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="dept-notice-modal-body">
+                <div class="dept-notice-modal-sidebar-info" id="dept-notice-modal-info">
+                    <!-- Dynamic Notice Details in Modal -->
+                </div>
+                <div class="dept-notice-modal-viewer">
+                    <div class="dept-notice-modal-toolbar">
+                        <button class="dept-notice-modal-tool-btn" onclick="modalAction('zoomIn')"><i class="fas fa-search-plus"></i> Zoom In</button>
+                        <button class="dept-notice-modal-tool-btn" onclick="modalAction('download')"><i class="fas fa-download"></i> Download</button>
+                        <button class="dept-notice-modal-tool-btn" onclick="modalAction('print')"><i class="fas fa-print"></i> Print</button>
+                        <button class="dept-notice-modal-tool-btn" onclick="modalAction('share')"><i class="fas fa-share-alt"></i> Share</button>
+                    </div>
+                    <iframe id="dept-notice-modal-iframe" class="dept-notice-modal-iframe" src=""></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* Notice Dataset Array */
+        const deptNoticeData = [
+            {
+                id: 1,
+                noticeNumber: "SSC/CS/2026/089",
+                title: "Semester End Practical Examination Time Table Summer 2026",
+                category: "Examination",
+                description: "Detailed schedule and batch-wise groupings for the B.Sc. Computer Science Semester II, IV, and VI practical examinations.",
+                publishedDate: "15 June 2026",
+                updatedDate: "18 June 2026",
+                issuedBy: "Examination Cell",
+                department: "Computer Science",
+                priority: "High",
+                status: "Active",
+                isPinned: false,
+                isNew: true,
+                views: 1520,
+                downloads: 340,
+                fileType: "PDF",
+                fileSize: "1.8 MB",
+                pdf: "documents/exam.pdf",
+                academicYear: "2025-2026",
+                year: "2026"
+            },
+            {
+                id: 2,
+                noticeNumber: "SSC/CS/2026/088",
+                title: "NPTEL Online Certification Course Registration & Enrollment Notice",
+                category: "NPTEL",
+                description: "Mandatory registration guidelines and course selection criteria for July-December 2026 semester elective certifications.",
+                publishedDate: "14 June 2026",
+                updatedDate: "14 June 2026",
+                issuedBy: "NPTEL Local Chapter",
+                department: "Computer Science",
+                priority: "Medium",
+                status: "Active",
+                isPinned: true,
+                isNew: true,
+                views: 980,
+                downloads: 210,
+                fileType: "PDF",
+                fileSize: "940 KB",
+                pdf: "documents/nptel.pdf",
+                academicYear: "2025-2026",
+                year: "2026"
+            },
+            {
+                id: 3,
+                noticeNumber: "SSC/CS/2026/085",
+                title: "Campus Placement Drive: TCS CodeVita & Ninja Recruitment 2026",
+                category: "Tech Activity",
+                description: "Inviting final year B.Sc. and M.Sc. Computer Science students for the upcoming pool campus recruitment drive and tech coding challenges.",
+                publishedDate: "10 June 2026",
+                updatedDate: "12 June 2026",
+                issuedBy: "Training & Placement Cell",
+                department: "Computer Science",
+                priority: "High",
+                status: "Active",
+                isPinned: true,
+                isNew: false,
+                views: 2450,
+                downloads: 890,
+                fileType: "PDF",
+                fileSize: "2.4 MB",
+                pdf: "documents/placement.pdf",
+                academicYear: "2025-2026",
+                year: "2026"
+            },
+            {
+                id: 4,
+                noticeNumber: "SSC/CS/2026/080",
+                title: "Avishkar Research Convention University Level Screening 2026",
+                category: "Avishkar",
+                description: "Project submissions and prototype presentations for the annual Avishkar Research Convention selection round.",
+                publishedDate: "05 June 2026",
+                updatedDate: "06 June 2026",
+                issuedBy: "Research Cell",
+                department: "Computer Science",
+                priority: "Normal",
+                status: "Active",
+                isPinned: false,
+                isNew: false,
+                views: 740,
+                downloads: 150,
+                fileType: "PDF",
+                fileSize: "3.1 MB",
+                pdf: "documents/avishkar.pdf",
+                academicYear: "2025-2026",
+                year: "2026"
+            },
+            {
+                id: 5,
+                noticeNumber: "SSC/CS/2026/074",
+                title: "Internal Assessment Marks Submission Guidelines for Faculty",
+                category: "Circular",
+                description: "Standard operating procedures and portal deadlines for submitting internal continuous evaluation marks.",
+                publishedDate: "01 June 2026",
+                updatedDate: "01 June 2026",
+                issuedBy: "Principal Office",
+                department: "Computer Science",
+                priority: "High",
+                status: "Active",
+                isPinned: false,
+                isNew: false,
+                views: 420,
+                downloads: 95,
+                fileType: "PDF",
+                fileSize: "620 KB",
+                pdf: "documents/faculty.pdf",
+                academicYear: "2025-2026",
+                year: "2026"
+            },
+            {
+                id: 6,
+                noticeNumber: "SSC/CS/2026/070",
+                title: "State Level Inter-Collegiate Coding Competition 'CodeStorm 2026'",
+                category: "Event",
+                description: "Register your teams for hackathons, debugging challenges, and web designing competitions hosted by our department.",
+                publishedDate: "25 May 2026",
+                updatedDate: "28 May 2026",
+                issuedBy: "Student Association",
+                department: "Computer Science",
+                priority: "Medium",
+                status: "Active",
+                isPinned: true,
+                isNew: false,
+                views: 1890,
+                downloads: 520,
+                fileType: "PDF",
+                fileSize: "1.5 MB",
+                pdf: "documents/codestorm.pdf",
+                academicYear: "2025-2026",
+                year: "2026"
+            },
+            {
+                id: 7,
+                noticeNumber: "SSC/CS/2026/065",
+                title: "Post-Matric Government Scholarship Application Verification",
+                category: "Scholarship",
+                description: "List of students whose scholarship forms require physical document verification at the administrative office.",
+                publishedDate: "20 May 2026",
+                updatedDate: "22 May 2026",
+                issuedBy: "Scholarship Section",
+                department: "Computer Science",
+                priority: "High",
+                status: "Active",
+                isPinned: false,
+                isNew: false,
+                views: 1100,
+                downloads: 310,
+                fileType: "PDF",
+                fileSize: "850 KB",
+                pdf: "documents/scholarship.pdf",
+                academicYear: "2025-2026",
+                year: "2026"
+            },
+            {
+                id: 8,
+                noticeNumber: "SSC/CS/2026/060",
+                title: "Workshop on Full Stack Web Development using MERN Stack",
+                category: "Tech Activity",
+                description: "Hands-on certification workshop organized by the Computer Science Society for B.Sc. and M.Sc. students.",
+                publishedDate: "15 May 2026",
+                updatedDate: "15 May 2026",
+                issuedBy: "Department Coordinator",
+                department: "Computer Science",
+                priority: "Normal",
+                status: "Active",
+                isPinned: false,
+                isNew: false,
+                views: 890,
+                downloads: 230,
+                fileType: "PDF",
+                fileSize: "1.2 MB",
+                pdf: "documents/workshop.pdf",
+                academicYear: "2025-2026",
+                year: "2026"
+            },
+            {
+                id: 9,
+                noticeNumber: "SSC/CS/2026/055",
+                title: "Research Paper Publication Guidelines and Funding Assistance",
+                category: "Avishkar",
+                description: "Information regarding financial support provided by the institution for publishing in UGC CARE listed journals.",
+                publishedDate: "10 May 2026",
+                updatedDate: "12 May 2026",
+                issuedBy: "Research Cell",
+                department: "Computer Science",
+                priority: "Medium",
+                status: "Active",
+                isPinned: false,
+                isNew: false,
+                views: 560,
+                downloads: 180,
+                fileType: "PDF",
+                fileSize: "780 KB",
+                pdf: "documents/research.pdf",
+                academicYear: "2025-2026",
+                year: "2026"
+            },
+            {
+                id: 10,
+                noticeNumber: "SSC/CS/2025/140",
+                title: "Academic Calendar for Odd Semester 2025-2026",
+                category: "Academic",
+                description: "Detailed timeline of teaching days, internal tests, sports week, and vacation schedule for the academic year.",
+                publishedDate: "10 July 2025",
+                updatedDate: "15 July 2025",
+                issuedBy: "Academic Committee",
+                department: "Computer Science",
+                priority: "High",
+                status: "Expired",
+                isPinned: false,
+                isNew: false,
+                views: 3200,
+                downloads: 1450,
+                fileType: "PDF",
+                fileSize: "2.0 MB",
+                pdf: "documents/calendar2025.pdf",
+                academicYear: "2025-2026",
+                year: "2025"
+            },
+            {
+                id: 11,
+                noticeNumber: "SSC/CS/2025/110",
+                title: "Admissions Notice for B.Sc. Computer Science First Year 2025-28",
+                category: "Admission",
+                description: "Eligibility criteria, intake capacity, fee structure, and online application portal instructions.",
+                publishedDate: "12 June 2025",
+                updatedDate: "14 June 2025",
+                issuedBy: "Admission Committee",
+                department: "Computer Science",
+                priority: "High",
+                status: "Expired",
+                isPinned: false,
+                isNew: false,
+                views: 4500,
+                downloads: 2100,
+                fileType: "PDF",
+                fileSize: "1.9 MB",
+                pdf: "documents/admissions2025.pdf",
+                academicYear: "2024-2025",
+                year: "2025"
+            },
+            {
+                id: 12,
+                noticeNumber: "SSC/CS/2024/095",
+                title: "Annual Sports Meet 2024 - Indoor and Outdoor Event Fixtures",
+                category: "Event",
+                description: "Schedules and team selections for chess, cricket, badminton, and table tennis competitions.",
+                publishedDate: "05 December 2024",
+                updatedDate: "05 December 2024",
+                issuedBy: "Sports Department",
+                department: "Computer Science",
+                priority: "Normal",
+                status: "Expired",
+                isPinned: false,
+                isNew: false,
+                views: 1200,
+                downloads: 340,
+                fileType: "PDF",
+                fileSize: "1.1 MB",
+                pdf: "documents/sports2024.pdf",
+                academicYear: "2024-2025",
+                year: "2024"
+            }
+        ];
+
+        /* Application State */
+        let currentView = 'grid';
+        let selectedCategory = 'All';
+        let searchQuery = '';
+        let selectedYear = '';
+        let selectedPriority = '';
+        let selectedSort = 'newest';
+        let displayLimit = 12;
+
+        /* DOM Elements */
+        const containerListings = document.getElementById('dept-notice-listings-container');
+        const searchInput = document.getElementById('dept-notice-search-input');
+        const filterCategory = document.getElementById('dept-notice-filter-category');
+        const filterYear = document.getElementById('dept-notice-filter-year');
+        const filterPriority = document.getElementById('dept-notice-filter-priority');
+        const filterSort = document.getElementById('dept-notice-filter-sort');
+        const resetBtn = document.getElementById('dept-notice-reset-btn');
+        const chipsWrapper = document.getElementById('dept-notice-chips-wrapper');
+        const pinnedList = document.getElementById('dept-notice-pinned-list');
+        const pinnedWrap = document.getElementById('dept-notice-pinned-wrap');
+        const emptyState = document.getElementById('dept-notice-empty-state');
+        const countIndicator = document.getElementById('dept-notice-count-indicator');
+        const loadMoreWrap = document.getElementById('dept-notice-loadmore-wrap');
+        const loadMoreBtn = document.getElementById('dept-notice-loadmore-btn');
+        const recentList = document.getElementById('dept-notice-recent-list');
+        const popularList = document.getElementById('dept-notice-popular-list');
+        const timelineContainer = document.getElementById('dept-notice-timeline-container');
+
+        /* Initialize Portal */
+        function initPortal() {
+            populateCategoryDropdown();
+            populateChips();
+            setupEventListeners();
+            renderAll();
+        }
+
+        /* Populate Category Dropdown & Chips exactly matching requested names */
+        const categories = ['All', 'Academic', 'Admission', 'Examination', 'NPTEL', 'Event', 'Circular', 'Scholarship', 'Avishkar', 'Tech Activity'];
+
+        function populateCategoryDropdown() {
+            filterCategory.innerHTML = '<option value="">All Categories</option>' + 
+                categories.filter(c => c !== 'All').map(c => `<option value="${c}">${c}</option>`).join('');
+        }
+
+        function populateChips() {
+            chipsWrapper.innerHTML = categories.map(cat => `
+                <div class="dept-notice-chip ${cat === selectedCategory ? 'active' : ''}" onclick="selectCategoryChip('${cat}')">
+                    ${cat}
+                </div>
+            `).join('');
+        }
+
+        function selectCategoryChip(cat) {
+            selectedCategory = cat;
+            filterCategory.value = cat === 'All' ? '' : cat;
+            populateChips();
+            renderAll();
+        }
+
+        /* Setup Event Listeners */
+        function setupEventListeners() {
+            searchInput.addEventListener('input', (e) => {
+                searchQuery = e.target.value.toLowerCase().trim();
+                renderAll();
+            });
+
+            filterCategory.addEventListener('change', (e) => {
+                selectedCategory = e.target.value || 'All';
+                populateChips();
+                renderAll();
+            });
+
+            filterYear.addEventListener('change', (e) => {
+                selectedYear = e.target.value;
+                renderAll();
+            });
+
+            filterPriority.addEventListener('change', (e) => {
+                selectedPriority = e.target.value;
+                renderAll();
+            });
+
+            filterSort.addEventListener('change', (e) => {
+                selectedSort = e.target.value;
+                renderAll();
+            });
+
+            resetBtn.addEventListener('click', resetAllFilters);
+
+            loadMoreBtn.addEventListener('click', () => {
+                displayLimit += 6;
+                renderAll();
+            });
+
+            // View Option Buttons
+            document.querySelectorAll('.dept-notice-view-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.dept-notice-view-btn').forEach(b => b.classList.remove('active'));
+                    const targetBtn = e.currentTarget;
+                    targetBtn.classList.add('active');
+                    currentView = targetBtn.getAttribute('data-view');
+                    
+                    containerListings.className = `dept-notice-container ${currentView}-view`;
+                });
+            });
+
+            // Modal close
+            document.getElementById('dept-notice-modal-close').addEventListener('click', closeModal);
+            document.getElementById('dept-notice-modal').addEventListener('click', (e) => {
+                if (e.target.id === 'dept-notice-modal') closeModal();
+            });
+        }
+
+        function resetAllFilters() {
+            searchQuery = '';
+            selectedCategory = 'All';
+            selectedYear = '';
+            selectedPriority = '';
+            selectedSort = 'newest';
+            searchInput.value = '';
+            filterCategory.value = '';
+            filterYear.value = '';
+            filterPriority.value = '';
+            filterSort.value = 'newest';
+            displayLimit = 12;
+            populateChips();
+            renderAll();
+        }
+
+        /* Core Filtering and Sorting Engine */
+        function getFilteredNotices() {
+            return deptNoticeData.filter(notice => {
+                const matchesSearch = searchQuery === '' || 
+                    notice.title.toLowerCase().includes(searchQuery) ||
+                    notice.description.toLowerCase().includes(searchQuery) ||
+                    notice.category.toLowerCase().includes(searchQuery) ||
+                    notice.noticeNumber.toLowerCase().includes(searchQuery) ||
+                    notice.department.toLowerCase().includes(searchQuery) ||
+                    notice.issuedBy.toLowerCase().includes(searchQuery);
+
+                const matchesCategory = selectedCategory === 'All' || notice.category === selectedCategory;
+                const matchesYear = !selectedYear || notice.academicYear === selectedYear || notice.year === selectedYear;
+                const matchesPriority = !selectedPriority || notice.priority === selectedPriority;
+
+                return matchesSearch && matchesCategory && matchesYear && matchesPriority;
+            }).sort((a, b) => {
+                if (selectedSort === 'newest') return new Date(b.publishedDate) - new Date(a.publishedDate);
+                if (selectedSort === 'oldest') return new Date(a.publishedDate) - new Date(b.publishedDate);
+                if (selectedSort === 'alphabetical') return a.title.localeCompare(b.title);
+                if (selectedSort === 'downloads') return b.downloads - a.downloads;
+                if (selectedSort === 'views') return b.views - a.views;
+                return 0;
+            });
+        }
+
+        /* Render All Components */
+        function renderAll() {
+            const filtered = getFilteredNotices();
+            
+            // Render Pinned Notices
+            const pinnedNotices = deptNoticeData.filter(n => n.isPinned);
+            if (pinnedNotices.length > 0 && !searchQuery && selectedCategory === 'All') {
+                pinnedWrap.style.display = 'flex';
+                pinnedList.innerHTML = pinnedNotices.slice(0, 5).map(n => createCardHTML(n, true)).join('');
+            } else {
+                pinnedWrap.style.display = 'none';
+            }
+
+            // Render Listings
+            const paginated = filtered.slice(0, displayLimit);
+            countIndicator.textContent = `Showing ${paginated.length} of ${filtered.length} notices`;
+
+            if (paginated.length === 0) {
+                containerListings.innerHTML = '';
+                emptyState.style.display = 'flex';
+                loadMoreWrap.style.display = 'none';
+            } else {
+                emptyState.style.display = 'none';
+                containerListings.innerHTML = paginated.map(n => createCardHTML(n, false)).join('');
+                loadMoreWrap.style.display = displayLimit < filtered.length ? 'block' : 'none';
+            }
+
+            renderSidebarWidgets();
+        }
+
+        /* Card HTML Generator */
+        function createCardHTML(notice, isPinnedCard) {
+            return `
+                <div class="dept-notice-card-item">
+                    <div>
+                        <div class="dept-notice-card-top">
+                            <div class="dept-notice-badges">
+                                <span class="dept-notice-badge dept-notice-badge-cat">${notice.category}</span>
+                                <span class="dept-notice-badge dept-notice-badge-priority">${notice.priority}</span>
+                                ${notice.isNew ? '<span class="dept-notice-badge dept-notice-badge-new">NEW</span>' : ''}
+                                ${isPinnedCard ? '<span class="dept-notice-badge" style="background:#e8f5e9; color:var(--dept-notice-primary);"><i class="fas fa-thumbtack"></i> Pinned</span>' : ''}
+                            </div>
+                            <span class="dept-notice-meta-info">${notice.noticeNumber}</span>
+                        </div>
+                        <h3 class="dept-notice-title">${notice.title}</h3>
+                        <p class="dept-notice-desc">${notice.description}</p>
+                    </div>
+                    <div class="dept-notice-card-footer">
+                        <div class="dept-notice-details-row">
+                            <span><i class="fas fa-calendar-alt"></i> ${notice.publishedDate}</span>
+                            <span><i class="fas fa-building"></i> ${notice.issuedBy}</span>
+                            <span><i class="fas fa-file-pdf" style="color:#d32f2f;"></i> ${notice.fileSize}</span>
+                        </div>
+                        <div class="dept-notice-details-row" style="border-top: 1px dashed var(--dept-notice-border); padding-top: 6px;">
+                            <span><i class="fas fa-eye"></i> ${notice.views} Views</span>
+                            <span><i class="fas fa-download"></i> ${notice.downloads} Downloads</span>
+                            <span style="color: ${notice.status === 'Active' ? 'var(--dept-notice-primary)' : '#c62828'}; font-weight:600;">${notice.status}</span>
+                        </div>
+                        <div class="dept-notice-actions">
+                            <button class="dept-notice-action-btn" onclick="openNoticeModal(${notice.id})"><i class="fas fa-eye"></i> View</button>
+                            <button class="dept-notice-action-btn" onclick="downloadNotice(${notice.id})"><i class="fas fa-download"></i> Download</button>
+                            <button class="dept-notice-action-btn" onclick="shareNotice(${notice.id})"><i class="fas fa-share-alt"></i> Share</button>
+                            <button class="dept-notice-action-btn" onclick="bookmarkNotice(${notice.id})"><i class="fas fa-bookmark"></i> Bookmark</button>
+                            <button class="dept-notice-action-btn" onclick="printNotice(${notice.id})"><i class="fas fa-print"></i> Print</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        /* Sidebar Widgets & Timeline Rendering */
+        function renderSidebarWidgets() {
+            // Recent Notices
+            const recent = [...deptNoticeData].sort((a,b) => new Date(b.publishedDate) - new Date(a.publishedDate)).slice(0, 5);
+            recentList.innerHTML = recent.map(n => `
+                <li class="dept-notice-widget-item" onclick="openNoticeModal(${n.id})">
+                    <a href="javascript:void(0);">${n.title}</a>
+                    <span class="dept-notice-widget-date"><i class="fas fa-calendar"></i> ${n.publishedDate} • ${n.category}</span>
+                </li>
+            `).join('');
+
+            // Popular Notices
+            const popular = [...deptNoticeData].sort((a,b) => b.views - a.views).slice(0, 5);
+            popularList.innerHTML = popular.map(n => `
+                <li class="dept-notice-widget-item" onclick="openNoticeModal(${n.id})">
+                    <a href="javascript:void(0);">${n.title}</a>
+                    <span class="dept-notice-widget-date"><i class="fas fa-eye"></i> ${n.views} Views • ${n.category}</span>
+                </li>
+            `).join('');
+
+            // Timeline Accordion
+            const years = ['2026', '2025', '2024'];
+            timelineContainer.innerHTML = years.map(yr => {
+                const count = deptNoticeData.filter(n => n.year === yr).length;
+                return `
+                    <div class="dept-notice-timeline-item" id="timeline-${yr}">
+                        <div class="dept-notice-timeline-header" onclick="toggleTimeline('${yr}')">
+                            <span>Year ${yr} (${count} Notices)</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dept-notice-timeline-body">
+                            Publications and archived records for academic session ${yr}. Click to filter notices by year.
+                            <button class="dept-notice-btn dept-notice-btn-primary" style="margin-top:8px; padding:4px 10px; font-size:0.75rem;" onclick="filterByYear('${yr}')">Filter ${yr}</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleTimeline(yr) {
+            const item = document.getElementById(`timeline-${yr}`);
+            item.classList.toggle('active');
+        }
+
+        function filterByYear(yr) {
+            selectedYear = yr;
+            filterYear.value = yr;
+            renderAll();
+        }
+
+        /* Notice Actions & Modal Integration */
+        let activeModalNoticeId = null;
+
+        function openNoticeModal(id) {
+            const notice = deptNoticeData.find(n => n.id === id);
+            if (!notice) return;
+            activeModalNoticeId = id;
+
+            // Increment views locally
+            notice.views += 1;
+
+            document.getElementById('dept-notice-modal-title').textContent = notice.title;
+            
+            const infoContainer = document.getElementById('dept-notice-modal-info');
+            infoContainer.innerHTML = `
+                <div>
+                    <span class="dept-notice-badge dept-notice-badge-cat" style="margin-bottom:8px; display:inline-block;">${notice.category}</span>
+                    <span class="dept-notice-badge dept-notice-badge-priority">${notice.priority} Priority</span>
+                    <h3 style="font-size:1.1rem; font-weight:600; color:var(--dept-notice-text-main); margin:8px 0;">${notice.title}</h3>
+                    <p style="font-size:0.85rem; color:var(--dept-notice-text-muted); line-height:1.5;">${notice.description}</p>
+                </div>
+                <div style="font-size:0.8rem; display:flex; flex-direction:column; gap:6px; border-top:1px solid var(--dept-notice-border); padding-top:12px;">
+                    <div><strong>Notice Number:</strong> ${notice.noticeNumber}</div>
+                    <div><strong>Issued By:</strong> ${notice.issuedBy}</div>
+                    <div><strong>Department:</strong> ${notice.department}</div>
+                    <div><strong>Published Date:</strong> ${notice.publishedDate}</div>
+                    <div><strong>Last Updated:</strong> ${notice.updatedDate}</div>
+                    <div><strong>File Size:</strong> ${notice.fileSize} (${notice.fileType})</div>
+                    <div><strong>Total Downloads:</strong> ${notice.downloads}</div>
+                    <div><strong>Total Views:</strong> ${notice.views}</div>
+                </div>
+                <button class="dept-notice-btn dept-notice-btn-primary" onclick="downloadNotice(${notice.id})" style="width:100%; justify-content:center;">
+                    <i class="fas fa-download"></i> Download Attached PDF
+                </button>
+            `;
+
+            const iframe = document.getElementById('dept-notice-modal-iframe');
+            iframe.src = `https://mozilla.github.io/pdf.js/web/viewer.html?file=https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf`;
+
+            document.getElementById('dept-notice-modal').classList.add('show');
+            renderAll();
+        }
+
+        function closeModal() {
+            document.getElementById('dept-notice-modal').classList.remove('show');
+            document.getElementById('dept-notice-modal-iframe').src = '';
+            activeModalNoticeId = null;
+        }
+
+        function downloadNotice(id) {
+            const notice = deptNoticeData.find(n => n.id === id);
+            if (!notice) return;
+            notice.downloads += 1;
+            renderAll();
+            
+            const link = document.createElement('a');
+            link.href = `https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf`;
+            link.download = `${notice.noticeNumber.replace(/\//g, '_')}.pdf`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            alert(`Downloading PDF document for: "${notice.title}" (${notice.fileSize})`);
+        }
+
+        function shareNotice(id) {
+            const notice = deptNoticeData.find(n => n.id === id);
+            if (!notice) return;
+            if (navigator.share) {
+                navigator.share({
+                    title: notice.title,
+                    text: notice.description,
+                    url: window.location.href
+                }).catch(() => {});
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert(`Notice link copied to clipboard for: ${notice.title}`);
+            }
+        }
+
+        function bookmarkNotice(id) {
+            const notice = deptNoticeData.find(n => n.id === id);
+            if (!notice) return;
+            alert(`Notice successfully bookmarked to your local browser session: "${notice.title}"`);
+        }
+
+        function printNotice(id) {
+            const notice = deptNoticeData.find(n => n.id === id);
+            if (!notice) return;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                <head>
+                    <title>${notice.title} - Shri Shivaji College, Parbhani</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 40px; color: #111; }
+                        h1 { color: #1B5E20; font-size: 20px; }
+                        .meta { margin: 15px 0; font-size: 14px; color: #555; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+                        .desc { font-size: 15px; line-height: 1.6; margin-top: 20px; }
+                    </style>
+                </head>
+                <body>
+                    <h3>Department of Computer Science</h3>
+                    <h2>Shri Shivaji College, Parbhani</h2>
+                    <hr>
+                    <h1>${notice.title}</h1>
+                    <div class="meta">
+                        <p><strong>Notice No:</strong> ${notice.noticeNumber}</p>
+                        <p><strong>Category:</strong> ${notice.category} | <strong>Issued By:</strong> ${notice.issuedBy}</p>
+                        <p><strong>Published Date:</strong> ${notice.publishedDate}</p>
+                    </div>
+                    <div class="desc">${notice.description}</div>
+                </body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.focus();
+            setTimeout(() => { printWindow.print(); printWindow.close(); }, 500);
+        }
+
+        function modalAction(action) {
+            if (!activeModalNoticeId) return;
+            if (action === 'download') downloadNotice(activeModalNoticeId);
+            if (action === 'print') printNotice(activeModalNoticeId);
+            if (action === 'share') shareNotice(activeModalNoticeId);
+            if (action === 'zoomIn') alert('PDF viewer zoomed in.');
+        }
+
+        /* Run on DOM Load */
+        document.addEventListener('DOMContentLoaded', initPortal);
+    </script>
+</body>
+</html>

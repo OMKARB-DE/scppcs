@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWAYAM NPTEL Courses | Department of Computer Science | Shri Shivaji College, Parbhani</title>
+
+    <!-- Department Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/dept-logo3.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/dept-logo3.png">
+
+    <!-- Apple / Mobile -->
+    <link rel="apple-touch-icon" href="../images/dept-logo3.png">
+
+    <link rel="stylesheet" href="../css/digital-library-NPTEL.css">
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+
+    <!-- HEADER COMPONENT MOUNT POINT -->
+    <header id="departmentHeader"></header>
+
+    
+    <div class="page-card-container">
+        <!-- Top Banner Header -->
+        <div class="banner-header">
+            <span class="page-badge">SWAYAM NPTEL</span>
+            <h1>Academic Course Catalog</h1>
+            <div class="sub-banner">SWAYAM NPTEL - Courses</div>
+        </div>
+
+        <div class="content-body">
+            <!-- Controls Section: Search & Filters -->
+            <div class="controls-panel">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="searchInput" placeholder="Search by course title, instructor, or institute...">
+                </div>
+                
+                <div class="filters-wrapper">
+                    <div class="filter-group">
+                        <label for="instituteFilter"><i class="fa-solid fa-university"></i> Institute</label>
+                        <select id="instituteFilter">
+                            <option value="">All Institutes</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="levelFilter"><i class="fa-solid fa-graduation-cap"></i> Level</label>
+                        <select id="levelFilter">
+                            <option value="">All Levels</option>
+                            <option value="UG">UG</option>
+                            <option value="PG">PG</option>
+                            <option value="UG, PG">UG, PG</option>
+                        </select>
+                    </div>
+
+                    <div class="filter-group">
+                        <label for="weekFilter"><i class="fa-regular fa-clock"></i> Duration</label>
+                        <select id="weekFilter">
+                            <option value="">All Weeks</option>
+                            <option value="4">4 Weeks</option>
+                            <option value="8">8 Weeks</option>
+                            <option value="12">12 Weeks</option>
+                        </select>
+                    </div>
+
+                    <button id="resetFilters" class="btn-reset" title="Reset Filters"><i class="fa-solid fa-rotate-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Status Bar & View Toggles -->
+            <div class="action-bar">
+                <div class="status-bar">
+                    Showing <span id="courseCount">0</span> courses
+                </div>
+                <div class="view-toggles">
+                    <button class="view-btn active" data-view="grid" title="Grid View"><i class="fa-solid fa-border-all"></i> Grid</button>
+                    <button class="view-btn" data-view="tile" title="Tile View"><i class="fa-solid fa-table-cells-large"></i> Tile</button>
+                    <button class="view-btn" data-view="list" title="List View"><i class="fa-solid fa-list"></i> List</button>
+                </div>
+            </div>
+
+            <!-- Course Container -->
+            <div class="course-container grid-view" id="courseContainer">
+                <!-- Dynamically populated via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Preview Modal -->
+    <div class="modal-overlay" id="courseModal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
+            <div class="modal-header-tag">Course Details</div>
+            <h2 id="modalTitle">Course Title</h2>
+            <div class="modal-details-grid">
+                <div><strong>Instructor:</strong> <span id="modalInstructor"></span></div>
+                <div><strong>Institute:</strong> <span id="modalInstitute"></span></div>
+                <div><strong>Discipline:</strong> <span id="modalDiscipline"></span></div>
+                <div><strong>Program Level:</strong> <span id="modalLevel"></span></div>
+                <div><strong>Start Date:</strong> <span id="modalStart"></span></div>
+                <div><strong>End Date:</strong> <span id="modalEnd"></span></div>
+                <div><strong>Duration:</strong> <span id="modalDuration"></span></div>
+                <div><strong>Credit / NCrF:</strong> <span id="modalCredit"></span></div>
+                <div><strong>Language:</strong> <span id="modalLanguage"></span></div>
+            </div>
+            <div class="modal-actions">
+                <a href="#" id="modalPreviewBtn" target="_blank" class="btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Swayam Preview</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentFooter"></footer>`r`n`r`n    <!-- HEADER COMPONENT LOADER SCRIPT -->`r`n    <script src="../js/footer.js"></script>`r`n`r`n    <!-- SCRIPTS -->
+    <script>
+        // Load Footer Component
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/footer.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentFooter").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/footer.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentFooter === 'function') {
+                        loadDepartmentFooter();
+                    }
+                })
+                .catch(err => console.error("Error loading footer component:", err));
+        });
+    </script>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentHeader === 'function') {
+                        loadDepartmentHeader();
+                    }
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+
+
+    <script src="../js/digital-library-NPTEL.js"></script>
+</body>
+</html>

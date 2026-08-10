@@ -1,0 +1,2409 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Book Vault | Department of Computer Science | Shri Shivaji College, Parbhani</title>
+
+    <!-- Department Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/dept-logo3.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/dept-logo3.png">
+
+    <!-- Apple / Mobile -->
+    <link rel="apple-touch-icon" href="../images/dept-logo3.png">
+
+
+        <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Source+Sans+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =================================================================at
+           CSS VARIABLES & DESIGN SYSTEM
+           =================================================================== */
+        :root {
+            --primary-navy: #156c32;
+            --secondary-blue: #204672;
+            --accent-blue: #0066CC;
+            --bg-main: #f4f9f5;
+            --bg-white: #ffffff;
+            --text-dark: #111a2c;
+            --text-muted: #5C677D;
+            --border-color: #D8E2EC;
+            --border-light: #EAEFF5;
+            --success-color: #2D6A4F;
+            --danger-color: #A4243B;
+            --hover-row: #F0F4F8;
+            --font-sans: 'Inter', 'Source Sans Pro', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: SFMono-Regular, Consolas, "Liberation Mono", Menlo, Courier, monospace;
+            --transition-speed: 0.2s;
+        }
+
+        /* =================================================================
+           BASE RESET & TYPOGRAPHY
+           =================================================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            
+        }
+
+        .vault-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            margin-top: 40px;
+            margin-bottom:40px;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 12px rgba(20, 19, 19, 0.153);
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 0.5rem; }
+            .vault-container { padding: 1rem; border: none; border-radius: 0; }
+        }
+
+        /* =================================================================
+           PAGE HEADING & INTRODUCTION
+           =================================================================== */
+        .vault-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1.5rem;
+        }
+
+        .vault-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            letter-spacing: -0.02em;
+            margin-bottom: 0.25rem;
+        }
+
+        .vault-subtitle {
+            font-size: 1.15rem;
+            font-weight: 500;
+            color: var(--secondary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .vault-metadata {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .vault-description {
+            font-size: 1rem;
+            color: var(--text-dark);
+            max-width: 900px;
+        }
+
+        /* =================================================================
+           LIBRARY STATISTICS STRIP
+           =================================================================== */
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            line-height: 1.1;
+            margin-bottom: 0.25rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        /* =================================================================
+           ADVANCED SEARCH & FILTER PANEL
+           =================================================================== */
+        .filter-panel {
+            background: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-panel-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 1rem;
+        }
+
+        .search-bar-wrapper {
+            margin-bottom: 1.25rem;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            font-family: var(--font-sans);
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-dark);
+            transition: border-color var(--transition-speed);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 2px rgba(0, 102, 204, 0.1);
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 0.35rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .filter-select {
+            padding: 0.6rem 0.75rem;
+            font-size: 0.95rem;
+            font-family: var(--font-sans);
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-dark);
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .filter-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.6rem 1.25rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: var(--font-sans);
+            border-radius: 4px;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: background-color var(--transition-speed), border-color var(--transition-speed);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-navy);
+            color: var(--bg-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-blue);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            border-color: var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--hover-row);
+        }
+
+        .btn-text {
+            background: transparent;
+            color: var(--accent-blue);
+            padding: 0.5rem 0.75rem;
+            border: none;
+            text-decoration: underline;
+        }
+
+        .btn-text:hover {
+            color: var(--primary-navy);
+        }
+
+        /* Active Filter Chips */
+        .filter-chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            min-height: 24px;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--primary-navy);
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        .chip-remove {
+            background: none;
+            border: none;
+            margin-left: 0.5center;
+            margin-left: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1;
+        }
+
+        .chip-remove:hover {
+            color: var(--danger-color);
+        }
+
+        /* =================================================================
+           RESULTS TOOLBAR
+           =================================================================== */
+        .results-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .result-count {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .view-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .view-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .view-btn.active {
+            background-color: var(--primary-navy);
+            color: var(--bg-white);
+            border-color: var(--primary-navy);
+        }
+
+        /* =================================================================
+           MAIN E-BOOK TABLE
+           =================================================================== */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            background: var(--bg-white);
+        }
+
+        .vault-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .vault-table th {
+            background-color: var(--bg-main);
+            color: var(--primary-navy);
+            font-weight: 600;
+            padding: 0.85rem 1rem;
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .vault-table th:hover {
+            background-color: var(--border-light);
+        }
+
+        .vault-table th::after {
+            content: ' â†•';
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .vault-table td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-dark);
+            vertical-align: middle;
+        }
+
+        .vault-table tbody tr:hover {
+            background-color: var(--hover-row);
+        }
+
+        .vault-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Compact View Modifier */
+        .vault-table.compact-mode td, 
+        .vault-table.compact-mode th {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.85rem;
+        }
+
+        /* Column Specific Styles */
+        .col-code {
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--secondary-blue);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .col-title {
+            font-weight: 600;
+            color: var(--primary-navy);
+            min-width: 220px;
+        }
+
+        .col-author, .col-pub, .col-year {
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .col-category {
+            white-space: nowrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 3px;
+            text-transform: uppercase;
+        }
+
+        .badge-available {
+            background-color: rgba(45, 106, 79, 0.1);
+            color: var(--success-color);
+            border: 1px solid rgba(45, 106, 79, 0.2);
+        }
+
+        .badge-unavailable {
+            background-color: rgba(164, 36, 59, 0.1);
+            color: var(--danger-color);
+            border: 1px solid rgba(164, 36, 59, 0.2);
+        }
+
+        .action-cell {
+            white-space: nowrap;
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .btn-action {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 0.3rem 0.6rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 3px;
+            cursor: pointer;
+            color: var(--secondary-blue);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-action:hover {
+            background-color: var(--primary-navy);
+            color: var(--bg-white);
+            border-color: var(--primary-navy);
+        }
+
+        .btn-action.disabled {
+            color: var(--text-muted);
+            border-color: var(--border-light);
+            background-color: var(--bg-main);
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        /* =================================================================
+           PAGINATION
+           =================================================================== */
+        .pagination-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .pagination-info {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .pagination-controls {
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+        }
+
+        .page-btn {
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.75rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        .page-btn:hover:not(:disabled) {
+            background-color: var(--hover-row);
+            border-color: var(--secondary-blue);
+        }
+
+        .page-btn.active {
+            background-color: var(--primary-navy);
+            color: var(--bg-white);
+            border-color: var(--primary-navy);
+        }
+
+        .page-btn:disabled {
+            color: var(--text-muted);
+            background-color: var(--bg-main);
+            cursor: not-allowed;
+            border-color: var(--border-light);
+        }
+
+        /* =================================================================
+           STATES (EMPTY & LOADING)
+           =================================================================== */
+        .empty-state {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--bg-white);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+
+        .empty-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 0.5rem;
+        }
+
+        .empty-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            max-width: 400px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        /* Skeleton Loading */
+        .skeleton-row td {
+            padding: 1rem;
+        }
+
+        .skeleton-box {
+            height: 16px;
+            background: linear-gradient(90deg, var(--border-light) 25%, var(--border-color) 50%, var(--border-light) 75%);
+            background-size: 200% 100%;
+            border-radius: 3px;
+            animation: skeletonLoading 1.5s infinite;
+        }
+
+        @keyframes skeletonLoading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =================================================================
+           PDF READER MODAL
+           =================================================================== */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(11, 37, 69, 0.7);
+            backdrop-filter: blur(2px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-container {
+            background: var(--bg-white);
+            width: 95vw;
+            height: 92vh;
+            max-width: 1400px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: scale(0.95);
+            transition: transform 0.25s ease;
+        }
+
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+
+        .modal-topbar {
+            background-color: var(--primary-navy);
+            color: var(--bg-white);
+            padding: 0.75rem 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--secondary-blue);
+        }
+
+        .modal-title-wrap {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-book-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--bg-white);
+        }
+
+        .modal-book-meta {
+            font-size: 0.8rem;
+            color: #A0AEC0;
+        }
+
+        .modal-controls-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--bg-white);
+            padding: 0.35rem 0.75rem;
+            font-size: 0.85rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .modal-btn:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .modal-btn-close {
+            background: var(--danger-color);
+            border-color: var(--danger-color);
+            font-weight: 700;
+            padding: 0.35rem 0.85rem;
+        }
+
+        .modal-btn-close:hover {
+            background: #821D2C;
+        }
+
+        .modal-body-layout {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        @media (max-width: 900px) {
+            .modal-body-layout {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto 1fr;
+            }
+        }
+
+        .modal-info-panel {
+            background: var(--bg-main);
+            border-right: 1px solid var(--border-color);
+            padding: 1.25rem;
+            overflow-y: auto;
+        }
+
+        @media (max-width: 900px) {
+            .modal-info-panel {
+                max-height: 180px;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 0.75rem 1rem;
+            }
+        }
+
+        .info-panel-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-item {
+            margin-bottom: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--text-muted);
+            display: inline-block;
+            width: 100px;
+        }
+
+        .info-value {
+            color: var(--text-dark);
+        }
+
+        .modal-viewer-pane {
+            position: relative;
+            background: #525659;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .pdf-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #FFF;
+        }
+
+        .viewer-loading, .viewer-error {
+            position: absolute;
+            color: #FFF;
+            font-size: 0.95rem;
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FOOTER COMPONENT MOUNT POINT -->
+    <header id="departmentHeader"></header>
+
+
+    <div class="vault-container">
+        
+        <!-- PAGE HEADING -->
+        <header class="vault-header">
+            <h1 class="vault-title">E-Book Vault</h1>
+            <h2 class="vault-subtitle">Digital Academic Library </h2>
+            <div class="vault-metadata">Department of Computer Science Â· Shri Shivaji College, Parbhani</div>
+            <p class="vault-description">
+                Explore the department's curated collection of computer science and technology books. Search, filter, preview, and download available digital resources.
+            </p>
+        </header>
+
+        <!-- LIBRARY STATISTICS STRIP -->
+        <section class="stats-strip" id="statsStrip" aria-label="Library Statistics">
+            <div class="stat-card">
+                <div class="stat-number" id="statTotalBooks">0</div>
+                <div class="stat-label">Total Books</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="statCsBooks">0</div>
+                <div class="stat-label">CS & Technology</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="statAuthors">0</div>
+                <div class="stat-label">Authors</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="statPublications">0</div>
+                <div class="stat-label">Publications</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="statPdfs">0</div>
+                <div class="stat-label">PDF Available</div>
+            </div>
+        </section>
+
+        <!-- ADVANCED SEARCH & FILTER PANEL -->
+        <section class="filter-panel" aria-label="Search and Filter Library">
+            <h3 class="filter-panel-title">Search & Filter Library</h3>
+            
+            <div class="search-bar-wrapper">
+                <input type="text" id="searchInput" class="search-input" placeholder="Search books, authors, publications, code, or year... (Press '/' to focus)" aria-label="Search books">
+            </div>
+
+            <div class="filter-grid">
+                <div class="filter-group">
+                    <label class="filter-label" for="categoryFilter">Category</label>
+                    <select id="categoryFilter" class="filter-select">
+                        <option value="All">All Categories</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label" for="publicationFilter">Publication</label>
+                    <select id="publicationFilter" class="filter-select">
+                        <option value="All">All Publications</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label" for="yearFilter">Publication Year</label>
+                    <select id="yearFilter" class="filter-select">
+                        <option value="All">All Years</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label" for="authorFilter">Author</label>
+                    <select id="authorFilter" class="filter-select">
+                        <option value="All">All Authors</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label" for="availabilityFilter">Availability</label>
+                    <select id="availabilityFilter" class="filter-select">
+                        <option value="All">All Availability</option>
+                        <option value="available">PDF Available</option>
+                        <option value="unavailable">PDF Unavailable</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="filter-actions">
+                <button type="button" class="btn btn-primary" id="applyFiltersBtn">Apply Filters</button>
+                <button type="button" class="btn btn-secondary" id="resetFiltersBtn">Reset Filters</button>
+                <button type="button" class="btn btn-text" id="clearAllBtn">Clear All</button>
+            </div>
+        </section>
+
+        <!-- ACTIVE FILTER CHIPS -->
+        <div class="filter-chips-container" id="filterChipsContainer" aria-label="Active filters"></div>
+
+        <!-- RESULTS TOOLBAR -->
+        <div class="results-toolbar">
+            <div class="result-count" id="resultCountText">Showing 0 of 0 books</div>
+            <div class="view-controls">
+                <span>View:</span>
+                <button type="button" class="view-btn active" id="tableViewBtn">Table View</button>
+                <button type="button" class="view-btn" id="compactViewBtn">Compact View</button>
+            </div>
+        </div>
+
+        <!-- MAIN E-BOOK TABLE -->
+        <div class="table-responsive" id="tableResponsiveContainer">
+            <table class="vault-table" id="vaultTable">
+                <thead>
+                    <tr>
+                        <th data-sort="code">Book Code</th>
+                        <th data-sort="title">Title</th>
+                        <th data-sort="author">Author</th>
+                        <th data-sort="category">Category</th>
+                        <th data-sort="publication">Publication</th>
+                        <th data-sort="year">Year</th>
+                        <th data-sort="pdfAvailable">PDF</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- Skeleton loading initial state -->
+                    <tr class="skeleton-row"><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td></tr>
+                    <tr class="skeleton-row"><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td></tr>
+                    <tr class="skeleton-row"><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td><td><div class="skeleton-box"></div></td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- EMPTY STATE CONTAINER (Hidden by default) -->
+        <div class="empty-state" id="emptyStateContainer" style="display: none;">
+            <h4 class="empty-title">No Books Found</h4>
+            <p class="empty-desc">We couldn't find any books matching your current search or filters.</p>
+            <button type="button" class="btn btn-primary" id="emptyClearBtn">Clear Filters</button>
+        </div>
+
+        <!-- PAGINATION -->
+        <div class="pagination-container" id="paginationContainer">
+            <div class="pagination-info" id="paginationInfo">Showing 0 of 0 books</div>
+            <div class="pagination-controls" id="paginationControls"></div>
+        </div>
+
+    </div>
+
+    <!-- PDF READER MODAL -->
+    <div class="modal-overlay" id="pdfModal" role="dialog" aria-modal="true" aria-label="PDF Reader Modal">
+        <div class="modal-container">
+            <!-- Top bar -->
+            <div class="modal-topbar">
+                <div class="modal-title-wrap">
+                    <span class="modal-book-title" id="modalBookTitle">Book Title</span>
+                    <span class="modal-book-meta" id="modalBookMeta">Author Â· Publication Â· Year</span>
+                </div>
+                <div class="modal-controls-group">
+                    <button type="button" class="modal-btn" id="prevBookBtn" title="Previous Book in list">Previous Book</button>
+                    <button type="button" class="modal-btn" id="nextBookBtn" title="Next Book in list">Next Book</button>
+                    <button type="button" class="modal-btn" id="zoomOutBtn" title="Zoom Out">-</button>
+                    <button type="button" class="modal-btn" id="zoomInBtn" title="Zoom In">+</button>
+                    <button type="button" class="modal-btn" id="fullscreenBtn" title="Fullscreen">Fullscreen</button>
+                    <a href="#" class="modal-btn" id="modalDownloadLink" download style="text-decoration: none; display: inline-flex; align-items: center;">Download PDF</a>
+                    <button type="button" class="modal-btn modal-btn-close" id="modalCloseBtn" title="Close (Esc)">• Close</button>
+                </div>
+            </div>
+            <!-- Body layout -->
+            <div class="modal-body-layout">
+                <!-- Information panel -->
+                <div class="modal-info-panel">
+                    <h5 class="info-panel-title">Book Information</h5>
+                    <ul class="info-list">
+                        <li class="info-item"><span class="info-label">Book Code:</span><span class="info-value" id="infoCode">-</span></li>
+                        <li class="info-item"><span class="info-label">Title:</span><span class="info-value" id="infoTitle">-</span></li>
+                        <li class="info-item"><span class="info-label">Author:</span><span class="info-value" id="infoAuthor">-</span></li>
+                        <li class="info-item"><span class="info-label">Publication:</span><span class="info-value" id="infoPub">-</span></li>
+                        <li class="info-item"><span class="info-label">Year:</span><span class="info-value" id="infoYear">-</span></li>
+                        <li class="info-item"><span class="info-label">Category:</span><span class="info-value" id="infoCategory">-</span></li>
+                        <li class="info-item"><span class="info-label">Language:</span><span class="info-value" id="infoLang">-</span></li>
+                        <li class="info-item"><span class="info-label">Pages:</span><span class="info-value" id="infoPages">-</span></li>
+                        <li class="info-item"><span class="info-label">Availability:</span><span class="info-value" id="infoAvail">-</span></li>
+                    </ul>
+                </div>
+                <!-- PDF Viewer pane -->
+                <div class="modal-viewer-pane" id="viewerPane">
+                    <div class="viewer-loading" id="viewerLoading">Loading digital resource...</div>
+                    <iframe class="pdf-iframe" id="pdfIframe" src="" title="PDF Document Viewer"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =================================================================
+       JAVASCRIPT IMPLEMENTATION
+       =================================================================== -->
+
+
+<!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentFooter"></footer>   <!-- HEADER COMPONENT LOADER SCRIPT -->   <script src="../js/footer.js"></script>   <!-- SCRIPTS -->
+    <script>
+        // Load Footer Component
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/footer.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentFooter").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/footer.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentFooter === 'function') {
+                        loadDepartmentFooter();
+                    }
+                })
+                .catch(err => console.error("Error loading footer component:", err));
+        });
+    </script>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentHeader === 'function') {
+                        loadDepartmentHeader();
+                    }
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+
+
+
+
+
+
+
+
+    <script>
+        // Comprehensive Dataset with 20+ Realistic Computer Science Books
+        const booksData = [
+              {
+    code: "CS-EB-006",
+    title: "Machine Learning: The Art and Science of Algorithms that Make Sense of Data",
+    author: "Peter Flach",
+    category: "Machine Learning",
+    publication: "Cambridge University Press",
+    year: 2012,
+    language: "English",
+    pages: 416,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-006.pdf"
+},
+
+{
+    code: "CS-EB-007",
+    title: "Machine Learning for Absolute Beginners: A Plain English Introduction",
+    author: "Oliver Theobald",
+    category: "Machine Learning",
+    publication: "Scatterplot Press",
+    year: 2017,
+    language: "English",
+    pages: 128,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-007.pdf"
+},
+
+{
+    code: "CS-EB-008",
+    title: "An Introduction to Statistical Learning with Applications in R",
+    author: "Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani",
+    category: "Machine Learning",
+    publication: "Springer",
+    year: 2013,
+    language: "English",
+    pages: 441,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-008.pdf"
+},
+
+{
+    code: "CS-EB-009",
+    title: "Deep Learning with Keras",
+    author: "Antonio Gulli, Sujit Pal",
+    category: "Deep Learning",
+    publication: "Packt Publishing",
+    year: 2017,
+    language: "English",
+    pages: 490,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-009.pdf"
+},
+
+{
+    code: "CS-EB-010",
+    title: "Getting Started with TensorFlow",
+    author: "Giancarlo Zaccone",
+    category: "Deep Learning",
+    publication: "Packt Publishing",
+    year: 2016,
+    language: "English",
+    pages: 178,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-010.pdf"
+},
+
+{
+    code: "CS-EB-011",
+    title: "Python for Data Analysis: Data Wrangling with Pandas, NumPy, and IPython",
+    author: "Wes McKinney",
+    category: "Data Science",
+    publication: "O'Reilly Media",
+    year: 2017,
+    language: "English",
+    pages: 541,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-011.pdf"
+},
+
+{
+    code: "CS-EB-012",
+    title: "Machine Learning: The New AI",
+    author: "Ethem Alpaydin",
+    category: "Machine Learning",
+    publication: "The MIT Press",
+    year: 2016,
+    language: "English",
+    pages: 215,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-012.pdf"
+},
+
+{
+    code: "CS-EB-013",
+    title: "Python Crash Course: A Hands-On, Project-Based Introduction to Programming",
+    author: "Eric Matthes",
+    category: "Python Programming",
+    publication: "No Starch Press",
+    year: 2023,
+    language: "English",
+    pages: 853,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-013.pdf"
+},
+
+{
+    code: "CS-EB-014",
+    title: "Problem Solving with Algorithms and Data Structures",
+    author: "Brad Miller, David Ranum",
+    category: "Data Structures & Algorithms",
+    publication: "OpenDSA",
+    year: 2013,
+    language: "English",
+    pages: 240,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-014.pdf"
+},
+
+{
+    code: "CS-EB-015",
+    title: "Open Data Structures",
+    author: "Pat Morin",
+    category: "Data Structures & Algorithms",
+    publication: "Open Source",
+    year: 2013,
+    language: "English",
+    pages: 326,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-015.pdf"
+},
+
+{
+    code: "CS-EB-016",
+    title: "Hands-On Data Structures and Algorithms with Python",
+    author: "Basant Agarwal, Benjamin Baka",
+    category: "Data Structures & Algorithms",
+    publication: "Packt Publishing",
+    year: 2018,
+    language: "English",
+    pages: 389,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-016.pdf"
+},
+
+{
+    code: "CS-EB-017",
+    title: "Grokking Algorithms: An Illustrated Guide for Programmers and Other Curious People",
+    author: "Aditya Y. Bhargava",
+    category: "Algorithms",
+    publication: "Manning Publications",
+    year: 2016,
+    language: "English",
+    pages: 258,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-017.pdf"
+},
+
+{
+    code: "CS-EB-018",
+    title: "Fundamentals of Python: Data Structures",
+    author: "Kenneth A. Lambert",
+    category: "Data Structures",
+    publication: "Cengage Learning",
+    year: 2014,
+    language: "English",
+    pages: 449,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-018.pdf"
+},
+
+{
+    code: "CS-EB-019",
+    title: "Data Structures and Algorithms Using Python",
+    author: "Rance D. Necaise",
+    category: "Data Structures & Algorithms",
+    publication: "John Wiley & Sons",
+    year: 2011,
+    language: "English",
+    pages: 540,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-019.pdf"
+},
+
+{
+    code: "CS-EB-020",
+    title: "Python Tricks: The Book",
+    author: "Dan Bader",
+    category: "Python Programming",
+    publication: "CreateSpace Independent Publishing Platform",
+    year: 2017,
+    language: "English",
+    pages: 299,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-020.pdf"
+},
+
+{
+    code: "CS-EB-021",
+    title: "Automate the Boring Stuff with Python",
+    author: "Al Sweigart",
+    category: "Python Programming",
+    publication: "No Starch Press",
+    year: 2020,
+    language: "English",
+    pages: 594,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-021.pdf"
+},
+
+{
+    code: "CS-EB-022",
+    title: "Think Python: How to Think Like a Computer Scientist",
+    author: "Allen B. Downey",
+    category: "Python Programming",
+    publication: "O'Reilly Media",
+    year: 2015,
+    language: "English",
+    pages: 291,
+    pdfAvailable: true,
+    pdf: "pdf/books/cs-eb-022.pdf"
+},
+
+{
+    code: "CS-EB-023",
+    title: "MongoDB: The Definitive Guide",
+    author: "Kristina Chodorow",
+    category: "Database Management",
+    publication: "O'Reilly Media",
+    year: 2013,
+    language: "English",
+    pages: 432,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-023.pdf"
+},
+
+{
+    code: "CS-EB-024",
+    title: "Seven Databases in Seven Weeks",
+    author: "Eric Redmond, Jim R. Wilson",
+    category: "Database Management",
+    publication: "Pragmatic Bookshelf",
+    year: 2012,
+    language: "English",
+    pages: 347,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-024.pdf"
+},
+
+{
+    code: "CS-EB-025",
+    title: "SQL for Data Analysis: Advanced Techniques for Transforming Data into Insights",
+    author: "Cathy Tanimura",
+    category: "Data Analysis",
+    publication: "O'Reilly Media",
+    year: 2021,
+    language: "English",
+    pages: 359,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-025.pdf"
+},
+
+{
+    code: "CS-EB-026",
+    title: "SQL For Dummies",
+    author: "Allen G. Taylor",
+    category: "Database Management",
+    publication: "Wiley Publishing",
+    year: 2003,
+    language: "English",
+    pages: 435,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-026.pdf"
+},
+
+{
+    code: "CS-EB-027",
+    title: "SQL and Relational Theory: How to Write Accurate SQL Code",
+    author: "C. J. Date",
+    category: "Database Management",
+    publication: "O'Reilly Media",
+    year: 2015,
+    language: "English",
+    pages: 583,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-027.pdf"
+},
+
+{
+    code: "CS-EB-028",
+    title: "Kotlin in Action",
+    author: "Dmitry Jemerov, Svetlana Isakova",
+    category: "Programming Languages",
+    publication: "Manning Publications",
+    year: 2016,
+    language: "English",
+    pages: 363,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-028.pdf"
+},
+
+{
+    code: "CS-EB-029",
+    title: "Artificial Intelligence: A Modern Approach",
+    author: "Stuart J. Russell, Peter Norvig",
+    category: "Artificial Intelligence",
+    publication: "Pearson Education",
+    year: 2003,
+    language: "English",
+    pages: 1112,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-029.pdf"
+},
+
+{
+    code: "CS-EB-030",
+    title: "Data Structures and Algorithm Analysis in C++",
+    author: "Mark Allen Weiss",
+    category: "Data Structures & Algorithms",
+    publication: "Pearson Education / Addison-Wesley",
+    year: 2014,
+    language: "English",
+    pages: 654,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-030.pdf"
+},
+
+{
+    code: "CS-EB-031",
+    title: "Effective Java",
+    author: "Joshua Bloch",
+    category: "Java Programming",
+    publication: "Addison-Wesley",
+    year: 2018,
+    language: "English",
+    pages: 901,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-031.pdf"
+},
+
+{
+    code: "CS-EB-032",
+    title: "Head First C",
+    author: "David Griffiths, Dawn Griffiths",
+    category: "C Programming",
+    publication: "O'Reilly Media",
+    year: 2012,
+    language: "English",
+    pages: 632,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-032.pdf"
+},
+
+{
+    code: "CS-EB-033",
+    title: "Programming in C",
+    author: "Stephen G. Kochan",
+    category: "C Programming",
+    publication: "Pearson Education",
+    year: 2015,
+    language: "English",
+    pages: 1270,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-033.pdf"
+},
+
+{
+    code: "CS-EB-034",
+    title: "Advanced Analytics with Spark: Patterns for Learning from Data at Scale",
+    author: "Sandy Ryza, Uri Laserson, Sean Owen, Josh Wills",
+    category: "Big Data & Spark",
+    publication: "O'Reilly Media",
+    year: 2015,
+    language: "English",
+    pages: 276,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-034.pdf"
+},
+
+{
+    code: "CS-EB-035",
+    title: "Mining the Social Web: Analyzing Data from Facebook, Twitter, LinkedIn, and Other Social Media Sites",
+    author: "Matthew A. Russell",
+    category: "Data Science & Social Media",
+    publication: "O'Reilly Media",
+    year: 2011,
+    language: "English",
+    pages: 344,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-035.pdf"
+},
+
+{
+    code: "CS-EB-036",
+    title: "Learning Spark: Lightning-Fast Big Data Analysis",
+    author: "Holden Karau, Andy Konwinski, Patrick Wendell, Matei Zaharia",
+    category: "Big Data & Spark",
+    publication: "O'Reilly Media",
+    year: 2015,
+    language: "English",
+    pages: 274,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-036.pdf"
+},
+
+{
+    code: "CS-EB-037",
+    title: "Python for Data Analysis",
+    author: "Wes McKinney",
+    category: "Data Science & Python",
+    publication: "O'Reilly Media",
+    year: 2013,
+    language: "English",
+    pages: 470,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-037.pdf"
+},
+
+{
+    code: "CS-EB-038",
+    title: "Natural Language Processing with Python",
+    author: "Steven Bird, Ewan Klein, Edward Loper",
+    category: "Natural Language Processing",
+    publication: "O'Reilly Media",
+    year: 2009,
+    language: "English",
+    pages: 504,
+    pdfAvailable: true,
+    pdf: "/e-books/CS-EB-038.pdf"
+},
+
+ {
+        "code": "CS-EB-039",
+        "title": "Designing Data-Intensive Applications",
+        "author": "Martin Kleppmann",
+        "category": "Data Engineering & Distributed Systems",
+        "publication": "O'Reilly Media",
+        "year": 2017,
+        "language": "English",
+        "pages": 491,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Designing_Data-Intensive_Applications.pdf"
+    },
+    {
+        "code": "CS-EB-040",
+        "title": "SQL Practice Problems",
+        "author": "Sylvia Moestl Vasilik",
+        "category": "SQL & Database Management",
+        "publication": "SQLPracticeProblems.com",
+        "year": 2016,
+        "language": "English",
+        "pages": 343,
+        "pdfAvailable": true,
+        "pdf": "/e-books/SQL_Practice_Problems.pdf"
+    },
+    {
+        "code": "CS-EB-041",
+        "title": "SQL: The Complete Reference",
+        "author": "James R. Groff, Paul N. Weinberg, Andrew J. Oppel",
+        "category": "SQL & Database Management",
+        "publication": "McGraw-Hill",
+        "year": 2010,
+        "language": "English",
+        "pages": 911,
+        "pdfAvailable": true,
+        "pdf": "/e-books/SQL_The_Complete_Reference.pdf"
+    },
+    {
+        "code": "CS-EB-042",
+        "title": "Fundamentals of Database Systems",
+        "author": "Ramez Elmasri, Shamkant B. Navathe",
+        "category": "Database Management",
+        "publication": "Pearson",
+        "year": 2016,
+        "language": "English",
+        "pages": 1273,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Fundamentals_of_Database_Systems.pdf"
+    },
+    {
+        "code": "CS-EB-043",
+        "title": "Database System Concepts",
+        "author": "Abraham Silberschatz, Henry F. Korth, S. Sudarshan",
+        "category": "Database Management",
+        "publication": "McGraw-Hill Education",
+        "year": 2020,
+        "language": "English",
+        "pages": 1373,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Database_System_Concepts.pdf"
+    },
+    {
+        "code": "CS-EB-044",
+        "title": "Head First Java",
+        "author": "Kathy Sierra, Bert Bates, Trisha Gee",
+        "category": "Java Programming",
+        "publication": "O'Reilly Media",
+        "year": 2022,
+        "language": "English",
+        "pages": 755,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Head_First_Java.pdf"
+    },
+    {
+        "code": "CS-EB-045",
+        "title": "Java: A Beginner's Guide",
+        "author": "Herbert Schildt",
+        "category": "Java Programming",
+        "publication": "McGraw-Hill Education",
+        "year": 2014,
+        "language": "English",
+        "pages": 729,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Java_A_Beginners_Guide.pdf"
+    },
+    {
+        "code": "CS-EB-046",
+        "title": "Operating Systems: Internals and Design Principles",
+        "author": "William Stallings",
+        "category": "Operating Systems",
+        "publication": "Prentice Hall",
+        "year": 2012,
+        "language": "English",
+        "pages": 820,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Operating_Systems_Internals_and_Design_Principles.pdf"
+    },
+    {
+        "code": "CS-EB-047",
+        "title": "Expert C Programming: Deep C Secrets",
+        "author": "Peter van der Linden",
+        "category": "C Programming",
+        "publication": "Prentice Hall",
+        "year": 1994,
+        "language": "English",
+        "pages": 290,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Expert_C_Programming_Deep_C_Secrets.pdf"
+    },
+    {
+        "code": "CS-EB-048",
+        "title": "Understanding and Using C Pointers",
+        "author": "Richard Reese",
+        "category": "C Programming",
+        "publication": "O'Reilly Media",
+        "year": 2013,
+        "language": "English",
+        "pages": 226,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Understanding_and_Using_C_Pointers.pdf"
+    },
+    {
+        "code": "CS-EB-049",
+        "title": "C in a Nutshell",
+        "author": "Peter Prinz, Tony Crawford",
+        "category": "C Programming",
+        "publication": "O'Reilly Media",
+        "year": 2006,
+        "language": "English",
+        "pages": 620,
+        "pdfAvailable": true,
+        "pdf": "/e-books/C_in_a_Nutshell.pdf"
+    },
+    {
+        "code": "CS-EB-050",
+        "title": "21st Century C",
+        "author": "Ben Klemens",
+        "category": "C Programming",
+        "publication": "O'Reilly Media",
+        "year": 2013,
+        "language": "English",
+        "pages": 298,
+        "pdfAvailable": true,
+        "pdf": "/e-books/21st_Century_C.pdf"
+    },
+    {
+        "code": "CS-EB-051",
+        "title": "The C Programming Language",
+        "author": "Brian W. Kernighan, Dennis M. Ritchie",
+        "category": "C Programming",
+        "publication": "Prentice Hall",
+        "year": 1988,
+        "language": "English",
+        "pages": 217,
+        "pdfAvailable": true,
+        "pdf": "/e-books/The_C_Programming_Language.pdf"
+    },
+    {
+        "code": "CS-EB-052",
+        "title": "The Hundred-Page Machine Learning Book",
+        "author": "Andriy Burkov",
+        "category": "Machine Learning",
+        "publication": "Andriy Burkov",
+        "year": 2019,
+        "language": "English",
+        "pages": 152,
+        "pdfAvailable": true,
+        "pdf": "/e-books/The_Hundred-Page_Machine_Learning_Book.pdf"
+    },
+    {
+        "code": "CS-EB-053",
+        "title": "Machine Learning For Dummies",
+        "author": "John Paul Mueller, Luca Massaron",
+        "category": "Machine Learning",
+        "publication": "John Wiley & Sons",
+        "year": 2016,
+        "language": "English",
+        "pages": 432,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Machine_Learning_For_Dummies.pdf"
+    },
+    {
+        "code": "CS-EB-054",
+        "title": "Fundamentals of Machine Learning for Predictive Data Analytics",
+        "author": "John D. Kelleher, Brian Mac Namee, Aoife D'Arcy",
+        "category": "Machine Learning & Predictive Analytics",
+        "publication": "The MIT Press",
+        "year": 2015,
+        "language": "English",
+        "pages": 631,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Fundamentals_of_Machine_Learning_for_Predictive_Data_Analytics.pdf"
+    },
+    {
+        "code": "CS-EB-055",
+        "title": "Pattern Recognition and Machine Learning",
+        "author": "Christopher M. Bishop",
+        "category": "Machine Learning",
+        "publication": "Springer",
+        "year": 2006,
+        "language": "English",
+        "pages": 758,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Pattern_Recognition_and_Machine_Learning.pdf"
+    },
+    {
+        "code": "CS-EB-056",
+        "title": "Introduction to Machine Learning with Python",
+        "author": "Andreas C. MÃ¼ller, Sarah Guido",
+        "category": "Machine Learning & Python",
+        "publication": "O'Reilly Media",
+        "year": 2017,
+        "language": "English",
+        "pages": 392,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Introduction_to_Machine_Learning_with_Python.pdf"
+    },
+    {
+        "code": "CS-EB-057",
+        "title": "Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow",
+        "author": "AurÃ©lien GÃ©ron",
+        "category": "Machine Learning & Python",
+        "publication": "O'Reilly Media",
+        "year": 2019,
+        "language": "English",
+        "pages": 851,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Hands-On_Machine_Learning_with_Scikit-Learn_Keras_and_TensorFlow.pdf"
+    },
+    {
+        "code": "CS-EB-058",
+        "title": "Open Data Structures: An Introduction",
+        "author": "Pat Morin",
+        "category": "Data Structures & Algorithms",
+        "publication": "au Press, Athabasca University",
+        "year": 2013,
+        "language": "English",
+        "pages": 336,
+        "pdfAvailable": true,
+        "pdf": "/e-books/Open_Data_Structures_An_Introduction.pdf"
+    },
+      {
+        code: "CS-EB-059",
+        title: "The Elements of Statistical Learning",
+        author: "Trevor Hastie, Robert Tibshirani, Jerome Friedman",
+        category: "Machine Learning & Statistics",
+        publication: "Springer",
+        year: 2009,
+        language: "English",
+        pages: 764,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-059.pdf"
+    },
+
+    {
+        code: "CS-EB-060",
+        title: "The Definitive Guide to DAX",
+        author: "Marco Russo, Alberto Ferrari",
+        category: "Business Intelligence & Data Analytics",
+        publication: "Microsoft Press / Pearson",
+        year: 2020,
+        language: "English",
+        pages: 768,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-060.pdf"
+    },
+
+    {
+        code: "CS-EB-061",
+        title: "The Definitive Guide to DAX",
+        author: "Marco Russo, Alberto Ferrari",
+        category: "Business Intelligence & Data Analytics",
+        publication: "Microsoft Press",
+        year: 2015,
+        language: "English",
+        pages: 109,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-061.pdf"
+    },
+
+    {
+        code: "CS-EB-062",
+        title: "Designing Data-Intensive Applications",
+        author: "Martin Kleppmann",
+        category: "Data Engineering & Distributed Systems",
+        publication: "O'Reilly Media",
+        year: 2017,
+        language: "English",
+        pages: 491,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-062.pdf"
+    },
+
+    {
+        code: "CS-EB-063",
+        title: "SQL Practice Problems",
+        author: "Sylvia Moestl Vasilik",
+        category: "SQL & Database Management",
+        publication: "SQLPracticeProblems.com",
+        year: 2016,
+        language: "English",
+        pages: 343,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-063.pdf"
+    },
+
+    {
+        code: "CS-EB-064",
+        title: "SQL: The Complete Reference",
+        author: "James R. Groff, Paul N. Weinberg, Andrew J. Oppel",
+        category: "SQL & Database Management",
+        publication: "McGraw-Hill",
+        year: 2010,
+        language: "English",
+        pages: 911,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-064.pdf"
+    },
+
+    {
+        code: "CS-EB-065",
+        title: "Fundamentals of Database Systems",
+        author: "Ramez Elmasri, Shamkant B. Navathe",
+        category: "Database Management",
+        publication: "Pearson",
+        year: 2016,
+        language: "English",
+        pages: 1273,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-065.pdf"
+    },
+
+    {
+        code: "CS-EB-066",
+        title: "Database System Concepts",
+        author: "Abraham Silberschatz, Henry F. Korth, S. Sudarshan",
+        category: "Database Management",
+        publication: "McGraw-Hill Education",
+        year: 2020,
+        language: "English",
+        pages: 1373,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-066.pdf"
+    },
+
+    {
+        code: "CS-EB-067",
+        title: "Head First Java",
+        author: "Kathy Sierra, Bert Bates, Trisha Gee",
+        category: "Java Programming",
+        publication: "O'Reilly Media",
+        year: 2022,
+        language: "English",
+        pages: 755,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-067.pdf"
+    },
+
+    {
+        code: "CS-EB-068",
+        title: "Java: A Beginner's Guide",
+        author: "Herbert Schildt",
+        category: "Java Programming",
+        publication: "McGraw-Hill Education",
+        year: 2014,
+        language: "English",
+        pages: 729,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-068.pdf"
+    },
+
+    {
+        code: "CS-EB-069",
+        title: "Operating Systems: Internals and Design Principles",
+        author: "William Stallings",
+        category: "Operating Systems",
+        publication: "Prentice Hall",
+        year: 2012,
+        language: "English",
+        pages: 820,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-069.pdf"
+    },
+
+    {
+        code: "CS-EB-070",
+        title: "Expert C Programming: Deep C Secrets",
+        author: "Peter van der Linden",
+        category: "C Programming",
+        publication: "Prentice Hall",
+        year: 1994,
+        language: "English",
+        pages: 290,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-070.pdf"
+    },
+
+    {
+        code: "CS-EB-071",
+        title: "Understanding and Using C Pointers",
+        author: "Richard Reese",
+        category: "C Programming",
+        publication: "O'Reilly Media",
+        year: 2013,
+        language: "English",
+        pages: 225,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-071.pdf"
+    },
+
+    {
+        code: "CS-EB-072",
+        title: "C in a Nutshell",
+        author: "Peter Prinz, Tony Crawford",
+        category: "C Programming",
+        publication: "O'Reilly Media",
+        year: 2005,
+        language: "English",
+        pages: 620,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-072.pdf"
+    },
+
+    {
+        code: "CS-EB-073",
+        title: "21st Century C",
+        author: "Ben Klemens",
+        category: "C Programming",
+        publication: "O'Reilly Media",
+        year: 2013,
+        language: "English",
+        pages: 298,
+        pdfAvailable: true,
+        pdf: "/e-books/CS-EB-073.pdf"
+    }
+       
+        ];
+
+        // Application State State Variables
+        let state = {
+            searchQuery: "",
+            category: "All",
+            publication: "All",
+            year: "All",
+            author: "All",
+            availability: "All",
+            sortColumn: "code",
+            sortDirection: "asc", // 'asc' or 'desc'
+            currentPage: 1,
+            itemsPerPage: 20,
+            viewMode: "table", // 'table' or 'compact'
+            activeModalIndex: null // Index in filtered/sorted list
+        };
+
+        // DOM Elements
+        const statTotalBooks = document.getElementById("statTotalBooks");
+        const statCsBooks = document.getElementById("statCsBooks");
+        const statAuthors = document.getElementById("statAuthors");
+        const statPublications = document.getElementById("statPublications");
+        const statPdfs = document.getElementById("statPdfs");
+
+        const searchInput = document.getElementById("searchInput");
+        const categoryFilter = document.getElementById("categoryFilter");
+        const publicationFilter = document.getElementById("publicationFilter");
+        const yearFilter = document.getElementById("yearFilter");
+        const authorFilter = document.getElementById("authorFilter");
+        const availabilityFilter = document.getElementById("availabilityFilter");
+
+        const applyFiltersBtn = document.getElementById("applyFiltersBtn");
+        const resetFiltersBtn = document.getElementById("resetFiltersBtn");
+        const clearAllBtn = document.getElementById("clearAllBtn");
+        const emptyClearBtn = document.getElementById("emptyClearBtn");
+        const filterChipsContainer = document.getElementById("filterChipsContainer");
+
+        const resultCountText = document.getElementById("resultCountText");
+        const tableViewBtn = document.getElementById("tableViewBtn");
+        const compactViewBtn = document.getElementById("compactViewBtn");
+        const vaultTable = document.getElementById("vaultTable");
+        const tableBody = document.getElementById("tableBody");
+        const emptyStateContainer = document.getElementById("emptyStateContainer");
+        const tableResponsiveContainer = document.getElementById("tableResponsiveContainer");
+
+        const paginationContainer = document.getElementById("paginationContainer");
+        const paginationInfo = document.getElementById("paginationInfo");
+        const paginationControls = document.getElementById("paginationControls");
+
+        // Modal Elements
+        const pdfModal = document.getElementById("pdfModal");
+        const modalCloseBtn = document.getElementById("modalCloseBtn");
+        const modalBookTitle = document.getElementById("modalBookTitle");
+        const modalBookMeta = document.getElementById("modalBookMeta");
+        const prevBookBtn = document.getElementById("prevBookBtn");
+        const nextBookBtn = document.getElementById("nextBookBtn");
+        const zoomOutBtn = document.getElementById("zoomOutBtn");
+        const zoomInBtn = document.getElementById("zoomInBtn");
+        const fullscreenBtn = document.getElementById("fullscreenBtn");
+        const modalDownloadLink = document.getElementById("modalDownloadLink");
+        
+        // Modal Metadata fields
+        const infoCode = document.getElementById("infoCode");
+        const infoTitle = document.getElementById("infoTitle");
+        const infoAuthor = document.getElementById("infoAuthor");
+        const infoPub = document.getElementById("infoPub");
+        const infoYear = document.getElementById("infoYear");
+        const infoCategory = document.getElementById("infoCategory");
+        const infoLang = document.getElementById("infoLang");
+        const infoPages = document.getElementById("infoPages");
+        const infoAvail = document.getElementById("infoAvail");
+
+        const pdfIframe = document.getElementById("pdfIframe");
+        const viewerLoading = document.getElementById("viewerLoading");
+
+        // =================================================================
+        // INITIALIZATION & DYNAMIC DROPDOWNS
+        // =================================================================
+        function initVault() {
+            populateDynamicDropdowns();
+            updateStatistics();
+            setupEventListeners();
+            renderVault();
+        }
+
+        function populateDynamicDropdowns() {
+            // Extract unique categories, publications, years, authors
+            const categories = [...new Set(booksData.map(b => b.category))].sort();
+            const publications = [...new Set(booksData.map(b => b.publication))].sort();
+            const years = [...new Set(booksData.map(b => b.year))].sort((a, b) => b - a);
+            const authors = [...new Set(booksData.map(b => b.author))].sort();
+
+            populateSelect(categoryFilter, categories);
+            populateSelect(publicationFilter, publications);
+            populateSelect(yearFilter, years);
+            populateSelect(authorFilter, authors);
+        }
+
+        function populateSelect(selectElement, items) {
+            // Keep the first default option ("All...")
+            const defaultOptionText = selectElement.options[0].text;
+            selectElement.innerHTML = `<option value="All">${defaultOptionText}</option>`;
+            items.forEach(item => {
+                const opt = document.createElement("option");
+                opt.value = item;
+                opt.textContent = item;
+                selectElement.appendChild(opt);
+            });
+        }
+
+        function updateStatistics() {
+            statTotalBooks.textContent = booksData.length;
+            statCsBooks.textContent = booksData.filter(b => b.category).length;
+            
+            const uniqueAuthors = new Set(booksData.map(b => b.author)).size;
+            statAuthors.textContent = uniqueAuthors;
+
+            const uniquePubs = new Set(booksData.map(b => b.publication)).size;
+            statPublications.textContent = uniquePubs;
+
+            const pdfCount = booksData.filter(b => b.pdfAvailable).length;
+            statPdfs.textContent = pdfCount;
+        }
+
+        // =================================================================
+        // FILTERING & SORTING LOGIC
+        // =================================================================
+        function getFilteredAndSortedBooks() {
+            let filtered = booksData.filter(book => {
+                // Search query match across multiple properties
+                if (state.searchQuery) {
+                    const q = state.searchQuery.toLowerCase();
+                    const matchQuery = 
+                        book.code.toLowerCase().includes(q) ||
+                        book.title.toLowerCase().includes(q) ||
+                        book.author.toLowerCase().includes(q) ||
+                        book.publication.toLowerCase().includes(q) ||
+                        book.year.toString().includes(q) ||
+                        book.category.toLowerCase().includes(q);
+                    if (!matchQuery) return false;
+                }
+
+                // Dropdown filters
+                if (state.category !== "All" && book.category !== state.category) return false;
+                if (state.publication !== "All" && book.publication !== state.publication) return false;
+                if (state.year !== "All" && book.year.toString() !== state.year.toString()) return false;
+                if (state.author !== "All" && book.author !== state.author) return false;
+
+                // Availability filter
+                if (state.availability === "available" && !book.pdfAvailable) return false;
+                if (state.availability === "unavailable" && book.pdfAvailable) return false;
+
+                return true;
+            });
+
+            // Sorting
+            filtered.sort((a, b) => {
+                let valA = a[state.sortColumn];
+                let valB = b[state.sortColumn];
+
+                if (typeof valA === 'string') {
+                    valA = valA.toLowerCase();
+                    valB = valB.toLowerCase();
+                }
+
+                if (valA < valB) return state.sortDirection === 'asc' ? -1 : 1;
+                if (valA > valB) return state.sortDirection === 'asc' ? 1 : -1;
+                return 0;
+            });
+
+            return filtered;
+        }
+
+        // =================================================================
+        // RENDERING (TABLE, CHIPS, PAGINATION)
+        // =================================================================
+        function renderVault() {
+            const filteredBooks = getFilteredAndSortedBooks();
+            
+            // Pagination calculation
+            const totalItems = filteredBooks.length;
+            const totalPages = Math.ceil(totalItems / state.itemsPerPage) || 1;
+            if (state.currentPage > totalPages) state.currentPage = totalPages;
+            if (state.currentPage < 1) state.currentPage = 1;
+
+            const startIndex = (state.currentPage - 1) * state.itemsPerPage;
+            const endIndex = Math.min(startIndex + state.itemsPerPage, totalItems);
+            const paginatedBooks = filteredBooks.slice(startIndex, endIndex);
+
+            // Render table content or empty state
+            if (totalItems === 0) {
+                tableResponsiveContainer.style.display = "none";
+                emptyStateContainer.style.display = "block";
+                paginationContainer.style.display = "none";
+                resultCountText.textContent = "Showing 0â€“0 of 0 books";
+            } else {
+                tableResponsiveContainer.style.display = "block";
+                emptyStateContainer.style.display = "none";
+                paginationContainer.style.display = "flex";
+
+                resultCountText.textContent = `Showing ${startIndex + 1}â€“${endIndex} of ${totalItems} books`;
+                
+                // Build table rows
+                tableBody.innerHTML = paginatedBooks.map((book, index) => {
+                    const globalIndex = startIndex + index;
+                    const badgeClass = book.pdfAvailable ? "badge-available" : "badge-unavailable";
+                    const badgeText = book.pdfAvailable ? "Available" : "Not Available";
+                    
+                    return `
+                        <tr>
+                            <td class="col-code">${book.code}</td>
+                            <td class="col-title">${book.title}</td>
+                            <td class="col-author">${book.author}</td>
+                            <td class="col-category"><span class="badge" style="background:var(--bg-main); color:var(--secondary-blue); border:1px solid var(--border-color);">${book.category}</span></td>
+                            <td class="col-pub">${book.publication}</td>
+                            <td class="col-year">${book.year}</td>
+                            <td><span class="badge ${badgeClass}">${badgeText}</span></td>
+                            <td class="action-cell">
+                                <button type="button" class="btn-action ${!book.pdfAvailable ? 'disabled' : ''}" onclick="openPdfModal(${globalIndex})">Read PDF</button>
+                                <a href="${book.pdfAvailable ? book.pdf : '#'}" class="btn-action ${!book.pdfAvailable ? 'disabled' : ''}" download="${book.code}-${book.title.replace(/[^a-zA-Z0-9]/g, '-')}.pdf" ${!book.pdfAvailable ? 'tabindex="-1"' : ''}>Download</a>
+                            </td>
+                        </tr>
+                    `;
+                }).join("");
+            }
+
+            // Render filter chips
+            renderFilterChips();
+
+            // Render pagination controls
+            renderPaginationControls(startIndex + 1, endIndex, totalItems, totalPages);
+        }
+
+        function renderFilterChips() {
+            let chipsHtml = "";
+            const activeFilters = [];
+
+            if (state.category !== "All") activeFilters.push({ key: 'category', label: `Category: ${state.category}` });
+            if (state.publication !== "All") activeFilters.push({ key: 'publication', label: `Pub: ${state.publication}` });
+            if (state.year !== "All") activeFilters.push({ key: 'year', label: `Year: ${state.year}` });
+            if (state.author !== "All") activeFilters.push({ key: 'author', label: `Author: ${state.author}` });
+            if (state.availability !== "All") activeFilters.push({ key: 'availability', label: `PDF: ${state.availability === 'available' ? 'Available' : 'Unavailable'}` });
+            if (state.searchQuery) activeFilters.push({ key: 'searchQuery', label: `Search: "${state.searchQuery}"` });
+
+            if (activeFilters.length > 0) {
+                chipsHtml = activeFilters.map(filter => `
+                    <div class="chip">
+                        ${filter.label}
+                        <button type="button" class="chip-remove" onclick="removeFilter('${filter.key}')" aria-label="Remove filter">Ã—</button>
+                    </div>
+                `).join("");
+            }
+            filterChipsContainer.innerHTML = chipsHtml;
+        }
+
+        function renderPaginationControls(startNum, endNum, totalItems, totalPages) {
+            paginationInfo.textContent = totalItems === 0 ? "Showing 0â€“0 of 0 books" : `Showing ${startNum}â€“${endNum} of ${totalItems} books`;
+
+            let controlsHtml = `
+                <button type="button" class="page-btn" onclick="changePage(${state.currentPage - 1})" ${state.currentPage === 1 ? 'disabled' : ''}>Previous</button>
+            `;
+
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= state.currentPage - 1 && i <= state.currentPage + 1)) {
+                    controlsHtml += `<button type="button" class="page-btn ${i === state.currentPage ? 'active' : ''}" onclick="changePage(${i})">${i}</button>`;
+                } else if (i === state.currentPage - 2 || i === state.currentPage + 2) {
+                    controlsHtml += `<span style="padding: 0 0.25rem; color: var(--text-muted);">â€¦</span>`;
+                }
+            }
+
+            controlsHtml += `
+                <button type="button" class="page-btn" onclick="changePage(${state.currentPage + 1})" ${state.currentPage === totalPages ? 'disabled' : ''}>Next</button>
+            `;
+
+            paginationControls.innerHTML = controlsHtml;
+        }
+
+        // =================================================================
+        // EVENT HANDLERS & INTERACTIVITY
+        // =================================================================
+        function setupEventListeners() {
+            // Live Search
+            searchInput.addEventListener("input", (e) => {
+                state.searchQuery = e.target.value.trim();
+                state.currentPage = 1;
+                renderVault();
+            });
+
+            // Filter Apply Button
+            applyFiltersBtn.addEventListener("click", () => {
+                state.category = categoryFilter.value;
+                state.publication = publicationFilter.value;
+                state.year = yearFilter.value;
+                state.author = authorFilter.value;
+                state.availability = availabilityFilter.value;
+                state.currentPage = 1;
+                renderVault();
+            });
+
+            // Reset Filters Button
+            resetFiltersBtn.addEventListener("click", () => {
+                resetFilterState();
+            });
+
+            clearAllBtn.addEventListener("click", () => {
+                resetFilterState();
+            });
+
+            emptyClearBtn.addEventListener("click", () => {
+                resetFilterState();
+            });
+
+            // View mode controls
+            tableViewBtn.addEventListener("click", () => {
+                state.viewMode = "table";
+                tableViewBtn.classList.add("active");
+                compactViewBtn.classList.remove("active");
+                vaultTable.classList.remove("compact-mode");
+            });
+
+            compactViewBtn.addEventListener("click", () => {
+                state.viewMode = "compact";
+                compactViewBtn.classList.add("active");
+                tableViewBtn.classList.remove("active");
+                vaultTable.classList.add("compact-mode");
+            });
+
+            // Table Header Sorting
+            document.querySelectorAll(".vault-table th[data-sort]").forEach(th => {
+                th.addEventListener("click", () => {
+                    const column = th.getAttribute("data-sort");
+                    if (state.sortColumn === column) {
+                        state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
+                    } else {
+                        state.sortColumn = column;
+                        state.sortDirection = 'asc';
+                    }
+                    renderVault();
+                });
+            });
+
+            // Modal Controls
+            modalCloseBtn.addEventListener("click", closePdfModal);
+            pdfModal.addEventListener("click", (e) => {
+                if (e.target === pdfModal) closePdfModal();
+            });
+
+            prevBookBtn.addEventListener("click", () => navigateModalBook(-1));
+            nextBookBtn.addEventListener("click", () => navigateModalBook(1));
+
+            zoomInBtn.addEventListener("click", () => adjustZoom(0.1));
+            zoomOutBtn.addEventListener("click", () => adjustZoom(-0.1));
+            fullscreenBtn.addEventListener("click", toggleFullscreen);
+
+            // Keyboard Shortcuts
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "/" && document.activeElement !== searchInput) {
+                    e.preventDefault();
+                    searchInput.focus();
+                }
+                if (e.key === "Escape") {
+                    closePdfModal();
+                }
+            });
+        }
+
+        function resetFilterState() {
+            state.searchQuery = "";
+            state.category = "All";
+            state.publication = "All";
+            state.year = "All";
+            state.author = "All";
+            state.availability = "All";
+            state.currentPage = 1;
+
+            searchInput.value = "";
+            categoryFilter.value = "All";
+            publicationFilter.value = "All";
+            yearFilter.value = "All";
+            authorFilter.value = "All";
+            availabilityFilter.value = "All";
+
+            renderVault();
+        }
+
+        function removeFilter(filterKey) {
+            if (filterKey === 'searchQuery') {
+                state.searchQuery = "";
+                searchInput.value = "";
+            } else if (filterKey === 'category') {
+                state.category = "All";
+                categoryFilter.value = "All";
+            } else if (filterKey === 'publication') {
+                state.publication = "All";
+                publicationFilter.value = "All";
+            } else if (filterKey === 'year') {
+                state.year = "All";
+                yearFilter.value = "All";
+            } else if (filterKey === 'author') {
+                state.author = "All";
+                authorFilter.value = "All";
+            } else if (filterKey === 'availability') {
+                state.availability = "All";
+                availabilityFilter.value = "All";
+            }
+            state.currentPage = 1;
+            renderVault();
+        }
+
+        function changePage(pageNumber) {
+            state.currentPage = pageNumber;
+            renderVault();
+            window.scrollTo({ top: tableResponsiveContainer.offsetTop - 100, behavior: 'smooth' });
+        }
+
+        // =================================================================
+        // PDF MODAL & VIEWER FUNCTIONS
+        // =================================================================
+        function openPdfModal(filteredIndex) {
+            state.activeModalIndex = filteredIndex;
+            const filteredBooks = getFilteredAndSortedBooks();
+            const book = filteredBooks[filteredIndex];
+
+            if (!book || !book.pdfAvailable) return;
+
+            // Update Header & Metadata
+            modalBookTitle.textContent = book.title;
+            modalBookMeta.textContent = `${book.author} Â· ${book.publication} Â· ${book.year}`;
+
+            infoCode.textContent = book.code;
+            infoTitle.textContent = book.title;
+            infoAuthor.textContent = book.author;
+            infoPub.textContent = book.publication;
+            infoYear.textContent = book.year;
+            infoCategory.textContent = book.category;
+            infoLang.textContent = book.language;
+            infoPages.textContent = book.pages;
+            infoAvail.textContent = "Available";
+
+            // Download Link
+            modalDownloadLink.href = book.pdf;
+            modalDownloadLink.download = `${book.code}-${book.title.replace(/[^a-zA-Z0-9]/g, '-')}.pdf`;
+
+            // Navigation button states
+            prevBookBtn.disabled = filteredIndex === 0;
+            nextBookBtn.disabled = filteredIndex === filteredBooks.length - 1;
+
+            // Load PDF in iframe
+            viewerLoading.style.display = "block";
+            pdfIframe.src = book.pdf;
+            pdfIframe.onload = () => {
+                viewerLoading.style.display = "none";
+            };
+
+            pdfModal.classList.add("active");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closePdfModal() {
+            pdfModal.classList.remove("active");
+            pdfIframe.src = "";
+            document.body.style.overflow = "auto";
+            state.activeModalIndex = null;
+        }
+
+        function navigateModalBook(direction) {
+            const filteredBooks = getFilteredAndSortedBooks();
+            const newIndex = state.activeModalIndex + direction;
+            if (newIndex >= 0 && newIndex < filteredBooks.length) {
+                if (filteredBooks[newIndex].pdfAvailable) {
+                    openPdfModal(newIndex);
+                } else {
+                    // Skip unavailable books or navigate recursively
+                    state.activeModalIndex = newIndex;
+                    navigateModalBook(direction);
+                }
+            }
+        }
+
+        let currentZoom = 1.0;
+        function adjustZoom(amount) {
+            currentZoom = Math.min(Math.max(currentZoom + amount, 0.6), 2.0);
+            pdfIframe.style.transform = `scale(${currentZoom})`;
+            pdfIframe.style.transformOrigin = 'top center';
+        }
+
+        function toggleFullscreen() {
+            const modalContainer = document.querySelector(".modal-container");
+            if (!document.fullscreenElement) {
+                modalContainer.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Execute initialization on DOM load
+        document.addEventListener("DOMContentLoaded", initVault);
+    </script>
+</body>
+</html>

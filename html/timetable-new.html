@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -453,7 +453,7 @@
     <!-- Institution Header -->
     <header class="wiki-header">
       <h1 class="wiki-title">Lecture Schedules</h1>
-      <p class="wiki-subtitle">Department of Computer Science — Academic Year 2026–27 (W.E.F. 15th July 2026)</p>
+      <p class="wiki-subtitle">Department of Computer Science â€” Academic Year 2026â€“27 (W.E.F. 15th July 2026)</p>
     </header>
 
     <!-- Controls Bar -->
@@ -501,7 +501,7 @@
       </div>
 
       <div class="wiki-meta-row">
-        <span id="activeProgramTag" class="wiki-active-tag">Program: B.Sc. (Data Science) — Sem I & III</span>
+        <span id="activeProgramTag" class="wiki-active-tag">Program: B.Sc. (Data Science) â€” Sem I & III</span>
         <span id="timetableMeta" class="wiki-count-status"><i class="fa-regular fa-clock"></i> Effective Date: 15/07/2026</span>
       </div>
     </div>
@@ -552,7 +552,7 @@
   <!-- FOOTER COMPONENT MOUNT POINT -->
   <footer id="departmentFooter"></footer>
 
-  <!-- Detail Modal -->
+    <script src="../js/footer.js"></script>`r`n  <!-- Detail Modal -->
   <div class="modal-overlay" id="slotModal">
     <div class="modal-card">
       <div class="modal-header">
@@ -839,7 +839,7 @@
       if (viewPdfBtn) {
         viewPdfBtn.addEventListener('click', () => {
           const currentProg = timetableData[currentProgramKey];
-          if (pdfModalTitle) pdfModalTitle.textContent = `Original PDF — ${currentProg.title}`;
+          if (pdfModalTitle) pdfModalTitle.textContent = `Original PDF â€” ${currentProg.title}`;
           if (pdfIframe) pdfIframe.src = currentProg.pdfPath;
           if (pdfModal) pdfModal.style.display = 'flex';
         });

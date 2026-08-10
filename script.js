@@ -40,7 +40,7 @@ function initHeroSlider() {
     function prevSlide() { showSlide(currentSlide - 1); }
 
     function startAutoSlide() {
-        slideInterval = setInterval(nextSlide, 5000);
+        slideInterval = setInterval(nextSlide, 2000);
     }
 
     function stopAutoSlide() {

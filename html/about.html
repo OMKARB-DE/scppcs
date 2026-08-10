@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Department of Computer Science | Shri Shivaji College, Parbhani</title>
+    <title>About Us | Department of Computer Science | Shri Shivaji College, Parbhani</title>
+
+    <!-- Department Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/dept-logo3.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/dept-logo3.png">
+
+    <!-- Apple / Mobile -->
+    <link rel="apple-touch-icon" href="../images/dept-logo3.png">
 
         <!-- Google Fonts for Clean Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -697,9 +704,10 @@
         <!-- 1. The Hero Section (Top of Page) -->
         <header class="hero-section">
             <span class="page-badge">Prospectus & Portal</span>
-            <div class="hero-identity">
-                <div class="dept-logo-placeholder">CS</div>
-                <div class="college-name">श्री शिवाजी महाविद्यालय, परभणी</div>
+            <div class="hero-identity" style="background-color: #ffffff; align-items: center ; margin-left: 480px;margin-right: 480px; border-radius: 50%;">
+                
+                    <img src="../images/dept-logo3.png" alt="Department Logo" style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+            
             </div>
             <h1>Department of Computer Science</h1>
             <p class="value-proposition">"Innovating the Future Through Code and Research"</p>
@@ -741,12 +749,48 @@
 
             <!-- Top Tab Selection Buttons -->
             <div class="tab-navigation">
-                <button class="main-tab-btn active" onclick="switchLeadershipTab('hod-tab')">HOD Message</button>
-                <button class="main-tab-btn" onclick="switchLeadershipTab('principal-tab')">Principal Message</button>
+                <button class="main-tab-btn active" onclick="switchLeadershipTab('principal-tab')">Principal Message</button>
+                <button class="main-tab-btn " onclick="switchLeadershipTab('hod-tab')">HOD Message</button>
+                
             </div>
 
-            <!-- ================= HOD MESSAGE TAB ================= -->
-            <div id="hod-tab" class="message-card active">
+           
+
+            <!-- ================= PRINCIPAL MESSAGE TAB ================= -->
+            <div id="principal-tab" class="message-card active">
+                <div class="message-header-row">
+                    <h2>Principal's Message</h2>
+                    <div class="lang-toggle">
+                        <button class="lang-btn active" onclick="toggleLanguage('principal', 'en')">English</button>
+                        <button class="lang-btn" onclick="toggleLanguage('principal', 'mr')">मराठी</button>
+                    </div>
+                </div>
+
+                <div class="message-grid">
+                    <div class="profile-side">
+                        <img class="profile-img" src="/images/Dr Balasaheb Jadhav.png" alt="Principal">
+                        <div class="leader-name">Dr. Balasaheb U. Jadhav</div>
+                        <div class="name-underline"></div>
+                        <div class="leader-designation">Principal, Shri Shivaji College, Parbhani</div>
+                    </div>
+                    <div class="text-side">
+                        <div id="principal-content-en" class="message-body">
+                            <h3 class="welcome-title">From the Desk of the Principal</h3>
+                            <p>Welcome to our vibrant academic ecosystem. At Shri Shivaji College, we aim to nurture intellectual talent alongside robust moral frameworks.</p>
+                            <p>The Department of Computer Science has been at the forefront of providing technical competence to students from diverse backgrounds. We provide our modern minds with state-of-the-art facilities and experienced educators to turn them into competitive technological assets for the modern world.</p>
+                        </div>
+                        <div id="principal-content-mr" class="message-body" style="display: none;">
+                            <h3 class="welcome-title">प्राचार्यांचे मनोगत</h3>
+                            <p>आमच्या उत्साही शैक्षणिक व्यवस्थेत आपले स्वागत आहे. श्री शिवाजी महाविद्यालयात, आमचे उद्दिष्ट भक्कम नैतिक चौकटीसह बौद्धिक प्रतिभा जोपासणे हे आहे.</p>
+                            <p>संगणक शास्त्र विभाग विविध पार्श्वभूमीतील विद्यार्थ्यांना तांत्रिक क्षमता प्रदान करण्यात आघाडीवर राहिला आहे. आधुनिक जगासाठी स्पर्धात्मक तांत्रिक मालमत्तेत रूपांतरित करण्यासाठी आम्ही विद्यार्थ्यांना अत्याधुनिक सुविधा आणि अनुभवी शिक्षक प्रदान करतो.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+             <!-- ================= HOD MESSAGE TAB ================= -->
+            <div id="hod-tab" class="message-card ">
                 <div class="message-header-row">
                     <h2>Head of Department's Message</h2>
                     <div class="lang-toggle">
@@ -757,8 +801,8 @@
 
                 <div class="message-grid">
                     <div class="profile-side">
-                        <img class="profile-img" src="hod_photo.jpg" alt="Dr. V.M. Pathak">
-                        <div class="leader-name">Dr.V.M.Pathak</div>
+                        <img class="profile-img" src="/images/hod.png" alt="Dr. Vaibhav M. Pathak">
+                        <div class="leader-name">Dr. Vaibhav M.Pathak</div>
                         <div class="name-underline"></div>
                         <div class="leader-designation">Head, Department of Computer Science</div>
                     </div>
@@ -779,38 +823,6 @@
                 </div>
             </div>
 
-            <!-- ================= PRINCIPAL MESSAGE TAB ================= -->
-            <div id="principal-tab" class="message-card">
-                <div class="message-header-row">
-                    <h2>Principal's Message</h2>
-                    <div class="lang-toggle">
-                        <button class="lang-btn active" onclick="toggleLanguage('principal', 'en')">English</button>
-                        <button class="lang-btn" onclick="toggleLanguage('principal', 'mr')">मराठी</button>
-                    </div>
-                </div>
-
-                <div class="message-grid">
-                    <div class="profile-side">
-                        <img class="profile-img" src="principal_photo.jpg" alt="Principal">
-                        <div class="leader-name">Dr. B. U. Jadhav</div>
-                        <div class="name-underline"></div>
-                        <div class="leader-designation">Principal, Shri Shivaji College</div>
-                    </div>
-                    <div class="text-side">
-                        <div id="principal-content-en" class="message-body">
-                            <h3 class="welcome-title">From the Desk of the Principal</h3>
-                            <p>Welcome to our vibrant academic ecosystem. At Shri Shivaji College, we aim to nurture intellectual talent alongside robust moral frameworks.</p>
-                            <p>The Department of Computer Science has been at the forefront of providing technical competence to students from diverse backgrounds. We provide our modern minds with state-of-the-art facilities and experienced educators to turn them into competitive technological assets for the modern world.</p>
-                        </div>
-                        <div id="principal-content-mr" class="message-body" style="display: none;">
-                            <h3 class="welcome-title">प्राचार्यांचे मनोगत</h3>
-                            <p>आमच्या उत्साही शैक्षणिक व्यवस्थेत आपले स्वागत आहे. श्री शिवाजी महाविद्यालयात, आमचे उद्दिष्ट भक्कम नैतिक चौकटीसह बौद्धिक प्रतिभा जोपासणे हे आहे.</p>
-                            <p>संगणक शास्त्र विभाग विविध पार्श्वभूमीतील विद्यार्थ्यांना तांत्रिक क्षमता प्रदान करण्यात आघाडीवर राहिला आहे. आधुनिक जगासाठी स्पर्धात्मक तांत्रिक मालमत्तेत रूपांतरित करण्यासाठी आम्ही विद्यार्थ्यांना अत्याधुनिक सुविधा आणि अनुभवी शिक्षक प्रदान करतो.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <!-- 2. Academic Programs & Courses -->
             <section id="programs-section" style="margin: 35px 0;">
                 <h2 class="section-title">Academic Programs & Courses</h2>
@@ -820,12 +832,12 @@
                     <div class="program-graphic-card">
                         <div>
                             <span class="program-level">Undergraduate (UG)</span>
-                            <h3 class="program-title">BCA / B.Sc CS</h3>
+                            <h3 class="program-title">Bachelor of Computer Applications (BCA)</h3>
                             <p class="program-details"><strong>Tracks:</strong> Software & Web Apps<br><strong>Duration:</strong> 3 Years</p>
                         </div>
                         <div class="card-actions">
-                            <a href="bca-program.html" class="explore-btn">Explore</a>
-                            <a href="syllabus-bca.pdf" class="syllabus-btn" download>Syllabus PDF</a>
+                            <a href="../html/bca.html" class="explore-btn">Explore</a>
+                            <a href="#" class="syllabus-btn" download>Syllabus PDF</a>
                         </div>
                     </div>
                     <div class="program-graphic-card">
@@ -835,8 +847,8 @@
                             <p class="program-details"><strong>Tracks:</strong> AI & Analytics<br><strong>Duration:</strong> 3 Years</p>
                         </div>
                         <div class="card-actions">
-                            <a href="bsc-ds-program.html" class="explore-btn">Explore</a>
-                            <a href="syllabus-ds.pdf" class="syllabus-btn" download>Syllabus PDF</a>
+                            <a href="../html/bsc-ds.html" class="explore-btn">Explore</a>
+                            <a href="#" class="syllabus-btn" download>Syllabus PDF</a>
                         </div>
                     </div>
                     <div class="program-graphic-card">
@@ -846,19 +858,19 @@
                             <p class="program-details"><strong>Tracks:</strong> Cloud & Cyber Systems<br><strong>Duration:</strong> 2 Years</p>
                         </div>
                         <div class="card-actions">
-                            <a href="msc-cs-program.html" class="explore-btn">Explore</a>
-                            <a href="syllabus-msc.pdf" class="syllabus-btn" download>Syllabus PDF</a>
+                            <a href="../html/msc-cs.html" class="explore-btn">Explore</a>
+                            <a href="#" class="syllabus-btn" download>Syllabus PDF</a>
                         </div>
                     </div>
                     <div class="program-graphic-card">
                         <div>
-                            <span class="program-level">Doctoral Track</span>
-                            <h3 class="program-title">Ph.D. Research</h3>
+                            <span class="program-level">Undergraduate (UG)</span>
+                            <h3 class="program-title">B.Sc. Computer Science</h3>
                             <p class="program-details"><strong>Focus:</strong> Advanced Computing<br><strong>Openings:</strong> Active</p>
                         </div>
                         <div class="card-actions">
-                            <a href="phd-program.html" class="explore-btn">Explore</a>
-                            <a href="guidelines.pdf" class="syllabus-btn" download>Guidelines</a>
+                            <a href="../html/bsc-cs.html" class="explore-btn">Explore</a>
+                            <a href="#" class="syllabus-btn" download>Syllabus PDF</a>
                         </div>
                     </div>
                 </div>
@@ -870,23 +882,24 @@
                 <p style="margin-bottom: 15px; color: var(--text-muted); font-size: 0.95rem;">Meet our experienced educators and browse specialized research hubs:</p>
                 
                 <div class="faculty-grid">
+                    
                     <div class="faculty-card">
-                        <img src="hod_photo.jpg" alt="Dr. V.M. Pathak" class="faculty-img">
-                        <div class="faculty-name">Dr. V. M. Pathak</div>
-                        <div class="faculty-title">Head & Professor</div>
-                        <div class="faculty-meta">vmpathak@shivajicollege.edu<br>Office: CS Block 102</div>
-                    </div>
-                    <div class="faculty-card">
-                        <img src="faculty_2.jpg" alt="Dr. S. R. Kulkarni" class="faculty-img">
-                        <div class="faculty-name">Dr. S. R. Kulkarni</div>
+                        <img src="faculty_2.jpg" alt="Prof. Sandip M. Surve" class="faculty-img">
+                        <div class="faculty-name">Prof. Sandip M. Surve</div>
                         <div class="faculty-title">Associate Professor</div>
-                        <div class="faculty-meta">srkulkarni@shivajicollege.edu<br>Office: CS Block 105</div>
+                        <div class="faculty-meta">sandip.surve@shivajicollege.edu<br>Office: Data Science Lab</div>
                     </div>
                     <div class="faculty-card">
-                        <img src="faculty_3.jpg" alt="Prof. A. P. Deshmukh" class="faculty-img">
-                        <div class="faculty-name">Prof. A. P. Deshmukh</div>
-                        <div class="faculty-title">Assistant Professor</div>
-                        <div class="faculty-meta">apdeshmukh@shivajicollege.edu<br>Office: CS Block 108</div>
+                        <img src="faculty_3.jpg" alt="Prof. Sanjay K. Chavan" class="faculty-img">
+                        <div class="faculty-name">Prof. Sanjay K. Chavan</div>
+                        <div class="faculty-title">Associate Professor</div>
+                        <div class="faculty-meta">sanjay.chavan@shivajicollege.edu<br>Office: M.Sc Lab</div>
+                    </div>
+                    <div class="faculty-card">
+                        <img src="hod_photo.jpg" alt="Prof. Aasiya T. Hassan" class="faculty-img">
+                        <div class="faculty-name">Prof. Aasiya T. Hassan</div>
+                        <div class="faculty-title">Associate Professor</div>
+                        <div class="faculty-meta">aasiya.h@shivajicollege.edu<br>Office: Staff Office</div>
                     </div>
                 </div>
 
@@ -989,6 +1002,8 @@
     <!-- FOOTER COMPONENT MOUNT POINT -->
     <footer id="departmentFooter"></footer>
 
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/footer.js"></script>
     <!-- SCRIPTS -->
     <script>
         // Load Footer Component

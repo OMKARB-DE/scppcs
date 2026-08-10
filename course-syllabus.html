@@ -1,0 +1,1289 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus | Department of Computer Science | Shri Shivaji College, Parbhani</title>
+    <!-- Department Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/dept-logo3.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/dept-logo3.png">
+
+    <!-- Apple / Mobile -->
+    <link rel="apple-touch-icon" href="../images/dept-logo3.png">
+
+
+    <!-- Google Font: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --dept-syllabus-primary: #10b981;
+            --dept-syllabus-primary-dark: #059669;
+            --dept-syllabus-primary-light: #ecfdf5;
+            --dept-syllabus-bg: #F8FFF9;
+            --dept-syllabus-text: #202122;
+            --dept-syllabus-text-muted: #54595d;
+            --dept-syllabus-border: #a2a9b1;
+            --dept-syllabus-card-bg: #ffffff;
+            --dept-syllabus-radius: 8px;
+            --dept-syllabus-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --dept-syllabus-transition: all 0.25s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body.dept-syllabus-body {
+            background-color: var(--dept-syllabus-bg);
+            color: var(--dept-syllabus-text);
+            line-height: 1.6;
+            padding: 40px 20px;
+            margin-top: 20px;
+        }
+
+        .dept-syllabus-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 35px;
+            border: 1px solid var(--dept-syllabus-border);
+            border-radius: var(--dept-syllabus-radius);
+            box-shadow: var(--dept-syllabus-shadow);
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        /* Top Section */
+        .dept-syllabus-header {
+            border-bottom: 2px solid var(--dept-syllabus-primary);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .dept-syllabus-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #000000;
+            margin-bottom: 5px;
+        }
+
+        .dept-syllabus-subtitle {
+            font-size: 0.95rem;
+            color: var(--dept-syllabus-text-muted);
+        }
+
+        /* View Toggle Toolbar Elements */
+        .dept-syllabus-view-controls {
+            display: flex;
+            background: #f8f9fa;
+            border: 1px solid var(--dept-syllabus-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .dept-syllabus-view-btn {
+            background: transparent;
+            border: none;
+            padding: 6px 12px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: var(--dept-syllabus-text-muted);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--dept-syllabus-transition);
+        }
+
+        .dept-syllabus-view-btn.active {
+            background: var(--dept-syllabus-primary);
+            color: #ffffff;
+        }
+
+        /* Toolbar / Filter Bar */
+        .dept-syllabus-toolbar {
+            background: #f8f9fa;
+            border: 1px solid var(--dept-syllabus-border);
+            padding: 15px;
+            border-radius: var(--dept-syllabus-radius);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .dept-syllabus-search-box {
+            position: relative;
+            flex: 1;
+            min-width: 220px;
+        }
+
+        .dept-syllabus-search-box i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--dept-syllabus-text-muted);
+        }
+
+        .dept-syllabus-search-input {
+            width: 100%;
+            padding: 9px 12px 9px 36px;
+            border: 1px solid var(--dept-syllabus-border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: var(--dept-syllabus-transition);
+        }
+
+        .dept-syllabus-search-input:focus {
+            border-color: var(--dept-syllabus-primary);
+            box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
+        }
+
+        .dept-syllabus-select {
+            padding: 9px 12px;
+            border: 1px solid var(--dept-syllabus-border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            background: #ffffff;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .dept-syllabus-btn-reset {
+            padding: 9px 16px;
+            background: #eaecf0;
+            border: 1px solid var(--dept-syllabus-border);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: var(--dept-syllabus-text);
+            transition: var(--dept-syllabus-transition);
+        }
+
+        .dept-syllabus-btn-reset:hover {
+            background: #d0d2d6;
+        }
+
+        /* Tabs Section */
+        .dept-syllabus-tabs-container {
+            margin-bottom: 25px;
+        }
+
+        .dept-syllabus-section-heading {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--dept-syllabus-text);
+            border-bottom: 1px solid #eaecf0;
+            padding-bottom: 4px;
+        }
+
+        .dept-syllabus-programme-tabs, .dept-syllabus-semester-tabs {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .dept-syllabus-tab {
+            padding: 6px 14px;
+            background: #f8f9fa;
+            border: 1px solid var(--dept-syllabus-border);
+            border-radius: 4px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            color: var(--dept-syllabus-text);
+            transition: var(--dept-syllabus-transition);
+        }
+
+        .dept-syllabus-tab:hover {
+            background: #eaecf0;
+        }
+
+        .dept-syllabus-tab.active {
+            background: var(--dept-syllabus-primary);
+            color: #ffffff;
+            border-color: var(--dept-syllabus-primary-dark);
+            font-weight: 500;
+        }
+
+        /* Layout Views Container */
+        .dept-syllabus-container {
+            transition: var(--dept-syllabus-transition);
+        }
+
+        /* LIST VIEW (Default) */
+        .dept-syllabus-container.list-view {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .dept-syllabus-container.list-view .dept-syllabus-card {
+            background: #ffffff;
+            border: 1px solid var(--dept-syllabus-border);
+            border-radius: var(--dept-syllabus-radius);
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            transition: var(--dept-syllabus-transition);
+        }
+
+        .dept-syllabus-container.list-view .dept-syllabus-card:hover {
+            border-color: var(--dept-syllabus-primary);
+            box-shadow: var(--dept-syllabus-shadow);
+        }
+
+        /* GRID VIEW */
+        .dept-syllabus-container.grid-view {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .dept-syllabus-container.grid-view .dept-syllabus-card {
+            background: #ffffff;
+            border: 1px solid var(--dept-syllabus-border);
+            border-radius: var(--dept-syllabus-radius);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 15px;
+            transition: var(--dept-syllabus-transition);
+        }
+
+        .dept-syllabus-container.grid-view .dept-syllabus-card:hover {
+            border-color: var(--dept-syllabus-primary);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px);
+        }
+
+        /* Card Elements */
+        .dept-syllabus-card-left {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .dept-syllabus-pdf-icon {
+            font-size: 1.8rem;
+            color: #e11d48;
+            margin-top: 2px;
+        }
+
+        .dept-syllabus-course-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #0645ad;
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+
+        .dept-syllabus-meta-text {
+            font-size: 0.85rem;
+            color: var(--dept-syllabus-text-muted);
+        }
+
+        .dept-syllabus-actions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .dept-syllabus-container.grid-view .dept-syllabus-actions {
+            border-top: 1px solid #eaecf0;
+            padding-top: 12px;
+            justify-content: flex-end;
+        }
+
+        .dept-syllabus-btn {
+            padding: 7px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid var(--dept-syllabus-border);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #f8f9fa;
+            color: var(--dept-syllabus-text);
+            transition: var(--dept-syllabus-transition);
+        }
+
+        .dept-syllabus-btn:hover {
+            background: #eaecf0;
+            border-color: #72777d;
+        }
+
+        .dept-syllabus-btn-download {
+            background: var(--dept-syllabus-primary-light);
+            color: var(--dept-syllabus-primary-dark);
+            border-color: #a7f3d0;
+        }
+
+        .dept-syllabus-btn-download:hover {
+            background: #d1fae5;
+            border-color: var(--dept-syllabus-primary);
+        }
+
+        /* Empty State */
+        .dept-syllabus-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px;
+            color: var(--dept-syllabus-text-muted);
+            border: 1px dashed var(--dept-syllabus-border);
+            border-radius: var(--dept-syllabus-radius);
+            background: #fafbfc;
+        }
+
+        /* Modal Preview Overlay */
+        .dept-syllabus-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--dept-syllabus-transition);
+            backdrop-filter: blur(2px);
+        }
+
+        .dept-syllabus-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .dept-syllabus-modal-header {
+            background: #ffffff;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--dept-syllabus-border);
+        }
+
+        .dept-syllabus-modal-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .dept-syllabus-modal-close {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+            color: var(--dept-syllabus-text-muted);
+            transition: var(--dept-syllabus-transition);
+        }
+
+        .dept-syllabus-modal-close:hover {
+            color: #000;
+        }
+
+        .dept-syllabus-modal-body {
+            flex: 1;
+            background: #e5e7eb;
+        }
+
+        .dept-syllabus-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Toast Feedback Notification */
+        .dept-syllabus-toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #1e293b;
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            z-index: 2000;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: var(--dept-syllabus-transition);
+            pointer-events: none;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .dept-syllabus-toast.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .dept-syllabus-wrapper {
+                padding: 20px;
+            }
+            .dept-syllabus-container.list-view .dept-syllabus-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .dept-syllabus-container.list-view .dept-syllabus-actions {
+                width: 100%;
+                justify-content: flex-end;
+                border-top: 1px solid #eaecf0;
+                padding-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body >
+
+
+     <!-- HEADER COMPONENT MOUNT POINT -->
+    <header id="departmentHeader"></header>
+
+    <section class="dept-syllabus-body">
+
+
+    <div class="dept-syllabus-wrapper">
+        <!-- Top Section -->
+        <header class="dept-syllabus-header">
+            <div>
+                <h1 class="dept-syllabus-title">Programme & Semester Wise Syllabus</h1>
+                <p class="dept-syllabus-subtitle">Department of Computer Science &bull; Shri Shivaji College, Parbhani</p>
+            </div>
+            <!-- View Switcher Options -->
+            <div class="dept-syllabus-view-controls">
+                <button class="dept-syllabus-view-btn active" id="dept-view-list" title="List View"><i class="fa-solid fa-list"></i> List</button>
+                <button class="dept-syllabus-view-btn" id="dept-view-grid" title="Grid View"><i class="fa-solid fa-grip"></i> Grid</button>
+            </div>
+        </header>
+
+        <!-- Filter Bar -->
+        <div class="dept-syllabus-toolbar">
+            <div class="dept-syllabus-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="dept-syllabus-search-input" class="dept-syllabus-search-input" placeholder="Search course title or code...">
+            </div>
+            <select id="dept-syllabus-pattern-select" class="dept-syllabus-select">
+                <option value="">All Patterns</option>
+                <option value="NEP 2020">NEP 2020</option>
+                <option value="CBCS">CBCS</option>
+            </select>
+            <button id="dept-syllabus-btn-reset" class="dept-syllabus-btn-reset">Reset Filters</button>
+        </div>
+
+        <!-- Programme Tabs -->
+        <div class="dept-syllabus-tabs-container">
+            <div class="dept-syllabus-section-heading">Filter by Programme</div>
+            <div class="dept-syllabus-programme-tabs" id="dept-syllabus-programme-tabs">
+                <button class="dept-syllabus-tab active" data-programme="All">All Programmes</button>
+                <button class="dept-syllabus-tab" data-programme="BCA">BCA</button>
+                <button class="dept-syllabus-tab" data-programme="B.Sc Computer Science">B.Sc Computer Science</button>
+                <button class="dept-syllabus-tab" data-programme="B.Sc Data Science">B.Sc Data Science</button>
+                <button class="dept-syllabus-tab" data-programme="M.Sc Computer Science">M.Sc Computer Science</button>
+            </div>
+
+            <div class="dept-syllabus-section-heading">Filter by Semester</div>
+            <div class="dept-syllabus-semester-tabs" id="dept-syllabus-semester-tabs">
+                <button class="dept-syllabus-tab active" data-semester="All">All Semesters</button>
+                <button class="dept-syllabus-tab" data-semester="Semester I">Semester I</button>
+                <button class="dept-syllabus-tab" data-semester="Semester II">Semester II</button>
+                <button class="dept-syllabus-tab" data-semester="Semester III">Semester III</button>
+                <button class="dept-syllabus-tab" data-semester="Semester IV">Semester IV</button>
+                <button class="dept-syllabus-tab" data-semester="Semester V">Semester V</button>
+                <button class="dept-syllabus-tab" data-semester="Semester VI">Semester VI</button>
+            </div>
+        </div>
+
+        <!-- Syllabus Cards Dynamic View Container -->
+        <main class="dept-syllabus-container list-view" id="dept-syllabus-container">
+            <!-- Rendered dynamically via JS -->
+        </main>
+    </div>
+
+    <!-- Preview Modal -->
+    <div class="dept-syllabus-modal" id="dept-syllabus-preview-modal">
+        <div class="dept-syllabus-modal-header">
+            <span class="dept-syllabus-modal-title" id="dept-syllabus-modal-title">Syllabus Preview</span>
+            <button class="dept-syllabus-modal-close" id="dept-syllabus-modal-close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="dept-syllabus-modal-body">
+            <iframe id="dept-syllabus-iframe" class="dept-syllabus-iframe" src=""></iframe>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="dept-syllabus-toast" id="dept-syllabus-toast"><i class="fa-solid fa-circle-check" style="color: #34d399; margin-right: 6px;"></i> Link copied to clipboard</div>
+</section>
+    <script>
+        const deptSyllabusData = [
+        
+           
+    {
+        "programme": "BCA",
+        "semester": "Semester V",
+        "course": "Introduction to Data Science",
+        "code": "SBCAET1301",
+        "pattern": "N/A",
+        "credits": 3,
+        "pdfSize": "0.13 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/SBCAET1301_Introduction-to-Data-Science.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester V",
+        "course": "Neural Network",
+        "code": "SBCAET1301",
+        "pattern": "N/A",
+        "credits": 3,
+        "pdfSize": "0.13 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/SBCAET1301_Introduction-to-Data-Science.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester V",
+        "course": "Lab-3 Introduction to Data Science",
+        "code": "SBCAEP1301",
+        "pattern": "N/A",
+        "credits": 2,
+        "pdfSize": "0.12 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/SBCAEP1301_Lab-3-Introduction-to-Data-Science.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester V",
+        "course": "Lab-3 Neural Network",
+        "code": "SBCAEP1301",
+        "pattern": "N/A",
+        "credits": 2,
+        "pdfSize": "0.12 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/SBCAEP1301_Lab-3-Introduction-to-Data-Science.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester V",
+        "course": "Time Series Analysis",
+        "code": "SBCAET1302",
+        "pattern": "N/A",
+        "credits": 3,
+        "pdfSize": "0.16 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/SBCAET1302_Time-Series-Analysis.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester V",
+        "course": "Digital Image Processing",
+        "code": "SBCAET1302",
+        "pattern": "N/A",
+        "credits": 3,
+        "pdfSize": "0.16 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/SBCAET1302_Time-Series-Analysis.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester V",
+        "course": "Lab-4 Time Series Analysis",
+        "code": "SBCAEP1302",
+        "pattern": "N/A",
+        "credits": 2,
+        "pdfSize": "0.14 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/SBCAEP1302_Lab-4-Time-Series-Analysis.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester V",
+        "course": "Lab-4 Digital Image Processing",
+        "code": "SBCAEP1302",
+        "pattern": "N/A",
+        "credits": 2,
+        "pdfSize": "0.14 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/SBCAEP1302_Lab-4-Time-Series-Analysis.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester V",
+        "course": "Machine Learning",
+        "code": "SBCAET1303",
+        "pattern": "N/A",
+        "credits": 3,
+        "pdfSize": "0.14 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/SBCAET1303_Machine-Learning.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester V",
+        "course": "Natural Language Processing",
+        "code": "SBCAET1302",
+        "pattern": "N/A",
+        "credits": 3,
+        "pdfSize": "0.12 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/SBCAET1302_Natural-Language-Processing.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester V",
+        "course": "Quantitative Techniques",
+        "code": "SBCAST1301",
+        "pattern": "N/A",
+        "credits": 2,
+        "pdfSize": "0.11 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/SBCAST1301_Quantitative-Techniques.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester V",
+        "course": "Internship / Capstone Project",
+        "code": "SBCASP1301",
+        "pattern": "N/A",
+        "credits": 4,
+        "pdfSize": "0.16 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/SBCASP1301_Internship-Capstone-Project.pdf"
+    },
+
+
+     {
+        "programme": "BCA",
+        "semester": "Semester VI",
+        "course": "Generative AI",
+        "code": "SBCACT1351",
+        "pattern": "N/A",
+        "credits": null,
+        "pdfSize": "0.14 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/MAJOR-SYLLABUS-2026_27-1.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester VI",
+        "course": "Soft Skills",
+        "code": "SBCAE1351",
+        "pattern": "N/A",
+        "credits": null,
+        "pdfSize": "0.12 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/MAJOR-SYLLABUS-2026_27-10.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester VI",
+        "course": "Major Project",
+        "code": "SBCASP1351",
+        "pattern": "N/A",
+        "credits": null,
+        "pdfSize": "0.12 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/MAJOR-SYLLABUS-2026_27-2.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester VI",
+        "course": "Big Data Analytics",
+        "code": "SBCAET1351",
+        "pattern": "N/A",
+        "credits": null,
+        "pdfSize": "0.14 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/MAJOR-SYLLABUS-2026_27-3.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester VI",
+        "course": "Deep Learning for Computer Vision",
+        "code": "SBCACET1351",
+        "pattern": "N/A",
+        "credits": null,
+        "pdfSize": "0.14 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/MAJOR-SYLLABUS-2026_27-4.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester VI",
+        "course": "Lab-6 Big Data Analytics",
+        "code": "SBCAEP1351",
+        "pattern": "N/A",
+        "credits": null,
+        "pdfSize": "0.12 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/MAJOR-SYLLABUS-2026_27-5.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester VI",
+        "course": "Lab-7 Expolatory Data Analysis",
+        "code": "SBCAEP1352",
+        "pattern": "N/A",
+        "credits": null,
+        "pdfSize": "0.14 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/MAJOR-SYLLABUS-2026_27-6.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester VI",
+        "course": "Predictive Analysis",
+        "code": "SBCAET1352",
+        "pattern": "N/A",
+        "credits": null,
+        "pdfSize": "0.20 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/MAJOR-SYLLABUS-2026_27-7.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester VI",
+        "course": "Lab-7 Exploratory Data Analysis",
+        "code": "SBCAEP1352",
+        "pattern": "N/A",
+        "credits": null,
+        "pdfSize": "0.12 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/MAJOR-SYLLABUS-2026_27-8.pdf"
+    },
+    {
+        "programme": "BCA",
+        "semester": "Semester VI",
+        "course": "Lab-7 Predictive Analysis",
+        "code": "SBCAEP1352",
+        "pattern": "N/A",
+        "credits": null,
+        "pdfSize": "0.13 MB",
+        "pdf": "../BCA_III_Year_Syllabus_2026-27/MAJOR-SYLLABUS-2026_27-9.pdf"
+    },
+
+
+    
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester V",
+        "course": "Fundamental of ML",
+        "code": "SDSCCT1301",
+        "pattern": "NEP-2020",
+        "credits": 3,
+        "pdfSize": "0.34 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Subjects/SDSCCT1301_Fundamental-of-ML.pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester V",
+        "course": "Natural Language Processing",
+        "code": "SDSCCT1302",
+        "pattern": "NEP-2020",
+        "credits": 3,
+        "pdfSize": "0.54 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Subjects/SDSCCT1302_Natural-Language-Processing.pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester V",
+        "course": "Introduction to Super Computing",
+        "code": "SDSCIK1303",
+        "pattern": "NEP-2020",
+        "credits": 2,
+        "pdfSize": "0.63 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Subjects/SDSCIK1303_Introduction-to-Super-Computing.pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester V",
+        "course": "Fundamental of ML (P)",
+        "code": "SDSCCP1304",
+        "pattern": "NEP-2020",
+        "credits": 2,
+        "pdfSize": "0.52 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Labs/SDSCCP1304_Fundamental-of-ML-(P).pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester V",
+        "course": "Natural Language Processing (P)",
+        "code": "SDSCCP1305",
+        "pattern": "NEP-2020",
+        "credits": 2,
+        "pdfSize": "0.70 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Labs/SDSCCP1305_Natural-Language-Processing-(P).pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester V",
+        "course": "Fundamental of Cloud Computing",
+        "code": "SDSCET1301",
+        "pattern": "NEP-2020",
+        "credits": 3,
+        "pdfSize": "0.53 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Subjects/SDSCET1301_Fundamental-of-Cloud-Computing.pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester V",
+        "course": "Fundamental of Cloud Computing (P)",
+        "code": "SDSCEP1301",
+        "pattern": "NEP-2020",
+        "credits": 1,
+        "pdfSize": "0.34 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Labs/SDSCEP1301_Fundamental-of-Cloud-Computing-(P).pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester V",
+        "course": "Data Warehousing",
+        "code": "SDSCVC1301",
+        "pattern": "NEP-2020",
+        "credits": 2,
+        "pdfSize": "0.42 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Labs/SDSCVC1301_Data-Warehousing.pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester V",
+        "course": "Project",
+        "code": "SDSCFP1301",
+        "pattern": "NEP-2020",
+        "credits": 4,
+        "pdfSize": "0.24 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Other/SDSCFP1301_Project.pdf"
+    },
+
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester VI",
+        "course": "Computer Vision and Image Analytics",
+        "code": "SDSCCT1351",
+        "pattern": "NEP-2020",
+        "credits": 3,
+        "pdfSize": "0.42 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Subjects/SDSCCT1351_Computer-Vision-and-Image-Analytics.pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester VI",
+        "course": "Deep Learning",
+        "code": "SDSCCT1352",
+        "pattern": "NEP-2020",
+        "credits": 3,
+        "pdfSize": "0.53 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Subjects/SDSCCT1352_Deep-Learning.pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester VI",
+        "course": "Time Series Analysis",
+        "code": "SDSCCT1353",
+        "pattern": "NEP-2020",
+        "credits": 2,
+        "pdfSize": "0.53 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Subjects/SDSCCT1353_Time-Series-Analysis.pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester VI",
+        "course": "Computer Vision and Image Analytics (P)",
+        "code": "SDSCCP1354",
+        "pattern": "NEP-2020",
+        "credits": 2,
+        "pdfSize": "0.42 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Labs/SDSCCP1354_Computer-Vision-and-Image-Analysis-(P).pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester VI",
+        "course": "Deep Learning (P)",
+        "code": "SDSCCP1355",
+        "pattern": "NEP-2020",
+        "credits": 2,
+        "pdfSize": "0.52 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Labs/SDSCCP1355_Deep-Learning-(P).pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester VI",
+        "course": "Big Data Analytics",
+        "code": "SDSCET1351",
+        "pattern": "NEP-2020",
+        "credits": 3,
+        "pdfSize": "0.53 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Subjects/SDSCET1351_Big-Data-Analytics.pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester VI",
+        "course": "Big Data Analytics (P)",
+        "code": "SDSCEP1351",
+        "pattern": "NEP-2020",
+        "credits": 1,
+        "pdfSize": "0.41 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Labs/SDSCEP1351_Big-Data-Analytics-(P).pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester VI",
+        "course": "Generative AI Tools",
+        "code": "SDSCVC1351",
+        "pattern": "NEP-2020",
+        "credits": 2,
+        "pdfSize": "0.54 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Labs/SDSCVC1351_Generative-AI-Tools.pdf"
+    },
+    {
+        "programme": "B.Sc Data Science",
+        "semester": "Semester VI",
+        "course": "OJT",
+        "code": "SDSCOJ1351",
+        "pattern": "NEP-2020",
+        "credits": 4,
+        "pdfSize": "0.42 MB",
+        "pdf": "../BSc_Data_Science_III_Year_Syllabus_2026-27/Other/SDSCOJ1351_OJT.pdf"
+    }
+,
+// M.Sc Computer Science Courses
+           
+       {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester I",
+    "course": "Computer Architecture and Microprocessor",
+    "code": "SCMPSC-401",
+    "pattern": "CBCS",
+    "credits": 4,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/I-SEM/SCMPSC-401-Computer Architecture and Microprocessor.pdf"
+  },
+  {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester I",
+    "course": "Python Programming",
+    "code": "SCMPSC-402",
+    "pattern": "CBCS",
+    "credits": 4,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/I-SEM/SCMPSC-402-Python Programming.pdf"
+  },
+  {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester I",
+    "course": "Advanced Java",
+    "code": "SCMPSC-403",
+    "pattern": "CBCS",
+    "credits": 4,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/I-SEM/SCMPSC-403-Advanced Java.pdf"
+  },
+  
+  {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester I",
+    "course": "Data Analysis using Power BI",
+    "code": "SCMPSE-401A",
+    "pattern": "CBCS",
+    "credits": 4,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/I-SEM/SCMPSE-401A-Data Analysis using Power BI.pdf"
+  },
+  {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester I",
+    "course": "Statistical Method",
+    "code": "SCMPSE-401B",
+    "pattern": "CBCS",
+    "credits": 4,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/I-SEM/SCMPSE-401B-Statistical Method.pdf"
+  },
+  {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester I",
+    "course": "Web Technology",
+    "code": "SCMPSE-401C",
+    "pattern": "CBCS",
+    "credits": 4,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/I-SEM/SCMPSE-401C-Web Technology.pdf"
+  },
+  {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester I",
+    "course": "Research Methodology",
+    "code": "SVECR-401",
+    "pattern": "CBCS",
+    "credits": 3,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/I-SEM/SVECR-401-Research Methodology.pdf"
+  },
+  {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester II",
+    "course": "Mobile Application Development with Kotlin",
+    "code": "SCMPSC-451",
+    "pattern": "CBCS",
+    "credits": 4,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/II-SEM/SCMPSC-451-Mobile Application Development with Kotlin.pdf"
+  },
+  {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester II",
+    "course": "Cloud Computing",
+    "code": "SCMPSC-452",
+    "pattern": "CBCS",
+    "credits": 4,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/II-SEM/SCMPSC-452-Cloud Computing.pdf"
+  },
+  {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester II",
+    "course": "NoSQL with MongoDB",
+    "code": "SCMPSC-453",
+    "pattern": "CBCS",
+    "credits": 4,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/II-SEM/SCMPSC-453-NoSQL with MongoDB.pdf"
+  },
+  
+  {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester II",
+    "course": "Data Structure",
+    "code": "SCMPSE-451A",
+    "pattern": "CBCS",
+    "credits": 4,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/II-SEM/SCMPSE-451A Data Structure.pdf"
+  },
+  {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester II",
+    "course": "Software Testing",
+    "code": "SCMPSE-451B",
+    "pattern": "CBCS",
+    "credits": 4,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/II-SEM/SCMPSE-451B-Software Testing.pdf"
+  },
+  {
+    "programme": "M.Sc Computer Science",
+    "semester": "Semester II",
+    "course": "PHP and MySQL",
+    "code": "SCMPSE-451C",
+    "pattern": "CBCS",
+    "credits": 4,
+    "pdfSize": "3.2 MB",
+    "pdf": "../MSc_Computer_Science_Courses/FY/II-SEM/SCMPSE-451C-PHP and MySQL.pdf"
+  },
+
+
+        ];
+
+        let deptCurrentProgramme = "All";
+        let deptCurrentSemester = "All";
+        let deptCurrentPattern = "";
+        let deptSearchQuery = "";
+        let deptCurrentView = "list"; // 'list' or 'grid'
+
+        const deptContainer = document.getElementById("dept-syllabus-container");
+        const deptSearchInput = document.getElementById("dept-syllabus-search-input");
+        const deptPatternSelect = document.getElementById("dept-syllabus-pattern-select");
+        const deptResetBtn = document.getElementById("dept-syllabus-btn-reset");
+        const deptProgrammeTabs = document.getElementById("dept-syllabus-programme-tabs");
+        const deptSemesterTabs = document.getElementById("dept-syllabus-semester-tabs");
+        
+        const deptViewListBtn = document.getElementById("dept-view-list");
+        const deptViewGridBtn = document.getElementById("dept-view-grid");
+
+        const deptModal = document.getElementById("dept-syllabus-preview-modal");
+        const deptIframe = document.getElementById("dept-syllabus-iframe");
+        const deptModalTitle = document.getElementById("dept-syllabus-modal-title");
+        const deptModalClose = document.getElementById("dept-syllabus-modal-close");
+        const deptToast = document.getElementById("dept-syllabus-toast");
+
+        function deptRender() {
+            const filtered = deptSyllabusData.filter(item => {
+                const matchProg = deptCurrentProgramme === "All" || item.programme === deptCurrentProgramme;
+                const matchSem = deptCurrentSemester === "All" || item.semester === deptCurrentSemester;
+                const matchPat = !deptCurrentPattern || item.pattern === deptCurrentPattern;
+                const matchSearch = !deptSearchQuery || 
+                    item.course.toLowerCase().includes(deptSearchQuery.toLowerCase()) ||
+                    item.code.toLowerCase().includes(deptSearchQuery.toLowerCase());
+                return matchProg && matchSem && matchPat && matchSearch;
+            });
+
+            deptContainer.innerHTML = "";
+
+            if (filtered.length === 0) {
+                deptContainer.innerHTML = `<div class="dept-syllabus-empty"><i class="fa-solid fa-folder-open" style="font-size: 2rem; margin-bottom: 10px; display: block;"></i>No syllabus documents available matching your criteria.</div>`;
+                return;
+            }
+
+            filtered.forEach(item => {
+                const card = document.createElement("div");
+                card.className = "dept-syllabus-card";
+                card.innerHTML = `
+                    <div class="dept-syllabus-card-left">
+                        <div class="dept-syllabus-pdf-icon"><i class="fa-solid fa-file-pdf"></i></div>
+                        <div>
+                            <div class="dept-syllabus-course-title">${item.course}</div>
+                            <div class="dept-syllabus-meta-text">
+                                <strong>Code:</strong> ${item.code} &bull; 
+                                <strong>Prog:</strong> ${item.programme} &bull; 
+                                <strong>Sem:</strong> ${item.semester} &bull; 
+                                <strong>Credits:</strong> ${item.credits} (${item.pdfSize})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dept-syllabus-actions">
+                        <button class="dept-syllabus-btn" onclick="deptOpenPreview('${item.pdf}', '${item.course}')">
+                            <i class="fa-solid fa-eye"></i> Preview
+                        </button>
+                        <button class="dept-syllabus-btn dept-syllabus-btn-download" onclick="deptDownload('${item.pdf}', '${item.code}.pdf')">
+                            <i class="fa-solid fa-download"></i> Download
+                        </button>
+                        <button class="dept-syllabus-btn" onclick="deptShare('${item.course}')" title="Copy Link">
+                            <i class="fa-solid fa-share-nodes"></i>
+                        </button>
+                    </div>
+                `;
+                deptContainer.appendChild(card);
+            });
+        }
+
+        // View Switch Logic
+        deptViewListBtn.addEventListener("click", () => {
+            deptCurrentView = "list";
+            deptContainer.className = "dept-syllabus-container list-view";
+            deptViewListBtn.classList.add("active");
+            deptViewGridBtn.classList.remove("active");
+        });
+
+        deptViewGridBtn.addEventListener("click", () => {
+            deptCurrentView = "grid";
+            deptContainer.className = "dept-syllabus-container grid-view";
+            deptViewGridBtn.classList.add("active");
+            deptViewListBtn.classList.remove("active");
+        });
+
+        window.deptOpenPreview = function(url, title) {
+            deptModalTitle.textContent = title;
+            deptIframe.src = url;
+            deptModal.classList.add("active");
+        };
+
+        deptModalClose.addEventListener("click", () => {
+            deptModal.classList.remove("active");
+            deptIframe.src = "";
+        });
+
+        window.deptDownload = function(url, filename) {
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = filename;
+            a.target = "_blank";
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        };
+
+        window.deptShare = function(title) {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                deptToast.classList.add("active");
+                setTimeout(() => deptToast.classList.remove("active"), 2200);
+            });
+        };
+
+        deptProgrammeTabs.addEventListener("click", e => {
+            if (e.target.classList.contains("dept-syllabus-tab")) {
+                Array.from(deptProgrammeTabs.children).forEach(t => t.classList.remove("active"));
+                e.target.classList.add("active");
+                deptCurrentProgramme = e.target.getAttribute("data-programme");
+                deptRender();
+            }
+        });
+
+        deptSemesterTabs.addEventListener("click", e => {
+            if (e.target.classList.contains("dept-syllabus-tab")) {
+                Array.from(deptSemesterTabs.children).forEach(t => t.classList.remove("active"));
+                e.target.classList.add("active");
+                deptCurrentSemester = e.target.getAttribute("data-semester");
+                deptRender();
+            }
+        });
+
+        deptSearchInput.addEventListener("input", e => {
+            deptSearchQuery = e.target.value.trim();
+            deptRender();
+        });
+
+        deptPatternSelect.addEventListener("change", e => {
+            deptCurrentPattern = e.target.value;
+            deptRender();
+        });
+
+        deptResetBtn.addEventListener("click", () => {
+            deptSearchInput.value = "";
+            deptPatternSelect.value = "";
+            deptSearchQuery = "";
+            deptCurrentPattern = "";
+            deptCurrentProgramme = "All";
+            deptCurrentSemester = "All";
+            Array.from(deptProgrammeTabs.children).forEach(t => t.classList.toggle("active", t.getAttribute("data-programme") === "All"));
+            Array.from(deptSemesterTabs.children).forEach(t => t.classList.toggle("active", t.getAttribute("data-semester") === "All"));
+            deptRender();
+        });
+
+        document.addEventListener("DOMContentLoaded", deptRender);
+    </script>
+
+    <!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentFooter"></footer>`r`n`r`n    <!-- HEADER COMPONENT LOADER SCRIPT -->`r`n    <script src="../js/footer.js"></script>`r`n`r`n    <!-- SCRIPTS -->
+    <script>
+        // Load Footer Component
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/footer.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentFooter").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/footer.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentFooter === 'function') {
+                        loadDepartmentFooter();
+                    }
+                })
+                .catch(err => console.error("Error loading footer component:", err));
+        });
+    </script>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentHeader === 'function') {
+                        loadDepartmentHeader();
+                    }
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+</body>
+</html>

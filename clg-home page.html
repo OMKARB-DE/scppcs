@@ -1,0 +1,1670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shri Shivaji College, Parbhani | Official Portal</title>
+    <style>
+        :root {
+            --college-home-primary: #003366;
+            --college-home-secondary: #0F4C81;
+            --college-home-accent: #2E8B57;
+            --college-home-bg: #FFFFFF;
+            --college-home-section-bg: #F8FAFC;
+            --college-home-card: #FFFFFF;
+            --college-home-text: #1E293B;
+            --college-home-text-light: #64748B;
+            --college-home-border: #E2E8F0;
+            --college-home-shadow: 0 10px 25px -5px rgba(0, 51, 102, 0.08), 0 8px 10px -6px rgba(0, 51, 102, 0.04);
+            --college-home-shadow-hover: 0 20px 30px -10px rgba(0, 51, 102, 0.15);
+            --college-home-radius: 12px;
+            --college-home-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        body {
+            background-color: var(--college-home-bg);
+            color: var(--college-home-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Top Information Bar */
+        .college-home-topbar {
+            background-color: var(--college-home-primary);
+            color: #FFFFFF;
+            font-size: 0.85rem;
+            padding: 8px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .college-home-topbar-left, .college-home-topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .college-home-topbar a {
+            color: #FFFFFF;
+            transition: var(--college-home-transition);
+        }
+
+        .college-home-topbar a:hover {
+            color: var(--college-home-accent);
+        }
+
+        .college-home-badge-naac {
+            background-color: var(--college-home-accent);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.75rem;
+        }
+
+        /* College Identity Header */
+        .college-home-header {
+            background-color: var(--college-home-bg);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 100;
+        }
+
+        .college-home-logo-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .college-home-logo {
+            width: 70px;
+            height: 70px;
+            background: #f0f4f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--college-home-primary);
+            border: 2px solid var(--college-home-primary);
+        }
+
+        .college-home-title-area h1 {
+            font-size: 1.6rem;
+            color: var(--college-home-primary);
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .college-home-title-area p {
+            font-size: 0.85rem;
+            color: var(--college-home-text-light);
+            font-weight: 500;
+        }
+
+        .college-home-header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .college-home-uni-logo {
+            width: 60px;
+            height: 60px;
+            background: #f0f4f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            text-align: center;
+            color: var(--college-home-secondary);
+            border: 1px dashed var(--college-home-secondary);
+        }
+
+        .college-home-search-btn {
+            background: var(--college-home-section-bg);
+            border: 1px solid var(--college-home-border);
+            padding: 10px 15px;
+            border-radius: var(--college-home-radius);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--college-home-text-light);
+            transition: var(--college-home-transition);
+        }
+
+        .college-home-search-btn:hover {
+            border-color: var(--college-home-primary);
+            color: var(--college-home-primary);
+        }
+
+        /* Mega Navigation */
+        .college-home-navbar {
+            background-color: var(--college-home-primary);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .college-home-nav-list {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .college-home-nav-item {
+            position: relative;
+        }
+
+        .college-home-nav-link {
+            display: block;
+            padding: 15px 16px;
+            color: #FFFFFF;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--college-home-transition);
+        }
+
+        .college-home-nav-link:hover, .college-home-nav-item.active .college-home-nav-link {
+            background-color: var(--college-home-secondary);
+            color: #FFFFFF;
+        }
+
+        /* Mega Menu Design */
+        .college-home-megamenu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            width: 90vw;
+            max-width: 1200px;
+            background: var(--college-home-bg);
+            border-radius: var(--college-home-radius);
+            box-shadow: var(--college-home-shadow-hover);
+            padding: 30px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--college-home-transition);
+            z-index: 1000;
+            border: 1px solid var(--college-home-border);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .college-home-nav-item.has-megamenu:hover .college-home-megamenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .college-home-megamenu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
+        }
+
+        .college-home-department-card {
+            background: var(--college-home-section-bg);
+            border: 1px solid var(--college-home-border);
+            border-radius: var(--college-home-radius);
+            padding: 20px;
+            transition: var(--college-home-transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .college-home-department-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--college-home-primary);
+            box-shadow: var(--college-home-shadow);
+            background: #FFFFFF;
+        }
+
+        .college-home-dept-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .college-home-dept-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 51, 102, 0.1);
+            color: var(--college-home-primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .college-home-department-card h4 {
+            font-size: 1rem;
+            color: var(--college-home-primary);
+            font-weight: 700;
+        }
+
+        .college-home-department-card p {
+            font-size: 0.82rem;
+            color: var(--college-home-text-light);
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .college-home-dept-hod {
+            font-size: 0.78rem;
+            color: var(--college-home-text);
+            font-weight: 600;
+            margin-bottom: 12px;
+            border-top: 1px dashed var(--college-home-border);
+            padding-top: 8px;
+        }
+
+        .college-home-dept-btn {
+            background: transparent;
+            color: var(--college-home-secondary);
+            border: 1px solid var(--college-home-secondary);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            transition: var(--college-home-transition);
+        }
+
+        .college-home-department-card:hover .college-home-dept-btn {
+            background: var(--college-home-primary);
+            color: #FFFFFF;
+            border-color: var(--college-home-primary);
+        }
+
+        /* Hero Slider */
+        .college-home-slider {
+            position: relative;
+            height: 550px;
+            overflow: hidden;
+        }
+
+        .college-home-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .college-home-slide.active {
+            opacity: 1;
+        }
+
+        .college-home-slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0, 51, 102, 0.85) 0%, rgba(15, 76, 129, 0.6) 50%, rgba(0,0,0,0.2) 100%);
+        }
+
+        .college-home-slide-content {
+            position: relative;
+            z-index: 2;
+            color: #FFFFFF;
+            max-width: 700px;
+            padding: 0 8%;
+        }
+
+        .college-home-slide-content h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .college-home-slide-content p {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            opacity: 0.9;
+        }
+
+        .college-home-btn-group {
+            display: flex;
+            gap: 15px;
+        }
+
+        .college-home-btn {
+            padding: 12px 24px;
+            border-radius: var(--college-home-radius);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--college-home-transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .college-home-btn-primary {
+            background-color: var(--college-home-accent);
+            color: #FFFFFF;
+            border: none;
+        }
+
+        .college-home-btn-primary:hover {
+            background-color: #246d43;
+            transform: translateY(-2px);
+        }
+
+        .college-home-btn-outline {
+            background: transparent;
+            color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+        }
+
+        .college-home-btn-outline:hover {
+            background: #FFFFFF;
+            color: var(--college-home-primary);
+            transform: translateY(-2px);
+        }
+
+        .college-home-slider-controls {
+            position: absolute;
+            bottom: 30px;
+            right: 8%;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .college-home-slider-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: #FFFFFF;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--college-home-transition);
+        }
+
+        .college-home-slider-btn:hover {
+            background: var(--college-home-accent);
+        }
+
+        .college-home-indicators {
+            display: flex;
+            gap: 8px;
+        }
+
+        .college-home-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: var(--college-home-transition);
+        }
+
+        .college-home-indicator.active {
+            background: var(--college-home-accent);
+            width: 25px;
+            border-radius: 5px;
+        }
+
+        /* Announcement Bar */
+        .college-home-ticker {
+            background: var(--college-home-secondary);
+            color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            overflow: hidden;
+            border-bottom: 3px solid var(--college-home-accent);
+        }
+
+        .college-home-ticker-title {
+            background: var(--college-home-primary);
+            padding: 12px 25px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 2;
+            box-shadow: 5px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .college-home-ticker-content {
+            white-space: nowrap;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .college-home-ticker-track {
+            display: inline-block;
+            white-space: nowrap;
+            animation: ticker 30s linear infinite;
+        }
+
+        .college-home-ticker-item {
+            display: inline-block;
+            padding: 0 40px;
+            font-size: 0.95rem;
+        }
+
+        .college-home-ticker-item a {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* Quick Action Cards Section */
+        .college-home-quick-actions {
+            max-width: 1300px;
+            margin: -40px auto 0;
+            position: relative;
+            z-index: 50;
+            padding: 0 20px;
+        }
+
+        .college-home-quick-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+        }
+
+        .college-home-quick-card {
+            background: var(--college-home-card);
+            padding: 20px 15px;
+            border-radius: var(--college-home-radius);
+            text-align: center;
+            box-shadow: var(--college-home-shadow);
+            transition: var(--college-home-transition);
+            border-bottom: 4px solid var(--college-home-primary);
+        }
+
+        .college-home-quick-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--college-home-accent);
+        }
+
+        .college-home-quick-icon {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .college-home-quick-card h4 {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--college-home-primary);
+        }
+
+        /* General Section Layout */
+        .college-home-section {
+            padding: 80px 5%;
+        }
+
+        .college-home-section-alt {
+            background-color: var(--college-home-section-bg);
+        }
+
+        .college-home-section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .college-home-section-header h2 {
+            font-size: 2.2rem;
+            color: var(--college-home-primary);
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .college-home-section-header p {
+            color: var(--college-home-text-light);
+            font-size: 1rem;
+        }
+
+        /* Department Portal Section */
+        .college-home-dept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .college-home-portal-card {
+            background: var(--college-home-card);
+            border-radius: var(--college-home-radius);
+            overflow: hidden;
+            box-shadow: var(--college-home-shadow);
+            transition: var(--college-home-transition);
+            border: 1px solid var(--college-home-border);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .college-home-portal-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--college-home-shadow-hover);
+            border-color: var(--college-home-primary);
+        }
+
+        .college-home-portal-body {
+            padding: 25px;
+        }
+
+        .college-home-portal-top {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .college-home-portal-logo {
+            width: 50px;
+            height: 50px;
+            background: var(--college-home-section-bg);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--college-home-primary);
+            border: 1px solid var(--college-home-border);
+        }
+
+        .college-home-portal-card h3 {
+            font-size: 1.1rem;
+            color: var(--college-home-primary);
+            font-weight: 700;
+        }
+
+        .college-home-portal-card p {
+            font-size: 0.85rem;
+            color: var(--college-home-text-light);
+            margin-bottom: 20px;
+        }
+
+        .college-home-portal-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            background: var(--college-home-section-bg);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.8rem;
+        }
+
+        .college-home-portal-stat-item span {
+            display: block;
+            font-weight: 700;
+            color: var(--college-home-primary);
+        }
+
+        .college-home-portal-footer {
+            padding: 15px 25px;
+            background: var(--college-home-section-bg);
+            border-top: 1px solid var(--college-home-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .college-home-portal-footer a {
+            color: var(--college-home-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: var(--college-home-transition);
+        }
+
+        .college-home-portal-footer a:hover {
+            color: var(--college-home-primary);
+            transform: translateX(3px);
+        }
+
+        /* Principal Message Section */
+        .college-home-principal-card {
+            background: var(--college-home-card);
+            border-radius: var(--college-home-radius);
+            box-shadow: var(--college-home-shadow);
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            overflow: hidden;
+            max-width: 1100px;
+            margin: 0 auto;
+            border: 1px solid var(--college-home-border);
+        }
+
+        .college-home-principal-img {
+            background: linear-gradient(135deg, var(--college-home-primary), var(--college-home-secondary));
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            color: #FFFFFF;
+            text-align: center;
+        }
+
+        .college-home-principal-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            margin-bottom: 20px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--college-home-primary);
+            font-weight: bold;
+        }
+
+        .college-home-principal-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .college-home-principal-content h3 {
+            font-size: 1.8rem;
+            color: var(--college-home-primary);
+            margin-bottom: 5px;
+        }
+
+        .college-home-principal-content h4 {
+            color: var(--college-home-text-light);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .college-home-principal-content p {
+            color: var(--college-home-text);
+            font-size: 0.95rem;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        /* Statistics Counter Section */
+        .college-home-stats-section {
+            background: linear-gradient(135deg, var(--college-home-primary), var(--college-home-secondary));
+            color: #FFFFFF;
+            padding: 70px 5%;
+        }
+
+        .college-home-stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .college-home-stat-item h3 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            color: #FFFFFF;
+        }
+
+        .college-home-stat-item p {
+            font-size: 1rem;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Programmes Offered */
+        .college-home-prog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .college-home-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .college-home-tab-btn {
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: var(--college-home-card);
+            border: 1px solid var(--college-home-border);
+            font-weight: 600;
+            color: var(--college-home-text);
+            cursor: pointer;
+            transition: var(--college-home-transition);
+        }
+
+        .college-home-tab-btn.active, .college-home-tab-btn:hover {
+            background: var(--college-home-primary);
+            color: #FFFFFF;
+            border-color: var(--college-home-primary);
+        }
+
+        .college-home-prog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .college-home-prog-card {
+            background: var(--college-home-card);
+            border-radius: var(--college-home-radius);
+            padding: 25px;
+            border: 1px solid var(--college-home-border);
+            box-shadow: var(--college-home-shadow);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .college-home-prog-info h4 {
+            font-size: 1.1rem;
+            color: var(--college-home-primary);
+            margin-bottom: 5px;
+        }
+
+        .college-home-prog-info p {
+            font-size: 0.85rem;
+            color: var(--college-home-text-light);
+        }
+
+        /* Latest News & Events */
+        .college-home-news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .college-home-news-card {
+            background: var(--college-home-card);
+            border-radius: var(--college-home-radius);
+            overflow: hidden;
+            box-shadow: var(--college-home-shadow);
+            border: 1px solid var(--college-home-border);
+            transition: var(--college-home-transition);
+        }
+
+        .college-home-news-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .college-home-news-img {
+            height: 200px;
+            background: #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--college-home-text-light);
+            font-weight: bold;
+        }
+
+        .college-home-news-body {
+            padding: 25px;
+        }
+
+        .college-home-news-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--college-home-text-light);
+            margin-bottom: 10px;
+        }
+
+        .college-home-news-body h3 {
+            font-size: 1.1rem;
+            color: var(--college-home-primary);
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .college-home-news-body p {
+            font-size: 0.9rem;
+            color: var(--college-home-text-light);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        .college-home-footer {
+            background-color: var(--college-home-primary);
+            color: #FFFFFF;
+            padding: 70px 5% 30px;
+        }
+
+        .college-home-footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1300px;
+            margin: 0 auto 50px;
+        }
+
+        .college-home-footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .college-home-footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--college-home-accent);
+        }
+
+        .college-home-footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .college-home-footer-col ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            transition: var(--college-home-transition);
+        }
+
+        .college-home-footer-col ul li a:hover {
+            color: var(--college-home-accent);
+            padding-left: 5px;
+        }
+
+        .college-home-footer-bottom {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Design Utilities */
+        @media (max-width: 992px) {
+            .college-home-principal-card {
+                grid-template-columns: 1fr;
+            }
+            .college-home-topbar {
+                display: none;
+            }
+            .college-home-nav-list {
+                display: none; /* Can add mobile menu drawer script if needed */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Information Bar -->
+    <div class="college-home-topbar">
+        <div class="college-home-topbar-left">
+            <span>📞 +91 (02452) 222131</span>
+            <span>✉️ principal@shivajicollege.org</span>
+            <span class="college-home-badge-naac">NAAC Grade: A+</span>
+            <span>Autonomous Status</span>
+        </div>
+        <div class="college-home-topbar-right">
+            <a href="#admission">Admission Portal</a>
+            <a href="#erp">ERP Login</a>
+            <a href="#student">Student Login</a>
+            <a href="#faculty">Faculty Login</a>
+            <a href="#alumni">Alumni</a>
+            <a href="#iqac">IQAC</a>
+        </div>
+    </div>
+
+    <!-- College Identity Header -->
+    <header class="college-home-header">
+        <div class="college-home-logo-area">
+            <div class="college-home-logo">SSC</div>
+            <div class="college-home-title-area">
+                <h1>Shri Shivaji College, Parbhani</h1>
+                <p>Affiliated to Swami Ramanand Teerth Marathwada University, Nanded | Autonomous</p>
+            </div>
+        </div>
+        <div class="college-home-header-right">
+            <div class="college-home-uni-logo">SRTMUN</div>
+            <button class="college-home-search-btn" id="college-home-search-trigger">
+                <span>🔍</span> Search Portal...
+            </button>
+        </div>
+    </header>
+
+    <!-- Mega Navigation -->
+    <nav class="college-home-navbar">
+        <ul class="college-home-nav-list">
+            <li class="college-home-nav-item active"><a href="#" class="college-home-nav-link">Home</a></li>
+            <li class="college-home-nav-item"><a href="#" class="college-home-nav-link">About</a></li>
+            <li class="college-home-nav-item"><a href="#" class="college-home-nav-link">Administration</a></li>
+            <li class="college-home-nav-item"><a href="#" class="college-home-nav-link">Academics</a></li>
+            
+            <!-- Departments Mega Menu -->
+            <li class="college-home-nav-item has-megamenu">
+                <a href="#" class="college-home-nav-link">Departments ▾</a>
+                <div class="college-home-megamenu">
+                    <div class="college-home-megamenu-grid">
+                        
+                        <!-- Department Cards -->
+                        <div class="college-home-department-card" onclick="location.href='index.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">💻</div>
+                                    <h4>Computer Science</h4>
+                                </div>
+                                <p>Advanced computing, AI & data science learning tracks.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. Vaibhav M. Pathak</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='commerce.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">📊</div>
+                                    <h4>Commerce</h4>
+                                </div>
+                                <p>Financial accounting, business management & corporate studies.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. S. P. Deshmukh</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='chemistry.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">🧪</div>
+                                    <h4>Chemistry</h4>
+                                </div>
+                                <p>Cutting-edge research in organic, inorganic & analytical chemistry.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. V. B. Jadhav</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='physics.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">⚛️</div>
+                                    <h4>Physics</h4>
+                                </div>
+                                <p>Material science, electronics and quantum mechanics focus.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. M. L. More</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='mathematics.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">📐</div>
+                                    <h4>Mathematics</h4>
+                                </div>
+                                <p>Pure mathematics, applied statistics & computational logic.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. P. N. Rathod</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='botany.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">🌱</div>
+                                    <h4>Botany</h4>
+                                </div>
+                                <p>Plant biotechnology, ecology and pharmacognosy.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. K. S. Shinde</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='zoology.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">🧬</div>
+                                    <h4>Zoology</h4>
+                                </div>
+                                <p>Genetics, entomology, and fisheries science research.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. R. T. Chavan</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='english.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">📖</div>
+                                    <h4>English</h4>
+                                </div>
+                                <p>Literature, linguistics, and communication skill development.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. S. V. Gaikwad</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='marathi.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">✍️</div>
+                                    <h4>Marathi</h4>
+                                </div>
+                                <p>Regional literature, cultural studies & folk traditions.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. D. B. Rathod</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='hindi.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">📜</div>
+                                    <h4>Hindi</h4>
+                                </div>
+                                <p>National language literature, poetry and prose studies.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. S. S. Tiwari</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='economics.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">📈</div>
+                                    <h4>Economics</h4>
+                                </div>
+                                <p>Agricultural economics, macro-analysis and financial policy.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. B. N. Pawar</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='history.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">🏛️</div>
+                                    <h4>History</h4>
+                                </div>
+                                <p>Indian heritage, Maratha history & archaeological studies.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. V. S. Kale</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='political-science.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">⚖️</div>
+                                    <h4>Political Science</h4>
+                                </div>
+                                <p>Public administration, global governance and political theory.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. A. D. Waghmare</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='geography.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">🌍</div>
+                                    <h4>Geography</h4>
+                                </div>
+                                <p>GIS mapping, cartography and environmental geography.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. S. K. Deshmukh</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='physical-education.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">🏅</div>
+                                    <h4>Physical Education</h4>
+                                </div>
+                                <p>Sports science, kinesiology & athletic training programs.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. R. M. Shinde</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='statistics.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">📉</div>
+                                    <h4>Statistics</h4>
+                                </div>
+                                <p>Data analytics, probability models & statistical inference.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. N. P. Joshi</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='electronics.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">🔌</div>
+                                    <h4>Electronics</h4>
+                                </div>
+                                <p>Embedded systems, microcontrollers and circuit design.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. P. B. Kadam</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='biotechnology.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">🧫</div>
+                                    <h4>Biotechnology</h4>
+                                </div>
+                                <p>Molecular biology, genetic engineering & bioinformatics.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. S. R. Bhale</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='environmental-science.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">♻️</div>
+                                    <h4>Environmental Science</h4>
+                                </div>
+                                <p>Conservation, pollution management & sustainability research.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. T. V. Deshmukh</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                        <div class="college-home-department-card" onclick="location.href='library-science.html';">
+                            <div>
+                                <div class="college-home-dept-header">
+                                    <div class="college-home-dept-icon">📚</div>
+                                    <h4>Library Science</h4>
+                                </div>
+                                <p>Information management, digital archiving & library systems.</p>
+                                <div class="college-home-dept-hod">HOD: Dr. K. M. Solanke</div>
+                            </div>
+                            <div class="college-home-dept-btn">View Department</div>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+
+            <li class="college-home-nav-item"><a href="#" class="college-home-nav-link">Admissions</a></li>
+            <li class="college-home-nav-item"><a href="#" class="college-home-nav-link">Examinations</a></li>
+            <li class="college-home-nav-item"><a href="#" class="college-home-nav-link">Research</a></li>
+            <li class="college-home-nav-item"><a href="#" class="college-home-nav-link">IQAC</a></li>
+            <li class="college-home-nav-item"><a href="#" class="college-home-nav-link">Campus</a></li>
+            <li class="college-home-nav-item"><a href="#" class="college-home-nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Slider Section -->
+    <section class="college-home-slider">
+        <div class="college-home-slide active" style="background-image: url('https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=1920&q=80')">
+            <div class="college-home-slide-content">
+                <h2>Excellence in Higher Education</h2>
+                <p>Empowering students with knowledge, skill, and moral values for a sustainable global future.</p>
+                <div class="college-home-btn-group">
+                    <button class="college-home-btn college-home-btn-primary">Apply Now</button>
+                    <button class="college-home-btn college-home-btn-outline">Explore College</button>
+                </div>
+            </div>
+        </div>
+        <div class="college-home-slide" style="background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=80')">
+            <div class="college-home-slide-content">
+                <h2>Autonomous Academic Framework</h2>
+                <p>Designed to foster dynamic curricula, critical thinking, and industry-oriented proficiency.</p>
+                <div class="college-home-btn-group">
+                    <button class="college-home-btn college-home-btn-primary">Download Prospectus</button>
+                    <button class="college-home-btn college-home-btn-outline">Programs Offered</button>
+                </div>
+            </div>
+        </div>
+        <div class="college-home-slide" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=1920&q=80')">
+            <div class="college-home-slide-content">
+                <h2>State-of-the-Art Research Labs</h2>
+                <p>Encouraging breakthrough innovations, patents, and multidisciplinary scientific investigations.</p>
+                <div class="college-home-btn-group">
+                    <button class="college-home-btn college-home-btn-primary">Research Portal</button>
+                    <button class="college-home-btn college-home-btn-outline">View Projects</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="college-home-slider-controls">
+            <button class="college-home-slider-btn" id="college-home-prev">❮</button>
+            <div class="college-home-indicators">
+                <span class="college-home-indicator active" data-slide="0"></span>
+                <span class="college-home-indicator" data-slide="1"></span>
+                <span class="college-home-indicator" data-slide="2"></span>
+            </div>
+            <button class="college-home-slider-btn" id="college-home-next">❯</button>
+        </div>
+    </section>
+
+    <!-- Announcement Ticker -->
+    <div class="college-home-ticker">
+        <div class="college-home-ticker-title">Announcements</div>
+        <div class="college-home-ticker-content">
+            <div class="college-home-ticker-track">
+                <span class="college-home-ticker-item">📢 <a href="#">UG/PG Admissions 2026-27 Open - Apply Online</a></span>
+                <span class="college-home-ticker-item">📢 <a href="#">Semester End Examination Time Table Declared</a></span>
+                <span class="college-home-ticker-item">📢 <a href="#">Campus Placement Drive by Tech Mahindra on 15th Sept</a></span>
+                <span class="college-home-ticker-item">📢 <a href="#">National Seminar on Advanced Material Science Registration Live</a></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Action Cards -->
+    <div class="college-home-quick-actions">
+        <div class="college-home-quick-grid">
+            <a href="#" class="college-home-quick-card">
+                <div class="college-home-quick-icon">📝</div>
+                <h4>Online Admission</h4>
+            </a>
+            <a href="#" class="college-home-quick-card">
+                <div class="college-home-quick-icon">📢</div>
+                <h4>Admission Notice</h4>
+            </a>
+            <a href="#" class="college-home-quick-card">
+                <div class="college-home-quick-icon">💳</div>
+                <h4>Fee Payment</h4>
+            </a>
+            <a href="#" class="college-home-quick-card">
+                <div class="college-home-quick-icon">📥</div>
+                <h4>Downloads</h4>
+            </a>
+            <a href="#" class="college-home-quick-card">
+                <div class="college-home-quick-icon">📝</div>
+                <h4>Examination</h4>
+            </a>
+            <a href="#" class="college-home-quick-card">
+                <div class="college-home-quick-icon">📊</div>
+                <h4>Results</h4>
+            </a>
+            <a href="#" class="college-home-quick-card">
+                <div class="college-home-quick-icon">📑</div>
+                <h4>Syllabus</h4>
+            </a>
+            <a href="#" class="college-home-quick-card">
+                <div class="college-home-quick-icon">📌</div>
+                <h4>Notice Board</h4>
+            </a>
+        </div>
+    </div>
+
+    <!-- Department Portal Section -->
+    <section class="college-home-section">
+        <div class="college-home-section-header">
+            <h2>Explore Academic Departments</h2>
+            <p>Our autonomous college houses premier departments delivering specialized education and research training.</p>
+        </div>
+        <div class="college-home-dept-grid">
+            
+            <div class="college-home-portal-card" onclick="location.href='computer-science.html'">
+                <div class="college-home-portal-body">
+                    <div class="college-home-portal-top">
+                        <div class="college-home-portal-logo">CS</div>
+                        <h3>Computer Science</h3>
+                    </div>
+                    <p>Focuses on advanced software development, data science, and cloud computing architectures.</p>
+                    <div class="college-home-portal-stats">
+                        <div class="college-home-portal-stat-item"><span>Programmes</span>UG / PG</div>
+                        <div class="college-home-portal-stat-item"><span>Faculty</span>12 Members</div>
+                        <div class="college-home-portal-stat-item"><span>Labs</span>3 Hi-Tech Labs</div>
+                        <div class="college-home-portal-stat-item"><span>Students</span>450+ Enrolled</div>
+                    </div>
+                </div>
+                <div class="college-home-portal-footer">
+                    <span>Explore Portal</span>
+                    <a href="computer-science.html">➔</a>
+                </div>
+            </div>
+
+            <div class="college-home-portal-card" onclick="location.href='commerce.html'">
+                <div class="college-home-portal-body">
+                    <div class="college-home-portal-top">
+                        <div class="college-home-portal-logo">COM</div>
+                        <h3>Commerce</h3>
+                    </div>
+                    <p>Comprehensive training in financial management, corporate accounting, and modern banking.</p>
+                    <div class="college-home-portal-stats">
+                        <div class="college-home-portal-stat-item"><span>Programmes</span>UG / PG / Ph.D</div>
+                        <div class="college-home-portal-stat-item"><span>Faculty</span>10 Members</div>
+                        <div class="college-home-portal-stat-item"><span>Labs</span>Computing Lab</div>
+                        <div class="college-home-portal-stat-item"><span>Students</span>600+ Enrolled</div>
+                    </div>
+                </div>
+                <div class="college-home-portal-footer">
+                    <span>Explore Portal</span>
+                    <a href="commerce.html">➔</a>
+                </div>
+            </div>
+
+            <div class="college-home-portal-card" onclick="location.href='chemistry.html'">
+                <div class="college-home-portal-body">
+                    <div class="college-home-portal-top">
+                        <div class="college-home-portal-logo">CHE</div>
+                        <h3>Chemistry</h3>
+                    </div>
+                    <p>Dedicated research hubs for organic synthesis, pharmaceutical analysis, and material testing.</p>
+                    <div class="college-home-portal-stats">
+                        <div class="college-home-portal-stat-item"><span>Programmes</span>UG / PG / Ph.D</div>
+                        <div class="college-home-portal-stat-item"><span>Faculty</span>14 Members</div>
+                        <div class="college-home-portal-stat-item"><span>Labs</span>4 Research Labs</div>
+                        <div class="college-home-portal-stat-item"><span>Students</span>500+ Enrolled</div>
+                    </div>
+                </div>
+                <div class="college-home-portal-footer">
+                    <span>Explore Portal</span>
+                    <a href="chemistry.html">➔</a>
+                </div>
+            </div>
+
+            <div class="college-home-portal-card" onclick="location.href='physics.html'">
+                <div class="college-home-portal-body">
+                    <div class="college-home-portal-top">
+                        <div class="college-home-portal-logo">PHY</div>
+                        <h3>Physics</h3>
+                    </div>
+                    <p>Advanced electronics, condensed matter physics, and specialized instrumentation training.</p>
+                    <div class="college-home-portal-stats">
+                        <div class="college-home-portal-stat-item"><span>Programmes</span>UG / PG</div>
+                        <div class="college-home-portal-stat-item"><span>Faculty</span>11 Members</div>
+                        <div class="college-home-portal-stat-item"><span>Labs</span>3 Laboratories</div>
+                        <div class="college-home-portal-stat-item"><span>Students</span>400+ Enrolled</div>
+                    </div>
+                </div>
+                <div class="college-home-portal-footer">
+                    <span>Explore Portal</span>
+                    <a href="physics.html">➔</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Principal Message Section -->
+    <section class="college-home-section college-home-section-alt">
+        <div class="college-home-principal-card">
+            <div class="college-home-principal-img">
+                <div class="college-home-principal-avatar">Dr</div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 5px;">Dr. Principal Name</h3>
+                <p style="font-size: 0.85rem; opacity: 0.8;">Principal, Shri Shivaji College</p>
+            </div>
+            <div class="college-home-principal-content">
+                <h3>Message from the Principal</h3>
+                <h4>Shaping Futures with Vision, Character, and Knowledge</h4>
+                <p>Welcome to Shri Shivaji College, Parbhani. As an autonomous institution, we are committed to delivering academic excellence coupled with moral integrity. Our goal is to transform young minds into competent professionals, ethical leaders, and dedicated nation builders who can face global challenges head-on.</p>
+                <button class="college-home-btn college-home-btn-primary" style="width: fit-content;">Read Full Message</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- College Highlights / Statistics -->
+    <section class="college-home-stats-section">
+        <div class="college-home-stats-grid">
+            <div class="college-home-stat-item">
+                <h3 class="college-home-counter" data-target="4500">0</h3>
+                <p>Students</p>
+            </div>
+            <div class="college-home-stat-item">
+                <h3 class="college-home-counter" data-target="120">0</h3>
+                <p>Faculty Members</p>
+            </div>
+            <div class="college-home-stat-item">
+                <h3 class="college-home-counter" data-target="20">0</h3>
+                <p>Departments</p>
+            </div>
+            <div class="college-home-stat-item">
+                <h3 class="college-home-counter" data-target="35">0</h3>
+                <p>Research Papers / Yr</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest News -->
+    <section class="college-home-section">
+        <div class="college-home-section-header">
+            <h2>Latest News & Updates</h2>
+            <p>Stay informed about campus activities, academic schedules, and student achievements.</p>
+        </div>
+        <div class="college-home-news-grid">
+            
+            <div class="college-home-news-card">
+                <div class="college-home-news-img">[ News Image ]</div>
+                <div class="college-home-news-body">
+                    <div class="college-home-news-meta">
+                        <span>📅 Aug 06, 2026</span>
+                        <span>Academics</span>
+                    </div>
+                    <h3>Annual Inter-Collegiate Science Exhibition Begins</h3>
+                    <p>Over 50 colleges participated to present breakthrough prototype models in green technology.</p>
+                    <a href="#" style="color: var(--college-home-secondary); font-weight: 600; font-size: 0.9rem;">Read More ➔</a>
+                </div>
+            </div>
+
+            <div class="college-home-news-card">
+                <div class="college-home-news-img">[ News Image ]</div>
+                <div class="college-home-news-body">
+                    <div class="college-home-news-meta">
+                        <span>📅 Aug 02, 2026</span>
+                        <span>Placements</span>
+                    </div>
+                    <h3>Record Placements Recorded for Computer Science Batch</h3>
+                    <p>Top multinational corporations hired over 120 graduates with competitive remuneration packages.</p>
+                    <a href="#" style="color: var(--college-home-secondary); font-weight: 600; font-size: 0.9rem;">Read More ➔</a>
+                </div>
+            </div>
+
+            <div class="college-home-news-card">
+                <div class="college-home-news-img">[ News Image ]</div>
+                <div class="college-home-news-body">
+                    <div class="college-home-news-meta">
+                        <span>📅 July 28, 2026</span>
+                        <span>Research</span>
+                    </div>
+                    <h3>New Patent Granted to Chemistry Department Lab</h3>
+                    <p>Faculty and research fellows successfully developed a low-cost water filtration catalyst.</p>
+                    <a href="#" style="color: var(--college-home-secondary); font-weight: 600; font-size: 0.9rem;">Read More ➔</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="college-home-footer">
+        <div class="college-home-footer-grid">
+            <div class="college-home-footer-col">
+                <h4>Shri Shivaji College</h4>
+                <p style="font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 15px;">
+                    Basmath Road, Parbhani, Maharashtra - 431401<br>
+                    Autonomous Institution affiliated to SRTMUN Nanded.
+                </p>
+                <p style="font-size: 0.85rem; color: var(--college-home-accent); font-weight: bold;">NAAC Accredited A+ Grade</p>
+            </div>
+            <div class="college-home-footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About College</a></li>
+                    <li><a href="#">Governing Body</a></li>
+                    <li><a href="#">IQAC Cell</a></li>
+                    <li><a href="#">Anti-Ragging Cell</a></li>
+                    <li><a href="#">RTI Disclosures</a></li>
+                </ul>
+            </div>
+            <div class="college-home-footer-col">
+                <h4>Academics</h4>
+                <ul>
+                    <li><a href="#">Academic Calendar</a></li>
+                    <li><a href="#">Choice Based Credit System</a></li>
+                    <li><a href="#">Examination Regulations</a></li>
+                    <li><a href="#">Central Library</a></li>
+                    <li><a href="#">E-Learning Portals</a></li>
+                </ul>
+            </div>
+            <div class="college-home-footer-col">
+                <h4>Connect With Us</h4>
+                <ul>
+                    <li><a href="#">Contact Directory</a></li>
+                    <li><a href="#">Campus Map</a></li>
+                    <li><a href="#">Alumni Registration</a></li>
+                    <li><a href="#">Careers / Recruitment</a></li>
+                    <li><a href="#">Feedback Portal</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="college-home-footer-bottom">
+            <p>&copy; 2026 Shri Shivaji College, Parbhani. All Rights Reserved.</p>
+            <p>Designed for Institutional Excellence</p>
+        </div>
+    </footer>
+
+    <!-- Vanilla JavaScript Integration -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hero Slider Automation
+            const slides = document.querySelectorAll('.college-home-slide');
+            const indicators = document.querySelectorAll('.college-home-indicator');
+            const nextBtn = document.getElementById('college-home-next');
+            const prevBtn = document.getElementById('college-home-prev');
+            let currentSlide = 0;
+            const slideIntervalTime = 4000;
+
+            function showSlide(index) {
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(ind => ind.classList.remove('active'));
+                
+                currentSlide = (index + slides.length) % slides.length;
+                slides[currentSlide].classList.add('active');
+                indicators[currentSlide].classList.add('active');
+            }
+
+            let slideTimer = setInterval(() => {
+                showSlide(currentSlide + 1);
+            }, slideIntervalTime);
+
+            nextBtn.addEventListener('click', () => {
+                clearInterval(slideTimer);
+                showSlide(currentSlide + 1);
+                slideTimer = setInterval(() => { showSlide(currentSlide + 1); }, slideIntervalTime);
+            });
+
+            prevBtn.addEventListener('click', () => {
+                clearInterval(slideTimer);
+                showSlide(currentSlide - 1);
+                slideTimer = setInterval(() => { showSlide(currentSlide + 1); }, slideIntervalTime);
+            });
+
+            indicators.forEach((indicator, idx) => {
+                indicator.addEventListener('click', () => {
+                    clearInterval(slideTimer);
+                    showSlide(idx);
+                    slideTimer = setInterval(() => { showSlide(currentSlide + 1); }, slideIntervalTime);
+                });
+            });
+
+            // Animated Counters Script
+            const counters = document.querySelectorAll('.college-home-counter');
+            let animated = false;
+
+            window.addEventListener('scroll', () => {
+                const scrollPos = window.scrollY + window.innerHeight;
+                const statsSection = document.querySelector('.college-home-stats-section');
+                
+                if (statsSection && scrollPos >= statsSection.offsetTop + 100 && !animated) {
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        let count = 0;
+                        const speed = target / 50;
+                        
+                        const updateCount = () => {
+                            count += speed;
+                            if (count < target) {
+                                counter.innerText = Math.ceil(count);
+                                setTimeout(updateCount, 30);
+                            } else {
+                                counter.innerText = target + "+";
+                            }
+                        };
+                        updateCount();
+                    });
+                    animated = true;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,4724 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Department of Computer Science | Shri Shivaji College, Parbhani</title>
+ <!-- Department Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/dept-logo3.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/dept-logo3.png">
+
+    <!-- Apple / Mobile -->
+    <link rel="apple-touch-icon" href="../images/dept-logo3.png">
+
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Lightbox2 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #10b981;
+            --primary-glow: rgba(16, 185, 129, 0.2);
+            --bg-main: #ffffff;
+            --bg-surface: #f8fafc;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            min-height: 100vh;
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content {
+            flex: 1;
+        }
+
+        .container {
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 0 20px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* --- HEADER & CONTROLS --- */
+        header {
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .header-title {
+            font-size: 2.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #059669, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        /* Top Utility Bar (Stats, Layout Switcher) */
+        .utility-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            padding: 15px 25px;
+            border-radius: 16px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stats-group {
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .stats-group span strong {
+            color: var(--primary);
+        }
+
+        .utility-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .util-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 8px 14px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .util-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* --- CONTROL TOOLBAR --- */
+        .control-panel {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.02);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .control-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        /* Pill Filters */
+        .filter-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pill-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .pill-btn:hover, .pill-btn.active {
+            background: var(--primary);
+            color: #ffffff;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        /* Search & Sort Controls */
+        .search-sort-container {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 12px 16px 12px 45px;
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        .sort-select {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .sort-select:focus {
+            border-color: var(--primary);
+        }
+
+        /* --- GALLERY LAYOUTS --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            transition: var(--transition);
+        }
+
+        /* Layout: Compact Grid */
+        .gallery-grid.compact {
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+        }
+
+        /* Layout: List View */
+        .gallery-grid.list-view {
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        .gallery-grid.list-view .gallery-card {
+            flex-direction: row;
+            height: 180px;
+        }
+        .gallery-grid.list-view .media-wrapper {
+            width: 280px;
+            height: 100%;
+            flex-shrink: 0;
+        }
+
+        /* Gallery Card Styles */
+        .gallery-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: var(--transition);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.02);
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 20px -5px rgba(16, 185, 129, 0.15);
+        }
+
+        .media-wrapper {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            background: #f1f5f9;
+            overflow: hidden;
+        }
+
+        .media-wrapper img, .media-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .gallery-card:hover .media-wrapper img {
+            transform: scale(1.08);
+        }
+
+        /* Floating Overlays */
+        .badge-type {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .date-badge-left {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(4px);
+            color: #38bdf8;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            z-index: 2;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .video-overlay-icon {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.2);
+            color: #fff;
+            font-size: 3rem;
+            transition: var(--transition);
+            z-index: 1;
+        }
+
+        .gallery-card:hover .video-overlay-icon {
+            background: rgba(0,0,0,0.4);
+            transform: scale(1.1);
+        }
+
+        /* Card Content */
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .card-category {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+
+        .card-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-main);
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+
+        .card-footer-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .meta-tag {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Quick Action Buttons inside Card */
+        .card-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .action-icon-btn {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .action-icon-btn:hover {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        /* --- LIGHTBOX CUSTOM STYLING OVERRIDE --- */
+        .lb-data .lb-caption {
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            color: #fff !important;
+        }
+
+        /* --- EMPTY STATE --- */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 20px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            display: none;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            color: var(--text-muted);
+        }
+
+        /* --- RESPONSIVE BREAKPOINTS --- */
+        @media(max-width: 768px) {
+            .header-title { font-size: 2rem; }
+            .utility-bar { flex-direction: column; align-items: stretch; }
+            .gallery-grid.list-view .gallery-card { flex-direction: column; height: auto; }
+            .gallery-grid.list-view .media-wrapper { width: 100%; height: 200px; }
+        }
+
+
+
+        /* Modal Overlay Background */
+.video-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Modal Content Box */
+.video-modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Close Button Style */
+.modal-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border: none;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.modal-close-btn:hover {
+    background: rgba(255, 0, 0, 0.8);
+}
+    </style>
+</head>
+<body>
+
+    <!-- HEADER COMPONENT MOUNT POINT -->
+    <div id="departmentHeader"></div>
+
+    <div class="main-content">
+        <div class="container">
+            <!-- Header Section -->
+            <header data-aos="fade-down">
+                <h1 class="header-title">Department Media Vault</h1>
+                <p class="header-subtitle">Explore high-resolution captures of infrastructure, technical workshops, convocation ceremonies, and campus events.</p>
+            </header>
+
+            <!-- Utility & Stats Bar -->
+            <div class="utility-bar" data-aos="fade-up">
+                <div class="stats-group">
+                    <span>Total Items: <strong id="totalCount">6</strong></span>
+                    <span>Showing: <strong id="visibleCount">6</strong></span>
+                </div>
+                <div class="utility-actions">
+                    <button class="util-btn" id="layoutToggleBtn" title="Change Layout"><i class="fas fa-th-large" id="layoutIcon"></i> Layout</button>
+                </div>
+            </div>
+
+            <!-- Advanced Control Panel -->
+            <div class="control-panel" data-aos="fade-up" data-aos-delay="100">
+                <!-- Row 1: Category Filters -->
+                <div class="control-row">
+                    <div class="filter-group" id="categoryFilters">
+                        <button class="pill-btn active" data-filter="all">All Categories</button>
+                        <button class="pill-btn" data-filter="infrastructure">Infrastructure</button>
+                        <button class="pill-btn" data-filter="events">Events & Fests</button>
+                        <button class="pill-btn" data-filter="workshops">Workshops</button>
+                        <button class="pill-btn" data-filter="convocation">Convocation</button>
+                    </div>
+                </div>
+
+                <!-- Row 2: Year Filters -->
+                <div class="control-row">
+                    <div class="filter-group" id="yearFilters">
+                        <button class="pill-btn active" data-year="all">All Years</button>
+                        <button class="pill-btn" data-year="2026">2026</button>
+                        <button class="pill-btn" data-year="2026">2025</button>
+                        <button class="pill-btn" data-year="2024">2024</button>
+                    </div>
+
+                    <div class="filter-group" id="typeFilters">
+                        <button class="pill-btn active" data-type="all">All Types</button>
+                        <button class="pill-btn" data-type="image"><i class="fas fa-image"></i> Images</button>
+                        <button class="pill-btn" data-type="video"><i class="fas fa-video"></i> Videos</button>
+                    </div>
+                </div>
+
+                <!-- Row 3: Live Search & Dynamic Sorting -->
+                <div class="search-sort-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search gallery by title or keyword...">
+                    </div>
+                    <select class="sort-select" id="sortSelect">
+                        <option value="newest">Sort by: Newest First</option>
+                        <option value="oldest">Sort by: Oldest First</option>
+                        <option value="title">Sort by: Title (A-Z)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Gallery Grid Container -->
+            <div class="gallery-grid" id="galleryGrid" data-aos="fade-up" data-aos-delay="200">
+
+                <!-- Item 1 -->
+                <div class="gallery-card" data-category="infrastructure" data-type="image" data-year="2026" data-date="2026-01-15" data-title="Advanced Computer Laboratory 1">
+                    <div class="media-wrapper">
+                        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+                        <a href="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1400&q=80" data-lightbox="gallery-vault" data-title="Advanced Computer Laboratory 1 â€” Captured on Jan 15, 2026">
+                            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=600&q=80" alt="Lab 1" loading="lazy">
+                        </a>
+                        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Jan 15, 2026</div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span class="card-category">Infrastructure</span>
+                            <h3 class="card-title">Advanced Computer Laboratory 1</h3>
+                        </div>
+                        <div class="card-footer-meta">
+                            <span class="meta-tag"><i class="fas fa-server"></i> High-Specs</span>
+                            <div class="card-actions">
+                                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="gallery-card" data-category="events" data-type="video" data-year="2026" data-date="2026-02-20" data-title="Annual Tech Symposium CodeSprint Highlights">
+                    <div class="media-wrapper">
+                        <span class="badge-type" style="background: #e11d48;"><i class="fas fa-video"></i> Video</span>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" data-lightbox="gallery-vault" data-title="Annual Tech Symposium CodeSprint Highlights â€” Captured on Feb 20, 2026">
+                            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=600&q=80" alt="Tech Symposium" loading="lazy">
+                            <div class="video-overlay-icon"><i class="fas fa-play-circle"></i></div>
+                        </a>
+                        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Feb 20, 2026</div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span class="card-category">Events & Fests</span>
+                            <h3 class="card-title">Annual Tech Symposium CodeSprint Highlights</h3>
+                        </div>
+                        <div class="card-footer-meta">
+                            <span class="meta-tag"><i class="fas fa-clock"></i> 02:45 Mins</span>
+                            <div class="card-actions">
+                                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="gallery-card" data-category="workshops" data-type="image" data-year="2026" data-date="2026-03-10" data-title="AI and Machine Learning Hands-on Workshop">
+                    <div class="media-wrapper">
+                        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+                        <a href="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1400&q=80" data-lightbox="gallery-vault" data-title="AI and Machine Learning Hands-on Workshop â€” Captured on Mar 10, 2026">
+                            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=600&q=80" alt="AI Workshop" loading="lazy">
+                        </a>
+                        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Mar 10, 2026</div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span class="card-category">Workshops</span>
+                            <h3 class="card-title">AI and Machine Learning Hands-on Workshop</h3>
+                        </div>
+                        <div class="card-footer-meta">
+                            <span class="meta-tag"><i class="fas fa-brain"></i> Deep Learning</span>
+                            <div class="card-actions">
+                                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+          
+
+
+                
+   <!-- Item 5: Video Card -->
+<div class="gallery-card" data-category="infrastructure" data-type="video" data-year="2026" data-date="2026-01-02" data-title="Virtual Campus Tour 2026">
+    <div class="media-wrapper" style="cursor: pointer;" onclick="openVideoModal('../scp-campus.mp4')">
+        <span class="badge-type" style="background: #e11d48; z-index: 2;"><i class="fas fa-video"></i> Video</span>
+        
+        <!-- Thumbnail preview image or first frame -->
+        <video class="card-video-thumb" muted preload="metadata" style="width: 100%; height: 100%; object-fit: cover;">
+            <source src="../scp-campus.mp4#t=0.1" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="video-overlay-icon"><i class="fas fa-play-circle"></i></div>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Jan 02, 2026</div>
+    </div>
+    
+    <div class="card-body">
+        <div>
+            <span class="card-category">Infrastructure</span>
+            <h3 class="card-title">Virtual Campus Tour 2026</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-clock"></i> 03:09 Mins</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share"><i class="fas fa-share-alt"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Video Popup Modal -->
+<div id="customVideoModal" class="video-modal-overlay" style="display: none;">
+    <div class="video-modal-content">
+        <button class="modal-close-btn" onclick="closeVideoModal()">&times;</button>
+        <video id="popupVideoPlayer" controls autoplay style="width: 100%; max-height: 80vh; border-radius: 8px;">
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+</div>
+
+<!-- =========================================================
+     Convocation Ceremony 2026 - BATCH OF 2025
+     30 GALLERY IMAGES
+========================================================= -->
+
+
+<!-- ===================== IMAGE 01 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+
+        <span class="badge-type">
+            <i class="fas fa-image"></i> Image
+        </span>
+
+        <a href="../images/convocation-2026/1.jpeg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/1.jpeg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+
+    </div>
+
+    <div class="card-body">
+
+        <div>
+            <span class="card-category">Convocation</span>
+
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i>
+                Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+
+                    <i class="fas fa-share-alt"></i>
+
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ===================== IMAGE 02 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+
+        <span class="badge-type">
+            <i class="fas fa-image"></i> Image
+        </span>
+
+        <a href="../images/convocation-2026/2.jpeg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/2.jpeg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+
+    </div>
+
+    <div class="card-body">
+
+        <div>
+            <span class="card-category">Convocation</span>
+
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i>
+                Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+
+                    <i class="fas fa-share-alt"></i>
+
+                </button>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ===================== IMAGE 03 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type">
+            <i class="fas fa-image"></i> Image
+        </span>
+
+        <a href="../images/convocation-2026/3.jpeg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/3.jpeg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 04 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type">
+            <i class="fas fa-image"></i> Image
+        </span>
+
+        <a href="../images/convocation-2026/4.jpeg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/4.jpeg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 05 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/5.jpeg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/5.jpeg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 06 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/6.jpeg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/6.jpeg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 07 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/7.jpeg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/7.jpeg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 08 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/8.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/8.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 09 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/9.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/9.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- =========================================================
+     CONVOCATION 2026 - BATCH OF 2025
+     IMAGES 30 TO 84
+========================================================= -->
+
+
+<!-- ===================== IMAGE 10 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/10.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/10.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 11 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/11.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/11.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 12 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/12.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/12.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 13 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/13.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/13.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 14 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/14.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/14.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 15 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/15.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/15.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 16 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/16.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/16.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 17 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/17.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/17.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 18 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/18.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/18.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 19 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/19.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/19.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 20 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/20.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/20.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 21 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/21.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/21.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 22 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/22.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/22.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 23 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/23.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/23.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 24 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/24.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/24.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 25 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/25.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/25.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 26 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/26.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/26.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 27 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/27.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/27.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 28 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/28.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/28.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 29 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+        <a href="../images/convocation-2026/29.jpg" data-lightbox="gallery-vault" data-title="Convocation Ceremony 2026 - Batch of 2025">
+            <img src="../images/convocation-2026/29.jpg" alt="Convocation Ceremony 2026 - Batch of 2025" loading="lazy">
+        </a>
+        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Aug 01, 2026</div>
+    </div>
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">Convocation Ceremony 2026 - Batch of 2025</h3>
+        </div>
+        <div class="card-footer-meta">
+            <span class="meta-tag"><i class="fas fa-graduation-cap"></i> Batch of 2025</span>
+            <div class="card-actions">
+                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 30 ===================== -->
+<div class="gallery-card" data-category="convocation" data-type="image" data-year="2026" data-date="2026-08-01" data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+
+        <span class="badge-type">
+            <i class="fas fa-image"></i> Image
+        </span>
+
+        <a href="../images/convocation-2026/30.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/30.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+
+    </div>
+
+    <div class="card-body">
+
+        <div>
+            <span class="card-category">Convocation</span>
+
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i>
+                Batch of 2025
+            </span>
+
+            <div class="card-actions">
+
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+
+                    <i class="fas fa-share-alt"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ===================== IMAGE 31 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/31.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/31.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 32 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/32.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/32.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 33 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/33.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/33.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 34 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/34.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/34.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 35 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/35.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/35.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 36 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/36.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/36.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 37 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/37.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/37.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 38 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/38.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/38.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 39 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/39.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/39.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 40 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/40.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/40.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 41 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/41.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/41.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 42 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/42.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/42.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 43 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/43.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/43.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 44 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/44.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/44.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 45 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/45.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/45.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 46 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/46.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/46.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 47 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/47.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/47.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 48 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/48.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/48.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 49 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/49.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/49.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 50 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/50.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/50.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 51 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/51.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/51.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 52 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/52.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/52.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 53 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/53.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/53.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 54 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/54.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/54.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 55 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/55.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/55.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 56 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/56.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/56.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 57 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/57.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/57.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 58 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/58.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/58.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 59 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/59.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/59.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 60 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/60.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/60.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ===================== IMAGE 61 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/61.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/61.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 62 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/62.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/62.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 63 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/63.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/63.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 64 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/64.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/64.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 65 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/65.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/65.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 66 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/66.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/66.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 67 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/67.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/67.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 68 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/68.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/68.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 69 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/69.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/69.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 70 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/70.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/70.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 71 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/71.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/71.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 72 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/72.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/72.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 73 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/73.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/73.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 74 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/74.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/74.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 75 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/75.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/75.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 76 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/76.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/76.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 77 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/77.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/77.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 78 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/78.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/78.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 79 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/79.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/79.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 80 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/80.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/80.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 81 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/81.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/81.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 82 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/82.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/82.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 83 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/83.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/83.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== IMAGE 84 ===================== -->
+<div class="gallery-card"
+     data-category="convocation"
+     data-type="image"
+     data-year="2026"
+     data-date="2026-08-01"
+     data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+    <div class="media-wrapper">
+        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+
+        <a href="../images/convocation-2026/84.jpg"
+           data-lightbox="gallery-vault"
+           data-title="Convocation Ceremony 2026 - Batch of 2025">
+
+            <img src="../images/convocation-2026/84.jpg"
+                 alt="Convocation Ceremony 2026 - Batch of 2025"
+                 loading="lazy">
+        </a>
+
+        <div class="date-badge-left">
+            <i class="far fa-calendar-alt"></i> Aug 01, 2026
+        </div>
+    </div>
+
+    <div class="card-body">
+        <div>
+            <span class="card-category">Convocation</span>
+            <h3 class="card-title">
+                Convocation Ceremony 2026 - Batch of 2025
+            </h3>
+        </div>
+
+        <div class="card-footer-meta">
+            <span class="meta-tag">
+                <i class="fas fa-graduation-cap"></i> Batch of 2025
+            </span>
+
+            <div class="card-actions">
+                <button class="action-icon-btn"
+                        onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');"
+                        title="Share">
+                    <i class="fas fa-share-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+                
+
+                <!-- Item 5 -->
+                <div class="gallery-card" data-category="infrastructure" data-type="video" data-year="2026" data-date="2026-01-02" data-title="Department Virtual Campus Tour 2026">
+                    <div class="media-wrapper">
+                        <span class="badge-type" style="background: #e11d48;"><i class="fas fa-video"></i> Video</span>
+                        <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" data-lightbox="gallery-vault" data-title="Department Virtual Campus Tour 2026 â€” Captured on Jan 02, 2026">
+                            <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=600&q=80" alt="Virtual Tour" loading="lazy">
+                            <div class="video-overlay-icon"><i class="fas fa-play-circle"></i></div>
+                        </a>
+                        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Jan 02, 2026</div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span class="card-category">Infrastructure</span>
+                            <h3 class="card-title">Department Virtual Campus Tour 2026</h3>
+                        </div>
+                        <div class="card-footer-meta">
+                            <span class="meta-tag"><i class="fas fa-clock"></i> 05:12 Mins</span>
+                            <div class="card-actions">
+                                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="gallery-card" data-category="events" data-type="image" data-year="2024" data-date="2024-11-05" data-title="Inter-College Hackathon Winners Felicitation">
+                    <div class="media-wrapper">
+                        <span class="badge-type"><i class="fas fa-image"></i> Image</span>
+                        <a href="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=1400&q=80" data-lightbox="gallery-vault" data-title="Inter-College Hackathon Winners Felicitation â€” Captured on Nov 05, 2024">
+                            <img src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=600&q=80" alt="Hackathon Winners" loading="lazy">
+                        </a>
+                        <div class="date-badge-left"><i class="far fa-calendar-alt"></i> Nov 05, 2024</div>
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <span class="card-category">Events & Fests</span>
+                            <h3 class="card-title">Inter-College Hackathon Winners Felicitation</h3>
+                        </div>
+                        <div class="card-footer-meta">
+                            <span class="meta-tag"><i class="fas fa-trophy"></i> 1st Prize</span>
+                            <div class="card-actions">
+                                <button class="action-icon-btn" onclick="navigator.clipboard.writeText(window.location.href); alert('Link copied to clipboard!');" title="Share"><i class="fas fa-share-alt"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Empty State Container -->
+            <div class="empty-state" id="emptyState">
+                <i class="fas fa-folder-open"></i>
+                <h3>No matching files found</h3>
+                <p>Try refining your search keyword or switching category/year filter selections.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentFooter"></footer>  <!-- HEADER COMPONENT LOADER SCRIPT -->  <script src="../js/footer.js"></script>   <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentHeader === 'function') {
+                        loadDepartmentHeader();
+                    }
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+
+    <!-- FOOTER COMPONENT LOADER SCRIPT -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/footer.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentFooter").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/footer.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentFooter === 'function') {
+                        loadDepartmentFooter();
+                    }
+                })
+                .catch(err => console.error("Error loading footer component:", err));
+        });
+    </script>
+
+
+
+
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const categoryBtns = document.querySelectorAll('#categoryFilters .pill-btn');
+            const yearBtns = document.querySelectorAll('#yearFilters .pill-btn');
+            const typeBtns = document.querySelectorAll('#typeFilters .pill-btn');
+            const searchInput = document.getElementById('searchInput');
+            const sortSelect = document.getElementById('sortSelect');
+            const galleryGrid = document.getElementById('galleryGrid');
+            const galleryCards = Array.from(galleryGrid.getElementsByClassName('gallery-card'));
+            const emptyState = document.getElementById('emptyState');
+            
+            const totalCountEl = document.getElementById('totalCount');
+            const visibleCountEl = document.getElementById('visibleCount');
+            
+            const layoutToggleBtn = document.getElementById('layoutToggleBtn');
+            const layoutIcon = document.getElementById('layoutIcon');
+
+            let currentCategory = 'all';
+            let currentYear = 'all';
+            let currentType = 'all';
+            let searchTerm = '';
+            let currentLayout = 'grid'; // grid, compact, list
+
+            totalCountEl.textContent = galleryCards.length;
+
+            // Layout Switcher Logic
+            layoutToggleBtn.addEventListener('click', () => {
+                if (currentLayout === 'grid') {
+                    currentLayout = 'compact';
+                    galleryGrid.className = 'gallery-grid compact';
+                    layoutIcon.className = 'fas fa-th';
+                } else if (currentLayout === 'compact') {
+                    currentLayout = 'list';
+                    galleryGrid.className = 'gallery-grid list-view';
+                    layoutIcon.className = 'fas fa-list';
+                } else {
+                    currentLayout = 'grid';
+                    galleryGrid.className = 'gallery-grid';
+                    layoutIcon.className = 'fas fa-th-large';
+                }
+            });
+
+            // Master Filtering & Sorting Engine
+            function updateGallery() {
+                let visibleCount = 0;
+
+                galleryCards.forEach(card => {
+                    const cat = card.getAttribute('data-category');
+                    const yr = card.getAttribute('data-year');
+                    const tp = card.getAttribute('data-type');
+                    const title = card.getAttribute('data-title').toLowerCase();
+
+                    const matchCat = (currentCategory === 'all' || cat === currentCategory);
+                    const matchYr = (currentYear === 'all' || yr === currentYear);
+                    const matchTp = (currentType === 'all' || tp === currentType);
+                    const matchSearch = title.includes(searchTerm);
+
+                    if (matchCat && matchYr && matchTp && matchSearch) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Sorting mechanism
+                const sortVal = sortSelect.value;
+                galleryCards.sort((a, b) => {
+                    const dateA = new Date(a.getAttribute('data-date'));
+                    const dateB = new Date(b.getAttribute('data-date'));
+                    const titleA = a.getAttribute('data-title');
+                    const titleB = b.getAttribute('data-title');
+
+                    if (sortVal === 'newest') return dateB - dateA;
+                    if (sortVal === 'oldest') return dateA - dateB;
+                    if (sortVal === 'title') return titleA.localeCompare(titleB);
+                });
+
+                galleryCards.forEach(card => galleryGrid.appendChild(card));
+
+                visibleCountEl.textContent = visibleCount;
+                if (visibleCount === 0) {
+                    emptyState.style.display = 'block';
+                } else {
+                    emptyState.style.display = 'none';
+                }
+            }
+
+            // Event Listeners for Filters
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentCategory = btn.getAttribute('data-filter');
+                    updateGallery();
+                });
+            });
+
+            yearBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    yearBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentYear = btn.getAttribute('data-year');
+                    updateGallery();
+                });
+            });
+
+            typeBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    typeBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentType = btn.getAttribute('data-type');
+                    updateGallery();
+                });
+            });
+
+            searchInput.addEventListener('input', (e) => {
+                searchTerm = e.target.value.trim().toLowerCase();
+                updateGallery();
+            });
+
+            sortSelect.addEventListener('change', () => {
+                updateGallery();
+            });
+
+            updateGallery();
+        });
+
+
+        function openVideoModal(videoSrc) {
+    const modal = document.getElementById('customVideoModal');
+    const videoPlayer = document.getElementById('popupVideoPlayer');
+    const source = videoPlayer.querySelector('source');
+
+    source.src = videoSrc;
+    videoPlayer.load();
+    modal.style.display = 'flex';
+    videoPlayer.play();
+}
+
+function closeVideoModal() {
+    const modal = document.getElementById('customVideoModal');
+    const videoPlayer = document.getElementById('popupVideoPlayer');
+
+    videoPlayer.pause();
+    videoPlayer.currentTime = 0;
+    modal.style.display = 'none';
+}
+
+// Close modal when clicking outside the video box
+window.onclick = function(event) {
+    const modal = document.getElementById('customVideoModal');
+    if (event.target === modal) {
+        closeVideoModal();
+    }
+}
+    </script>
+</body>
+</html>

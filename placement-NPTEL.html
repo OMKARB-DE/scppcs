@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement & NPTEL Achievement | Department of Computer Science | Shri Shivaji College, Parbhani</title>
+<!-- Department Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="../images/dept-logo3.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../images/dept-logo3.png">
+
+    <!-- Apple / Mobile -->
+    <link rel="apple-touch-icon" href="../images/dept-logo3.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="placement-NPTEL.css">
+</head>
+<body>
+
+
+    <!-- FOOTER COMPONENT MOUNT POINT -->
+    <header id="departmentHeader"></header>
+   
+
+    <!-- Continuous Background Elements -->
+    <div class="bg-grid-texture"></div>
+    <div class="bg-noise"></div>
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+    <div class="bg-blob blob-3"></div>
+
+    <!-- ONE LARGE CENTERED PROSPECTUS CONTAINER -->
+    <div class="prospectus-wrapper">
+
+        <!-- TOP AREA (NO HEADER/NAV) -->
+        <div class="top-prospectus-header">
+            <h1 class="portal-main-title">Placement & NPTEL Achievement Portal</h1>
+            <p class="portal-subtitle">Department of Computer Science</p>
+
+            <!-- Page Tabs -->
+            <div class="portal-tabs-container">
+                <button class="portal-tab-btn active" onclick="switchMainTab('placement', this)">
+                    <i class="fas fa-briefcase"></i> Placement
+                </button>
+                <button class="portal-tab-btn" onclick="switchMainTab('nptel', this)">
+                    <i class="fas fa-award"></i> NPTEL
+                </button>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- PLACEMENT SECTION                                         -->
+        <!-- ========================================================= -->
+        <section id="placementSection" class="portal-content-section active">
+            
+            <!-- Fixed Top Filter Bar -->
+            <div class="sticky-filter-bar glass-panel">
+                <div class="filter-group search-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="placementSearch" placeholder="Search student or company..." onkeyup="filterPlacementData()">
+                </div>
+                <div class="filter-group">
+                    <select id="placementYearFilter" onchange="filterPlacementData()">
+                        <option value="">All Years</option>
+                        <option value="2026">2026</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="placementStatusFilter" onchange="filterPlacementData()">
+                        <option value="">All Status</option>
+                        <option value="Placed">Placed</option>
+                        <option value="Pending">Pending</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="placementCompanyFilter" onchange="filterPlacementData()">
+                        <option value="">All Companies</option>
+                        <option value="Microsoft">Microsoft</option>
+                        <option value="Google">Google</option>
+                        <option value="Amazon">Amazon</option>
+                        <option value="TCS">TCS</option>
+                        <option value="Infosys">Infosys</option>
+                    </select>
+                </div>
+                <div class="filter-group view-switcher">
+                    <button class="view-btn active" title="Grid View" onclick="setPlacementView('grid', this)"><i class="fas fa-th-large"></i></button>
+                    <button class="view-btn" title="Tile View" onclick="setPlacementView('tile', this)"><i class="fas fa-square"></i></button>
+                    <button class="view-btn" title="List View" onclick="setPlacementView('list', this)"><i class="fas fa-list"></i></button>
+                </div>
+                <div class="filter-group">
+                    <button class="refresh-btn ripple-btn" onclick="resetPlacementFilters()" title="Refresh"><i class="fas fa-sync-alt"></i></button>
+                </div>
+            </div>
+
+            <!-- Course Horizontal Tabs -->
+            <div class="course-tabs-scroll">
+                <button class="course-tab-pill active" onclick="selectPlacementCourse('All', this)">All Courses</button>
+                <button class="course-tab-pill" onclick="selectPlacementCourse('M.Sc Computer Science', this)">M.Sc Computer Science</button>
+                <button class="course-tab-pill" onclick="selectPlacementCourse('B.Sc Computer Science', this)">B.Sc Computer Science</button>
+                <button class="course-tab-pill" onclick="selectPlacementCourse('BCA', this)">BCA</button>
+                <button class="course-tab-pill" onclick="selectPlacementCourse('B.Sc Data Science', this)">B.Sc Data Science</button>
+            </div>
+
+            <!-- Course Cards Container (Year-wise reports) -->
+            <div id="placementCardsContainer" class="reports-grid grid-view">
+                <!-- Dynamically populated via script.js -->
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- NPTEL SECTION                                             -->
+        <!-- ========================================================= -->
+        <section id="nptelSection" class="portal-content-section">
+            
+            <!-- Fixed Top Filter Bar -->
+            <div class="sticky-filter-bar glass-panel">
+                <div class="filter-group search-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="nptelSearch" placeholder="Search course or student..." onkeyup="filterNptelData()">
+                </div>
+                <div class="filter-group">
+                    <select id="nptelYearFilter" onchange="filterNptelData()">
+                        <option value="">All Years</option>
+                        <option value="2026">2026</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="nptelCertFilter" onchange="filterNptelData()">
+                        <option value="">All Certificates</option>
+                        <option value="Elite">Elite</option>
+                        <option value="Elite + Silver">Elite + Silver</option>
+                        <option value="Elite + Gold">Elite + Gold</option>
+                    </select>
+                </div>
+                <div class="filter-group view-switcher">
+                    <button class="view-btn active" title="Grid View" onclick="setNptelView('grid', this)"><i class="fas fa-th-large"></i></button>
+                    <button class="view-btn" title="Tile View" onclick="setNptelView('tile', this)"><i class="fas fa-square"></i></button>
+                    <button class="view-btn" title="List View" onclick="setNptelView('list', this)"><i class="fas fa-list"></i></button>
+                </div>
+                <div class="filter-group">
+                    <button class="refresh-btn ripple-btn" onclick="resetNptelFilters()" title="Refresh"><i class="fas fa-sync-alt"></i></button>
+                </div>
+            </div>
+
+            <!-- Course Horizontal Tabs -->
+            <div class="course-tabs-scroll">
+                <button class="course-tab-pill active" onclick="selectNptelCourse('All', this)">All Courses</button>
+                <button class="course-tab-pill" onclick="selectNptelCourse('Python for Data Science', this)">Python for Data Science</button>
+                <button class="course-tab-pill" onclick="selectNptelCourse('Artificial Intelligence', this)">Artificial Intelligence</button>
+                <button class="course-tab-pill" onclick="selectNptelCourse('Cloud Computing', this)">Cloud Computing</button>
+                <button class="course-tab-pill" onclick="selectNptelCourse('Cyber Security', this)">Cyber Security</button>
+                <button class="course-tab-pill" onclick="selectNptelCourse('Big Data Analytics', this)">Big Data Analytics</button>
+                <button class="course-tab-pill" onclick="selectNptelCourse('Machine Learning', this)">Machine Learning</button>
+            </div>
+
+            <!-- Course Cards Container (Year-wise reports) -->
+            <div id="nptelCardsContainer" class="reports-grid grid-view">
+                <!-- Dynamically populated via script.js -->
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- PLACEMENT DETAILS FULLSCREEN POPUP                        -->
+    <!-- ========================================================= -->
+    <div id="placementModal" class="fullscreen-modal hide">
+        <div class="modal-prospectus-card glass-panel">
+            <div class="modal-header-row">
+                <div>
+                    <span class="badge-tag" id="modalPlacementYearCourse">2026 - M.Sc Computer Science</span>
+                    <h2>Placement Achievement Records</h2>
+                </div>
+                <button class="modal-close-circle ripple-btn" onclick="closePlacementModal()">&times;</button>
+            </div>
+
+            <div class="modal-sub-filter">
+                <div class="filter-group search-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="modalPlacementSearch" placeholder="Search student name or roll..." onkeyup="filterModalPlacementTable()">
+                </div>
+                <button class="export-btn ripple-btn" onclick="alert('Exporting Placement Report as CSV...')"><i class="fas fa-download"></i> Export Data</button>
+            </div>
+
+            <div class="modal-table-wrapper">
+                <table class="prospectus-table" id="modalPlacementTable">
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Student Name</th>
+                            <th>Roll Number</th>
+                            <th>Class</th>
+                            <th>Company</th>
+                            <th>Job Role</th>
+                            <th>Package</th>
+                            <th>Location</th>
+                            <th>Offer Date</th>
+                            <th>LinkedIn</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modalPlacementTableBody">
+                        <!-- Populated via script -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer-pagination">
+                <span id="modalPlacementPaginationInfo">Showing 1 to 5 of 5 entries</span>
+                <div class="pagination-controls">
+                    <button class="ripple-btn" disabled>Previous</button>
+                    <button class="ripple-btn active">1</button>
+                    <button class="ripple-btn" disabled>Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- NPTEL DETAILS FULLSCREEN POPUP                            -->
+    <!-- ========================================================= -->
+    <div id="nptelModal" class="fullscreen-modal hide">
+        <div class="modal-prospectus-card glass-panel">
+            <div class="modal-header-row">
+                <div>
+                    <span class="badge-tag blue" id="modalNptelYearCourse">2026 - Python for Data Science</span>
+                    <h2>NPTEL Achievement Records</h2>
+                </div>
+                <button class="modal-close-circle ripple-btn" onclick="closeNptelModal()">&times;</button>
+            </div>
+
+            <div class="modal-sub-filter">
+                <div class="filter-group search-group">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="modalNptelSearch" placeholder="Search student name or roll..." onkeyup="filterModalNptelTable()">
+                </div>
+                <button class="export-btn ripple-btn" onclick="alert('Exporting NPTEL Report as CSV...')"><i class="fas fa-download"></i> Export Data</button>
+            </div>
+
+            <div class="modal-table-wrapper">
+                <table class="prospectus-table" id="modalNptelTable">
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Student Name</th>
+                            <th>Roll Number</th>
+                            <th>Class</th>
+                            <th>Institute</th>
+                            <th>Score</th>
+                            <th>Percentage</th>
+                            <th>Certificate Type</th>
+                            <th>Certificate</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modalNptelTableBody">
+                        <!-- Populated via script -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer-pagination">
+                <span id="modalNptelPaginationInfo">Showing 1 to 5 of 5 entries</span>
+                <div class="pagination-controls">
+                    <button class="ripple-btn" disabled>Previous</button>
+                    <button class="ripple-btn active">1</button>
+                    <button class="ripple-btn" disabled>Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ <!-- FOOTER COMPONENT MOUNT POINT -->
+    <footer id="departmentFooter"></footer>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/footer.js"></script>
+    <!-- SCRIPTS -->
+    <script>
+        // Load Footer Component
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/footer.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentFooter").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/footer.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentFooter === 'function') {
+                        loadDepartmentFooter();
+                    }
+                })
+                .catch(err => console.error("Error loading footer component:", err));
+        });
+    </script>
+
+    <!-- HEADER COMPONENT LOADER SCRIPT -->
+    <script src="../js/header.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("../components/header.html")
+                .then(res => res.text())
+                .then(html => {
+                    document.getElementById("departmentHeader").innerHTML = html;
+                    
+                    const css = document.createElement("link");
+                    css.rel = "stylesheet";
+                    css.href = "../css/header.css";
+                    document.head.appendChild(css);
+
+                    if (typeof loadDepartmentHeader === 'function') {
+                        loadDepartmentHeader();
+                    }
+                })
+                .catch(err => console.error("Error loading header component:", err));
+        });
+    </script>
+
+    <!-- Custom Script -->
+    <script src="placement-NPTEL.js"></script>
+</body>
+</html>

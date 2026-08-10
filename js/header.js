@@ -127,3 +127,15 @@ function loadDepartmentHeader() {
         });
     }
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Re-bind click events for any element with the HOD trigger class
+    document.querySelectorAll('.dept-hod-quick-trigger').forEach(el => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault();
+            const facultyId = parseInt(el.getAttribute('data-id')) || 1; // Default to HOD ID 1
+            openFacultyProfileModal(facultyId);
+        });
+    });
+});
